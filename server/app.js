@@ -4,6 +4,11 @@ const morgan = require('morgan')
 const app = express()
 module.exports = app
 
+if (process.env.NODE_ENV !== "production") require("../secrets");
+console.log("log my environment variables", process.env);
+
+// const JWT = process.env.JWT;
+
 // logging middleware
 app.use(morgan('dev'))
 
