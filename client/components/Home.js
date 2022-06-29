@@ -1,7 +1,14 @@
 import React from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
+// navigator.geolocation.getCurrentPosition((position) => {
+//   console.log(position.coords.latitude, position.coords.longitude);
+// });
+
 const MapContainer = () => {
+  navigator.geolocation.getCurrentPosition((position) => {
+    console.log(position.coords.latitude, position.coords.longitude);
+  });
   const mapStyles = {
     height: '100vh',
     width: '100%',
