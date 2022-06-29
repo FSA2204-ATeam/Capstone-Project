@@ -1,11 +1,36 @@
 import React from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
-// navigator.geolocation.getCurrentPosition((position) => {
-//   console.log(position.coords.latitude, position.coords.longitude);
-// });
-
 const MapContainer = () => {
+  const styles = [
+    {
+      featureType: 'poi.business',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'road',
+      elementType: 'labels.icon',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'transit',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+  ];
+
+  //Get client location - (need to incorporate ask permission)
   navigator.geolocation.getCurrentPosition((position) => {
     console.log(position.coords.latitude, position.coords.longitude);
   });
