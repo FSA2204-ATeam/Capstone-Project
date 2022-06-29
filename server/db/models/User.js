@@ -1,8 +1,7 @@
-const Sequelize = require('sequelize')
+const { Sequelize, Op } = require('sequelize')
 const db = require('../db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
-// const axios = require('axios');
 
 const SALT_ROUNDS = 5;
 
@@ -14,7 +13,30 @@ const User = db.define('user', {
   },
   password: {
     type: Sequelize.STRING,
-  }
+    allowNull: false
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
+  email: {
+    type: Sequelize.STRING,
+    validate: {
+      isEmail: true,
+    },
+    unique: true,
+  },
+  firstname: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    defaultValue: "Jane"
+  },
+  lastname: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    defaultValue: "Doe",
+  },
 })
 
 module.exports = User
@@ -34,30 +56,34 @@ User.prototype.generateToken = function() {
 /**
  * classMethods
  */
-User.authenticate = async function({ username, password }){
-    const user = await this.findOne({where: { username }})
-    if (!user || !(await user.correctPassword(password))) {
-      const error = Error('Incorrect username/password');
-      error.status = 401;
-      throw error;
-    }
-    return user.generateToken();
+ User.authenticate = async function ({ username, password }) {
+  const user = await this.findOne({
+    where: {
+      username: { [Op.iLike]: username },
+    },
+  });
+  if (!user || !(await user.correctPassword(password))) {
+    const error = Error("Incorrect username/password");
+    error.status = 401;
+    throw error;
+  }
+  return user.generateToken();
 };
 
-User.findByToken = async function(token) {
+User.findByToken = async function (token) {
   try {
-    const {id} = await jwt.verify(token, process.env.JWT)
-    const user = User.findByPk(id)
+    const { id } = await jwt.verify(token, `${process.env.JWT}`);
+    const user = User.findByPk(id);
     if (!user) {
-      throw 'nooo'
+      throw "nooo";
     }
-    return user
+    return user;
   } catch (ex) {
-    const error = Error('bad token')
-    error.status = 401
-    throw error
+    const error = Error("bad token");
+    error.status = 401;
+    throw error;
   }
-}
+};
 
 /**
  * hooks
