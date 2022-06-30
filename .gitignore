@@ -2,6 +2,7 @@ node_modules
 public/bundle.js
 public/bundle.js.map
 .DS_Store
-npm-debug.log
+npm-debug.loggit
 yarn-error.log
 package-lock.json
+secrets.js
