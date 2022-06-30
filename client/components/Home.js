@@ -44,12 +44,17 @@ const MapContainer = () => {
     lng: -73.935242,
   };
 
+  const mapId = ['61b5009386a6596e'];
   return (
-    <LoadScript googleMapsApiKey="AIzaSyDd5tCW_eNmH7IGrTQvgsSs4v5QS1VTank">
+    <LoadScript
+      mapIds={mapId}
+      googleMapsApiKey="AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78"
+    >
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={15}
         center={defaultCenter}
+        options={{ mapId: '61b5009386a6596e' }}
       />
     </LoadScript>
   );
