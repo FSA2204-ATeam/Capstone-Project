@@ -44,6 +44,10 @@ const MapContainer = () => {
         center={defaultCenter}
         options={{
           mapId: '61b5009386a6596e',
+          zoomControl: false,
+          streetViewControl: false,
+          mapTypeControl: false,
+          fullscreenControl: false,
         }}
       >
         {events.map((event, idx) => {
