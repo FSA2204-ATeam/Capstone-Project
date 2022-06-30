@@ -1,30 +1,30 @@
-import React from 'react';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import React from "react";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 const MapContainer = () => {
   const styles = [
     {
-      featureType: 'poi.business',
+      featureType: "poi.business",
       stylers: [
         {
-          visibility: 'off',
+          visibility: "off",
         },
       ],
     },
     {
-      featureType: 'road',
-      elementType: 'labels.icon',
+      featureType: "road",
+      elementType: "labels.icon",
       stylers: [
         {
-          visibility: 'off',
+          visibility: "off",
         },
       ],
     },
     {
-      featureType: 'transit',
+      featureType: "transit",
       stylers: [
         {
-          visibility: 'off',
+          visibility: "off",
         },
       ],
     },
@@ -35,8 +35,8 @@ const MapContainer = () => {
     console.log(position.coords.latitude, position.coords.longitude);
   });
   const mapStyles = {
-    height: '100vh',
-    width: '100%',
+    height: "100vh",
+    width: "100%",
   };
 
   const defaultCenter = {
