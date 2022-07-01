@@ -1,31 +1,26 @@
 const router = require("express").Router();
 const axios = require("axios");
 
-const formatDate = (date) => {
-  if (date) {
-    date = new Date(Date.parse(date));
-    const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
-    const month =
-      date.getMonth() + 1 < 10
-        ? `0${date.getMonth() + 1}`
-        : date.getMonth() + 1;
-    const year = date.getFullYear();
-  }
+const formatDate = (offset = 0) => {
+  let date = new Date();
+  date.setDate(date.getDate() + offset);
+
+  const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+  const month =
+    date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+  const year = date.getFullYear();
 
   return `${month}/${day}/${year}`;
 };
 
 router.get("/", async (req, res, next) => {
-  let today = new Date();
-
-  let startDate = formatDate(today);
-  let endDate = formatDate(today + 1);
+  let startDate = formatDate();
+  let endDate = formatDate(1);
 
   console.log("Start", startDate);
   console.log("End", endDate);
 
-  let addressUrl =
-    "https://api.nyc.gov/calendar/search?startDate=06/30/2022 12:00 AM&endDate=07/01/2022 12:00 AM&pageNumber=";
+  let addressUrl = `https://api.nyc.gov/calendar/search?startDate=${startDate} 12:00 AM&endDate=${endDate} 12:00 AM&pageNumber=`;
   let events = [];
 
   for (let pgno = 1; pgno <= 5; pgno++) {
