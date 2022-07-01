@@ -2,33 +2,34 @@ const { Sequelize, Op } = require("sequelize");
 const db = require("../db");
 
 const Event = db.define("event", {
-  title: {
+  name: {
     type: Sequelize.STRING,
-    unique: true,
     allowNull: false,
-  },
-  eventLat: {
-    type: Sequelize.INTEGER,
-  },
-  eventLng: {
-    type: Sequelize.INTEGER,
   },
   complete: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
-  description: {
+  shortDesc: {
     type: Sequelize.STRING,
   },
-  time: {
-    type: Sequelize.TIME,
-  },
-  date: {
-    type: Sequelize.DATE,
-  },
-  category: {
+  timePart: {
     type: Sequelize.STRING,
-    allowNull: false,
+  },
+  datePart: {
+    type: Sequelize.STRING,
+  },
+  permalink: {
+    type: Sequelize.STRING,
+  },
+  address: {
+    type: Sequelize.STRING,
+  },
+  eventLat: {
+    type: Sequelize.FLOAT,
+  },
+  eventLng: {
+    type: Sequelize.FLOAT,
   },
   totalGuests: {
     type: Sequelize.INTEGER,
