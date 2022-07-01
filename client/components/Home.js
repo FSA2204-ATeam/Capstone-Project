@@ -1,31 +1,42 @@
 import React, { useEffect, useState } from 'react';
-import { GoogleMap, LoadScript, Marker, InfoBox } from '@react-google-maps/api';
-//import { Marker } from 'google-maps-react';
-
-let events = [
-  {
-    title: 'Discoteque',
-    lat: 40.7589,
-    lng: -73.9851,
-  },
-
-  {
-    title: 'Jam Session',
-    lat: 40.769,
-    lng: -73.9952,
-  },
-  {
-    title: 'Art Craft session',
-    lat: 40.7489,
-    lng: -73.9751,
-  },
-];
+import {
+  GoogleMap,
+  LoadScript,
+  Marker,
+  InfoWindow,
+} from '@react-google-maps/api';
 
 const MapContainer = () => {
+  /////////////////////////////
+  /////     VARIABLES     /////
+  /////////////////////////////
   const [mapCenter, setMapCenter] = useState({ lat: 40.7589, lng: -73.9851 });
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [events, setEvents] = useState([
+    {
+      title: 'Discoteque',
+      lat: 40.7589,
+      lng: -73.9851,
+    },
 
-  const onMarkerClick = (id, lat, lng) => {
-    console.log('Clicky Click');
+    {
+      title: 'Jam Session',
+      lat: 40.769,
+      lng: -73.9952,
+    },
+    {
+      title: 'Art Craft session',
+      lat: 40.7489,
+      lng: -73.9751,
+    },
+  ]);
+
+  //////////////////////////////////
+  /////     EVENT HANDLERS     /////
+  //////////////////////////////////
+  const onMarkerClick = (idx, lat, lng) => {
+    console.log(selectedEvent);
+    setSelectedEvent(idx);
     setMapCenter({ lat: lat, lng: lng });
   };
 
@@ -45,6 +56,7 @@ const MapContainer = () => {
       googleMapsApiKey="AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78"
     >
       <GoogleMap
+        //onClick={() => setSelectedEvent(null)}
         mapContainerStyle={mapStyles}
         zoom={13}
         center={mapCenter}
@@ -66,7 +78,19 @@ const MapContainer = () => {
                 lng: event.lng,
               }}
               onClick={() => onMarkerClick(idx, event.lat, event.lng)}
-            />
+            >
+              {selectedEvent === idx ? (
+                <InfoWindow
+                  position={{
+                    lat: event.lat,
+                    lng: event.lng,
+                  }}
+                  onCloseClick={() => setSelectedEvent(null)}
+                >
+                  <div>{event.title}</div>
+                </InfoWindow>
+              ) : null}
+            </Marker>
           );
         })}
       </GoogleMap>
