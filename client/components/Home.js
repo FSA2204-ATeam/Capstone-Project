@@ -39,9 +39,11 @@ const MapContainer = () => {
   /////     EVENT HANDLERS     /////
   //////////////////////////////////
   const onMarkerClick = (idx, lat, lng) => {
-    console.log(selectedEvent);
+    console.log(lat);
+    const floatLat = parseFloat(lat);
+    const floatLng = parseFloat(lng);
     setSelectedEvent(idx);
-    setMapCenter({ lat: lat, lng: lng });
+    //setMapCenter({ lat: floatLat, lng: floatLng });
   };
 
   //Get client location - (need to incorporate ask permission)
@@ -58,7 +60,7 @@ const MapContainer = () => {
     const getEvents = async () => {
       try {
         const events = await axios.get('/api/events');
-        console.log(events.data[0].geometry[0].lat);
+        console.log(events.data);
         setEvents(events.data);
       } catch (err) {
         console.log(err);
