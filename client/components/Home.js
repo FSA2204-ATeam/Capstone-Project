@@ -44,6 +44,7 @@ const MapContainer = () => {
   navigator.geolocation.getCurrentPosition((position) => {
     console.log(position.coords.latitude, position.coords.longitude);
   });
+
   const mapStyles = {
     height: '100vh',
     width: '100%',
@@ -56,7 +57,7 @@ const MapContainer = () => {
       googleMapsApiKey="AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78"
     >
       <GoogleMap
-        //onClick={() => setSelectedEvent(null)}
+        onClick={() => setSelectedEvent(null)}
         mapContainerStyle={mapStyles}
         zoom={13}
         center={mapCenter}
