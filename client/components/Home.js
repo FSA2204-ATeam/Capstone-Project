@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   GoogleMap,
   LoadScript,
   Marker,
   InfoWindow,
-} from '@react-google-maps/api';
-import { Room, Star, StarBorder } from '@material-ui/icons';
-import Login from './LoginForm';
-import Signup from './SignUpForm';
-import axios from 'axios';
+} from "@react-google-maps/api";
+import { Room, Star, StarBorder } from "@material-ui/icons";
+import Login from "./LoginForm";
+import Signup from "./SignUpForm";
+import axios from "axios";
+// import * as dotenv from "dotenv";
+// dotenv.config();
+// import express from "express";
 
 const MapContainer = () => {
   /////////////////////////////
@@ -52,14 +55,14 @@ const MapContainer = () => {
   });
 
   const mapStyles = {
-    height: '100vh',
-    width: '100%',
+    height: "100vh",
+    width: "100%",
   };
 
   useEffect(() => {
     const getEvents = async () => {
       try {
-        const events = await axios.get('/api/events');
+        const events = await axios.get("/api/events");
         console.log(events.data);
         setEvents(events.data);
       } catch (err) {
@@ -71,7 +74,7 @@ const MapContainer = () => {
 
   return (
     <LoadScript
-      mapIds={['61b5009386a6596e']}
+      mapIds={["61b5009386a6596e"]}
       googleMapsApiKey="AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78"
     >
       <GoogleMap
@@ -80,7 +83,7 @@ const MapContainer = () => {
         zoom={13}
         center={mapCenter}
         options={{
-          mapId: '61b5009386a6596e',
+          mapId: "61b5009386a6596e",
           zoomControl: false,
           streetViewControl: false,
           mapTypeControl: false,
@@ -89,22 +92,22 @@ const MapContainer = () => {
       >
         {events
           ? events.map((event, idx) => {
-              console.log('events.map is running');
+              console.log("events.map is running");
               return (
                 <Marker
                   key={idx}
                   id={idx}
                   position={{
-                    lat: parseFloat(event.geometry[0].lat),
-                    lng: parseFloat(event.geometry[0].lng),
+                    lat: parseFloat(event.eventLat),
+                    lng: parseFloat(event.eventLng),
                   }}
                   onClick={() => onMarkerClick(idx, event.lat, event.lng)}
                 >
                   {selectedEvent === idx ? (
                     <InfoWindow
                       position={{
-                        lat: parseFloat(event.geometry[0].lat),
-                        lng: parseFloat(event.geometry[0].lng),
+                        lat: parseFloat(event.eventLat),
+                        lng: parseFloat(event.eventLng),
                       }}
                       onCloseClick={() => setSelectedEvent(null)}
                     >
@@ -116,7 +119,7 @@ const MapContainer = () => {
             })
           : null}
 
-        <button className="userButton" onClick={console.log('test case')}>
+        <button className="userButton" onClick={console.log("test case")}>
           USER
         </button>
       </GoogleMap>

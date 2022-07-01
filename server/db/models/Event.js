@@ -35,6 +35,9 @@ const Event = db.define("event", {
     type: Sequelize.INTEGER,
     defaultValue: 0,
   },
+  databaseId: {
+    type: Sequelize.STRING,
+  },
 });
 
 module.exports = Event;
