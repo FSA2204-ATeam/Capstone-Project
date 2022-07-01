@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoBox } from '@react-google-maps/api';
 //import { Marker } from 'google-maps-react';
 
@@ -22,6 +22,13 @@ let events = [
 ];
 
 const MapContainer = () => {
+  const [mapCenter, setMapCenter] = useState({ lat: 40.7589, lng: -73.9851 });
+
+  const onMarkerClick = (id, lat, lng) => {
+    console.log('Clicky Click');
+    setMapCenter({ lat: lat, lng: lng });
+  };
+
   //Get client location - (need to incorporate ask permission)
   navigator.geolocation.getCurrentPosition((position) => {
     console.log(position.coords.latitude, position.coords.longitude);
@@ -31,7 +38,6 @@ const MapContainer = () => {
     width: '100%',
   };
 
-  const defaultCenter = { lat: 40.7589, lng: -73.9851 };
   const mapId = ['61b5009386a6596e'];
   return (
     <LoadScript
@@ -41,7 +47,7 @@ const MapContainer = () => {
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={13}
-        center={defaultCenter}
+        center={mapCenter}
         options={{
           mapId: '61b5009386a6596e',
           zoomControl: false,
@@ -59,7 +65,7 @@ const MapContainer = () => {
                 lat: event.lat,
                 lng: event.lng,
               }}
-              onClick={() => console.log('You clicked me!')}
+              onClick={() => onMarkerClick(idx, event.lat, event.lng)}
             />
           );
         })}
