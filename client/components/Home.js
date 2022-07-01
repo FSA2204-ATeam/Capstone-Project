@@ -5,6 +5,10 @@ import {
   Marker,
   InfoWindow,
 } from '@react-google-maps/api';
+import { Room, Star, StarBorder } from '@material-ui/icons';
+import Login from './LoginForm';
+import Signup from './SignUpForm';
+import axios from 'axios';
 
 const MapContainer = () => {
   /////////////////////////////
@@ -12,23 +16,23 @@ const MapContainer = () => {
   /////////////////////////////
   const [mapCenter, setMapCenter] = useState({ lat: 40.7589, lng: -73.9851 });
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [showUserComponent, setShowUserComponent] = useState(false);
   const [events, setEvents] = useState([
-    {
-      title: 'Discoteque',
-      lat: 40.7589,
-      lng: -73.9851,
-    },
-
-    {
-      title: 'Jam Session',
-      lat: 40.769,
-      lng: -73.9952,
-    },
-    {
-      title: 'Art Craft session',
-      lat: 40.7489,
-      lng: -73.9751,
-    },
+    // {
+    //   title: 'Discoteque',
+    //   lat: 40.7589,
+    //   lng: -73.9851,
+    // },
+    // {
+    //   title: 'Jam Session',
+    //   lat: 40.769,
+    //   lng: -73.9952,
+    // },
+    // {
+    //   title: 'Art Craft session',
+    //   lat: 40.7489,
+    //   lng: -73.9751,
+    // },
   ]);
 
   //////////////////////////////////
@@ -50,10 +54,22 @@ const MapContainer = () => {
     width: '100%',
   };
 
-  const mapId = ['61b5009386a6596e'];
+  useEffect(() => {
+    const getEvents = async () => {
+      try {
+        const events = await axios.get('/api/events');
+        console.log(events.data[0].geometry[0].lat);
+        setEvents(events.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getEvents();
+  }, []);
+
   return (
     <LoadScript
-      mapIds={mapId}
+      mapIds={['61b5009386a6596e']}
       googleMapsApiKey="AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78"
     >
       <GoogleMap
@@ -69,31 +85,38 @@ const MapContainer = () => {
           fullscreenControl: false,
         }}
       >
-        {events.map((event, idx) => {
-          return (
-            <Marker
-              key={idx}
-              id={idx}
-              position={{
-                lat: event.lat,
-                lng: event.lng,
-              }}
-              onClick={() => onMarkerClick(idx, event.lat, event.lng)}
-            >
-              {selectedEvent === idx ? (
-                <InfoWindow
+        {events
+          ? events.map((event, idx) => {
+              console.log('events.map is running');
+              return (
+                <Marker
+                  key={idx}
+                  id={idx}
                   position={{
-                    lat: event.lat,
-                    lng: event.lng,
+                    lat: parseFloat(event.geometry[0].lat),
+                    lng: parseFloat(event.geometry[0].lng),
                   }}
-                  onCloseClick={() => setSelectedEvent(null)}
+                  onClick={() => onMarkerClick(idx, event.lat, event.lng)}
                 >
-                  <div>{event.title}</div>
-                </InfoWindow>
-              ) : null}
-            </Marker>
-          );
-        })}
+                  {selectedEvent === idx ? (
+                    <InfoWindow
+                      position={{
+                        lat: parseFloat(event.geometry[0].lat),
+                        lng: parseFloat(event.geometry[0].lng),
+                      }}
+                      onCloseClick={() => setSelectedEvent(null)}
+                    >
+                      <div>{event.shortDesc}</div>
+                    </InfoWindow>
+                  ) : null}
+                </Marker>
+              );
+            })
+          : null}
+
+        <button className="userButton" onClick={console.log('test case')}>
+          USER
+        </button>
       </GoogleMap>
     </LoadScript>
   );
