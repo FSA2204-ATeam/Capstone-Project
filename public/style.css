@@ -19,3 +19,9 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.userButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
