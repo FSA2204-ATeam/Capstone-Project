@@ -1,9 +1,30 @@
 const router = require("express").Router();
 const axios = require("axios");
+const {
+  models: { Event },
+} = require("../db");
+const User = require("../db/models/User");
+
+const formatDate = (offset = 0) => {
+  let date = new Date();
+  date.setDate(date.getDate() + offset);
+
+  const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+  const month =
+    date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+  const year = date.getFullYear();
+
+  return `${month}/${day}/${year}`;
+};
 
 router.get("/", async (req, res, next) => {
-  let addressUrl =
-    "https://api.nyc.gov/calendar/search?startDate=06/30/2022 12:00 AM&endDate=07/01/2022 12:00 AM&pageNumber=";
+  let startDate = formatDate();
+  let endDate = formatDate(1);
+
+  console.log("Start", startDate);
+  console.log("End", endDate);
+
+  let addressUrl = `https://api.nyc.gov/calendar/search?startDate=${startDate} 12:00 AM&endDate=${endDate} 12:00 AM&pageNumber=`;
   let events = [];
 
   for (let pgno = 1; pgno <= 5; pgno++) {
@@ -17,13 +38,60 @@ router.get("/", async (req, res, next) => {
 
       data.items
         .filter((e) => e.geometry !== undefined)
-        .map((evt) => events.push(evt));
+        .map((evt) =>
+          events.push({
+            name: evt.name,
+            shortDesc: evt.shortDesc,
+            timePart: evt.timePart,
+            datePart: evt.datePart,
+            permalink: evt.permalink,
+            address: evt.address,
+            eventLat: evt.geometry[0].lat,
+            eventLng: evt.geometry[0].lng,
+            // databaseId: evt.id,
+          })
+        );
     } catch (error) {
       next(error);
     }
   }
   console.log(events.length);
   res.json(events);
+});
+
+router.post("/:userId", async (req, res, next) => {
+  try {
+    const [newEvent, created] = await Event.findOrCreate({
+      where: {
+        name: "97 Street Greenmarket Friday",
+        shortDesc: "Farmers Market",
+        timePart: "8am to 5pm",
+        datePart: "Jul 1",
+        permalink:
+          "http://www1.nyc.gov/events/97-street-greenmarket-friday/379910/1",
+        address:
+          " WEST   97 STREET between COLUMBUS AVENUE and AMSTERDAM AVENUE  Manhattan",
+        eventLat: "40.8134463",
+        eventLng: "-73.9562105",
+      },
+    });
+    const user = await User.findByPk(req.params.userId);
+    await newEvent.setUsers(user);
+    res.json(newEvent);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/:userId", async (req, res, next) => {
+  try {
+    const events = await Event.findAll({
+      where: { id: req.params.userId },
+    });
+    res.json(events);
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;
