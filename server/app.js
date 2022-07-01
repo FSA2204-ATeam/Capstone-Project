@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const app = express();
 module.exports = app;
 require("dotenv").config();
-
+console.log(process.env)
 // logging middleware
 app.use(morgan("dev"));
 

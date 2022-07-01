@@ -5,6 +5,7 @@ import { Login } from './components/LoginForm';
 import { Signup } from './components/SignUpForm';
 import Home from './components/Home';
 import {me} from './store'
+import PopUpWindowCard from './components/PopUpWindowCard';
 
 /**
  * COMPONENT
@@ -19,18 +20,13 @@ class Routes extends Component {
 
     return (
       <div>
-        {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
-            <Redirect to="/home" />
+            <Route exact path="/home" component={Home} />
+            <Route exact path='/' component={ Login } />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
           </Switch>
-        ) : (
-          <Switch>
-            <Route path='/' exact component={ Login } />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-          </Switch>
-        )}
+        <Route path='/popupwindow' exact component={ PopUpWindowCard } />
       </div>
     )
   }
