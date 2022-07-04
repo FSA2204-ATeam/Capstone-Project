@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { connect } from 'react-redux';
 import FormInput from './FormInput';
 
-export const UserProfileForm = () => {
+const UserProfileForm = (props) => {
+  // const [currentProfile] = [useSelector((state) => state.auth)].map((x) => x);
+  console.log('CURRENT PROFILE: ', props.userProfile);
+  // const [initialLoad, setInitialLoad] = useState(true);
+
   const [values, setValues] = useState({
-    username: '',
-    email: '',
-    firstname: '',
-    lastname: '',
+    username: props.userProfile.username,
+    email: props.userProfile.email,
+    firstname: props.userProfile.firstname,
+    lastname: props.userProfile.lastname,
   });
+
+  // useEffect(() => {
+  //   if (setInitialLoad) {
+  //     setValues({ username: currentProfile.username });
+  //     setInitialLoad(false);
+  //   }
+  // }),
+  //   [null];
+
+  // setValues({ username: currentProfile.username });
+
+  // setValues(currentProfile);
+
+  // console.log('VALUES: ', values);
 
   const inputs = [
     {
@@ -54,6 +73,7 @@ export const UserProfileForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    return history.push('/home');
   };
 
   const onChange = (e) => {
@@ -80,4 +100,10 @@ export const UserProfileForm = () => {
   );
 };
 
-export default UserProfileForm;
+const mapState = (state) => {
+  return {
+    userProfile: state.auth,
+  };
+};
+
+export default connect(mapState, null)(UserProfileForm);
