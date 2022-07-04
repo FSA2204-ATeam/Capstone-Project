@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import FormInput from './FormInput';
+import updateProfile from '../store/auth';
+import axios from 'axios';
 
 const UserProfileForm = (props) => {
   console.log('CURRENT PROFILE: ', props.userProfile);
@@ -55,10 +57,18 @@ const UserProfileForm = (props) => {
     },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      const res = await axios.put('api/users/updateProfile', values, {
+        headers: {
+          authorization: token,
+        },
+      });
+      console.log('resresresres', res);
+    }
   };
-
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     console.log(e.target.value);

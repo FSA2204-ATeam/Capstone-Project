@@ -58,16 +58,18 @@ export const registration =
     }
   };
 
-export const updateProfile = (updatedProfile) => async (dispatch) => {
-  const token = window.localStorage.getItem(TOKEN);
-  if (token) {
-    const res = await axios.put('/auth/updateProfile', updatedProfile, {
-      headers: {
-        authorization: token,
-      },
-    });
-    return dispatch(setAuth(res.data));
-  }
+export const updateProfile = (updatedProfile) => {
+  console.log('UPDATE PROFILE HAS BEEN CALLED WITH ', updatedProfile);
+  // const token = window.localStorage.getItem(TOKEN);
+  // if (token) {
+  //   const res = await axios.put('/auth/updateProfile', updatedProfile, {
+  //     headers: {
+  //       authorization: token,
+  //     },
+  //   });
+  //   console.log('resresresres', res);
+  //   //return dispatch(setAuth(res.data));
+  // }
 };
 
 export const logout = () => {
