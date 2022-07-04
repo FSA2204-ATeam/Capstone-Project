@@ -1,11 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import FormInput from './FormInput';
 
 const UserProfileForm = (props) => {
-  // const [currentProfile] = [useSelector((state) => state.auth)].map((x) => x);
   console.log('CURRENT PROFILE: ', props.userProfile);
-  // const [initialLoad, setInitialLoad] = useState(true);
 
   const [values, setValues] = useState({
     username: props.userProfile.username,
@@ -13,20 +11,6 @@ const UserProfileForm = (props) => {
     firstname: props.userProfile.firstname,
     lastname: props.userProfile.lastname,
   });
-
-  // useEffect(() => {
-  //   if (setInitialLoad) {
-  //     setValues({ username: currentProfile.username });
-  //     setInitialLoad(false);
-  //   }
-  // }),
-  //   [null];
-
-  // setValues({ username: currentProfile.username });
-
-  // setValues(currentProfile);
-
-  // console.log('VALUES: ', values);
 
   const inputs = [
     {
@@ -73,7 +57,6 @@ const UserProfileForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    return history.push('/home');
   };
 
   const onChange = (e) => {
@@ -82,10 +65,9 @@ const UserProfileForm = (props) => {
   };
 
   return (
-    <div className="app">
-      testestest
+    <div>
       <form onSubmit={handleSubmit}>
-        <h1>Register</h1>
+        <h1>Update Profile</h1>
         {inputs.map((input) => (
           <FormInput
             key={input.id}
