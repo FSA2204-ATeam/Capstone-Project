@@ -5,7 +5,7 @@ import { Login } from './components/LoginForm';
 import { Signup } from './components/SignUpForm';
 import Home from './components/Home';
 import {me} from './store'
-import PopUpWindowCard from './components/PopUpWindowCard';
+import PopUpWindowLogin from './components/PopUpWindowLogin';
 
 /**
  * COMPONENT
@@ -26,7 +26,7 @@ class Routes extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
           </Switch>
-        <Route path='/popupwindow' exact component={ PopUpWindowCard } />
+        <Route path='/popupwindow' exact component={ PopUpWindowLogin } />
       </div>
     )
   }

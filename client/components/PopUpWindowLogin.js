@@ -14,13 +14,13 @@ const PopUpWindowCard = () => {
     // <Container maxWidth="lg">
     <Card xs={12} md={6} lg={3} elevation={3} className={classes.p} variant="elevation" style={{background: "#808080"}} >
       <CardContent>
-      <CardHeader align="center" title={<Typography className={classes.h4}>Welcome</Typography>} />
+      <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
       </CardContent>
       <CardActions>
-        <Button>
+        <Button href='/login' style={{margin: '0 auto', display: "flex", background: '#94C973'}}>
           Login
         </Button>
-        <Button>
+        <Button href='/signup' style={{margin: '0 auto', display: "flex", background: '#68BBE3'}}>
           Sign Up
         </Button>
       </CardActions>

@@ -9,10 +9,10 @@ import { Room, Star, StarBorder } from '@material-ui/icons';
 import Login from './LoginForm';
 import Signup from './SignUpForm';
 import axios from 'axios';
-import User from './PopUpWindowCard';
+import User from './PopUpWindowLogin';
 import { connect, useSelector } from "react-redux";
 import { logout } from '../store';
-import PopUpWindowCard from './PopUpWindowCard'
+import PopUpWindowLogin from './PopUpWindowLogin'
 import Button from '@material-ui/core/Button';
 import {Container} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
@@ -155,7 +155,7 @@ const MapContainer = ({isLoggedIn, handleClick}) => {
       }}
       onClose={() => setAnchor(null)}
       >
-        <PopUpWindowCard/>
+        <PopUpWindowLogin/>
       </Popover>
       </div>
     )}
