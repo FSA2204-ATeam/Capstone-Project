@@ -16,6 +16,11 @@ const setAuth = (auth) => ({ type: SET_AUTH, auth });
 /**
  * THUNK CREATORS
  */
+
+export const updateProfile = (updatedProfile) => async (dispatch) => {
+  dispatch(setAuth(updatedProfile));
+};
+
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
@@ -57,20 +62,6 @@ export const registration =
       return dispatch(setAuth({ error: authError }));
     }
   };
-
-export const updateProfile = (updatedProfile) => {
-  console.log('UPDATE PROFILE HAS BEEN CALLED WITH ', updatedProfile);
-  // const token = window.localStorage.getItem(TOKEN);
-  // if (token) {
-  //   const res = await axios.put('/auth/updateProfile', updatedProfile, {
-  //     headers: {
-  //       authorization: token,
-  //     },
-  //   });
-  //   console.log('resresresres', res);
-  //   //return dispatch(setAuth(res.data));
-  // }
-};
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);

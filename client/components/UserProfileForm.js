@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import FormInput from './FormInput';
-import updateProfile from '../store/auth';
+import { updateProfile } from '../store/auth';
 import axios from 'axios';
 
 const UserProfileForm = (props) => {
-  console.log('CURRENT PROFILE: ', props.userProfile);
-
   const [values, setValues] = useState({
     username: props.userProfile.username,
     email: props.userProfile.email,
@@ -66,18 +64,18 @@ const UserProfileForm = (props) => {
           authorization: token,
         },
       });
-      console.log('resresresres', res);
+      props.updateState(res.data);
     }
   };
+
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-    console.log(e.target.value);
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h1>Update Profile</h1>
+        <h1>{`${props.userProfile.username}'s profile`}</h1>
         {inputs.map((input) => (
           <FormInput
             key={input.id}
@@ -86,7 +84,7 @@ const UserProfileForm = (props) => {
             onChange={onChange}
           />
         ))}
-        <button>Submit</button>
+        <button>Update</button>
       </form>
     </div>
   );
@@ -98,4 +96,12 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState, null)(UserProfileForm);
+const mapDispatch = (dispatch) => {
+  return {
+    updateState(user) {
+      dispatch(updateProfile(user));
+    },
+  };
+};
+
+export default connect(mapState, mapDispatch)(UserProfileForm);
