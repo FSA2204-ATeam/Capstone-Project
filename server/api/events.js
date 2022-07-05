@@ -4,18 +4,7 @@ const {
   models: { Event },
 } = require("../db");
 const User = require("../db/models/User");
-
-const formatDate = (offset = 0) => {
-  let date = new Date();
-  date.setDate(date.getDate() + offset);
-
-  const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
-  const month =
-    date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
-  const year = date.getFullYear();
-
-  return `${month}/${day}/${year}`;
-};
+const formatDate = require("../../script/formatDate");
 
 router.get("/", async (req, res, next) => {
   let startDate = formatDate();
@@ -48,7 +37,7 @@ router.get("/", async (req, res, next) => {
             address: evt.address,
             eventLat: evt.geometry[0].lat,
             eventLng: evt.geometry[0].lng,
-            // databaseId: evt.id,
+            databaseId: evt.id,
           })
         );
     } catch (error) {
