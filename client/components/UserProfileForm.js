@@ -5,12 +5,17 @@ import { updateProfile } from '../store/auth';
 import axios from 'axios';
 
 const UserProfileForm = (props) => {
+  console.log(props.userProfile);
   const [values, setValues] = useState({
     username: props.userProfile.username,
     email: props.userProfile.email,
     firstname: props.userProfile.firstname,
     lastname: props.userProfile.lastname,
   });
+  const [categoryPreferences, setCategoryPreferences] = useState([
+    props.userProfile.preferences,
+  ]);
+  const allCategories = ['art', 'music', 'food', 'protest', 'pets'];
 
   const inputs = [
     {
@@ -72,6 +77,19 @@ const UserProfileForm = (props) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const handleCatSelect = (cat) => {
+    if (categoryPreferences.includes(cat)) {
+      console.log('we have this category');
+      setCategoryPreferences(
+        categoryPreferences.filter((item) => item !== cat)
+      );
+    } else {
+      console.log('we NO have this category');
+      setCategoryPreferences([...categoryPreferences, cat]);
+    }
+    console.log(categoryPreferences);
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -84,6 +102,22 @@ const UserProfileForm = (props) => {
             onChange={onChange}
           />
         ))}
+        <div>
+          {allCategories.map((cat, idx) => (
+            <button
+              key={idx}
+              type="button"
+              className={
+                categoryPreferences.includes(cat)
+                  ? 'categoryButton Selected'
+                  : 'categoryButton'
+              }
+              onClick={() => handleCatSelect(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
         <button>Update</button>
       </form>
     </div>
