@@ -1,118 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import {
-//   GoogleMap,
-//   LoadScript,
-//   Marker,
-//   InfoWindow,
-// } from '@react-google-maps/api';
-// import { Room, Star, StarBorder } from '@material-ui/icons';
-// import Login from './LoginForm';
-// import Signup from './SignUpForm';
-// import axios from 'axios';
-
-// const MapContainer = () => {
-//   /////////////////////////////
-//   /////     VARIABLES     /////
-//   /////////////////////////////
-//   const [mapCenter, setMapCenter] = useState({ lat: 40.7589, lng: -73.9851 });
-//   const [selectedEvent, setSelectedEvent] = useState(null);
-//   const [showUserComponent, setShowUserComponent] = useState(false);
-//   const [events, setEvents] = useState([
-//   ]);
-
-//   //////////////////////////////////
-//   /////     EVENT HANDLERS     /////
-//   //////////////////////////////////
-//   const onMarkerClick = (idx, lat, lng) => {
-//     console.log(lat);
-//     const floatLat = parseFloat(lat);
-//     const floatLng = parseFloat(lng);
-//     setSelectedEvent(idx);
-//   };
-
-//   //Get client location - (need to incorporate ask permission)
-//   navigator.geolocation.getCurrentPosition((position) => {
-//     console.log(position.coords.latitude, position.coords.longitude);
-//   });
-
-//   const mapStyles = {
-//     height: '100vh',
-//     width: '100%',
-//   };
-
-//   useEffect(() => {
-//     const getEvents = async () => {
-//       try {
-//         const events = await axios.get('/api/events');
-//         console.log(events.data);
-//         setEvents(events.data);
-//       } catch (err) {
-//         console.log(err);
-//       }
-//     };
-//     getEvents();
-//   }, []);
-
-//   // const GOOGLE_MAPS_API_KEY = `${process.env.GOOGLE_MAPS_API_KEY}`;
-//   // console.log(process.env.GOOGLE_MAPS_API_KEY,'---------')
-//   // AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78
-
-//   return (
-//     <LoadScript
-//       mapIds={['61b5009386a6596e']}
-//       googleMapsApiKey={"AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78"}
-//     >
-//       <GoogleMap
-//         onClick={() => setSelectedEvent(null)}
-//         mapContainerStyle={mapStyles}
-//         zoom={13}
-//         center={mapCenter}
-//         options={{
-//           mapId: '61b5009386a6596e',
-//           zoomControl: false,
-//           streetViewControl: false,
-//           mapTypeControl: false,
-//           fullscreenControl: false,
-//         }}
-//       >
-//         {events
-//           ? events.map((event, idx) => {
-//               console.log('events.map is running');
-//               return (
-//                 <Marker
-//                   key={idx}
-//                   id={idx}
-//                   position={{
-//                     lat: parseFloat(event.geometry[0].lat),
-//                     lng: parseFloat(event.geometry[0].lng),
-//                   }}
-//                   onClick={() => onMarkerClick(idx, event.lat, event.lng)}
-//                 >
-//                   {selectedEvent === idx ? (
-//                     <InfoWindow
-//                       position={{
-//                         lat: parseFloat(event.geometry[0].lat),
-//                         lng: parseFloat(event.geometry[0].lng),
-//                       }}
-//                       onCloseClick={() => setSelectedEvent(null)}
-//                     >
-//                       <div>{event.shortDesc}</div>
-//                     </InfoWindow>
-//                   ) : null}
-//                 </Marker>
-//               );
-//             })
-//           : null}
-
-//         <button className="userButton" onClick={console.log('test case')}>
-//           USER
-//         </button>
-//       </GoogleMap>
-//     </LoadScript>
-//   );
-// };
-// export default MapContainer;
-
 import React, { useEffect, useState } from 'react';
 import {
   GoogleMap,
@@ -129,8 +14,10 @@ import { connect, useSelector } from "react-redux";
 import { logout } from '../store';
 import PopUpWindowCard from './PopUpWindowCard'
 import Button from '@material-ui/core/Button';
+import {Container} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
+import { Grid, Popover } from "@material-ui/core"
 
 const MapContainer = ({isLoggedIn, handleClick}) => {
   /////////////////////////////
@@ -141,7 +28,7 @@ const MapContainer = ({isLoggedIn, handleClick}) => {
   const [showUserComponent, setShowUserComponent] = useState(false);
   const [events, setEvents] = useState([
   ]);
-
+  const [anchor, setAnchor] = useState(null)
   //////////////////////////////////
   /////     EVENT HANDLERS     /////
   //////////////////////////////////
@@ -151,6 +38,10 @@ const MapContainer = ({isLoggedIn, handleClick}) => {
     const floatLng = parseFloat(lng);
     setSelectedEvent(idx);
   };
+
+  const openPopover = (event) => {
+    setAnchor(event.target)
+  }
 
   //Get client location - (need to incorporate ask permission)
   navigator.geolocation.getCurrentPosition((position) => {
@@ -176,6 +67,9 @@ const MapContainer = ({isLoggedIn, handleClick}) => {
   }, []);
 
   return (
+    <div>
+    <Container maxWidth="lg" sx={{ marginY: 12 }}>
+    <Grid container spacing={5} style={{ justifyContent: "space-around" }}>
     <LoadScript
       mapIds={['61b5009386a6596e']}
       googleMapsApiKey={"AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78"}
@@ -222,24 +116,54 @@ const MapContainer = ({isLoggedIn, handleClick}) => {
             })
           : null}
           {isLoggedIn ? (
-              <div>
-                <PopUpWindowCard login={Login}/>
-                {/* <Link>
-                  <Button >
-                    USER
-                  </Button>
-                </Link>
-                <Link>
-                  <Button href="#" onClick={handleClick}>
-                    Logout
-                  </Button>
-                </Link> */}
-                </div>
-            ) : (
-<h1></h1>
-            )}
+      <div>
+        <PopUpWindowCard />
+          <Button onClick={handleClick}>
+            USER
+          </Button>
+          <Button href="#" onClick={handleClick}>
+            Logout
+          </Button>
+      </div>
+      ) : (
+        <div>
+        <Button
+        size='small'
+        style={{
+          marginTop: 100,
+          marginLeft: 690,
+          height: '1px',
+          width: '1px'
+        }}
+        variant='contained'
+        color='secondary'
+        onClick={openPopover}
+        >
+      <img src="https://pyxis.nymag.com/v1/imgs/dc5/011/2ea57ca9a7a5d9518b2f3cd94ccdde218f-25-emoji-subpoena.rsquare.w330.jpg" />
+      </Button>
+      <Popover
+      open={Boolean(anchor)}
+      anchorReference="anchorPosition"
+      anchorPosition={{ top: 259, left: 983.5 }}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right'
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right'
+      }}
+      onClose={() => setAnchor(null)}
+      >
+        <PopUpWindowCard/>
+      </Popover>
+      </div>
+    )}
       </GoogleMap>
     </LoadScript>
+    </Grid>
+    </Container>
+    </div>
   );
 };
 

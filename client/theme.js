@@ -81,6 +81,7 @@ export const useFrontEndStyles = makeStyles((theme) => ({
     minHeight: "100%",
     maxWidth: 300,
     minWidth: 200,
+    color: "#808080",
   },
   p: {
     display: "flex grow",
