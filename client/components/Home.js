@@ -175,11 +175,6 @@ const MapContainer = ({isLoggedIn, handleClick}) => {
     };
     getEvents();
   }, []);
-  
-
-  // const GOOGLE_MAPS_API_KEY = `${process.env.GOOGLE_MAPS_API_KEY}`;
-  // console.log(process.env.GOOGLE_MAPS_API_KEY,'---------')
-  // AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78
 
   return (
     <LoadScript
