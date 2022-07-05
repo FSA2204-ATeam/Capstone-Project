@@ -128,23 +128,23 @@ const MapContainer = ({isLoggedIn, handleClick}) => {
       ) : (
         <div>
         <Button
-        size='small'
         style={{
-          marginTop: 100,
-          marginLeft: 690,
-          height: '1px',
-          width: '1px'
+          marginTop: 10,
+          marginLeft: 860,
+          height: '60px',
+          width: '60px'
         }}
         variant='contained'
-        color='secondary'
+        size='large'
+        color='#808080'
         onClick={openPopover}
         >
-      <img src="https://pyxis.nymag.com/v1/imgs/dc5/011/2ea57ca9a7a5d9518b2f3cd94ccdde218f-25-emoji-subpoena.rsquare.w330.jpg" />
+      😀
       </Button>
       <Popover
       open={Boolean(anchor)}
       anchorReference="anchorPosition"
-      anchorPosition={{ top: 259, left: 983.5 }}
+      anchorPosition={{ top: 150, left: 980 }}
       anchorOrigin={{
         vertical: 'top',
         horizontal: 'right'
