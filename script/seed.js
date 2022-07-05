@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
 const {
   db,
-  models: { User, Event, UsersEvents },
-} = require("../server/db");
+  models: { User, Event, UsersEvents, UserPreferences },
+} = require('../server/db');
 
 /**
  * seed - this function clears the database, updates tables to
@@ -11,25 +11,25 @@ const {
  */
 async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
-  console.log("db synced!");
+  console.log('db synced!');
 
   // Creating Users
   const users = await Promise.all([
-    User.create({ username: "cody", password: "123" }),
-    User.create({ username: "murphy", password: "123" }),
+    User.create({ username: 'cody', password: '123' }),
+    User.create({ username: 'murphy', password: '123' }),
   ]);
 
   const events = await Promise.all([
     Event.create({
-      title: "Open Art Gallery",
-      description: "Intimate soiree for the creative soul",
-      category: "art",
+      title: 'Open Art Gallery',
+      description: 'Intimate soiree for the creative soul',
+      category: 'art',
       totalGuests: 2,
     }),
     Event.create({
-      title: "Live Music Event",
-      description: "Local bands and drinks",
-      category: "music",
+      title: 'Live Music Event',
+      description: 'Local bands and drinks',
+      category: 'music',
       totalGuests: 5,
     }),
   ]);
@@ -55,16 +55,16 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
-  console.log("seeding...");
+  console.log('seeding...');
   try {
     await seed();
   } catch (err) {
     console.error(err);
     process.exitCode = 1;
   } finally {
-    console.log("closing db connection");
+    console.log('closing db connection');
     await db.close();
-    console.log("db connection closed");
+    console.log('db connection closed');
   }
 }
 

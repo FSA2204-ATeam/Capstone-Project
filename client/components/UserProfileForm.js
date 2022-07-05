@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import FormInput from './FormInput';
 import { updateProfile } from '../store/auth';
@@ -16,6 +16,10 @@ const UserProfileForm = (props) => {
     props.userProfile.preferences,
   ]);
   const allCategories = ['art', 'music', 'food', 'protest', 'pets'];
+
+  useEffect(() => {
+    //Run this axios request to get user preferences
+  });
 
   const inputs = [
     {
@@ -64,11 +68,15 @@ const UserProfileForm = (props) => {
     e.preventDefault();
     const token = window.localStorage.getItem('token');
     if (token) {
-      const res = await axios.put('api/users/updateProfile', values, {
-        headers: {
-          authorization: token,
-        },
-      });
+      const res = await axios.put(
+        'api/users/updateProfile',
+        { ...values, preferences: [categoryPreferences] },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
       props.updateState(res.data);
     }
   };
