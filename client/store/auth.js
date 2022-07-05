@@ -40,7 +40,7 @@ export const authenticate =
   };
 
 export const registration =
-  (firstname, lastname, email, username, password, method) => async (dispatch) => {
+  (firstname, lastname, email, username, password, userLat, userLng, preferences, method) => async (dispatch) => {
     try {
       const res = await axios.post(`/auth/${method}`, {
         firstname,
@@ -48,6 +48,9 @@ export const registration =
         email,
         username,
         password,
+        userLat,
+        userLng,
+        preferences
       });
       window.localStorage.setItem(TOKEN, res.data.token);
       console.log(res);

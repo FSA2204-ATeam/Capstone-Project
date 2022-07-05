@@ -131,7 +131,6 @@ import PopUpWindowCard from './PopUpWindowCard'
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
-import LoginForm from './LoginForm'
 
 const MapContainer = ({isLoggedIn, handleClick}) => {
   /////////////////////////////
@@ -224,7 +223,7 @@ const MapContainer = ({isLoggedIn, handleClick}) => {
           : null}
           {isLoggedIn ? (
               <div>
-                <PopUpWindowCard login={LoginForm}/>
+                <PopUpWindowCard login={Login}/>
                 {/* <Link>
                   <Button >
                     USER

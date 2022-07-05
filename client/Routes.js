@@ -22,7 +22,7 @@ class Routes extends Component {
       <div>
           <Switch>
             <Route exact path="/home" component={Home} />
-            <Route exact path='/' component={ Login } />
+            <Route exact path='/' component={Login} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
           </Switch>
