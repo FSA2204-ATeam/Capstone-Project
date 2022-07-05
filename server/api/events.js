@@ -10,8 +10,7 @@ router.get("/", async (req, res, next) => {
   let startDate = formatDate();
   let endDate = formatDate(1);
 
-  console.log("Start", startDate);
-  console.log("End", endDate);
+  console.log(`Looking for Events between ${startDate} and ${endDate}!`);
 
   let addressUrl = `https://api.nyc.gov/calendar/search?startDate=${startDate} 12:00 AM&endDate=${endDate} 12:00 AM&pageNumber=`;
   let events = [];
@@ -44,7 +43,7 @@ router.get("/", async (req, res, next) => {
       next(error);
     }
   }
-  console.log(events.length);
+  console.log(`${events.length} events found!`);
   res.json(events);
 });
 
