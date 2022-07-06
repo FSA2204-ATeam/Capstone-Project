@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import FormInput from './FormInput';
 import { updateProfile } from '../store/auth';
-import { fetchUserProfile } from '../store/userPreferences';
+import { fetchUserPreferences } from '../store/userPreferences';
 import axios from 'axios';
 
 const UserProfileForm = (props) => {
@@ -16,13 +16,13 @@ const UserProfileForm = (props) => {
   const [categoryPreferences, setCategoryPreferences] = useState([]);
   const allCategories = ['art', 'music', 'food', 'protest', 'pets'];
 
-  useEffect(() => {
-    const userPreferences = fetchUserProfile();
-    //Store this information in store somehow and retreive it from the store! But for now it will be called when component mounts.
+  // useEffect(() => {
+  //   const userPreferences = fetchUserPreferences();
+  //   //Store this information in store somehow and retreive it from the store! But for now it will be called when component mounts.
 
-    console.log('FETCH USER PROFILE CALL: ', userPreferences);
-  }),
-    [];
+  //   console.log('FETCH USER PROFILE CALL: ', userPreferences);
+  // }),
+  //   [];
 
   const inputs = [
     {
@@ -134,6 +134,7 @@ const UserProfileForm = (props) => {
 const mapState = (state) => {
   return {
     userProfile: state.auth,
+    userPreferences: state.preferences,
   };
 };
 
