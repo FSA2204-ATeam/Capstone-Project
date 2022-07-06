@@ -9,6 +9,12 @@ const UsersEvents = db.define("users_events", {
   review: {
     type: Sequelize.STRING,
   },
+  sentimentScore: {
+    type: Sequelize.FLOAT,
+  },
+  sentimentLabel: {
+    type: Sequelize.STRING,
+  },
 });
 
 module.exports = UsersEvents;
