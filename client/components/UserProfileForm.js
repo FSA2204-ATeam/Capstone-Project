@@ -13,6 +13,8 @@ const UserProfileForm = (props) => {
     firstname: props.userProfile.firstname || '',
     lastname: props.userProfile.lastname || '',
   });
+
+  //CONTINUE HERE TO IMPLEMENT CATEGY PREFERENCES TO DISPLAY PER NEW OBJECT THEME IN STORE
   const [categoryPreferences, setCategoryPreferences] = useState([]);
   const allCategories = ['art', 'music', 'food', 'protest', 'pets'];
 
