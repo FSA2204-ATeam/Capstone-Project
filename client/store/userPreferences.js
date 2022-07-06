@@ -29,7 +29,17 @@ export const fetchUserPreferences = () => async (dispatch) => {
       },
     });
 
-    return dispatch(setPreferences(data));
+    const catPrefsOnly = Object.keys(data)
+      .filter((key) => key.includes('CAT_'))
+      .reduce((obj, key) => {
+        return Object.assign(obj, {
+          [key]: data[key],
+        });
+      }, {});
+
+    console.log(catPrefsOnly);
+
+    return dispatch(setPreferences(catPrefsOnly));
   }
 
   /////THIS IS JUST FOR TESTING PURPOSES/////

@@ -6,7 +6,7 @@ import { fetchUserPreferences } from '../store/userPreferences';
 import axios from 'axios';
 
 const UserProfileForm = (props) => {
-  console.log(props.userProfile);
+  console.log(props.userPreferences);
   const [values, setValues] = useState({
     username: props.userProfile.username || '',
     email: props.userProfile.email || '',
