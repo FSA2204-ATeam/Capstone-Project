@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import FormInput from './FormInput';
 import { updateProfile } from '../store/auth';
-import { fetchUserProfile } from '../store/userProfile';
+import { fetchUserProfile } from '../store/userPreferences';
 import axios from 'axios';
 
 const UserProfileForm = (props) => {
@@ -17,9 +17,6 @@ const UserProfileForm = (props) => {
   const allCategories = ['art', 'music', 'food', 'protest', 'pets'];
 
   useEffect(() => {
-    //NO, NO, BETTER TO ADD "CAT" IN FRONT OF CATEGORY
-    //NAMES AND TEST FOR IT... YES, DO THIS!
-
     const userPreferences = fetchUserProfile();
     //Store this information in store somehow and retreive it from the store! But for now it will be called when component mounts.
 
