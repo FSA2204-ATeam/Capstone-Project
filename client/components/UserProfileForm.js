@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import FormInput from './FormInput';
 import { updateProfile } from '../store/auth';
+import { fetchUserProfile } from '../store/userProfile';
 import axios from 'axios';
 
 const UserProfileForm = (props) => {
   console.log(props.userProfile);
   const [values, setValues] = useState({
     username: props.userProfile.username,
-    email: props.userProfile.email,
+    email: props.userProfile.email || '',
     firstname: props.userProfile.firstname,
     lastname: props.userProfile.lastname,
   });
@@ -18,8 +19,9 @@ const UserProfileForm = (props) => {
   const allCategories = ['art', 'music', 'food', 'protest', 'pets'];
 
   useEffect(() => {
-    //Run this axios request to get user preferences
-  });
+    console.log('FETCH USER PROFILE CALL: ', fetchUserProfile());
+  }),
+    [];
 
   const inputs = [
     {
@@ -68,15 +70,11 @@ const UserProfileForm = (props) => {
     e.preventDefault();
     const token = window.localStorage.getItem('token');
     if (token) {
-      const res = await axios.put(
-        'api/users/updateProfile',
-        { ...values, preferences: [categoryPreferences] },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
+      const res = await axios.put('api/users/updateProfile', values, {
+        headers: {
+          authorization: token,
+        },
+      });
       props.updateState(res.data);
     }
   };
