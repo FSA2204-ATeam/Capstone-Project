@@ -1,5 +1,19 @@
 // input should be whole array of available events
 // should we do the filtering (preferences + sentiment analysis prior to passing in?)
+// events can be part of state
+
+// could we do filtering during the API call for events??
+
+// Randomizer should set "currentEvent" and map component can display that
+// _____________
+// | event title |
+// | type        |
+// | info                         |
+// | distance from user           | <-- optional tier 5?
+ // | google estimated travel time | <-- optional tier 5?
+// | ACCEPT / DECLINE |
+// --------------------
+
 
 const Randomizer = () => {
   // for purposes of this test, will create an array of seed events  to randomize
@@ -526,6 +540,8 @@ const Randomizer = () => {
   const chooseRandom = () => {};
 
   return (
-
+    // box showing event
+    // button or swipe??
+    // when added button will direct to the add event component/routes
   )
 };
