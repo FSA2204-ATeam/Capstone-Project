@@ -1,5 +1,6 @@
 import axios from 'axios';
 import history from '../history';
+import { fetchUserPreferences } from './userPreferences';
 
 const TOKEN = 'token';
 
@@ -29,6 +30,7 @@ export const me = () => async (dispatch) => {
         authorization: token,
       },
     });
+    dispatch(fetchUserPreferences());
     return dispatch(setAuth(res.data));
   }
 };

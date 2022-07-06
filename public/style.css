@@ -59,3 +59,19 @@ input:invalid[focused='true'] {
 input:invalid[focused='true'] ~ span {
   display: block;
 }
+
+.categoryButton {
+  background-color: #bbbbbb;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 0.3em 0.3em 0;
+  font-size: 16px;
+}
+
+.Selected {
+  background-color: #4caf50;
+}

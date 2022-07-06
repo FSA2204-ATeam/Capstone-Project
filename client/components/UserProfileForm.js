@@ -1,16 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import FormInput from './FormInput';
 import { updateProfile } from '../store/auth';
+import { fetchUserPreferences } from '../store/userPreferences';
 import axios from 'axios';
 
 const UserProfileForm = (props) => {
+  console.log(props.userPreferences);
   const [values, setValues] = useState({
-    username: props.userProfile.username,
-    email: props.userProfile.email,
-    firstname: props.userProfile.firstname,
-    lastname: props.userProfile.lastname,
+    username: props.userProfile.username || '',
+    email: props.userProfile.email || '',
+    firstname: props.userProfile.firstname || '',
+    lastname: props.userProfile.lastname || '',
   });
+
+  //CONTINUE HERE TO IMPLEMENT CATEGY PREFERENCES TO DISPLAY PER NEW OBJECT THEME IN STORE
+  const [categoryPreferences, setCategoryPreferences] = useState([]);
+  const allCategories = ['art', 'music', 'food', 'protest', 'pets'];
+
+  // useEffect(() => {
+  //   const userPreferences = fetchUserPreferences();
+  //   //Store this information in store somehow and retreive it from the store! But for now it will be called when component mounts.
+
+  //   console.log('FETCH USER PROFILE CALL: ', userPreferences);
+  // }),
+  //   [];
 
   const inputs = [
     {
@@ -72,6 +86,19 @@ const UserProfileForm = (props) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const handleCatSelect = (cat) => {
+    if (categoryPreferences.includes(cat)) {
+      console.log('we have this category');
+      setCategoryPreferences(
+        categoryPreferences.filter((item) => item !== cat)
+      );
+    } else {
+      console.log('we NO have this category');
+      setCategoryPreferences([...categoryPreferences, cat]);
+    }
+    console.log(categoryPreferences);
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -84,6 +111,22 @@ const UserProfileForm = (props) => {
             onChange={onChange}
           />
         ))}
+        <div>
+          {allCategories.map((cat, idx) => (
+            <button
+              key={idx}
+              type="button"
+              className={
+                categoryPreferences.includes(cat)
+                  ? 'categoryButton Selected'
+                  : 'categoryButton'
+              }
+              onClick={() => handleCatSelect(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
         <button>Update</button>
       </form>
     </div>
@@ -93,6 +136,7 @@ const UserProfileForm = (props) => {
 const mapState = (state) => {
   return {
     userProfile: state.auth,
+    userPreferences: state.preferences,
   };
 };
 
