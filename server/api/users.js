@@ -52,3 +52,29 @@ router.get('/preferences', async (req, res, next) => {
 });
 
 //    UPDATE USER PREFERENCES, IF NO EXIST, CREATE
+router.put('/preferences', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    console.log(user);
+    const userPrefs = await User.findByPk(user.id, {
+      include: UserPreferences,
+    });
+    //IF NO USER PREFS FOUND, CREATE BELOW
+    if (!userPrefs.userPreference) {
+      const createdUserPrefs = await UserPreferences.create({
+        ...req.body,
+        userId: user.id,
+      });
+      res.send(createdUserPrefs);
+      // SEND USER PREFERENCES ONLY
+    } else {
+      const updatedUserPrefs = await userPrefs.userPreference.update({
+        ...req.body,
+        userId: user.id,
+      });
+      res.send(updatedUserPrefs.userPreference);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
