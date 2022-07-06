@@ -11,7 +11,6 @@ const PopUpWindowCardWelcome = () => {
   const classes = useFrontEndStyles();
 
   return (
-    // <Container maxWidth="lg">
     <Card xs={12} md={6} lg={3} elevation={3} className={classes.p} variant="elevation" style={{background: "#808080"}} >
       <CardContent>
       <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
@@ -25,7 +24,6 @@ const PopUpWindowCardWelcome = () => {
         </Button>
       </CardActions>
     </Card>
-    // </Container>
   );
 }
 

@@ -6,12 +6,24 @@ import fetchUsers from '../store/users'
 import { Link } from "react-router-dom";
 import { grey } from "@material-ui/core/colors";
 import { useFrontEndStyles } from "../theme";
+import {logout} from '../store'
 
-const PopUpWindowCardLogged = (handleClick) => {
+const PopUpWindowCardLogged = () => {
   const classes = useFrontEndStyles();
+  
+  const dispatch = useDispatch();
+
+  // const handleClick = (event) => {
+  //   event.preventDefault();
+  //   dispatch(HERE WE HAVE TO DECIDE WHAT TO DISPATCH AFTER WE CLICK ON the wild button)
+  //   console.log(event);
+  // };
+
+  const handleClickLogout = () => {
+    dispatch(logout())
+  };
 
   return (
-    // <Container maxWidth="lg">
     <Card xs={12} md={6} lg={3} elevation={3} className={classes.p} variant="elevation" style={{background: "#808080"}} >
       <CardContent>
       <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
@@ -22,15 +34,14 @@ const PopUpWindowCardLogged = (handleClick) => {
         My profile/preferences
       </Typography>
       <CardActions>
-        <Button href="/home" style={{margin: '0 auto', display: "flex", background: '#A16AE8'}} onClick={handleClick}>
+        <Button style={{margin: '0 auto', display: "flex", background: '#A16AE8'}} >
           Feeling Wild
         </Button>
-        <Button href="#" style={{margin: '0 auto', display: "flex", background: '#68BBE3'}} onClick={handleClick}>
+        <Button style={{margin: '0 auto', display: "flex", background: '#68BBE3'}} onClick={handleClickLogout}>
           Logout
         </Button>
       </CardActions>
     </Card>
-    // </Container>
   );
 }
 

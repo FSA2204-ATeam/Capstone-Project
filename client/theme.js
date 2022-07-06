@@ -94,6 +94,7 @@ export const useFrontEndStyles = makeStyles((theme) => ({
     fontFamily: "Arial",
   },
   h4: {
+    textAlign: "center",
     display: "flex grow",
     maxHeight: "100%",
     minHeight: "100%",

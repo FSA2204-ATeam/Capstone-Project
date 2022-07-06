@@ -39,7 +39,7 @@ const PopUpWindowLogin = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Grid container alignItems="center" justify="center" direction="column">
+      <Grid container alignItems="center" direction="column">
         <Grid item>
           <TextField
             id="username-input"
@@ -62,7 +62,7 @@ const PopUpWindowLogin = () => {
             onChange={handleChange}
           />
         </Grid>
-        <Button href="/home" variant="contained" color="primary" type="submit">
+        <Button variant="contained" color="primary" type="submit">
           Log in
         </Button>
       {/* <div class='success-message'>Success! Thank you for registering</div> */}

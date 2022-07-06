@@ -7,7 +7,6 @@ import {
 } from '@react-google-maps/api';
 import { Room, Star, StarBorder } from '@material-ui/icons';
 import Login from './LoginForm';
-import Signup from './SignUpForm';
 import axios from 'axios';
 import User from './PopUpWindowLogin';
 import { connect, useSelector } from "react-redux";
