@@ -8,23 +8,22 @@ import axios from 'axios';
 const UserProfileForm = (props) => {
   console.log(props.userProfile);
   const [values, setValues] = useState({
-    username: props.userProfile.username,
+    username: props.userProfile.username || '',
     email: props.userProfile.email || '',
-    firstname: props.userProfile.firstname,
-    lastname: props.userProfile.lastname,
+    firstname: props.userProfile.firstname || '',
+    lastname: props.userProfile.lastname || '',
   });
-  const [categoryPreferences, setCategoryPreferences] = useState([
-    props.userProfile.preferences,
-  ]);
+  const [categoryPreferences, setCategoryPreferences] = useState([]);
   const allCategories = ['art', 'music', 'food', 'protest', 'pets'];
 
   useEffect(() => {
-    //TESTING TO SEE IF VALUES IN PREFERENCES OBJECT
-    //ARE BOOLEAN, IF SO, IT MUST BE A CATEGORY
-    //SO WE ADD IT TO categoryPreferences
     //NO, NO, BETTER TO ADD "CAT" IN FRONT OF CATEGORY
     //NAMES AND TEST FOR IT... YES, DO THIS!
-    console.log('FETCH USER PROFILE CALL: ', fetchUserProfile());
+
+    const userPreferences = fetchUserProfile();
+    //Store this information in store somehow and retreive it from the store! But for now it will be called when component mounts.
+
+    console.log('FETCH USER PROFILE CALL: ', userPreferences);
   }),
     [];
 
