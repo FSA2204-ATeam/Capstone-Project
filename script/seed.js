@@ -20,32 +20,33 @@ async function seed() {
   ]);
 
   const events = await Promise.all([
-    Event.create({
-      title: 'Open Art Gallery',
-      description: 'Intimate soiree for the creative soul',
-      category: 'art',
-      totalGuests: 2,
-    }),
-    Event.create({
-      title: 'Live Music Event',
-      description: 'Local bands and drinks',
-      category: 'music',
-      totalGuests: 5,
-    }),
-  ]);
+      Event.create({
+        name: "97 Street Greenmarket Friday",
+        shortDesc: "Farmers Market",
+        timePart: "8am to 5pm",
+        datePart: "Jul 1",
+        permalink:
+          "http://www1.nyc.gov/events/97-street-greenmarket-friday/379910/1",
+        address:
+          " WEST   97 STREET between COLUMBUS AVENUE and AMSTERDAM AVENUE  Manhattan",
+        eventLat: "40.8134463",
+        eventLng: "-73.9562105",
+      }),
+   ]);
+
+  await events[0].setUsers([users[0], users[1]]);
 
   console.log(`seeded ${users.length} users`);
-  console.log(`seeded ${events.length} events`);
+  //console.log(`seeded ${events.length} events`);
   console.log(`seeded successfully`);
   return {
     users: {
       cody: users[0],
       murphy: users[1],
     },
-    events: {
-      testEvent1: events[0],
-      testEvent2: events[1],
-    },
+    // events: {
+    //   testEvent1: events[0],
+    // },
   };
 }
 
