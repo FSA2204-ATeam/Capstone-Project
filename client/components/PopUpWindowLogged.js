@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { grey } from "@material-ui/core/colors";
 import { useFrontEndStyles } from "../theme";
 
-const PopUpWindowCardLogged = () => {
+const PopUpWindowCardLogged = (handleClick) => {
   const classes = useFrontEndStyles();
 
   return (
@@ -16,7 +16,15 @@ const PopUpWindowCardLogged = () => {
       <CardContent>
       <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
       </CardContent>
+      <Typography className={classes.h4}>
+        Welcome USERNAME!
+        Histoy?
+        My profile/preferences
+      </Typography>
       <CardActions>
+        <Button href="/home" style={{margin: '0 auto', display: "flex", background: '#A16AE8'}} onClick={handleClick}>
+          Feeling Wild
+        </Button>
         <Button href="#" style={{margin: '0 auto', display: "flex", background: '#68BBE3'}} onClick={handleClick}>
           Logout
         </Button>

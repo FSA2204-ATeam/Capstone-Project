@@ -1,36 +1,3 @@
-// import React, { useEffect } from "react";
-// import { makeStyles } from '@material-ui/core/styles';
-// import { Button, Card, Box, CardMedia, CardContent, CardHeader, CardActions, Typography, IconButton, Tooltip, Container } from "@material-ui/core";
-// import { useDispatch, useSelector } from "react-redux";
-// import fetchUsers from '../store/users'
-// import { Link } from "react-router-dom";
-// import { grey } from "@material-ui/core/colors";
-// import { useFrontEndStyles } from "../theme";
-
-// const PopUpWindowCard = () => {
-//   const classes = useFrontEndStyles();
-
-//   return (
-//     // <Container maxWidth="lg">
-//     <Card xs={12} md={6} lg={3} elevation={3} className={classes.p} variant="elevation" style={{background: "#808080"}} >
-//       <CardContent>
-//       <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
-//       </CardContent>
-//       <CardActions>
-//         <Button href='/login' style={{margin: '0 auto', display: "flex", background: '#94C973'}}>
-//           Login
-//         </Button>
-//         <Button href='/signup' style={{margin: '0 auto', display: "flex", background: '#68BBE3'}}>
-//           Sign Up
-//         </Button>
-//       </CardActions>
-//     </Card>
-//     // </Container>
-//   );
-// }
-
-// export default PopUpWindowCard;
-
 import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -44,7 +11,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Slider from "@material-ui/core/Slider";
 import Button from "@material-ui/core/Button";
 import { registration } from '../store';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const defaultValues = {
   firstname: "",
@@ -54,21 +21,10 @@ const defaultValues = {
   email: ""
 };
 
-const PopUpWindowCardSignUp = (firstname, lastname, email, username, password) => {
+const PopUpWindowSignUp = () => {
   const [formValues, setFormValues] = useState(defaultValues);
-  const error = useSelector((state) => state.auth.error);
   
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(registration(firstname, lastname, email, username, password));
-  }, []);
-
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     dispatch(loadFromUser());
-  //   }
-  // }, [isLoggedIn]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -80,7 +36,8 @@ const PopUpWindowCardSignUp = (firstname, lastname, email, username, password) =
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formValues);
+    dispatch(registration(formValues, 'signup'))
+    console.log(event);
   };
 
   return (
@@ -90,7 +47,7 @@ const PopUpWindowCardSignUp = (firstname, lastname, email, username, password) =
           <TextField
             id="firstname-input"
             name="firstname"
-            label="Firstame"
+            label="Firstname"
             type="text"
             variant="outlined"
             value={formValues.firstname}
@@ -101,7 +58,7 @@ const PopUpWindowCardSignUp = (firstname, lastname, email, username, password) =
           <TextField
             id="lastname-input"
             name="lastname"
-            label="Lastame"
+            label="Lastname"
             type="text"
             variant="outlined"
             value={formValues.lastname}
@@ -112,7 +69,7 @@ const PopUpWindowCardSignUp = (firstname, lastname, email, username, password) =
           <TextField
             id="username-input"
             name="username"
-            label="Userame"
+            label="Username"
             type="text"
             variant="outlined"
             value={formValues.username}
@@ -121,7 +78,7 @@ const PopUpWindowCardSignUp = (firstname, lastname, email, username, password) =
         </Grid>
         <Grid item>
           <TextField
-            id="password"
+            id="password-input"
             name="password"
             label="Password"
             type="text"
@@ -134,7 +91,7 @@ const PopUpWindowCardSignUp = (firstname, lastname, email, username, password) =
           <TextField
             id="email-input"
             name="email"
-            label="Emailame"
+            label="Email"
             type="text"
             variant="outlined"
             value={formValues.email}
@@ -144,10 +101,152 @@ const PopUpWindowCardSignUp = (firstname, lastname, email, username, password) =
         <Button href="/home" variant="contained" color="primary" type="submit">
           Sign Up
         </Button>
-        {error && error.response && <div> {error.response.data} </div>}
+        {/* {error && error.response && <div> {error.response.data} </div>} */}
         {/* <div class='success-message'>Success! Thank you for registering</div> */}
       </Grid>
     </form>
   );
 };
-export default PopUpWindowCardSignUp;
+export default PopUpWindowSignUp;
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { makeStyles } from '@material-ui/core';
+// import TextField from '@material-ui/core/TextField';
+// import Button from '@material-ui/core/Button';
+// import { useForm, Controller } from 'react-hook-form';
+// import { registration } from '../store';
+// import { useDispatch } from "react-redux";
+
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     display: 'flex',
+//     flexDirection: 'column',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     padding: theme.spacing(2),
+
+//     '& .MuiTextField-root': {
+//       margin: theme.spacing(1),
+//       width: '300px',
+//     },
+//     '& .MuiButtonBase-root': {
+//       margin: theme.spacing(2),
+//     },
+//   },
+// }));
+
+// const PopUpWindowSignUp = ({ handleClose }) => {
+//   const classes = useStyles();
+
+//   const { handleSubmit, control } = useForm();
+
+//   const onSubmit = event => {
+//     console.log(event);
+//   };
+
+//   return (
+//     <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
+//       <Controller
+//         name="firstname"
+//         control={control}
+//         defaultValue=""
+//         render={({ field: { onChange, formValues }, fieldState: { error } }) => (
+//           <TextField
+//             label="First Name"
+//             variant="filled"
+//             value={formValues}
+//             onChange={onChange}
+//             error={!!error}
+//             helperText={error ? error.message : null}
+//           />
+//         )}
+//         rules={{ required: 'First name required' }}
+//       />
+//       <Controller
+//         name="lastname"
+//         control={control}
+//         defaultValue=""
+//         render={({ field: { onChange, formValues }, fieldState: { error } }) => (
+//           <TextField
+//             label="Last Name"
+//             variant="filled"
+//             value={formValues}
+//             onChange={onChange}
+//             error={!!error}
+//             helperText={error ? error.message : null}
+//           />
+//         )}
+//         rules={{ required: 'Last name required' }}
+//       />
+//       <Controller
+//         name="userame"
+//         control={control}
+//         defaultValue=""
+//         render={({ field: { onChange, formValues }, fieldState: { error } }) => (
+//           <TextField
+//             label="Username"
+//             variant="filled"
+//             value={formValues}
+//             onChange={onChange}
+//             error={!!error}
+//             helperText={error ? error.message : null}
+//           />
+//         )}
+//         rules={{ required: 'Username required' }}
+//       />
+//       <Controller
+//         name="email"
+//         control={control}
+//         defaultValue=""
+//         render={({ field: { onChange, formValues }, fieldState: { error } }) => (
+//           <TextField
+//             label="email"
+//             variant="filled"
+//             value={formValues}
+//             onChange={onChange}
+//             error={!!error}
+//             helperText={error ? error.message : null}
+//             type="email"
+//           />
+//         )}
+//         rules={{ required: 'Email required' }}
+//       />
+//       <Controller
+//         name="password"
+//         control={control}
+//         defaultValue=""
+//         render={({ field: { onChange, formValues }, fieldState: { error } }) => (
+//           <TextField
+//             label="Password"
+//             variant="filled"
+//             value={formValues}
+//             onChange={onChange}
+//             error={!!error}
+//             helperText={error ? error.message : null}
+//             type="password"
+//           />
+//         )}
+//         rules={{ required: 'Password required' }}
+//       />
+//       <div>
+//         <Button variant="contained" onClick={handleClose}>
+//           Cancel
+//         </Button>
+//         <Button type="submit" variant="contained" color="primary">
+//           Signup
+//         </Button>
+//       </div>
+//     </form>
+//   );
+// };
+
+// export default PopUpWindowSignUp;

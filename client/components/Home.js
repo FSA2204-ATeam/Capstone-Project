@@ -13,6 +13,7 @@ import User from './PopUpWindowLogin';
 import { connect, useSelector } from "react-redux";
 import { logout } from '../store';
 import PopUpWindowLogin from './PopUpWindowLogin';
+import PopUpWindowSignUp from './PopUpWindowSignUp';
 import PopUpWindowWelcome from './PopUpWindowWelcome';
 import PopUpWindowLogged from './PopUpWindowLogged';
 import Button from '@material-ui/core/Button';
@@ -165,8 +166,7 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
           color='#808080'
           onClick={openPopover}
           >
-            USER 
-            {/* {firstname} */}
+            😀
           </Button>
           <Popover
           open={Boolean(anchor)}
@@ -184,6 +184,7 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
           >
             <PopUpWindowWelcome/>
           </Popover>
+          {/* {isLoggedIn ? () : ()} */}
           {/* <Button
           style={{
             marginTop: 10,

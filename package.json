@@ -38,6 +38,7 @@
     "material-ui-popup-state": "^1.9.3",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
+    "react-hook-form": "^7.33.1",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
