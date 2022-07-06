@@ -2,15 +2,15 @@ const { Sequelize, Op } = require('sequelize');
 const db = require('../db');
 
 const UserPreferences = db.define('userPreferences', {
-  Art: {
+  CAT_Art: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
-  Music: {
+  CAT_Music: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
-  Food: {
+  CAT_Food: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },

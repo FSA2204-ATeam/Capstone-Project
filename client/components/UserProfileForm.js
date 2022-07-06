@@ -19,6 +19,11 @@ const UserProfileForm = (props) => {
   const allCategories = ['art', 'music', 'food', 'protest', 'pets'];
 
   useEffect(() => {
+    //TESTING TO SEE IF VALUES IN PREFERENCES OBJECT
+    //ARE BOOLEAN, IF SO, IT MUST BE A CATEGORY
+    //SO WE ADD IT TO categoryPreferences
+    //NO, NO, BETTER TO ADD "CAT" IN FRONT OF CATEGORY
+    //NAMES AND TEST FOR IT... YES, DO THIS!
     console.log('FETCH USER PROFILE CALL: ', fetchUserProfile());
   }),
     [];
