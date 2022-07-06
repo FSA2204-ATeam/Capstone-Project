@@ -1,11 +1,12 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
-import { Login } from './components/LoginForm';
-import { Signup } from './components/SignUpForm';
+// import { Login } from './components/LoginForm';
+// import { Signup } from './components/SignUpForm';
+import PopUpWindowLogin from './components/PopUpWindowLogin';
+import PopUpWindowSignUp from './components/PopUpWindowSignUp';
 import Home from './components/Home';
 import {me} from './store'
-import PopUpWindowLogin from './components/PopUpWindowLogin';
 
 /**
  * COMPONENT
@@ -22,11 +23,10 @@ class Routes extends Component {
       <div>
           <Switch>
             <Route exact path="/home" component={Home} />
-            <Route exact path='/' component={Login} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
+            <Route exact path='/' component={Home} />
+            <Route exact path="/login" component={PopUpWindowLogin} />
+            <Route exact path="/signup" component={PopUpWindowSignUp} />
           </Switch>
-        <Route path='/popupwindow' exact component={ PopUpWindowLogin } />
       </div>
     )
   }

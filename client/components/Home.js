@@ -12,14 +12,16 @@ import axios from 'axios';
 import User from './PopUpWindowLogin';
 import { connect, useSelector } from "react-redux";
 import { logout } from '../store';
-import PopUpWindowLogin from './PopUpWindowLogin'
+import PopUpWindowLogin from './PopUpWindowLogin';
+import PopUpWindowWelcome from './PopUpWindowWelcome';
+import PopUpWindowLogged from './PopUpWindowLogged';
 import Button from '@material-ui/core/Button';
 import {Container} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
 import { Grid, Popover } from "@material-ui/core"
 
-const MapContainer = ({isLoggedIn, handleClick}) => {
+const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
   /////////////////////////////
   /////     VARIABLES     /////
   /////////////////////////////
@@ -116,53 +118,109 @@ const MapContainer = ({isLoggedIn, handleClick}) => {
             })
           : null}
           {isLoggedIn ? (
-      <div>
-        <PopUpWindowCard />
-          <Button onClick={handleClick}>
+            <div>
+            <Button
+          style={{
+            marginTop: 10,
+            marginLeft: 860,
+            height: '60px',
+            width: '60px'
+          }}
+          variant='contained'
+          size='large'
+          color='#808080'
+          onClick={openPopover}
+          >
             USER
+            {/* {firstname} */}
           </Button>
-          <Button href="#" onClick={handleClick}>
-            Logout
+          <Popover
+          open={Boolean(anchor)}
+          anchorReference="anchorPosition"
+          anchorPosition={{ top: 150, left: 980 }}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right'
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right'
+          }}
+          onClose={() => setAnchor(null)}
+          >
+            <PopUpWindowLogged/>
+          </Popover>
+          </div>
+          ) : (
+          <div>
+          <Button
+          style={{
+            marginTop: 10,
+            marginLeft: 860,
+            height: '60px',
+            width: '60px'
+          }}
+          variant='contained'
+          size='large'
+          color='#808080'
+          onClick={openPopover}
+          >
+            USER 
+            {/* {firstname} */}
           </Button>
-      </div>
-      ) : (
-        <div>
-        <Button
-        style={{
-          marginTop: 10,
-          marginLeft: 860,
-          height: '60px',
-          width: '60px'
-        }}
-        variant='contained'
-        size='large'
-        color='#808080'
-        onClick={openPopover}
-        >
-      😀
-      </Button>
-      <Popover
-      open={Boolean(anchor)}
-      anchorReference="anchorPosition"
-      anchorPosition={{ top: 150, left: 980 }}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right'
-      }}
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right'
-      }}
-      onClose={() => setAnchor(null)}
-      >
-        <PopUpWindowLogin/>
-      </Popover>
-      </div>
-    )}
-      </GoogleMap>
-    </LoadScript>
-    </Grid>
-    </Container>
+          <Popover
+          open={Boolean(anchor)}
+          anchorReference="anchorPosition"
+          anchorPosition={{ top: 150, left: 980 }}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right'
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right'
+          }}
+          onClose={() => setAnchor(null)}
+          >
+            <PopUpWindowWelcome/>
+          </Popover>
+          {/* <Button
+          style={{
+            marginTop: 10,
+            marginLeft: 860,
+            height: '60px',
+            width: '60px'
+          }}
+          variant='contained'
+          size='large'
+          color='#808080'
+          onClick={openPopover}
+          >
+            😀
+          </Button>
+          <Popover
+          open={Boolean(anchor)}
+          anchorReference="anchorPosition"
+          anchorPosition={{ top: 150, left: 980 }}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right'
+          }}
+          transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right'
+          }}
+          onClose={() => setAnchor(null)}
+          >
+            <PopUpWindowLogin/>
+            {/* <PopUpWindowSignUp/> */}
+          {/* </Popover> */}
+          </div>
+        )}
+        </GoogleMap>
+      </LoadScript>
+      </Grid>
+      </Container>
     </div>
   );
 };

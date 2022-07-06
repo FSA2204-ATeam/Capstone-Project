@@ -6,10 +6,8 @@
 // import { Link } from "react-router-dom";
 // import { grey } from "@material-ui/core/colors";
 // import { useFrontEndStyles } from "../theme";
-// import {connect} from 'react-redux'
-// import {authenticate} from '../store'
 
-// const PopUpWindowCardLogin = (name, displayName, handleSubmit, error) => {
+// const PopUpWindowCard = () => {
 //   const classes = useFrontEndStyles();
 
 //   return (
@@ -19,83 +17,21 @@
 //       <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
 //       </CardContent>
 //       <CardActions>
+//         <Button href='/login' style={{margin: '0 auto', display: "flex", background: '#94C973'}}>
+//           Login
+//         </Button>
+//         <Button href='/signup' style={{margin: '0 auto', display: "flex", background: '#68BBE3'}}>
+//           Sign Up
+//         </Button>
 //       </CardActions>
 //     </Card>
 //     // </Container>
 //   );
 // }
 
-// export default PopUpWindowCardLogin;
+// export default PopUpWindowCard;
 
-
-
-
-// /**
-//  * COMPONENT
-//  */
-// const LoginForm = props => {
-//   const {name, displayName, handleSubmit, error} = props
-
-//   return (
-//     <div>
-//       <form onSubmit={handleSubmit} name={name}>
-//         <div>
-//           <label htmlFor="username">
-//             <small>Username</small>
-//           </label>
-//           <input name="username" type="text" />
-//         </div>
-//         <div>
-//           <label htmlFor="password">
-//             <small>Password</small>
-//           </label>
-//           <input name="password" type="password" />
-//         </div>
-//         <div>
-//           <button type="submit">{displayName}</button>
-//         </div>
-//         {error && error.response && <div> {error.response.data} </div>}
-//       </form>
-//     </div>
-//   )
-// }
-
-// /**
-//  * CONTAINER
-//  *   Note that we have two different sets of 'mapStateToProps' functions -
-//  *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
-//  *   function, and share the same Component. This is a good example of how we
-//  *   can stay DRY with interfaces that are very similar to each other!
-//  */
-// const mapLogin = state => {
-//   return {
-//     name: 'login',
-//     displayName: 'Login',
-//     error: state.auth.error
-//   }
-// }
-
-// const mapDispatch = dispatch => {
-//   return {
-//     handleSubmit(evt) {
-//       evt.preventDefault()
-//       const formName = evt.target.name
-//       const username = evt.target.username.value
-//       const password = evt.target.password.value
-//       dispatch(authenticate(username, password, formName))
-//     }
-//   }
-// }
-
-// export const Login = connect(mapLogin, mapDispatch)(LoginForm)
-
-
-
-
-
-
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -107,14 +43,33 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import Slider from "@material-ui/core/Slider";
 import Button from "@material-ui/core/Button";
+import { registration } from '../store';
+import { useDispatch, useSelector } from "react-redux";
 
-const PopUpWindowCardLogin = () => {
-  const defaultValues = {
-    username: "",
-    password: ""
-  };
+const defaultValues = {
+  firstname: "",
+  lastname: "",
+  username: "",
+  password: "",
+  email: ""
+};
+
+const PopUpWindowCardSignUp = (firstname, lastname, email, username, password) => {
   const [formValues, setFormValues] = useState(defaultValues);
+  const error = useSelector((state) => state.auth.error);
   
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(registration(firstname, lastname, email, username, password));
+  }, []);
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     dispatch(loadFromUser());
+  //   }
+  // }, [isLoggedIn]);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValues({
@@ -131,6 +86,28 @@ const PopUpWindowCardLogin = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Grid container alignItems="center" justify="center" direction="column">
+      <Grid item>
+          <TextField
+            id="firstname-input"
+            name="firstname"
+            label="Firstame"
+            type="text"
+            variant="outlined"
+            value={formValues.firstname}
+            onChange={handleChange}
+          />
+        </Grid>
+        <Grid item>
+          <TextField
+            id="lastname-input"
+            name="lastname"
+            label="Lastame"
+            type="text"
+            variant="outlined"
+            value={formValues.lastname}
+            onChange={handleChange}
+          />
+        </Grid>
         <Grid item>
           <TextField
             id="username-input"
@@ -153,12 +130,24 @@ const PopUpWindowCardLogin = () => {
             onChange={handleChange}
           />
         </Grid>
+        <Grid item>
+          <TextField
+            id="email-input"
+            name="email"
+            label="Emailame"
+            type="text"
+            variant="outlined"
+            value={formValues.email}
+            onChange={handleChange}
+          />
+        </Grid>
         <Button href="/home" variant="contained" color="primary" type="submit">
-          Log in
+          Sign Up
         </Button>
-      {/* <div class='success-message'>Success! Thank you for registering</div> */}
+        {error && error.response && <div> {error.response.data} </div>}
+        {/* <div class='success-message'>Success! Thank you for registering</div> */}
       </Grid>
     </form>
   );
 };
-export default PopUpWindowCardLogin;
+export default PopUpWindowCardSignUp;
