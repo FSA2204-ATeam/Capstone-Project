@@ -19,22 +19,18 @@ const setPreferences = (preferences) => ({
  * THUNK CREATORS
  */
 
-// export const fetchUserPreferences = () => {
-//   console.log('fetchUserPreferences');
-
 export const fetchUserPreferences = () => async (dispatch) => {
   console.log('fetchUserPreferences RUNNING');
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
-    const userPreferences = await axios.get('/api/users/preferences', {
+    const { data } = await axios.get('/api/users/preferences', {
       headers: {
         authorization: token,
       },
     });
 
-    return dispatch(setPreferences(userPreferences));
+    return dispatch(setPreferences(data));
   }
-  //   console.log('THE GET');
 
   /////THIS IS JUST FOR TESTING PURPOSES/////
   // const updatedPreferences = await axios.put(
