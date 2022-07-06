@@ -16,10 +16,10 @@ const PopUpWindowCardWelcome = () => {
       <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
       </CardContent>
       <CardActions>
-        <Button href='/login' style={{margin: '0 auto', display: "flex", background: '#94C973'}}>
+        <Button href='/' style={{margin: '0 auto', display: "flex", background: '#94C973'}}>
           Login
         </Button>
-        <Button href='/signup' style={{margin: '0 auto', display: "flex", background: '#68BBE3'}}>
+        <Button href='/' style={{margin: '0 auto', display: "flex", background: '#68BBE3'}}>
           Sign Up
         </Button>
       </CardActions>

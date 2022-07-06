@@ -46,3 +46,7 @@ const PopUpWindowCardLogged = () => {
 }
 
 export default PopUpWindowCardLogged;
+
+
+
+

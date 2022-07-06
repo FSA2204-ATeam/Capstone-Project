@@ -12,6 +12,8 @@ import Slider from "@material-ui/core/Slider";
 import Button from "@material-ui/core/Button";
 import { registration } from '../store';
 import { useDispatch } from "react-redux";
+import { useFrontEndStyles } from "../theme";
+import { Card, Box, CardMedia, CardContent, CardHeader, CardActions, Typography, IconButton, Tooltip, Container } from "@material-ui/core";
 
 const defaultValues = {
   firstname: "",
@@ -22,6 +24,7 @@ const defaultValues = {
 };
 
 const PopUpWindowSignUp = () => {
+  const classes = useFrontEndStyles();
   const [formValues, setFormValues] = useState(defaultValues);
   
   const dispatch = useDispatch();
@@ -41,6 +44,11 @@ const PopUpWindowSignUp = () => {
   };
 
   return (
+    <Card xs={12} md={6} lg={3} elevation={3} className={classes.p} variant="elevation" style={{background: "#808080"}} >
+    <CardContent>
+    <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
+    </CardContent>
+    <CardActions>
     <form onSubmit={handleSubmit}>
       <Grid container alignItems="center" justify="center" direction="column">
       <Grid item>
@@ -98,13 +106,13 @@ const PopUpWindowSignUp = () => {
             onChange={handleChange}
           />
         </Grid>
-        <Button variant="contained" color="primary" type="submit">
+        <Button variant="contained" type="submit" style={{background: "#68BBE3"}}>
           Sign Up
         </Button>
-        {/* {error && error.response && <div> {error.response.data} </div>} */}
-        {/* <div class='success-message'>Success! Thank you for registering</div> */}
       </Grid>
     </form>
+    </CardActions>
+  </Card>
   );
 };
 export default PopUpWindowSignUp;
