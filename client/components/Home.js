@@ -228,7 +228,7 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
     </div>
   );
 };
-//TEST
+
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
