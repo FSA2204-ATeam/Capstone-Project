@@ -18,6 +18,15 @@ const UserProfileForm = (props) => {
   );
 
   useEffect(() => {
+    setValues({
+      username: props.userProfile.username || '',
+      email: props.userProfile.email || '',
+      firstname: props.userProfile.firstname || '',
+      lastname: props.userProfile.lastname || '',
+    });
+  }, [props.userProfile]);
+
+  useEffect(() => {
     setCategoryPreferences(
       Object.keys(props.userPreferences)
         .filter((key) => key.includes('CAT_'))
