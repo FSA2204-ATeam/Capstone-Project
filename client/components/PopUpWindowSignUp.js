@@ -41,6 +41,7 @@ const PopUpWindowSignUp = () => {
     event.preventDefault();
     dispatch(registration(formValues, 'signup'))
     console.log(event);
+    // console.log('You signed up.')
   };
 
   return (

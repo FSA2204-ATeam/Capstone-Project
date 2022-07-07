@@ -112,6 +112,7 @@ const PopUpWindowLogin = () => {
     event.preventDefault();
     dispatch(authenticate(formValues, 'login'))
     console.log(event);
+    // console.log('You logged in.')
   };
 
   return (
