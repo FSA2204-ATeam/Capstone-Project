@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   GoogleMap,
   LoadScript,
@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import { Grid, Popover } from "@material-ui/core"
 import { useFrontEndStyles } from "../theme";
 import { Button, Card, Box, CardMedia, CardContent, CardHeader, CardActions, Typography, IconButton, Tooltip, Container } from "@material-ui/core";
+
 
 const MapContainer = ({isLoggedIn, handleClickLogout, firstname}) => {
 
@@ -52,14 +53,14 @@ const MapContainer = ({isLoggedIn, handleClickLogout, firstname}) => {
   });
 
   const mapStyles = {
-    height: '100vh',
-    width: '100%',
+    height: "100vh",
+    width: "100%",
   };
 
   useEffect(() => {
     const getEvents = async () => {
       try {
-        const events = await axios.get('/api/events');
+        const events = await axios.get("/api/events");
         console.log(events.data);
         setEvents(events.data);
       } catch (err) {
@@ -74,8 +75,10 @@ const MapContainer = ({isLoggedIn, handleClickLogout, firstname}) => {
     <Container maxWidth="lg" sx={{ marginY: 12 }}>
     <Grid container spacing={5} style={{ justifyContent: "space-around" }}>
     <LoadScript
+
       mapIds={['61b5009386a6596e']}
       googleMapsApiKey={"AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78"}
+
     >
       <GoogleMap
         onClick={() => setSelectedEvent(null)}
@@ -83,7 +86,7 @@ const MapContainer = ({isLoggedIn, handleClickLogout, firstname}) => {
         zoom={13}
         center={mapCenter}
         options={{
-          mapId: '61b5009386a6596e',
+          mapId: "61b5009386a6596e",
           zoomControl: false,
           streetViewControl: false,
           mapTypeControl: false,
@@ -92,22 +95,22 @@ const MapContainer = ({isLoggedIn, handleClickLogout, firstname}) => {
       >
         {events
           ? events.map((event, idx) => {
-              console.log('events.map is running');
+              console.log("events.map is running");
               return (
                 <Marker
                   key={idx}
                   id={idx}
                   position={{
-                    lat: parseFloat(event.geometry[0].lat),
-                    lng: parseFloat(event.geometry[0].lng),
+                    lat: parseFloat(event.eventLat),
+                    lng: parseFloat(event.eventLng),
                   }}
                   onClick={() => onMarkerClick(idx, event.lat, event.lng)}
                 >
                   {selectedEvent === idx ? (
                     <InfoWindow
                       position={{
-                        lat: parseFloat(event.geometry[0].lat),
-                        lng: parseFloat(event.geometry[0].lng),
+                        lat: parseFloat(event.eventLat),
+                        lng: parseFloat(event.eventLng),
                       }}
                       onCloseClick={() => setSelectedEvent(null)}
                     >
@@ -118,6 +121,7 @@ const MapContainer = ({isLoggedIn, handleClickLogout, firstname}) => {
               );
             })
           : null}
+
           {isLoggedIn ? (
             <div>
             <Button

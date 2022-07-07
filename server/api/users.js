@@ -1,12 +1,16 @@
 const router = require('express').Router();
-const { models: { User }} = require('../db');
+
+const {
+  models: { User, UserPreferences },
+} = require('../db');
+
 const { requireToken, isAdmin } = require('../api/gateKeepingMiddleware');
 module.exports = router;
 
-router.get("/", requireToken, isAdmin, async (req, res, next) => {
+router.get('/', requireToken, isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
-      attributes: ["id", "username"],
+      attributes: ['id', 'username'],
     });
     res.json(users);
   } catch (err) {
@@ -14,3 +18,61 @@ router.get("/", requireToken, isAdmin, async (req, res, next) => {
   }
 });
 
+//    UPDATE USER PROFILE
+router.put('/updateProfile', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    res.send(await user.update(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
+//    FETCH USER PREFERENCES, IF NO EXIST, CREATE
+router.get('/preferences', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    const userPrefs = await User.findByPk(user.id, {
+      include: UserPreferences,
+    });
+    //IF NO USER PREFS FOUND, CREATE BELOW
+    if (!userPrefs.userPreference) {
+      const createdUserPrefs = await UserPreferences.create({
+        userId: user.id,
+      });
+      res.send(createdUserPrefs);
+      // SEND USER PREFERENCES ONLY
+    } else {
+      res.send(userPrefs.userPreference);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+//    UPDATE USER PREFERENCES, IF NO EXIST, CREATE
+router.put('/preferences', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    const userPrefs = await User.findByPk(user.id, {
+      include: UserPreferences,
+    });
+    //IF NO USER PREFS FOUND, CREATE BELOW
+    if (!userPrefs.userPreference) {
+      const createdUserPrefs = await UserPreferences.create({
+        ...req.body,
+        userId: user.id,
+      });
+      res.send(createdUserPrefs);
+      // SEND USER PREFERENCES ONLY
+    } else {
+      const updatedUserPrefs = await userPrefs.userPreference.update({
+        ...req.body,
+        userId: user.id,
+      });
+      res.send(updatedUserPrefs);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
