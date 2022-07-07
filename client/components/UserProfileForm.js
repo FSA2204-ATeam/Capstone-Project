@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import FormInput from './FormInput';
 import { updateProfile } from '../store/auth';
+import { updatePreferences } from '../store/userPreferences';
 import axios from 'axios';
 
 const UserProfileForm = (props) => {
@@ -16,10 +17,7 @@ const UserProfileForm = (props) => {
     props.userPreferences
   );
 
-  console.log('categoryPreferences', categoryPreferences);
-
   useEffect(() => {
-    console.log('RUNNING RUNNING');
     setCategoryPreferences(
       Object.keys(props.userPreferences)
         .filter((key) => key.includes('CAT_'))
@@ -92,8 +90,7 @@ const UserProfileForm = (props) => {
           },
         }
       );
-      console.log(prefsRes);
-      props.updateState(userRes.data);
+      props.updateState(userRes.data, prefsRes.data);
     }
   };
 
@@ -153,8 +150,9 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    updateState(user) {
+    updateState(user, prefs) {
       dispatch(updateProfile(user));
+      dispatch(updatePreferences(prefs));
     },
   };
 };

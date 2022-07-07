@@ -18,7 +18,7 @@ const setAuth = (auth) => ({ type: SET_AUTH, auth });
  * THUNK CREATORS
  */
 
-export const updateProfile = (updatedProfile) => async (dispatch) => {
+export const updateProfile = (updatedProfile) => (dispatch) => {
   dispatch(setAuth(updatedProfile));
 };
 
