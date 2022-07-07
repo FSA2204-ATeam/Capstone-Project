@@ -19,7 +19,7 @@ import { Grid, Popover } from "@material-ui/core"
 import { useFrontEndStyles } from "../theme";
 import { Button, Card, Box, CardMedia, CardContent, CardHeader, CardActions, Typography, IconButton, Tooltip, Container } from "@material-ui/core";
 
-const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
+const MapContainer = ({isLoggedIn, handleClickLogout, firstname}) => {
 
   const [mapCenter, setMapCenter] = useState({ lat: 40.7589, lng: -73.9851 });
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -30,7 +30,10 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
   const classes = useFrontEndStyles();
 
   const [popoverLogin, setPopoverLogin] = useState(false);
-  const toggleLogin = () => setPopoverLogin(!popoverLogin);
+  const toggleLogin = () => (setPopoverLogin(!popoverLogin));
+
+  const [popoverSignup, setPopoverSignup] = useState(false);
+  const toggleSignup = () => (setPopoverSignup(!popoverSignup));
 
   const onMarkerClick = (idx, lat, lng) => {
     console.log(lat);
@@ -43,6 +46,8 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
     setAnchor(event.target)
   }
 
+
+  
   //Get client location - (need to incorporate ask permission)
   navigator.geolocation.getCurrentPosition((position) => {
     console.log(position.coords.latitude, position.coords.longitude);
@@ -204,20 +209,37 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
             <PopUpWindowLogin/>
             </Popover>
           ) : (
-            <CardActions>
-            <Button id="Login" style={{margin: '0 auto', display: "flex", background: '#94C973'}} onClick={toggleLogin}>
-              Login
-            </Button>
-            <Button style={{margin: '0 auto', display: "flex", background: '#68BBE3'}}>
-              Sign Up
-            </Button>
-            </CardActions>
+            popoverSignup ? (
+              <Popover
+              open={Boolean(anchor)}
+              anchorReference="anchorPosition"
+              isOpen={popoverSignup}
+              target="Signup"
+              anchorPosition={{ top: 150, left: 980 }}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right'
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right'
+              }}
+              onClose={() => setAnchor(null)}
+              >
+              <PopUpWindowSignUp/>
+              </Popover>
+            ) : (
+              <CardActions>
+              <Button id="Login" style={{margin: '0 auto', display: "flex", background: '#94C973'}} onClick={toggleLogin}>
+                Login
+              </Button>
+              <Button id="Signup" style={{margin: '0 auto', display: "flex", background: '#68BBE3'}} onClick={toggleSignup}>
+                Sign Up
+              </Button>
+              </CardActions>
+            )
           )}
-
-
-
           </Card>
-          {/* <PopUpWindowLogin/> */}
           </Popover>
           </div>
         )}

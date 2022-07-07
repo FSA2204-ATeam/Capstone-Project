@@ -7,8 +7,10 @@ import { Link } from "react-router-dom";
 import { grey } from "@material-ui/core/colors";
 import { useFrontEndStyles } from "../theme";
 import {logout} from '../store'
+import { useHistory } from 'react-router-dom';
 
-const PopUpWindowCardLogged = () => {
+const PopUpWindowCardLogged = (props) => {
+  // console.log(props.handleClick)
   const classes = useFrontEndStyles();
   
   const dispatch = useDispatch();
@@ -20,7 +22,10 @@ const PopUpWindowCardLogged = () => {
   // };
 
   const handleClickLogout = () => {
+    // props.handleClick()
     dispatch(logout())
+    
+
   };
 
   return (
