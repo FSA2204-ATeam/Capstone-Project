@@ -1,12 +1,13 @@
-import axios from "axios";
-import history from "../history";
+import axios from 'axios';
+import history from '../history';
+import { fetchUserPreferences } from './userPreferences';
 
-const TOKEN = "token";
+const TOKEN = 'token';
 
 /**
  * ACTION TYPES
  */
-const SET_AUTH = "SET_AUTH";
+const SET_AUTH = 'SET_AUTH';
 
 /**
  * ACTION CREATORS
@@ -16,14 +17,20 @@ const setAuth = (auth) => ({ type: SET_AUTH, auth });
 /**
  * THUNK CREATORS
  */
+
+export const updateProfile = (updatedProfile) => async (dispatch) => {
+  dispatch(setAuth(updatedProfile));
+};
+
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
-    const res = await axios.get("/auth/me", {
+    const res = await axios.get('/auth/me', {
       headers: {
         authorization: token,
       },
     });
+    dispatch(fetchUserPreferences());
     return dispatch(setAuth(res.data));
   }
 };
@@ -62,6 +69,7 @@ export const registration =
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
   history.push("/home");
+
   return {
     type: SET_AUTH,
     auth: {},
