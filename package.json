@@ -36,6 +36,7 @@
     "history": "^4.9.0",
     "ibm-watson": "^7.0.0",
     "jsonwebtoken": "^8.5.1",
+    "material-ui-popup-state": "^1.9.3",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
     "react-hook-form": "^7.33.1",
