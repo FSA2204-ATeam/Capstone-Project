@@ -19,11 +19,9 @@ import { Grid, Popover } from "@material-ui/core"
 import { useFrontEndStyles } from "../theme";
 import { Button, Card, Box, CardMedia, CardContent, CardHeader, CardActions, Typography, IconButton, Tooltip, Container } from "@material-ui/core";
 
-const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
 
-  /////////////////////////////
-  /////     VARIABLES     /////
-  /////////////////////////////
+const MapContainer = ({isLoggedIn, handleClickLogout, firstname}) => {
+
   const [mapCenter, setMapCenter] = useState({ lat: 40.7589, lng: -73.9851 });
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showUserComponent, setShowUserComponent] = useState(false);
@@ -31,9 +29,13 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
   ]);
   const [anchor, setAnchor] = useState(null)
   const classes = useFrontEndStyles();
-  //////////////////////////////////
-  /////     EVENT HANDLERS     /////
-  //////////////////////////////////
+
+  const [popoverLogin, setPopoverLogin] = useState(false);
+  const toggleLogin = () => (setPopoverLogin(!popoverLogin));
+
+  const [popoverSignup, setPopoverSignup] = useState(false);
+  const toggleSignup = () => (setPopoverSignup(!popoverSignup));
+
   const onMarkerClick = (idx, lat, lng) => {
     console.log(lat);
     const floatLat = parseFloat(lat);
@@ -44,7 +46,7 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
   const openPopover = (event) => {
     setAnchor(event.target)
   }
-
+  
   //Get client location - (need to incorporate ask permission)
   navigator.geolocation.getCurrentPosition((position) => {
     console.log(position.coords.latitude, position.coords.longitude);
@@ -124,7 +126,7 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
             <div>
             <Button
           style={{
-            marginTop: 10,
+            marginTop: 70,
             marginLeft: 860,
             height: '60px',
             width: '60px'
@@ -158,7 +160,7 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
           <div>
           <Button
           style={{
-            marginTop: 10,
+            marginTop: 70,
             marginLeft: 860,
             height: '60px',
             width: '60px'
@@ -188,15 +190,57 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
           <CardContent>
           <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
           </CardContent>
-          <CardActions>
-          {/* {isLoggedIn ? () : ()} */}
-          <Button href='/' style={{margin: '0 auto', display: "flex", background: '#94C973'}} onClick={openPopover}>
-            Login
-          </Button>
-          <Button href='/' style={{margin: '0 auto', display: "flex", background: '#68BBE3'}}>
-            Sign Up
-          </Button>
-          </CardActions>
+          
+          {popoverLogin ? (
+            <Popover
+            open={Boolean(anchor)}
+            anchorReference="anchorPosition"
+            isOpen={popoverLogin}
+            target="Login"
+            anchorPosition={{ top: 150, left: 980 }}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right'
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right'
+            }}
+            onClose={() => setAnchor(null)}
+            >
+            <PopUpWindowLogin/>
+            </Popover>
+          ) : (
+            popoverSignup ? (
+              <Popover
+              open={Boolean(anchor)}
+              anchorReference="anchorPosition"
+              isOpen={popoverSignup}
+              target="Signup"
+              anchorPosition={{ top: 150, left: 980 }}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right'
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right'
+              }}
+              onClose={() => setAnchor(null)}
+              >
+              <PopUpWindowSignUp/>
+              </Popover>
+            ) : (
+              <CardActions>
+              <Button id="Login" style={{margin: '0 auto', display: "flex", background: '#94C973'}} onClick={toggleLogin}>
+                Login
+              </Button>
+              <Button id="Signup" style={{margin: '0 auto', display: "flex", background: '#68BBE3'}} onClick={toggleSignup}>
+                Sign Up
+              </Button>
+              </CardActions>
+            )
+          )}
           </Card>
           </Popover>
           </div>
@@ -208,7 +252,7 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
     </div>
   );
 };
-//TEST
+
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,

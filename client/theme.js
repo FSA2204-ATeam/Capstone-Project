@@ -1,12 +1,8 @@
 import { createTheme } from "@material-ui/core/styles";
 import {
-  black,
-  deepPurple,
   amber,
-  brown,
-  orange,
 } from "@material-ui/core/colors";
-import { alpha, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 const theme = createTheme({
   components: {
@@ -110,6 +106,7 @@ export const useNavStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 4,
     marginBottom: 25,
+    backgroundColor: "#8FA01F"
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -120,6 +117,8 @@ export const useNavStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
+    color: "#3D550C",
+    backgroundColor: "#8FA01F"
   }
 }));
 
