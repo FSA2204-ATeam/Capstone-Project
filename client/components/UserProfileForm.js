@@ -2,12 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import FormInput from './FormInput';
 import { updateProfile } from '../store/auth';
-import { fetchUserPreferences } from '../store/userPreferences';
 import axios from 'axios';
 
 const UserProfileForm = (props) => {
-  console.log('props.userPreferences', props.userPreferences);
-
   const [values, setValues] = useState({
     username: props.userProfile.username || '',
     email: props.userProfile.email || '',
@@ -15,14 +12,11 @@ const UserProfileForm = (props) => {
     lastname: props.userProfile.lastname || '',
   });
 
-  console.log('values', values);
-  //CONTINUE HERE TO IMPLEMENT CATEGY PREFERENCES TO DISPLAY PER NEW OBJECT THEME IN STORE
   const [categoryPreferences, setCategoryPreferences] = useState(
     props.userPreferences
   );
 
   console.log('categoryPreferences', categoryPreferences);
-  // const allCategories = ['art', 'music', 'food', 'protest', 'pets'];
 
   useEffect(() => {
     console.log('RUNNING RUNNING');
@@ -84,12 +78,22 @@ const UserProfileForm = (props) => {
     e.preventDefault();
     const token = window.localStorage.getItem('token');
     if (token) {
-      const res = await axios.put('api/users/updateProfile', values, {
+      const userRes = await axios.put('api/users/updateProfile', values, {
         headers: {
           authorization: token,
         },
       });
-      props.updateState(res.data);
+      const prefsRes = await axios.put(
+        'api/users/preferences',
+        categoryPreferences,
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      console.log(prefsRes);
+      props.updateState(userRes.data);
     }
   };
 
@@ -98,16 +102,10 @@ const UserProfileForm = (props) => {
   };
 
   const handleCatSelect = (category) => {
-    // if (categoryPreferences.includes(cat)) {
-    //   console.log('we have this category');
-    //   setCategoryPreferences(
-    //     categoryPreferences.filter((item) => item !== cat)
-    //   );
-    // } else {
-    //   console.log('we NO have this category');
-    //   setCategoryPreferences([...categoryPreferences, cat]);
-    // }
-    console.log(categoryPreferences);
+    setCategoryPreferences({
+      ...categoryPreferences,
+      [category]: !categoryPreferences[category],
+    });
   };
 
   return (
