@@ -6,7 +6,8 @@ import { fetchUserPreferences } from '../store/userPreferences';
 import axios from 'axios';
 
 const UserProfileForm = (props) => {
-  console.log(props.userPreferences);
+  console.log('props.userPreferences', props.userPreferences);
+
   const [values, setValues] = useState({
     username: props.userProfile.username || '',
     email: props.userProfile.email || '',
@@ -14,17 +15,27 @@ const UserProfileForm = (props) => {
     lastname: props.userProfile.lastname || '',
   });
 
+  console.log('values', values);
   //CONTINUE HERE TO IMPLEMENT CATEGY PREFERENCES TO DISPLAY PER NEW OBJECT THEME IN STORE
-  const [categoryPreferences, setCategoryPreferences] = useState([]);
-  const allCategories = ['art', 'music', 'food', 'protest', 'pets'];
+  const [categoryPreferences, setCategoryPreferences] = useState(
+    props.userPreferences
+  );
 
-  // useEffect(() => {
-  //   const userPreferences = fetchUserPreferences();
-  //   //Store this information in store somehow and retreive it from the store! But for now it will be called when component mounts.
+  console.log('categoryPreferences', categoryPreferences);
+  // const allCategories = ['art', 'music', 'food', 'protest', 'pets'];
 
-  //   console.log('FETCH USER PROFILE CALL: ', userPreferences);
-  // }),
-  //   [];
+  useEffect(() => {
+    console.log('RUNNING RUNNING');
+    setCategoryPreferences(
+      Object.keys(props.userPreferences)
+        .filter((key) => key.includes('CAT_'))
+        .reduce((obj, key) => {
+          return Object.assign(obj, {
+            [key]: props.userPreferences[key],
+          });
+        }, {})
+    );
+  }, [props.userPreferences]);
 
   const inputs = [
     {
@@ -86,16 +97,16 @@ const UserProfileForm = (props) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const handleCatSelect = (cat) => {
-    if (categoryPreferences.includes(cat)) {
-      console.log('we have this category');
-      setCategoryPreferences(
-        categoryPreferences.filter((item) => item !== cat)
-      );
-    } else {
-      console.log('we NO have this category');
-      setCategoryPreferences([...categoryPreferences, cat]);
-    }
+  const handleCatSelect = (category) => {
+    // if (categoryPreferences.includes(cat)) {
+    //   console.log('we have this category');
+    //   setCategoryPreferences(
+    //     categoryPreferences.filter((item) => item !== cat)
+    //   );
+    // } else {
+    //   console.log('we NO have this category');
+    //   setCategoryPreferences([...categoryPreferences, cat]);
+    // }
     console.log(categoryPreferences);
   };
 
@@ -112,20 +123,22 @@ const UserProfileForm = (props) => {
           />
         ))}
         <div>
-          {allCategories.map((cat, idx) => (
-            <button
-              key={idx}
-              type="button"
-              className={
-                categoryPreferences.includes(cat)
-                  ? 'categoryButton Selected'
-                  : 'categoryButton'
-              }
-              onClick={() => handleCatSelect(cat)}
-            >
-              {cat}
-            </button>
-          ))}
+          {categoryPreferences
+            ? Object.keys(categoryPreferences).map((category, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  className={
+                    categoryPreferences[category]
+                      ? 'categoryButton Selected'
+                      : 'categoryButton'
+                  }
+                  onClick={() => handleCatSelect(category)}
+                >
+                  {category.slice(4)}
+                </button>
+              ))
+            : null}
         </div>
         <button>Update</button>
       </form>

@@ -5,6 +5,7 @@ import { Login } from './components/LoginForm';
 import { Signup } from './components/SignUpForm';
 import Home from './components/Home';
 import { me } from './store';
+import { fetchUserPreferences } from './store';
 import UserProfileForm from './components/UserProfileForm';
 
 /**
@@ -52,6 +53,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
       dispatch(me());
+      dispatch(fetchUserPreferences());
     },
   };
 };

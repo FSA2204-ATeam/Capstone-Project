@@ -20,7 +20,6 @@ const setPreferences = (preferences) => ({
  */
 
 export const fetchUserPreferences = () => async (dispatch) => {
-  console.log('fetchUserPreferences RUNNING');
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
     const { data } = await axios.get('/api/users/preferences', {
@@ -37,9 +36,7 @@ export const fetchUserPreferences = () => async (dispatch) => {
         });
       }, {});
 
-    console.log(catPrefsOnly);
-
-    return dispatch(setPreferences(catPrefsOnly));
+    return dispatch(setPreferences(data));
   }
 
   /////THIS IS JUST FOR TESTING PURPOSES/////
@@ -59,7 +56,6 @@ export const fetchUserPreferences = () => async (dispatch) => {
 export default function (state = {}, action) {
   switch (action.type) {
     case SET_PREFERENCES:
-      console.log('REDUCER STATE PREFERENCES', action.preferences);
       return action.preferences;
     default:
       return state;
