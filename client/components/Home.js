@@ -45,8 +45,6 @@ const MapContainer = ({isLoggedIn, handleClickLogout, firstname}) => {
   const openPopover = (event) => {
     setAnchor(event.target)
   }
-
-
   
   //Get client location - (need to incorporate ask permission)
   navigator.geolocation.getCurrentPosition((position) => {

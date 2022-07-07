@@ -41,13 +41,12 @@ const PopUpWindowSignUp = () => {
     event.preventDefault();
     dispatch(registration(formValues, 'signup'))
     console.log(event);
-    // console.log('You signed up.')
   };
 
   return (
     <Card xs={12} md={6} lg={3} elevation={3} className={classes.p} variant="elevation" style={{background: "#808080"}} >
     <CardContent>
-    <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
+    <CardHeader align="center" />
     </CardContent>
     <CardActions>
     <form onSubmit={handleSubmit}>

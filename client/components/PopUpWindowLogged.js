@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Card, Box, CardMedia, CardContent, CardHeader, CardActions, Typography, IconButton, Tooltip, Container } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,13 +7,21 @@ import { Link } from "react-router-dom";
 import { grey } from "@material-ui/core/colors";
 import { useFrontEndStyles } from "../theme";
 import {logout} from '../store'
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
-const PopUpWindowCardLogged = (props) => {
-  // console.log(props.handleClick)
+
+const PopUpWindowCardLogged = () => {
   const classes = useFrontEndStyles();
-  
+
   const dispatch = useDispatch();
+  const history = useHistory()
+
+  const [closeLogout, setCloseLogout] = useState(true);
+  const toggleCloseLogout = () => (
+    setCloseLogout(!closeLogout),
+    dispatch(logout()),
+    history.push("/")
+    );
 
   // const handleClick = (event) => {
   //   event.preventDefault();
@@ -21,12 +29,9 @@ const PopUpWindowCardLogged = (props) => {
   //   console.log(event);
   // };
 
-  const handleClickLogout = () => {
-    // props.handleClick()
-    dispatch(logout())
-    
-
-  };
+  // const handleClickLogout = () => {
+  //   dispatch(logout())
+  // };
 
   return (
     <Card xs={12} md={6} lg={3} elevation={3} className={classes.p} variant="elevation" style={{background: "#808080"}} >
@@ -42,7 +47,7 @@ const PopUpWindowCardLogged = (props) => {
         <Button style={{margin: '0 auto', display: "flex", background: '#A16AE8'}} >
           Feeling Wild
         </Button>
-        <Button style={{margin: '0 auto', display: "flex", background: '#68BBE3'}} onClick={handleClickLogout}>
+        <Button href="/" style={{margin: '0 auto', display: "flex", background: '#68BBE3'}} onClick={toggleCloseLogout} >
           Logout
         </Button>
       </CardActions>
