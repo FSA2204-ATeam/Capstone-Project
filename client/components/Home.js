@@ -14,11 +14,10 @@ import PopUpWindowLogin from './PopUpWindowLogin';
 import PopUpWindowSignUp from './PopUpWindowSignUp';
 import PopUpWindowWelcome from './PopUpWindowWelcome';
 import PopUpWindowLogged from './PopUpWindowLogged';
-import Button from '@material-ui/core/Button';
-import {Container} from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
 import { Grid, Popover } from "@material-ui/core"
+import { useFrontEndStyles } from "../theme";
+import { Button, Card, Box, CardMedia, CardContent, CardHeader, CardActions, Typography, IconButton, Tooltip, Container } from "@material-ui/core";
 
 const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
 
@@ -31,6 +30,7 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
   const [events, setEvents] = useState([
   ]);
   const [anchor, setAnchor] = useState(null)
+  const classes = useFrontEndStyles();
   //////////////////////////////////
   /////     EVENT HANDLERS     /////
   //////////////////////////////////
@@ -184,40 +184,21 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
           }}
           onClose={() => setAnchor(null)}
           >
-            <PopUpWindowWelcome/>
-          </Popover>
+          <Card xs={12} md={6} lg={3} elevation={3} className={classes.p} variant="elevation" style={{background: "#808080"}} >
+          <CardContent>
+          <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
+          </CardContent>
+          <CardActions>
           {/* {isLoggedIn ? () : ()} */}
-          {/* <Button
-          style={{
-            marginTop: 10,
-            marginLeft: 860,
-            height: '60px',
-            width: '60px'
-          }}
-          variant='contained'
-          size='large'
-          color='#808080'
-          onClick={openPopover}
-          >
-            😀
+          <Button href='/' style={{margin: '0 auto', display: "flex", background: '#94C973'}} onClick={openPopover}>
+            Login
           </Button>
-          <Popover
-          open={Boolean(anchor)}
-          anchorReference="anchorPosition"
-          anchorPosition={{ top: 150, left: 980 }}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'right'
-          }}
-          transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right'
-          }}
-          onClose={() => setAnchor(null)}
-          >
-            <PopUpWindowLogin/>
-            {/* <PopUpWindowSignUp/> */}
-          {/* </Popover> */}
+          <Button href='/' style={{margin: '0 auto', display: "flex", background: '#68BBE3'}}>
+            Sign Up
+          </Button>
+          </CardActions>
+          </Card>
+          </Popover>
           </div>
         )}
         </GoogleMap>
@@ -227,7 +208,7 @@ const MapContainer = ({isLoggedIn, handleClick, firstname}) => {
     </div>
   );
 };
-
+//TEST
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
