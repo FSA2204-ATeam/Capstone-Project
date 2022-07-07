@@ -5,6 +5,7 @@ const {
   models: { User, Event, UsersEvents, UserPreferences },
 } = require("../server/db");
 
+const usersSeed = require("./user_data.json");
 const eventsSeed = require("./event_data.json");
 /**
  * seed - this function clears the database, updates tables to
@@ -15,16 +16,10 @@ async function seed() {
   console.log("db synced!");
 
   // Creating Users
-  const users = await Promise.all([
-    User.create({ username: "cody", password: "123" }),
-    User.create({ username: "murphy", password: "123" }),
-  ]);
+  const users = await User.bulkCreate(usersSeed);
 
   // Creating events
-
   const events = await Event.bulkCreate(eventsSeed);
-
-  // await events[0].setUsers([users[0], users[1]]);
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${events.length} events`);
@@ -34,9 +29,6 @@ async function seed() {
       cody: users[0],
       murphy: users[1],
     },
-    // events: {
-    //   testEvent1: events[0],
-    // },
   };
 }
 
