@@ -7,6 +7,7 @@ import PopUpWindowSignUp from './components/PopUpWindowSignUp';
 
 import Home from './components/Home';
 import { me } from './store';
+import { fetchUserPreferences } from './store';
 import UserProfileForm from './components/UserProfileForm';
 
 /**
@@ -50,6 +51,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
       dispatch(me());
+      dispatch(fetchUserPreferences());
     },
   };
 };

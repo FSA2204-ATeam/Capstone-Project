@@ -20,7 +20,6 @@ router.get('/', requireToken, isAdmin, async (req, res, next) => {
 
 //    UPDATE USER PROFILE
 router.put('/updateProfile', requireToken, async (req, res, next) => {
-  console.log('REQ.BODY ===========>', req.body);
   try {
     const user = await User.findByToken(req.headers.authorization);
     res.send(await user.update(req.body));
@@ -55,7 +54,6 @@ router.get('/preferences', async (req, res, next) => {
 router.put('/preferences', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-    console.log(user);
     const userPrefs = await User.findByPk(user.id, {
       include: UserPreferences,
     });
@@ -72,7 +70,7 @@ router.put('/preferences', async (req, res, next) => {
         ...req.body,
         userId: user.id,
       });
-      res.send(updatedUserPrefs.userPreference);
+      res.send(updatedUserPrefs);
     }
   } catch (error) {
     next(error);
