@@ -1,53 +1,5 @@
 [
   {
-    "name": "Primary Election - Last Day to Postmark Voter Registration Application",
-    "shortDesc": "July 29, 2022 is the last day to postmark a voter registration application to vote in the 2022 Primary Election on August 23, 2022.",
-    "timePart": "9am to 5pm",
-    "datePart": "Jul 29",
-    "permalink": "http://www1.nyc.gov/events/primary-election---last-day-to-postmark-voter-registration-application/171441/1",
-    "address": "Citywide",
-    "eventLat": "40.8556079",
-    "eventLng": "-73.8398387",
-    "databaseId": 171441,
-    "category": "Politics"
-  },
-  {
-    "name": "Primary Election - Last Day to Register In Person to Vote",
-    "shortDesc": "July 29, 2022 is the last day to register in-person to vote in the 2022 Primary Election on August 23, 2022.",
-    "timePart": "9am to 5pm",
-    "datePart": "Jul 29",
-    "permalink": "http://www1.nyc.gov/events/primary-election---last-day-to-register-in-person-to-vote/171444/1",
-    "address": "32 Broadway 7th Floor",
-    "eventLat": "40.70587150000001",
-    "eventLng": "-74.0129819",
-    "databaseId": 171444,
-    "category": "Politics"
-  },
-  {
-    "name": "Primary Election - Change of Address",
-    "shortDesc": "Primary Election occurs August 23, 2022. Change of address received by August 3, 2022 for the 2022 Primary Election must be processed.",
-    "timePart": "9am to 5pm",
-    "datePart": "Aug 3",
-    "permalink": "http://www1.nyc.gov/events/primary-election---change-of-address/171438/1",
-    "address": "Citywide",
-    "eventLat": "40.8556079",
-    "eventLng": "-73.8398387",
-    "databaseId": 171438,
-    "category": "Politics"
-  },
-  {
-    "name": "Primary Election - Last Day to Postmark an Application for an Absentee Ballot",
-    "shortDesc": "August 8th is the last day to postmark an absentee ballot application to vote in the 2022 Primary Election on August 23, 2022.",
-    "timePart": "9am to 5pm",
-    "datePart": "Aug 8",
-    "permalink": "http://www1.nyc.gov/events/primary-election---last-day-to-postmark-an-application-for-an-absentee-ballot/171442/1",
-    "address": "Citywide",
-    "eventLat": "40.8556079",
-    "eventLng": "-73.8398387",
-    "databaseId": 171442,
-    "category": "Politics"
-  },
-  {
     "name": "175 street Greenmarket Thursdays",
     "shortDesc": "Farmers Market",
     "timePart": "8am to 5pm",
@@ -56,7 +8,6 @@
     "address": " WEST  175 STREET between WADSWORTH AVENUE and BROADWAY  Manhattan",
     "eventLat": "40.8464761",
     "eventLng": "-73.9399866",
-    "databaseId": 379928,
     "category": "Food"
   },
   {
@@ -68,7 +19,6 @@
     "address": " EAST FORDHAM ROAD between JEROME AVENUE and WASHINGTON AVENUE  Bronx",
     "eventLat": "40.8416035",
     "eventLng": "-73.9011331",
-    "databaseId": 380001,
     "category": "Art"
   },
   {
@@ -80,7 +30,6 @@
     "address": " WEST   97 STREET between COLUMBUS AVENUE and AMSTERDAM AVENUE  Manhattan",
     "eventLat": "40.8134463",
     "eventLng": "-73.9562105",
-    "databaseId": 379911,
     "category": "Food"
   },
   {
@@ -92,7 +41,6 @@
     "address": " NOSTRAND AVENUE between CARROLL STREET and CROWN STREET  Brooklyn",
     "eventLat": "40.6414369",
     "eventLng": "-73.94856590000001",
-    "databaseId": 379718,
     "category": "Food"
   },
   {
@@ -104,7 +52,6 @@
     "address": " SECOND AVENUE between EAST   97 STREET and EAST 98 STREET  Manhattan",
     "eventLat": "40.7830603",
     "eventLng": "-73.9712488",
-    "databaseId": 379367,
     "category": "Food"
   },
   {
@@ -116,7 +63,6 @@
     "address": " EAST  149 STREET between PARK AVENUE and MORRIS AVENUE  Bronx",
     "eventLat": "40.812119",
     "eventLng": "-73.904099",
-    "databaseId": 379295,
     "category": "Food"
   },
   {
@@ -128,7 +74,6 @@
     "address": " UNION SQUARE WEST between EAST   14 STREET and EAST   15 STREET  Manhattan",
     "eventLat": "40.7358984",
     "eventLng": "-73.9912281",
-    "databaseId": 378675,
     "category": "Food"
   },
   {
@@ -140,7 +85,6 @@
     "address": " PRINCE STREET between MOTT STREET and MULBERRY STREET  Manhattan",
     "eventLat": "40.7193939",
     "eventLng": "-73.9972731",
-    "databaseId": 379105,
     "category": "Food"
   },
   {
@@ -152,7 +96,6 @@
     "address": " EAST FORDHAM ROAD between JEROME AVENUE and WASHINGTON AVENUE  Bronx",
     "eventLat": "40.8416035",
     "eventLng": "-73.9011331",
-    "databaseId": 380002,
     "category": "Art"
   },
   {
@@ -164,7 +107,6 @@
     "address": " 10 AVENUE between WEST   57 STREET and WEST   58 STREET  Manhattan",
     "eventLat": "40.7830603",
     "eventLng": "-73.9712488",
-    "databaseId": 380053,
     "category": "Food"
   },
   {
@@ -176,7 +118,6 @@
     "address": " LENOX AVENUE between WEST  117 STREET and WEST  118 STREET  Manhattan",
     "eventLat": "40.7830603",
     "eventLng": "-73.9712488",
-    "databaseId": 379341,
     "category": "Food"
   },
   {
@@ -188,7 +129,7 @@
     "address": " UNION SQUARE WEST between EAST   14 STREET and EAST   15 STREET  Manhattan",
     "eventLat": "40.7358984",
     "eventLng": "-73.9912281",
-    "databaseId": 378676,
+
     "category": "Food"
   },
   {
@@ -200,7 +141,7 @@
     "address": "Margaret Corbin Circle",
     "eventLat": "40.8625073",
     "eventLng": "-73.9327086",
-    "databaseId": 331550,
+
     "category": "Sports"
   },
   {
@@ -212,7 +153,7 @@
     "address": "Unisphere",
     "eventLat": "40.7463889",
     "eventLng": "-73.84506759999999",
-    "databaseId": 388450,
+
     "category": "Nature"
   },
   {
@@ -224,7 +165,7 @@
     "address": "St. Mary's Park",
     "eventLat": "40.8117387",
     "eventLng": "-73.9120243",
-    "databaseId": 388451,
+
     "category": "Sports"
   },
   {
@@ -236,7 +177,6 @@
     "address": " PRINCE STREET between MOTT STREET and MULBERRY STREET  Manhattan",
     "eventLat": "40.7193939",
     "eventLng": "-73.9972731",
-    "databaseId": 379106,
     "category": "Art"
   },
   {
@@ -248,7 +188,6 @@
     "address": " KNICKERBOCKER AVENUE between STARR STREET and SUYDAM STREET  Brooklyn",
     "eventLat": "40.6987489",
     "eventLng": "-73.9197228",
-    "databaseId": 378849,
     "category": "Food"
   },
   {
@@ -260,7 +199,6 @@
     "address": " EAST FORDHAM ROAD between JEROME AVENUE and WASHINGTON AVENUE  Bronx",
     "eventLat": "40.8416035",
     "eventLng": "-73.9011331",
-    "databaseId": 379954,
     "category": "Art"
   },
   {
@@ -272,7 +210,688 @@
     "address": "Urban Farm - Wards Meadow Loop",
     "eventLat": "40.7841949",
     "eventLng": "-73.92590330000002",
-    "databaseId": 353765,
+    "category": "Education"
+  },
+  {
+    "name": "Free Helmet Fitting and Distribution Event",
+    "shortDesc": "DOT will provide free bike helmets, fittings and distribution while supplies last. Helmets are available for all ages, but you must be present and pro",
+    "timePart": "11am to 2:30pm",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/site/visionzero/events/free-helmet-fitting-and-distribution-event/371022/1",
+    "address": "175-18 Merrick Boulevard",
+    "eventLat": "40.6931051",
+    "eventLng": "-73.77849239999999",
+    "category": "Safety"
+  },
+  {
+    "name": "Summer on the Hudson: Star Gazing",
+    "shortDesc": "A summer evening in Manhattan is made complete with a great skyline and the stars, planets, and moon in full view.",
+    "timePart": "8pm to 11pm",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/events/summer-on-the-hudson-star-gazing/388449/1",
+    "address": "Pier I - West 70th Street",
+    "eventLat": "40.7799189",
+    "eventLng": "-73.98878789999999",
+    "category": "Science"
+  },
+  {
+    "name": "Murray Hill Farmers Market",
+    "shortDesc": "Farmers Market",
+    "timePart": "5am to 7pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/murray-hill-farmers-market/379063/1",
+    "address": " SECOND AVENUE between EAST   32 STREET and EAST   33 STREET  Manhattan",
+    "eventLat": "40.7641964",
+    "eventLng": "-73.9617361",
+    "category": "Food"
+  },
+  {
+    "name": "92 St Greenmarket Sunday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/92-st-greenmarket-sunday/379880/1",
+    "address": " 1 AVENUE between EAST   92 STREET and EAST   93 STREET  Manhattan",
+    "eventLat": "40.7832685",
+    "eventLng": "-73.9507498",
+    "category": "Food"
+  },
+  {
+    "name": "Carrol Gardens Greenmarket",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/carrol-gardens-greenmarket/379772/1",
+    "address": " CARROLL STREET between SMITH STREET and COURT STREET  Brooklyn",
+    "eventLat": "40.6793313",
+    "eventLng": "-73.9954833",
+    "category": "Art"
+  },
+  {
+    "name": "Cortelyou Greenmarket Sunday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/cortelyou-greenmarket-sunday/379695/1",
+    "address": " CORTELYOU ROAD between RUGBY ROAD and ARGYLE ROAD  Brooklyn",
+    "eventLat": "40.6412697",
+    "eventLng": "-73.9639694",
+    "category": "Food"
+  },
+  {
+    "name": "Forest Hills Greenmarket Sunday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/forest-hills-greenmarket-sunday/380111/1",
+    "address": " QUEENS BLVD between 70 ROAD  and 69 ROAD  Queens",
+    "eventLat": "40.7489985",
+    "eventLng": "-73.89559869999999",
+    "category": "Art"
+  },
+  {
+    "name": "Jackson Heights Greenmarket Sunday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/jackson-heights-greenmarket-sunday/379418/1",
+    "address": " 79 STREET between 34 AVENUE and NORTHERN BOULEVARD  Queens",
+    "eventLat": "40.7537122",
+    "eventLng": "-73.9146889",
+    "category": "Food"
+  },
+  {
+    "name": "Old Cathedral Outdoor Market",
+    "shortDesc": "Sidewalk Sale",
+    "timePart": "9am to 8pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/old-cathedral-outdoor-market/379107/1",
+    "address": " PRINCE STREET between MOTT STREET and MULBERRY STREET  Manhattan",
+    "eventLat": "40.7193939",
+    "eventLng": "-73.9972731",
+    "category": "Art"
+  },
+  {
+    "name": "2022 Fordham Road Sidewalk Sale",
+    "shortDesc": "Sidewalk Sale",
+    "timePart": "10am to 9pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/2022-fordham-road-sidewalk-sale/379955/1",
+    "address": " EAST FORDHAM ROAD between JEROME AVENUE and WASHINGTON AVENUE  Bronx",
+    "eventLat": "40.8416035",
+    "eventLng": "-73.9011331",
+    "category": "Art"
+  },
+  {
+    "name": "Union Square Greenmarket Monday, Wednesday, Friday and Saturday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 7pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/union-square-greenmarket-monday-wednesday-friday-and-saturday/378677/1",
+    "address": " UNION SQUARE WEST between EAST   14 STREET and EAST   15 STREET  Manhattan",
+    "eventLat": "40.7358984",
+    "eventLng": "-73.9912281",
+    "category": "Food"
+  },
+  {
+    "name": "Adult Lap Swim",
+    "shortDesc": "Adult Lap Swim",
+    "timePart": "12pm to 1:45pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/adult-lap-swim/389845/1",
+    "address": "Indoor Pool - 1251 Prospect Place",
+    "eventLat": "40.6739246",
+    "eventLng": "-73.9349259",
+    "category": "Sports"
+  },
+  {
+    "name": "Arts   Crafts",
+    "shortDesc": "Learn a variety of arts & crafts types. painting, paper machet, laniards etc.",
+    "timePart": "12pm to 1pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/arts---crafts/389911/1",
+    "address": "Multi-Use Room - 85 Bradhurst Avenue",
+    "eventLat": "40.8242705",
+    "eventLng": "-73.9424573",
+    "category": "Art"
+  },
+  {
+    "name": "Ballroom Dance for Beginners",
+    "shortDesc": "Ballroom Dance",
+    "timePart": "12pm to 1pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/ballroom-dance-for-beginners/389916/1",
+    "address": "Multi-Use Room - 501 Brielle Avenue",
+    "eventLat": "40.5918312",
+    "eventLng": "-74.1391991",
+    "category": "Sports"
+  },
+  {
+    "name": "Digital Media Club",
+    "shortDesc": "Join a community of teens interested in making, thinking about, and pursuing a career in digital media production.",
+    "timePart": "12pm to 5pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/digital-media-club/389955/1",
+    "address": "Media Lab - 4200 7th Avenue",
+    "eventLat": "40.7517748",
+    "eventLng": "-73.9900696",
+    "category": "Education"
+  },
+  {
+    "name": "Intro to Social Media",
+    "shortDesc": "Join us in a program where you can learn how to use the top social media websites to keep up with everyone you know.",
+    "timePart": "12pm to 1pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/intro-to-social-media/390038/1",
+    "address": "Media Lab - 9941 Fort Hamilton Parkway",
+    "eventLat": "40.611862",
+    "eventLng": "-74.031745",
+    "category": "Education"
+  },
+  {
+    "name": "Pickleball",
+    "shortDesc": "Learn to play pickleball and play matches against other mebers.",
+    "timePart": "12pm to 2pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/pickleball/390280/1",
+    "address": "Gymnasium - 85 Bradhurst Avenue",
+    "eventLat": "40.8242705",
+    "eventLng": "-73.9424573",
+    "category": "Sports"
+  },
+  {
+    "name": "Senior Fitness",
+    "shortDesc": "A group exercise session in which participants will learn different stretching and training techniques to help improve body.",
+    "timePart": "12:30pm to 1:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/senior-fitness/390307/1",
+    "address": "Roof - 35 West 134th Street",
+    "eventLat": "40.8128918",
+    "eventLng": "-73.9394264",
+    "category": "Sports"
+  },
+  {
+    "name": "Summertime Techies",
+    "shortDesc": "Explore fun, creative digital learning workshops with a focus on self-awareness and social activism.",
+    "timePart": "12:30pm to 4:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/summertime-techies/390338/1",
+    "address": "Media Lab - 430 W. 25th Street",
+    "eventLat": "40.74826849999999",
+    "eventLng": "-74.00206469999999",
+    "category": "Education"
+  },
+  {
+    "name": "Adult Lap Swim",
+    "shortDesc": "Open Access Adult Lap Swim",
+    "timePart": "12:45pm to 2:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/adult-lap-swim/389846/1",
+    "address": "Indoor Pool - 232 W. 60th St.",
+    "eventLat": "40.7714364",
+    "eventLng": "-73.98868349999999",
+    "category": "Sports"
+  },
+  {
+    "name": "Kids Touch Rugby",
+    "shortDesc": "Rugby, Touch Rugby, Skills development",
+    "timePart": "1pm to 2pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/kids-touch-rugby/390212/1",
+    "address": "McCarren Play Center - 776 Lorimer Street",
+    "eventLat": "40.7201302",
+    "eventLng": "-73.94999290000001",
+    "category": "Sports"
+  },
+  {
+    "name": "Puppet Time at Elmhurst Park",
+    "shortDesc": "Puppet Time is a family-friendly variety show featuring songs from past Swedish Cottage Marionette Theatre performances including Pippi, Peter...",
+    "timePart": "1pm to 1:45pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/puppet-time-at-elmhurst-park/390289/1",
+    "address": "Elmhurst Park",
+    "eventLat": "40.7298841",
+    "eventLng": "-73.88509130000001",
+    "category": "Art"
+  },
+  {
+    "name": "Samba Class",
+    "shortDesc": "music, samba, afro-latin rhythm",
+    "timePart": "1pm to 2pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/samba-class/390298/1",
+    "address": "Media Lab - 776 Lorimer Street",
+    "eventLat": "40.7201776",
+    "eventLng": "-73.9496702",
+    "category": "Dance"
+  },
+  {
+    "name": "Summertime Techies",
+    "shortDesc": "Explore fun, creative digital learning workshops with a focus on self-awareness and social activism.",
+    "timePart": "1pm to 2pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/summertime-techies/390339/1",
+    "address": "Media Lab B - 1251 Prospect Place",
+    "eventLat": "40.6739246",
+    "eventLng": "-73.9349259",
+    "category": "Education"
+  },
+  {
+    "name": "Walking Group",
+    "shortDesc": "This free walking program will help you move your body and connect with others in your community! The program will start with a group warm-up led...",
+    "timePart": "1pm to 2pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/walking-group/390397/1",
+    "address": "McCarren Park",
+    "eventLat": "40.7210549",
+    "eventLng": "-73.95244",
+    "category": "Sports"
+  },
+  {
+    "name": "Games  Play",
+    "shortDesc": "Join this class with basic coordination drills and strategies.",
+    "timePart": "1:15pm to 2pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/games--play/389988/1",
+    "address": "Ballroom - 9941 Fort Hamilton Parkway",
+    "eventLat": "40.611862",
+    "eventLng": "-74.031745",
+    "category": "Sports"
+  },
+  {
+    "name": "Beginners Pickleball Clinic",
+    "shortDesc": "Learn the basics of Pickleball.",
+    "timePart": "2pm to 4pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/beginners-pickleball-clinic/389919/1",
+    "address": "Fort Hamilton Senior Recreation Center - 9941 Fort Hamilton Pkwy, Brooklyn, NY 11209",
+    "eventLat": "40.6118688",
+    "eventLng": "-74.0317395",
+    "category": "Sports"
+  },
+  {
+    "name": "Children SwimTeen Swim",
+    "shortDesc": "Children Swim",
+    "timePart": "2pm to 3:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/children-swimteen-swim/389932/1",
+    "address": "Indoor Pool - 1251 Prospect Place",
+    "eventLat": "40.6739246",
+    "eventLng": "-73.9349259",
+    "category": "Sports"
+  },
+  {
+    "name": "OneonOne Help",
+    "shortDesc": "Receive one-on-one training in basic computer skills!",
+    "timePart": "2pm to 3pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/oneonone-help/390240/1",
+    "address": "Media Lab - 1527 Jesup Avenue",
+    "eventLat": "40.8440083",
+    "eventLng": "-73.9189894",
+    "category": "Education"
+  },
+  {
+    "name": "Vocal Class",
+    "shortDesc": "voice recording, music, vocal training",
+    "timePart": "2pm to 3:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/vocal-class/390392/1",
+    "address": "Media Lab - 776 Lorimer Street",
+    "eventLat": "40.7201776",
+    "eventLng": "-73.9496702",
+    "category": "Music"
+  },
+  {
+    "name": "Open Play Teen Basketball",
+    "shortDesc": "Open Play Teen Basketball",
+    "timePart": "2:30pm to 6pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/open-play-teen-basketball/390268/1",
+    "address": "Highbridge Recreation Center - 2301 Amsterdam Avenue",
+    "eventLat": "40.842804",
+    "eventLng": "-73.93419",
+    "category": "Sports"
+  },
+  {
+    "name": "Table Tennis Room",
+    "shortDesc": "Open Access",
+    "timePart": "2:30pm to 8:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/table-tennis-room/390355/1",
+    "address": "Table Tennis Room - 501 Brielle Avenue",
+    "eventLat": "40.5918312",
+    "eventLng": "-74.1391991",
+    "category": "Sports"
+  },
+  {
+    "name": "Childrens Kickball",
+    "shortDesc": "Come and play a fun and friendly game of kickball for ages 12 and under.",
+    "timePart": "3pm to 4pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/childrens-kickball/389939/1",
+    "address": "Asser Levy Recreation Center - 392 Asser Levy Place",
+    "eventLat": "40.7361601",
+    "eventLng": "-73.9756582",
+    "category": "Sports"
+  },
+  {
+    "name": "Filmmaking",
+    "shortDesc": "Learn about the history of hollywood cinema including the seminal films that inspired entire genres of film",
+    "timePart": "3pm to 4pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/filmmaking/389980/1",
+    "address": "Media Lab - 35 West 134th Street",
+    "eventLat": "40.8128918",
+    "eventLng": "-73.9394264",
+    "category": "Art"
+  },
+  {
+    "name": "General Open Swim",
+    "shortDesc": "Open Access General Open Swim",
+    "timePart": "3pm to 4:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/general-open-swim/389996/1",
+    "address": "Indoor Pool - 232 W. 60th St.",
+    "eventLat": "40.7714364",
+    "eventLng": "-73.98868349999999",
+    "category": "Sports"
+  },
+  {
+    "name": "Intermediate Audio and Video Production",
+    "shortDesc": "Take your creative projects to the next level in this course that builds onto your knowledge of digital storytelling with storyboarding, and...",
+    "timePart": "3pm to 6pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/intermediate-audio-and-video-production/390016/1",
+    "address": "Media Lab - 1527 Jesup Avenue",
+    "eventLat": "40.8440083",
+    "eventLng": "-73.9189894",
+    "category": "Art"
+  },
+  {
+    "name": "Senior Dominoes Kapic",
+    "shortDesc": "Dominoes",
+    "timePart": "3pm to 7:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/senior-dominoes-kapic/390304/1",
+    "address": "Multi-Use Room B - 155 Bay Street",
+    "eventLat": "40.638148",
+    "eventLng": "-74.0756332",
+    "category": "Social"
+  },
+  {
+    "name": "Open Youth Basketball",
+    "shortDesc": "Open Access",
+    "timePart": "3:30pm to 5:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/open-youth-basketball/390274/1",
+    "address": "Gymnasium - 232 W. 60th St.",
+    "eventLat": "40.7714364",
+    "eventLng": "-73.98868349999999",
+    "category": "Sports"
+  },
+  {
+    "name": "Family Swimming",
+    "shortDesc": "Family Swim",
+    "timePart": "3:45pm to 5:15pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/family-swimming/389976/1",
+    "address": "Indoor Pool - 1251 Prospect Place",
+    "eventLat": "40.6739246",
+    "eventLng": "-73.9349259",
+    "category": "Sports"
+  },
+  {
+    "name": "Intro to Logic Pro X",
+    "shortDesc": "recording, beat-making, samples, music",
+    "timePart": "4pm to 5:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/intro-to-logic-pro-x/390029/1",
+    "address": "Media Lab - 776 Lorimer Street",
+    "eventLat": "40.7201776",
+    "eventLng": "-73.9496702",
+    "category": "Music"
+  },
+  {
+    "name": "OneOnOne Help",
+    "shortDesc": "Receive one-on-one training in basic computer skills!",
+    "timePart": "4pm to 5pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/oneonone-help/390238/1",
+    "address": "Media Lab - 85 Bradhurst Avenue",
+    "eventLat": "40.8242705",
+    "eventLng": "-73.9424573",
+    "category": "Education"
+  },
+  {
+    "name": "Resume Writing",
+    "shortDesc": "Put your best foot forward and get the job you want by learning how to create a resume that stands out.",
+    "timePart": "4pm to 5pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/resume-writing/390293/1",
+    "address": "Media Lab - 35 West 134th Street",
+    "eventLat": "40.8128918",
+    "eventLng": "-73.9394264",
+    "category": "Education"
+  },
+  {
+    "name": "Summertime Techies",
+    "shortDesc": "Explore fun, creative digital learning workshops with a focus on self-awareness and social activism.",
+    "timePart": "4pm to 5pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/summertime-techies/390346/1",
+    "address": "Media Lab B - 1251 Prospect Place",
+    "eventLat": "40.6739246",
+    "eventLng": "-73.9349259",
+    "category": "Education"
+  },
+  {
+    "name": "Digital Media Club",
+    "shortDesc": "Join a community of teens interested in making, thinking about, and pursuing a career in digital media production.",
+    "timePart": "4:30pm to 6pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/digital-media-club/389956/1",
+    "address": "Media Lab - 131-40 Fowler Ave.",
+    "eventLat": "40.7513963",
+    "eventLng": "-73.8339489",
+    "category": "Education"
+  },
+  {
+    "name": "Pickleball",
+    "shortDesc": "Instructional pickleball",
+    "timePart": "4:30pm to 6:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/pickleball/390281/1",
+    "address": "Multi-Use Room - 392 Asser Levy Place",
+    "eventLat": "40.7361601",
+    "eventLng": "-73.9756582",
+    "category": "Sports"
+  },
+  {
+    "name": "Introduction to Baseball",
+    "shortDesc": "Youth will learn the fundamentals of baseball",
+    "timePart": "5pm to 6pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/introduction-to-baseball/390043/1",
+    "address": "Hansborough Recreation Center - 35 W 134 Street, New York, NY  10037",
+    "eventLat": "40.81295069999999",
+    "eventLng": "-73.9394781",
+    "category": "Sports"
+  },
+  {
+    "name": "Movie Nights Waynes World 2",
+    "shortDesc": "Bring a blanket and sit on the lawn to enjoy great food, friends, and a screening of Wayne&apos;s World 2, starring Mike Myers and Dana Carvey.",
+    "timePart": "5pm to 11pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/movie-nights-waynes-world-2/390229/1",
+    "address": "Bryant Park",
+    "eventLat": "40.7535965",
+    "eventLng": "-73.98323259999999",
+    "category": "Art"
+  },
+  {
+    "name": "Adult Lap Swim",
+    "shortDesc": "Adult Lap Swim",
+    "timePart": "5:30pm to 7pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/adult-lap-swim/389849/1",
+    "address": "Indoor Pool - 1251 Prospect Place",
+    "eventLat": "40.6739246",
+    "eventLng": "-73.9349259",
+    "category": "Sports"
+  },
+  {
+    "name": "Open Badminton",
+    "shortDesc": "Open Badminton",
+    "timePart": "5:30pm to 7:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/open-badminton/390262/1",
+    "address": "Gymnasium - 80 Catherine Street",
+    "eventLat": "40.7105672",
+    "eventLng": "-73.9970098",
+    "category": "Sports"
+  },
+  {
+    "name": "Adult Basketball",
+    "shortDesc": "Adult Open Basketball",
+    "timePart": "6pm to 7:45pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/adult-basketball/389842/1",
+    "address": "Gymnasium - 430 W. 25th Street",
+    "eventLat": "40.74826849999999",
+    "eventLng": "-74.00206469999999",
+    "category": "Sports"
+  },
+  {
+    "name": "Adult Open Basketball",
+    "shortDesc": "Open Access Adult Basketball",
+    "timePart": "6pm to 7:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/adult-open-basketball/389894/1",
+    "address": "Gymnasium - 35 West 134th Street",
+    "eventLat": "40.8128918",
+    "eventLng": "-73.9394264",
+    "category": "Sports"
+  },
+  {
+    "name": "Old School RB Dance Fitness",
+    "shortDesc": "A fun and exciting workout that uses easy to follow dance steps to maintain cardiovascular health. This class is created for all levels and you do...",
+    "timePart": "6pm to 7pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/old-school-rb-dance-fitness/390237/1",
+    "address": "Riverbank State Park Amphitheatre",
+    "eventLat": "40.82642360000001",
+    "eventLng": "-73.9559555",
+    "category": "Dance"
+  },
+  {
+    "name": "Open Adult Basketball",
+    "shortDesc": "Open Access",
+    "timePart": "6pm to 8pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/open-adult-basketball/390256/1",
+    "address": "Gymnasium - 232 W. 60th St.",
+    "eventLat": "40.7714364",
+    "eventLng": "-73.98868349999999",
+    "category": "Sports"
+  },
+  {
+    "name": "Table Tennis Adult Open Play",
+    "shortDesc": "Adult table tennis open play",
+    "timePart": "6pm to 7:30pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/table-tennis-adult-open-play/390354/1",
+    "address": "Gymnasium - 348 East 54 Street",
+    "eventLat": "40.7564652",
+    "eventLng": "-73.96514619999999",
+    "category": "Sports"
+  },
+  {
+    "name": "Adult Open Gym",
+    "shortDesc": "Join NYC Parks in Adult Open Basketball",
+    "timePart": "6:30pm to 8:15pm",
+    "datePart": "Jul 11",
+    "permalink": "http://www1.nyc.gov/events/adult-open-gym/389896/1",
+    "address": "Gymnasium (Full) - 1527 Jesup Avenue",
+    "eventLat": "40.8440083",
+    "eventLng": "-73.9189894",
+    "category": "Sports"
+  },
+  {
+    "name": "Adult Open Access",
+    "shortDesc": "Computers are available for use by all members 18 and older.",
+    "timePart": "12am to 11:59pm",
+    "datePart": "Jul 12",
+    "permalink": "http://www1.nyc.gov/events/adult-open-access/389881/1",
+    "address": "Media Lab - 430 W. 25th Street",
+    "eventLat": "40.74826849999999",
+    "eventLng": "-74.00206469999999",
+    "category": "Sports"
+  },
+  {
+    "name": "Early Bird Open Adult Basketball",
+    "shortDesc": "Early morning basketball session",
+    "timePart": "6am to 10am",
+    "datePart": "Jul 12",
+    "permalink": "http://www1.nyc.gov/events/early-bird-open-adult-basketball/389963/1",
+    "address": "Gymnasium (Full) - 131-40 Fowler Ave.",
+    "eventLat": "40.7513963",
+    "eventLng": "-73.8339489",
+    "category": "Sports"
+  },
+  {
+    "name": "Table Tennis Room",
+    "shortDesc": "Open Access",
+    "timePart": "6:30am to 9:30am",
+    "datePart": "Jul 12",
+    "permalink": "http://www1.nyc.gov/events/table-tennis-room/390356/1",
+    "address": "Table Tennis Room - 501 Brielle Avenue",
+    "eventLat": "40.5918312",
+    "eventLng": "-74.1391991",
+    "category": "Sports"
+  },
+  {
+    "name": "Its My Park at Sunset Park",
+    "shortDesc": "Volunteer with Parent-Child Relationship Association to beautify Sunset Park.",
+    "timePart": "7am to 9am",
+    "datePart": "Jul 12",
+    "permalink": "http://www1.nyc.gov/events/its-my-park-at-sunset-park/390046/1",
+    "address": "Sunset Park Recreation Center",
+    "eventLat": "40.6468857",
+    "eventLng": "-74.00203359999999",
+    "category": "Volunteer"
+  },
+  {
+    "name": "Ft Washington Greenmarket Tuesday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 6pm",
+    "datePart": "Jul 12",
+    "permalink": "http://www1.nyc.gov/events/ft-washington-greenmarket-tuesday/380135/1",
+    "address": " FT WASHINGTON AVENUE between WEST  168 STREET and WEST  169 STREET  Manhattan",
+    "eventLat": "40.8408407",
+    "eventLng": "-73.9396297",
+    "category": "Food"
+  },
+  {
+    "name": "Lincoln Hospital Greenmarket Tuesday  Friday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 12",
+    "permalink": "http://www1.nyc.gov/events/lincoln-hospital-greenmarket-tuesday--friday/379306/1",
+    "address": " EAST  149 STREET between PARK AVENUE and MORRIS AVENUE  Bronx",
+    "eventLat": "40.812119",
+    "eventLng": "-73.904099",
+    "category": "Food"
+  },
+  {
+    "name": "Summertime Techies",
+    "shortDesc": "Explore fun, creative digital learning workshops with a focus on self-awareness and social activism.",
+    "timePart": "8am to 6pm",
+    "datePart": "Jul 12",
+    "permalink": "http://www1.nyc.gov/events/summertime-techies/390347/1",
+    "address": "Media Lab - 131-40 Fowler Ave.",
+    "eventLat": "40.7513963",
+    "eventLng": "-73.8339489",
     "category": "Education"
   }
 ]

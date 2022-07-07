@@ -7,7 +7,7 @@ const User = require("../db/models/User");
 const formatDate = require("../../script/formatDate");
 
 router.get("/", async (req, res, next) => {
-  let startDate = formatDate();
+  let startDate = formatDate(0);
   let endDate = formatDate(1);
 
   console.log(`Looking for Events between ${startDate} and ${endDate}!`);
