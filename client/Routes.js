@@ -1,13 +1,16 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
-import PopUpWindowLogin from './components/PopUpWindowLogin';
-import PopUpWindowSignUp from './components/PopUpWindowSignUp';
 
-import Home from './components/Home';
-import { me } from './store';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import PopUpWindowLogin from "./components/PopUpWindowLogin";
+import PopUpWindowSignUp from "./components/PopUpWindowSignUp";
+
+import Home from "./components/Home";
+import { me } from "./store";
+import { fetchUserEvents } from "./store/usersEvents";
 import { fetchUserPreferences } from './store';
 import UserProfileForm from './components/UserProfileForm';
+
 
 /**
  * COMPONENT
@@ -49,6 +52,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
       dispatch(me());
+      dispatch(fetchUserEvents());
       dispatch(fetchUserPreferences());
     },
   };

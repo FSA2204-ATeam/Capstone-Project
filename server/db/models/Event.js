@@ -4,7 +4,7 @@ const db = require("../db");
 const Event = db.define("event", {
   name: {
     type: Sequelize.STRING,
-    allowNull: false,
+    //allowNull: false,
   },
   complete: {
     type: Sequelize.BOOLEAN,

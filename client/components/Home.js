@@ -4,18 +4,20 @@ import {
   LoadScript,
   Marker,
   InfoWindow,
-} from '@react-google-maps/api';
-import { Room, Star, StarBorder } from '@material-ui/icons';
-import axios from 'axios';
-import User from './PopUpWindowLogin';
-import { connect, useSelector } from 'react-redux';
-import { logout } from '../store';
-import PopUpWindowLogin from './PopUpWindowLogin';
-import PopUpWindowSignUp from './PopUpWindowSignUp';
-import PopUpWindowLogged from './PopUpWindowLogged';
-import { Link } from 'react-router-dom';
-import { Grid, Popover } from '@material-ui/core';
-import { useFrontEndStyles } from '../theme';
+} from "@react-google-maps/api";
+import { Room, Star, StarBorder } from "@material-ui/icons";
+import axios from "axios";
+import User from "./PopUpWindowLogin";
+import { connect, useSelector } from "react-redux";
+import { logout } from "../store";
+import { setUserRSVP } from "../store/usersEvents";
+import PopUpWindowLogin from "./PopUpWindowLogin";
+import PopUpWindowSignUp from "./PopUpWindowSignUp";
+import PopUpWindowLogged from "./PopUpWindowLogged";
+import { Link } from "react-router-dom";
+import { Grid, Popover } from "@material-ui/core";
+import { useFrontEndStyles } from "../theme";
+
 import {
   Button,
   Card,
@@ -28,15 +30,24 @@ import {
   IconButton,
   Tooltip,
   Container,
-} from '@material-ui/core';
+} from "@material-ui/core";
 
-const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
+const MapContainer = ({
+  isLoggedIn,
+  handleClick,
+  handleClickLogout, // may not need this
+  firstname,
+  confirmUserRSVP,
+  usersEvents,
+}) => {
   const [mapCenter, setMapCenter] = useState({ lat: 40.7589, lng: -73.9851 });
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showUserComponent, setShowUserComponent] = useState(false);
   const [events, setEvents] = useState([]);
   const [anchor, setAnchor] = useState(null);
   const classes = useFrontEndStyles();
+
+  //const [event, setUsersEventRSVP] = useState(null);
 
   const [popoverLogin, setPopoverLogin] = useState(false);
   const toggleLogin = () => setPopoverLogin(!popoverLogin);
@@ -45,7 +56,7 @@ const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
   const toggleSignup = () => setPopoverSignup(!popoverSignup);
 
   const onMarkerClick = (idx, lat, lng) => {
-    console.log(lat);
+    //console.log(lat);
     const floatLat = parseFloat(lat);
     const floatLng = parseFloat(lng);
     setSelectedEvent(idx);
@@ -53,6 +64,10 @@ const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
 
   const openPopover = (event) => {
     setAnchor(event.target);
+  };
+
+  const onRSVPClick = (event) => {
+    confirmUserRSVP(event);
   };
 
   //Get client location - (need to incorporate ask permission)
@@ -68,8 +83,8 @@ const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
   useEffect(() => {
     const getEvents = async () => {
       try {
-        const events = await axios.get('/api/events');
-        console.log(events.data);
+        const events = await axios.get("/api/events");
+        console.log("events data --->", events.data);
         setEvents(events.data);
       } catch (err) {
         console.log(err);
@@ -97,11 +112,12 @@ const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
               onDblClick={(e) =>
                 handleDblClick({ lat: e.latLng.lat(), lng: e.latLng.lng() })
               }
+
               mapContainerStyle={mapStyles}
               zoom={13}
               center={mapCenter}
               options={{
-                mapId: '61b5009386a6596e',
+                mapId: "61b5009386a6596e",
                 zoomControl: false,
                 streetViewControl: false,
                 mapTypeControl: false,
@@ -110,7 +126,6 @@ const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
             >
               {events
                 ? events.map((event, idx) => {
-                    console.log('events.map is running');
                     return (
                       <Marker
                         key={idx}
@@ -129,14 +144,22 @@ const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
                             }}
                             onCloseClick={() => setSelectedEvent(null)}
                           >
-                            <div>{event.shortDesc}</div>
+                            <div>
+                              <div>{event.shortDesc}</div>
+                              <div>
+                                {event.datePart} from {event.timePart}
+                              </div>
+                              {console.log("API events", events)}
+                              <button onClick={() => onRSVPClick(event)}>
+                                RSVP
+                              </button>
+                            </div>
                           </InfoWindow>
                         ) : null}
                       </Marker>
                     );
                   })
                 : null}
-
               {newEvtPosition && (
                 <Marker key={1234} id={1234} position={newEvtPosition}>
                   {/* <InfoWindow
@@ -149,15 +172,14 @@ const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
                 </InfoWindow> */}
                 </Marker>
               )}
-
               {isLoggedIn ? (
                 <div>
                   <Button
                     style={{
-                      marginTop: 70,
+                      marginTop: 10, // was set to 70 in main
                       marginLeft: 860,
-                      height: '60px',
-                      width: '60px',
+                      height: "60px",
+                      width: "60px",
                     }}
                     variant="contained"
                     size="large"
@@ -172,12 +194,12 @@ const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
                     anchorReference="anchorPosition"
                     anchorPosition={{ top: 150, left: 980 }}
                     anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
+                      vertical: "top",
+                      horizontal: "right",
                     }}
                     transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
+                      vertical: "top",
+                      horizontal: "right",
                     }}
                     onClose={() => setAnchor(null)}
                   >
@@ -188,10 +210,10 @@ const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
                 <div>
                   <Button
                     style={{
-                      marginTop: 70,
+                      marginTop: 10, // was 70 in main
                       marginLeft: 860,
-                      height: '60px',
-                      width: '60px',
+                      height: "60px",
+                      width: "60px",
                     }}
                     variant="contained"
                     size="large"
@@ -205,12 +227,12 @@ const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
                     anchorReference="anchorPosition"
                     anchorPosition={{ top: 150, left: 980 }}
                     anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
+                      vertical: "top",
+                      horizontal: "right",
                     }}
                     transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
+                      vertical: "top",
+                      horizontal: "right",
                     }}
                     onClose={() => setAnchor(null)}
                   >
@@ -221,7 +243,7 @@ const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
                       elevation={3}
                       className={classes.p}
                       variant="elevation"
-                      style={{ background: '#808080' }}
+                      style={{ background: "#808080" }}
                     >
                       <CardContent>
                         <CardHeader
@@ -233,7 +255,6 @@ const MapContainer = ({ isLoggedIn, handleClickLogout, firstname }) => {
                           }
                         />
                       </CardContent>
-
                       {popoverLogin ? (
                         <Popover
                           open={Boolean(anchor)}
@@ -314,6 +335,7 @@ const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
     isAdmin: state.auth.isAdmin,
+    usersEvents: state.usersEvents,
   };
 };
 
@@ -321,6 +343,9 @@ const mapDispatch = (dispatch) => {
   return {
     handleClick() {
       dispatch(logout());
+    },
+    confirmUserRSVP(event) {
+      dispatch(setUserRSVP(event));
     },
   };
 };

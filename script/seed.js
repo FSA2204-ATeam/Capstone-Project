@@ -16,6 +16,7 @@ async function seed() {
   console.log("db synced!");
 
   // Creating Users
+
   const users = await User.bulkCreate(usersSeed);
 
   // Creating events
