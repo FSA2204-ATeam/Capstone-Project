@@ -12,7 +12,6 @@ import { connect, useSelector } from "react-redux";
 import { logout } from '../store';
 import PopUpWindowLogin from './PopUpWindowLogin';
 import PopUpWindowSignUp from './PopUpWindowSignUp';
-import PopUpWindowWelcome from './PopUpWindowWelcome';
 import PopUpWindowLogged from './PopUpWindowLogged';
 import { Link } from "react-router-dom";
 import { Grid, Popover } from "@material-ui/core"
