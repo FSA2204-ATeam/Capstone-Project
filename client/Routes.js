@@ -1,3 +1,4 @@
+
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
@@ -7,7 +8,9 @@ import PopUpWindowSignUp from "./components/PopUpWindowSignUp";
 import Home from "./components/Home";
 import { me } from "./store";
 import { fetchUserEvents } from "./store/usersEvents";
-import UserProfileForm from "./components/UserProfileForm";
+import { fetchUserPreferences } from './store';
+import UserProfileForm from './components/UserProfileForm';
+
 
 /**
  * COMPONENT
@@ -27,6 +30,7 @@ class Routes extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={PopUpWindowLogin} />
           <Route exact path="/signup" component={PopUpWindowSignUp} />
+          <Route exact path="/profile" component={UserProfileForm} />
         </Switch>
       </div>
     );
@@ -49,6 +53,7 @@ const mapDispatch = (dispatch) => {
     loadInitialData() {
       dispatch(me());
       dispatch(fetchUserEvents());
+      dispatch(fetchUserPreferences());
     },
   };
 };

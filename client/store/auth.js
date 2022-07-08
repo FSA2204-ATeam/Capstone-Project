@@ -1,6 +1,6 @@
 import axios from 'axios';
 import history from '../history';
-import { fetchUserPreferences } from './userPreferences';
+//import { fetchUserPreferences } from './userPreferences';
 
 const TOKEN = 'token';
 
@@ -18,7 +18,7 @@ const setAuth = (auth) => ({ type: SET_AUTH, auth });
  * THUNK CREATORS
  */
 
-export const updateProfile = (updatedProfile) => async (dispatch) => {
+export const updateProfile = (updatedProfile) => (dispatch) => {
   dispatch(setAuth(updatedProfile));
 };
 
@@ -30,7 +30,7 @@ export const me = () => async (dispatch) => {
         authorization: token,
       },
     });
-    dispatch(fetchUserPreferences());
+    //dispatch(fetchUserPreferences());
     return dispatch(setAuth(res.data));
   }
 };

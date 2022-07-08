@@ -5,6 +5,8 @@ const {
   models: { User, Event, UsersEvents, UserPreferences },
 } = require("../server/db");
 
+const usersSeed = require("./user_data.json");
+const eventsSeed = require("./event_data.json");
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
@@ -14,39 +16,20 @@ async function seed() {
   console.log("db synced!");
 
   // Creating Users
-  const users = await Promise.all([
-    User.create({ username: "cody", password: "123" }),
-    User.create({ username: "murphy", password: "123" }),
-  ]);
 
-  const events = await Promise.all([
-    Event.create({
-      name: "97 Street Greenmarket Friday",
-      shortDesc: "Farmers Market",
-      timePart: "8am to 5pm",
-      datePart: "Jul 1",
-      permalink:
-        "http://www1.nyc.gov/events/97-street-greenmarket-friday/379910/1",
-      address:
-        " WEST   97 STREET between COLUMBUS AVENUE and AMSTERDAM AVENUE  Manhattan",
-      eventLat: "40.8134463",
-      eventLng: "-73.9562105",
-    }),
-  ]);
+  const users = await User.bulkCreate(usersSeed);
 
-  //await events[0].setUsers([users[0], users[1]]);
+  // Creating events
+  const events = await Event.bulkCreate(eventsSeed);
 
   console.log(`seeded ${users.length} users`);
-  //console.log(`seeded ${events.length} events`);
+  console.log(`seeded ${events.length} events`);
   console.log(`seeded successfully`);
   return {
     users: {
       cody: users[0],
       murphy: users[1],
     },
-    // events: {
-    //   testEvent1: events[0],
-    // },
   };
 }
 

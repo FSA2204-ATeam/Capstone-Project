@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   GoogleMap,
   LoadScript,
@@ -13,11 +13,11 @@ import { logout } from "../store";
 import { setUserRSVP } from "../store/usersEvents";
 import PopUpWindowLogin from "./PopUpWindowLogin";
 import PopUpWindowSignUp from "./PopUpWindowSignUp";
-import PopUpWindowWelcome from "./PopUpWindowWelcome";
 import PopUpWindowLogged from "./PopUpWindowLogged";
 import { Link } from "react-router-dom";
 import { Grid, Popover } from "@material-ui/core";
 import { useFrontEndStyles } from "../theme";
+
 import {
   Button,
   Card,
@@ -35,24 +35,26 @@ import {
 const MapContainer = ({
   isLoggedIn,
   handleClick,
+  handleClickLogout, // may not need this
   firstname,
   confirmUserRSVP,
   usersEvents,
 }) => {
-  /////////////////////////////
-  /////     VARIABLES     /////
-  /////////////////////////////
   const [mapCenter, setMapCenter] = useState({ lat: 40.7589, lng: -73.9851 });
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showUserComponent, setShowUserComponent] = useState(false);
   const [events, setEvents] = useState([]);
   const [anchor, setAnchor] = useState(null);
   const classes = useFrontEndStyles();
+
   //const [event, setUsersEventRSVP] = useState(null);
 
-  //////////////////////////////////
-  /////     EVENT HANDLERS     /////
-  //////////////////////////////////
+  const [popoverLogin, setPopoverLogin] = useState(false);
+  const toggleLogin = () => setPopoverLogin(!popoverLogin);
+
+  const [popoverSignup, setPopoverSignup] = useState(false);
+  const toggleSignup = () => setPopoverSignup(!popoverSignup);
+
   const onMarkerClick = (idx, lat, lng) => {
     //console.log(lat);
     const floatLat = parseFloat(lat);
@@ -74,8 +76,8 @@ const MapContainer = ({
   });
 
   const mapStyles = {
-    height: "100vh",
-    width: "100%",
+    height: '100vh',
+    width: '100%',
   };
 
   useEffect(() => {
@@ -91,16 +93,26 @@ const MapContainer = ({
     getEvents();
   }, []);
 
+  const [newEvtPosition, setNewEvtPosition] = useState({});
+  const handleDblClick = (e) => {
+    console.log('DoubleClickEvent!!!!!!!!', e);
+    setNewEvtPosition(e);
+  };
+
   return (
     <div>
       <Container maxWidth="lg" sx={{ marginY: 12 }}>
-        <Grid container spacing={5} style={{ justifyContent: "space-around" }}>
+        <Grid container spacing={5} style={{ justifyContent: 'space-around' }}>
           <LoadScript
-            mapIds={["61b5009386a6596e"]}
-            googleMapsApiKey={"AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78"}
+            mapIds={['61b5009386a6596e']}
+            googleMapsApiKey={'AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78'}
           >
             <GoogleMap
               onClick={() => setSelectedEvent(null)}
+              onDblClick={(e) =>
+                handleDblClick({ lat: e.latLng.lat(), lng: e.latLng.lng() })
+              }
+
               mapContainerStyle={mapStyles}
               zoom={13}
               center={mapCenter}
@@ -148,12 +160,23 @@ const MapContainer = ({
                     );
                   })
                 : null}
-
+              {newEvtPosition && (
+                <Marker key={1234} id={1234} position={newEvtPosition}>
+                  {/* <InfoWindow
+                  position={{
+                    lat: 40.7589,
+                    lng: -73.9851,
+                  }}
+                >
+                  <div>awesomeness</div>
+                </InfoWindow> */}
+                </Marker>
+              )}
               {isLoggedIn ? (
                 <div>
                   <Button
                     style={{
-                      marginTop: 10,
+                      marginTop: 10, // was set to 70 in main
                       marginLeft: 860,
                       height: "60px",
                       width: "60px",
@@ -187,7 +210,7 @@ const MapContainer = ({
                 <div>
                   <Button
                     style={{
-                      marginTop: 10,
+                      marginTop: 10, // was 70 in main
                       marginLeft: 860,
                       height: "60px",
                       width: "60px",
@@ -232,30 +255,70 @@ const MapContainer = ({
                           }
                         />
                       </CardContent>
-                      <CardActions>
-                        {/* {isLoggedIn ? () : ()} */}
-                        <Button
-                          href="/"
-                          style={{
-                            margin: "0 auto",
-                            display: "flex",
-                            background: "#94C973",
+                      {popoverLogin ? (
+                        <Popover
+                          open={Boolean(anchor)}
+                          anchorReference="anchorPosition"
+                          isOpen={popoverLogin}
+                          target="Login"
+                          anchorPosition={{ top: 150, left: 980 }}
+                          anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
                           }}
-                          onClick={openPopover}
-                        >
-                          Login
-                        </Button>
-                        <Button
-                          href="/"
-                          style={{
-                            margin: "0 auto",
-                            display: "flex",
-                            background: "#68BBE3",
+                          transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
                           }}
+                          onClose={() => setAnchor(null)}
                         >
-                          Sign Up
-                        </Button>
-                      </CardActions>
+                          <PopUpWindowLogin />
+                        </Popover>
+                      ) : popoverSignup ? (
+                        <Popover
+                          open={Boolean(anchor)}
+                          anchorReference="anchorPosition"
+                          isOpen={popoverSignup}
+                          target="Signup"
+                          anchorPosition={{ top: 150, left: 980 }}
+                          anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                          }}
+                          transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                          }}
+                          onClose={() => setAnchor(null)}
+                        >
+                          <PopUpWindowSignUp />
+                        </Popover>
+                      ) : (
+                        <CardActions>
+                          <Button
+                            id="Login"
+                            style={{
+                              margin: '0 auto',
+                              display: 'flex',
+                              background: '#94C973',
+                            }}
+                            onClick={toggleLogin}
+                          >
+                            Login
+                          </Button>
+                          <Button
+                            id="Signup"
+                            style={{
+                              margin: '0 auto',
+                              display: 'flex',
+                              background: '#68BBE3',
+                            }}
+                            onClick={toggleSignup}
+                          >
+                            Sign Up
+                          </Button>
+                        </CardActions>
+                      )}
                     </Card>
                   </Popover>
                 </div>
@@ -267,7 +330,7 @@ const MapContainer = ({
     </div>
   );
 };
-//TEST
+
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,

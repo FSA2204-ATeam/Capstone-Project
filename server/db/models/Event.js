@@ -37,6 +37,10 @@ const Event = db.define("event", {
   },
   databaseId: {
     type: Sequelize.STRING,
+    unique: true,
+  },
+  category: {
+    type: Sequelize.STRING,
   },
 });
 
