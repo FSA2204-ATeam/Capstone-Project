@@ -1,13 +1,12 @@
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import PopUpWindowLogin from "./components/PopUpWindowLogin";
+import PopUpWindowSignUp from "./components/PopUpWindowSignUp";
 
-import React, {Component, Fragment} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
-import PopUpWindowLogin from './components/PopUpWindowLogin';
-import PopUpWindowSignUp from './components/PopUpWindowSignUp';
-
-import Home from './components/Home';
-import { me } from './store';
-import UserProfileForm from './components/UserProfileForm';
+import Home from "./components/Home";
+import { me } from "./store";
+import UserProfileForm from "./components/UserProfileForm";
 
 /**
  * COMPONENT
@@ -18,18 +17,16 @@ class Routes extends Component {
   }
 
   render() {
-
     // const {isLoggedIn} = this.props
-
 
     return (
       <div>
-          <Switch>
-            <Route exact path="/home" component={Home} />
-            <Route exact path='/' component={Home} />
-            <Route exact path="/login" component={PopUpWindowLogin} />
-            <Route exact path="/signup" component={PopUpWindowSignUp} />
-          </Switch>
+        <Switch>
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={PopUpWindowLogin} />
+          <Route exact path="/signup" component={PopUpWindowSignUp} />
+        </Switch>
       </div>
     );
   }
