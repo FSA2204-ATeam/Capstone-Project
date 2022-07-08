@@ -6,6 +6,7 @@ import PopUpWindowSignUp from "./components/PopUpWindowSignUp";
 
 import Home from "./components/Home";
 import { me } from "./store";
+import { fetchUserEvents } from "./store/usersEvents";
 import UserProfileForm from "./components/UserProfileForm";
 
 /**
@@ -47,6 +48,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
       dispatch(me());
+      dispatch(fetchUserEvents());
     },
   };
 };

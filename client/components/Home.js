@@ -37,6 +37,7 @@ const MapContainer = ({
   handleClick,
   firstname,
   confirmUserRSVP,
+  usersEvents,
 }) => {
   /////////////////////////////
   /////     VARIABLES     /////
@@ -64,7 +65,6 @@ const MapContainer = ({
   };
 
   const onRSVPClick = (event) => {
-    console.log("Event for RSVP", event);
     confirmUserRSVP(event);
   };
 
@@ -114,7 +114,6 @@ const MapContainer = ({
             >
               {events
                 ? events.map((event, idx) => {
-                    //console.log("events.map is running");
                     return (
                       <Marker
                         key={idx}
@@ -138,7 +137,7 @@ const MapContainer = ({
                               <div>
                                 {event.datePart} from {event.timePart}
                               </div>
-                              {console.log("event-->", event)}
+                              {console.log("API events", events)}
                               <button onClick={() => onRSVPClick(event)}>
                                 RSVP
                               </button>
@@ -273,7 +272,7 @@ const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
     isAdmin: state.auth.isAdmin,
-    //usersEvents: state.usersEvents,
+    usersEvents: state.usersEvents,
   };
 };
 
@@ -283,7 +282,6 @@ const mapDispatch = (dispatch) => {
       dispatch(logout());
     },
     confirmUserRSVP(event) {
-      console.log("confirmUserRSVP Dispatched");
       dispatch(setUserRSVP(event));
     },
   };
