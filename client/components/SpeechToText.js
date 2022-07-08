@@ -1,9 +1,9 @@
-require('babel-polyfill');
-import React from 'react';
-import { useEffect, useState } from 'react';
+require("babel-polyfill");
+import React from "react";
+import { useEffect, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
-} from 'react-speech-recognition';
+} from "react-speech-recognition";
 
 const SpeechToText = () => {
   const { transcript, resetTranscript } = useSpeechRecognition();
@@ -11,7 +11,7 @@ const SpeechToText = () => {
 
   useEffect(() => {
     SpeechRecognition.startListening({ continuous: true });
-    console.log('listening starts');
+    console.log("listening starts");
   });
 
   const onChange = (e) => {
@@ -29,10 +29,10 @@ const SpeechToText = () => {
       <button
         onClick={() => {
           SpeechRecognition.stopListening();
-          console.log('listening stops');
+          console.log("listening stops");
         }}
       >
-        {' '}
+        {" "}
         Stop Listening
       </button>
     </div>
