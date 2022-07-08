@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import PopUpWindowLogin from './components/PopUpWindowLogin';
 import PopUpWindowSignUp from './components/PopUpWindowSignUp';
-
+import SpeechToText from './components/SpeechToText';
 import Home from './components/Home';
 import { me } from './store';
 import { fetchUserPreferences } from './store';
@@ -28,6 +28,7 @@ class Routes extends Component {
           <Route exact path="/login" component={PopUpWindowLogin} />
           <Route exact path="/signup" component={PopUpWindowSignUp} />
           <Route exact path="/profile" component={UserProfileForm} />
+          <Route exact path="/speechtotext" component={SpeechToText} />
         </Switch>
       </div>
     );
