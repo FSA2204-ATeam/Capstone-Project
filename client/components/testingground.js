@@ -10,13 +10,16 @@ export const _getSentimentAnalysis = (analysis) => ({
   analysis,
 });
 
-export const getSentimentAnalysis = () => {
+export const getSentimentAnalysis = (review) => {
   return async (dispatch) => {
     try {
+      // console.log("inside getSentimentAnalysis: ", review);
       const { data } = await axios.post("/api/sentimentAnalysis", null, {
-        headers: { review: "I like testing things with javascript" },
+        headers: { review },
       });
-      console.log(data);
+      console.log(
+        `Watson says my review is ${data.label}, with a score of ${data.score}!`
+      );
       dispatch(_getSentimentAnalysis(data));
     } catch (err) {
       console.error(err);
@@ -41,7 +44,8 @@ function TestingGround() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(getSentimentAnalysis(event.target.review));
+    console.log("This is my submitted Review: ", review);
+    dispatch(getSentimentAnalysis(review));
   };
 
   return (

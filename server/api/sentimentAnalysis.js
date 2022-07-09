@@ -18,7 +18,6 @@ router.post("/", async (req, res, next) => {
 
   const analyzeParams = {
     text: `${req.headers.review}`,
-    // text: "I liked watching the animals at the zoo.",
     features: {
       sentiment: {},
     },
