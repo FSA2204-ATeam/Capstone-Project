@@ -1,16 +1,16 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
 const {
-  models: { User, UserPreferences },
-} = require('../db');
+  models: { User, UserPreferences, UsersEvents },
+} = require("../db");
 
-const { requireToken, isAdmin } = require('../api/gateKeepingMiddleware');
+const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
 module.exports = router;
 
-router.get('/', requireToken, isAdmin, async (req, res, next) => {
+router.get("/", requireToken, isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
-      attributes: ['id', 'username'],
+      attributes: ["id", "username"],
     });
     res.json(users);
   } catch (err) {
@@ -19,7 +19,8 @@ router.get('/', requireToken, isAdmin, async (req, res, next) => {
 });
 
 //    UPDATE USER PROFILE
-router.put('/updateProfile', requireToken, async (req, res, next) => {
+
+router.put("/updateProfile", requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     res.send(await user.update(req.body));
@@ -29,7 +30,7 @@ router.put('/updateProfile', requireToken, async (req, res, next) => {
 });
 
 //    FETCH USER PREFERENCES, IF NO EXIST, CREATE
-router.get('/preferences', async (req, res, next) => {
+router.get("/preferences", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     const userPrefs = await User.findByPk(user.id, {
@@ -51,7 +52,7 @@ router.get('/preferences', async (req, res, next) => {
 });
 
 //    UPDATE USER PREFERENCES, IF NO EXIST, CREATE
-router.put('/preferences', async (req, res, next) => {
+router.put("/preferences", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     const userPrefs = await User.findByPk(user.id, {

@@ -9,3 +9,23 @@
 
 //Further build out:
 // a. Randomizer will pull sentimentScore & sentimentLabel weights to influence which categories are pushed to the User
+
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+
+const singleEventCard = (props) => {
+  console.log("These are passed props--->", props);
+
+  //VARIABLES//
+  const {
+    name,
+    shortDesc,
+    address,
+    datePart,
+    timePart,
+    permaLink,
+    totalGuests,
+  } = props;
+};

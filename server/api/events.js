@@ -36,7 +36,7 @@ router.get("/", async (req, res, next) => {
             address: evt.address,
             eventLat: evt.geometry[0].lat,
             eventLng: evt.geometry[0].lng,
-            databaseId: evt.id,
+            databaseId: evt.id.toString(),
           })
         );
     } catch (error) {
