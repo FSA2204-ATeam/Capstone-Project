@@ -21,6 +21,19 @@ router.post("/", requireToken, async (req, res, next) => {
   }
 });
 
+router.put("/", requireToken, async (req, res, next) => {
+  try {
+    const event = await Event.update(
+      {
+        totalGuests: req.body.totalGuests,
+      },
+      { where: { id: req.body.id } }
+    );
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get("/", requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
@@ -29,9 +42,6 @@ router.get("/", requireToken, async (req, res, next) => {
         userId: user.dataValues.id,
       },
     });
-    //   include: { model: Event, where: { eventId: { $col: "id" } } },
-    // });
-    console.log("Associations -->", data);
     res.json(data);
   } catch (error) {
     next(error);

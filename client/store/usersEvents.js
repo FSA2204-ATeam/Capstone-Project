@@ -22,7 +22,12 @@ export const setUserRSVP = (event) => async (dispatch) => {
         authorization: token,
       },
     });
-    console.log("data -->", data);
+    data.totalGuests++;
+    const { updatedData } = await axios.put("/api/usersEvents", data, {
+      headers: {
+        authorization: token,
+      },
+    });
     //dispatch(_setUserRSVP(userRSVP));
   } catch (error) {
     console.error(error);
@@ -36,7 +41,6 @@ export const fetchUserEvents = () => async (dispatch) => {
         authorization: token,
       },
     });
-    console.log("User's Events --> ", data);
     dispatch(_fetchUserEvents(data));
   } catch (error) {
     console.error(error);
