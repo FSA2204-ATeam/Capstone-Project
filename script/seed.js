@@ -1,5 +1,8 @@
 "use strict";
 
+const { Sequelize } = require("sequelize");
+const axios = require("axios");
+
 const {
   db,
   models: { User, Event, UsersEvents, UserPreferences },
@@ -21,8 +24,33 @@ async function seed() {
   // Creating events
   const events = await Event.bulkCreate(eventsSeed);
 
+  //  create connections
+  let [newEvent] = await events[0].addUsers(users[0]);
+
+  // console.log("Active User", users[0]);
+  // console.log("Active Event", events[0]);
+  // console.log("Crossover Event info", newEvent);
+  newEvent.set({
+    attended: true,
+    review: "I liked watching the animals at the zoo.",
+  });
+
+  await newEvent.save();
+
+  const returnedValue = await axios.post("/api/sentimentAnalysis", null, {
+    headers: { review: `${newEvent.review}` },
+  });
+
+  console.log("sentiment analysis result: ", returnedValue);
+  // newEvent.set({
+  //   sentimentScore,
+  //   sentimentLabel,
+  // });
+  // await newEvent.save();
+
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${events.length} events`);
+  console.log(`seeded ${newEvent.length} crossover(s)`);
   console.log(`seeded successfully`);
   return {
     users: {

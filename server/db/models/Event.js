@@ -38,6 +38,12 @@ const Event = db.define("event", {
   databaseId: {
     type: Sequelize.STRING,
     unique: true,
+
+    validate: {
+      isString() {
+        if (typeof this.databaseId !== "string") this.databaseId.toString();
+      },
+    },
   },
   category: {
     type: Sequelize.STRING,

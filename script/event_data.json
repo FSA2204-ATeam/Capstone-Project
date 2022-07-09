@@ -8,7 +8,8 @@
     "address": " WEST  175 STREET between WADSWORTH AVENUE and BROADWAY  Manhattan",
     "eventLat": "40.8464761",
     "eventLng": "-73.9399866",
-    "category": "Food"
+    "category": "Food",
+    "databaseId": 123456
   },
   {
     "name": "2022 Fordham Road Sidewalk Sale",
@@ -893,5 +894,313 @@
     "eventLat": "40.7513963",
     "eventLng": "-73.8339489",
     "category": "Education"
+  },
+  {
+    "name": "Primary Election - Last Day to Postmark Voter Registration Application",
+    "shortDesc": "July 29, 2022 is the last day to postmark a voter registration application to vote in the 2022 Primary Election on August 23, 2022.",
+    "timePart": "9am to 5pm",
+    "datePart": "Jul 29",
+    "permalink": "http://www1.nyc.gov/events/primary-election---last-day-to-postmark-voter-registration-application/171441/1",
+    "address": "Citywide",
+    "eventLat": "40.8556079",
+    "eventLng": "-73.8398387",
+    "databaseId": 171441
+  },
+  {
+    "name": "Primary Election - Last Day to Register In Person to Vote",
+    "shortDesc": "July 29, 2022 is the last day to register in-person to vote in the 2022 Primary Election on August 23, 2022.",
+    "timePart": "9am to 5pm",
+    "datePart": "Jul 29",
+    "permalink": "http://www1.nyc.gov/events/primary-election---last-day-to-register-in-person-to-vote/171444/1",
+    "address": "32 Broadway 7th Floor",
+    "eventLat": "40.70587150000001",
+    "eventLng": "-74.0129819",
+    "databaseId": 171444
+  },
+  {
+    "name": "Primary Election - Change of Address",
+    "shortDesc": "Primary Election occurs August 23, 2022. Change of address received by August 3, 2022 for the 2022 Primary Election must be processed.",
+    "timePart": "9am to 5pm",
+    "datePart": "Aug 3",
+    "permalink": "http://www1.nyc.gov/events/primary-election---change-of-address/171438/1",
+    "address": "Citywide",
+    "eventLat": "40.8556079",
+    "eventLng": "-73.8398387",
+    "databaseId": 171438
+  },
+  {
+    "name": "Primary Election - Last Day to Postmark an Application for an Absentee Ballot",
+    "shortDesc": "August 8th is the last day to postmark an absentee ballot application to vote in the 2022 Primary Election on August 23, 2022.",
+    "timePart": "9am to 5pm",
+    "datePart": "Aug 8",
+    "permalink": "http://www1.nyc.gov/events/primary-election---last-day-to-postmark-an-application-for-an-absentee-ballot/171442/1",
+    "address": "Citywide",
+    "eventLat": "40.8556079",
+    "eventLng": "-73.8398387",
+    "databaseId": 171442
+  },
+  {
+    "name": "97 Street Greenmarket Friday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 8",
+    "permalink": "http://www1.nyc.gov/events/97-street-greenmarket-friday/379911/1",
+    "address": " WEST   97 STREET between COLUMBUS AVENUE and AMSTERDAM AVENUE  Manhattan",
+    "eventLat": "40.8134463",
+    "eventLng": "-73.9562105",
+    "databaseId": 379911
+  },
+  {
+    "name": "Crown Heights Farm Stand",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 8",
+    "permalink": "http://www1.nyc.gov/events/crown-heights-farm-stand/379718/1",
+    "address": " NOSTRAND AVENUE between CARROLL STREET and CROWN STREET  Brooklyn",
+    "eventLat": "40.6414369",
+    "eventLng": "-73.94856590000001",
+    "databaseId": 379718
+  },
+  {
+    "name": "HHFM Metropolitan Market",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 3pm",
+    "datePart": "Jul 8",
+    "permalink": "http://www1.nyc.gov/events/hhfm-metropolitan-market/379367/1",
+    "address": " SECOND AVENUE between EAST   97 STREET and EAST 98 STREET  Manhattan",
+    "eventLat": "40.7830603",
+    "eventLng": "-73.9712488",
+    "databaseId": 379367
+  },
+  {
+    "name": "Lincoln Hospital Greenmarket Tuesday  Friday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 8",
+    "permalink": "http://www1.nyc.gov/events/lincoln-hospital-greenmarket-tuesday--friday/379295/1",
+    "address": " EAST  149 STREET between PARK AVENUE and MORRIS AVENUE  Bronx",
+    "eventLat": "40.812119",
+    "eventLng": "-73.904099",
+    "databaseId": 379295
+  },
+  {
+    "name": "Union Square Greenmarket Monday, Wednesday, Friday and Saturday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 7pm",
+    "datePart": "Jul 8",
+    "permalink": "http://www1.nyc.gov/events/union-square-greenmarket-monday-wednesday-friday-and-saturday/378675/1",
+    "address": " UNION SQUARE WEST between EAST   14 STREET and EAST   15 STREET  Manhattan",
+    "eventLat": "40.7358984",
+    "eventLng": "-73.9912281",
+    "databaseId": 378675
+  },
+  {
+    "name": "Old Cathedral Outdoor Market",
+    "shortDesc": "Sidewalk Sale",
+    "timePart": "9am to 8pm",
+    "datePart": "Jul 8",
+    "permalink": "http://www1.nyc.gov/events/old-cathedral-outdoor-market/379105/1",
+    "address": " PRINCE STREET between MOTT STREET and MULBERRY STREET  Manhattan",
+    "eventLat": "40.7193939",
+    "eventLng": "-73.9972731",
+    "databaseId": 379105
+  },
+  {
+    "name": "2022 Fordham Road Sidewalk Sale",
+    "shortDesc": "Sidewalk Sale",
+    "timePart": "10am to 9pm",
+    "datePart": "Jul 8",
+    "permalink": "http://www1.nyc.gov/events/2022-fordham-road-sidewalk-sale/380002/1",
+    "address": " EAST FORDHAM ROAD between JEROME AVENUE and WASHINGTON AVENUE  Bronx",
+    "eventLat": "40.8416035",
+    "eventLng": "-73.9011331",
+    "databaseId": 380002
+  },
+  {
+    "name": "57 Street Wednesday  Saturday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 6pm",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/events/57-street-wednesday--saturday/380053/1",
+    "address": " 10 AVENUE between WEST   57 STREET and WEST   58 STREET  Manhattan",
+    "eventLat": "40.7830603",
+    "eventLng": "-73.9712488",
+    "databaseId": 380053
+  },
+  {
+    "name": "HHFM Lenox Avenue Market",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 3pm",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/events/hhfm-lenox-avenue-market/379341/1",
+    "address": " LENOX AVENUE between WEST  117 STREET and WEST  118 STREET  Manhattan",
+    "eventLat": "40.7830603",
+    "eventLng": "-73.9712488",
+    "databaseId": 379341
+  },
+  {
+    "name": "Union Square Greenmarket Monday, Wednesday, Friday and Saturday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 7pm",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/events/union-square-greenmarket-monday-wednesday-friday-and-saturday/378676/1",
+    "address": " UNION SQUARE WEST between EAST   14 STREET and EAST   15 STREET  Manhattan",
+    "eventLat": "40.7358984",
+    "eventLng": "-73.9912281",
+    "databaseId": 378676
+  },
+  {
+    "name": "Forest Fitness",
+    "shortDesc": "Join the Fort Tryon Park Trust for a free, year-round exercise program on Tuesdays, Thursdays, and Saturdays!",
+    "timePart": "8:30am to 9:30am",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/events/forest-fitness/331550/24",
+    "address": "Margaret Corbin Circle",
+    "eventLat": "40.8625073",
+    "eventLng": "-73.9327086",
+    "databaseId": 331550
+  },
+  {
+    "name": "Birding: Hawk Watch",
+    "shortDesc": "New York City is home to an amazing abundance of wildlife.",
+    "timePart": "9am to 10am",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/events/birding-hawk-watch/388450/1",
+    "address": "Unisphere",
+    "eventLat": "40.7463889",
+    "eventLng": "-73.84506759999999",
+    "databaseId": 388450
+  },
+  {
+    "name": "NYC Parks Presents: Pickleball Festival at St Mary's Park",
+    "shortDesc": "Adults and Seniors are invited to join NYC Parks for a Free Pickleball Festival!",
+    "timePart": "9am to 12pm",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/events/nyc-parks-presents-pickleball-festival-at-st-marys-park/388451/1",
+    "address": "St. Mary's Park",
+    "eventLat": "40.8117387",
+    "eventLng": "-73.9120243",
+    "databaseId": 388451
+  },
+  {
+    "name": "Old Cathedral Outdoor Market",
+    "shortDesc": "Sidewalk Sale",
+    "timePart": "9am to 8pm",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/events/old-cathedral-outdoor-market/379106/1",
+    "address": " PRINCE STREET between MOTT STREET and MULBERRY STREET  Manhattan",
+    "eventLat": "40.7193939",
+    "eventLng": "-73.9972731",
+    "databaseId": 379106
+  },
+  {
+    "name": "RB Farmers Market Maria Hernandez Park",
+    "shortDesc": "Farmers Market",
+    "timePart": "9am to 3pm",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/events/rb-farmers-market-maria-hernandez-park/378849/1",
+    "address": " KNICKERBOCKER AVENUE between STARR STREET and SUYDAM STREET  Brooklyn",
+    "eventLat": "40.6987489",
+    "eventLng": "-73.9197228",
+    "databaseId": 378849
+  },
+  {
+    "name": "2022 Fordham Road Sidewalk Sale",
+    "shortDesc": "Sidewalk Sale",
+    "timePart": "10am to 9pm",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/events/2022-fordham-road-sidewalk-sale/379954/1",
+    "address": " EAST FORDHAM ROAD between JEROME AVENUE and WASHINGTON AVENUE  Bronx",
+    "eventLat": "40.8416035",
+    "eventLng": "-73.9011331",
+    "databaseId": 379954
+  },
+  {
+    "name": "Farm Exploration Days",
+    "shortDesc": "Explore the Urban Farm's variety of crops, rice paddies, and fragrant herbs, and meet the chickens too! All ages welcome!",
+    "timePart": "10am to 4pm",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/events/farm-exploration-days/353765/29",
+    "address": "Urban Farm - Wards Meadow Loop",
+    "eventLat": "40.7841949",
+    "eventLng": "-73.92590330000002",
+    "databaseId": 353765
+  },
+  {
+    "name": "Free Helmet Fitting and Distribution Event",
+    "shortDesc": "DOT will provide free bike helmets, fittings and distribution while supplies last. Helmets are available for all ages, but you must be present and pro",
+    "timePart": "11am to 2:30pm",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/site/visionzero/events/free-helmet-fitting-and-distribution-event/371022/1",
+    "address": "175-18 Merrick Boulevard",
+    "eventLat": "40.6931051",
+    "eventLng": "-73.77849239999999",
+    "databaseId": 371022
+  },
+  {
+    "name": "Summer on the Hudson: Star Gazing",
+    "shortDesc": "A summer evening in Manhattan is made complete with a great skyline and the stars, planets, and moon in full view.",
+    "timePart": "8pm to 11pm",
+    "datePart": "Jul 9",
+    "permalink": "http://www1.nyc.gov/events/summer-on-the-hudson-star-gazing/388449/1",
+    "address": "Pier I - West 70th Street",
+    "eventLat": "40.7799189",
+    "eventLng": "-73.98878789999999",
+    "databaseId": 388449
+  },
+  {
+    "name": "Murray Hill Farmers Market",
+    "shortDesc": "Farmers Market",
+    "timePart": "5am to 7pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/murray-hill-farmers-market/379063/1",
+    "address": " SECOND AVENUE between EAST   32 STREET and EAST   33 STREET  Manhattan",
+    "eventLat": "40.7641964",
+    "eventLng": "-73.9617361",
+    "databaseId": 379063
+  },
+  {
+    "name": "92 St Greenmarket Sunday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/92-st-greenmarket-sunday/379880/1",
+    "address": " 1 AVENUE between EAST   92 STREET and EAST   93 STREET  Manhattan",
+    "eventLat": "40.7832685",
+    "eventLng": "-73.9507498",
+    "databaseId": 379880
+  },
+  {
+    "name": "Carrol Gardens Greenmarket",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/carrol-gardens-greenmarket/379772/1",
+    "address": " CARROLL STREET between SMITH STREET and COURT STREET  Brooklyn",
+    "eventLat": "40.6793313",
+    "eventLng": "-73.9954833",
+    "databaseId": 379772
+  },
+  {
+    "name": "Cortelyou Greenmarket Sunday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/cortelyou-greenmarket-sunday/379695/1",
+    "address": " CORTELYOU ROAD between RUGBY ROAD and ARGYLE ROAD  Brooklyn",
+    "eventLat": "40.6412697",
+    "eventLng": "-73.9639694",
+    "databaseId": 379695
+  },
+  {
+    "name": "Forest Hills Greenmarket Sunday",
+    "shortDesc": "Farmers Market",
+    "timePart": "8am to 5pm",
+    "datePart": "Jul 10",
+    "permalink": "http://www1.nyc.gov/events/forest-hills-greenmarket-sunday/380111/1",
+    "address": " QUEENS BLVD between 70 ROAD  and 69 ROAD  Queens",
+    "eventLat": "40.7489985",
+    "eventLng": "-73.89559869999999",
+    "databaseId": 380111
   }
 ]
