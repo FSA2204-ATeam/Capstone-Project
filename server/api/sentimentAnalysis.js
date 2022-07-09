@@ -2,12 +2,12 @@ const router = require("express").Router();
 const NaturalLanguageUnderstandingV1 = require("ibm-watson/natural-language-understanding/v1");
 const { IamAuthenticator } = require("ibm-watson/auth");
 
-const API_KEY = process.env.WATSON_IBM_API_KEY;
+router.post("/", async (req, res, next) => {
+  const API_KEY = process.env.WATSON_IBM_API_KEY;
 
-const url =
-  "https://api.us-east.natural-language-understanding.watson.cloud.ibm.com/instances/ac94611c-99fa-4a1f-9cea-168ca4361ddb";
+  const url =
+    "https://api.us-east.natural-language-understanding.watson.cloud.ibm.com/instances/ac94611c-99fa-4a1f-9cea-168ca4361ddb";
 
-router.post("/", async (req, res, send) => {
   const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
     version: "2022-04-07",
     authenticator: new IamAuthenticator({
@@ -17,8 +17,7 @@ router.post("/", async (req, res, send) => {
   });
 
   const analyzeParams = {
-    // text: `${req.body.whatever}`
-    text: "I enjoyed going to the market.",
+    text: `${req.headers.review}`,
     features: {
       sentiment: {},
     },
