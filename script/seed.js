@@ -25,33 +25,16 @@ async function seed() {
   // Creating events
   const events = await Event.bulkCreate(eventsSeed);
 
+  const crossover = await users[0].addEvents(events[2]);
+
+  // for (let i = 0; i < users.length; i++) {
+
+  // }
+
   //  create connections
-  let [newEvent] = await events[0].addUsers(users[0]);
-
-  // console.log("Active User", users[0]);
-  // console.log("Active Event", events[0]);
-  // console.log("Crossover Event info", newEvent);
-  newEvent.set({
-    attended: true,
-    review: "I liked watching the animals at the zoo.",
-  });
-
-  await newEvent.save();
-
-  const returnedValue = await axios.post("/api/sentimentAnalysis", null, {
-    headers: { review: `${newEvent.review}` },
-  });
-
-  console.log("sentiment analysis result: ", returnedValue);
-  // newEvent.set({
-  //   sentimentScore,
-  //   sentimentLabel,
-  // });
-  // await newEvent.save();
-
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${events.length} events`);
-  console.log(`seeded ${newEvent.length} crossover(s)`);
+  console.log(`seeded ${crossover.length} crossover(s)`);
   console.log(`seeded successfully`);
   return {
     users: {

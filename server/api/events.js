@@ -8,14 +8,14 @@ const formatDate = require("../../script/formatDate");
 
 router.get("/", async (req, res, next) => {
   let startDate = formatDate(0);
-  let endDate = formatDate(1);
+  let endDate = formatDate(10);
 
   console.log(`Looking for Events between ${startDate} and ${endDate}!`);
 
   let addressUrl = `https://api.nyc.gov/calendar/search?startDate=${startDate} 12:00 AM&endDate=${endDate} 12:00 AM&pageNumber=`;
   let events = [];
 
-  for (let pgno = 1; pgno <= 5; pgno++) {
+  for (let pgno = 1; pgno <= 25; pgno++) {
     try {
       const { data } = await axios.get(`${addressUrl}${pgno}`, {
         headers: {
