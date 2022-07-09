@@ -2,7 +2,6 @@
 
 const { Sequelize } = require("sequelize");
 const axios = require("axios");
-const uniqueRandomizer = require("./uniqueRandomizer");
 
 const {
   db,
