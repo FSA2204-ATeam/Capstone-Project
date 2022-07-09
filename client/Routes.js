@@ -8,7 +8,8 @@ import Home from './components/Home';
 import { me } from './store';
 import { fetchUserEvents } from './store/usersEvents';
 import { fetchUserPreferences } from './store';
-import UserProfileForm from './components/UserProfileForm';
+import { UserProfileForm } from './components/UserProfileForm';
+import NewEventForm from './components/NewEventForm';
 
 /**
  * COMPONENT
@@ -30,6 +31,7 @@ class Routes extends Component {
           <Route exact path="/signup" component={PopUpWindowSignUp} />
           <Route exact path="/profile" component={UserProfileForm} />
           <Route exact path="/speechtotext" component={SpeechToText} />
+          <Route exact path="/newEvent" component={NewEventForm} />
         </Switch>
       </div>
     );
