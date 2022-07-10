@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import FormInput from './FormInput';
+import axios from 'axios';
 
 export const NewEventForm = (latLng) => {
   const [values, setValues] = useState({
+    databaseId: 'testest',
     name: '',
     shortDesc: '',
     datePart: '',
@@ -13,7 +15,11 @@ export const NewEventForm = (latLng) => {
 
   useEffect(() => {
     console.log('useEffect running');
-    setValues({ eventLat: latLng.position.lat, eventLng: latLng.position.lng });
+    setValues({
+      ...values,
+      eventLat: latLng.position.lat,
+      eventLng: latLng.position.lng,
+    });
   }, [latLng]);
 
   const inputs = [
@@ -53,13 +59,23 @@ export const NewEventForm = (latLng) => {
     },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(values);
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      const newUserEvt = await axios.post('api/usersevents', values, {
+        headers: {
+          authorization: token,
+        },
+      });
+      console.log('new user event from db', newUserEvt);
+    }
   };
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    console.log('form values ----->', values);
   };
 
   return (

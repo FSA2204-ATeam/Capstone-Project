@@ -8,8 +8,8 @@ import Home from './components/Home';
 import { me } from './store';
 import { fetchUserEvents } from './store/usersEvents';
 import { fetchUserPreferences } from './store';
-import { UserProfileForm } from './components/UserProfileForm';
-import NewEventForm from './components/NewEventForm';
+import UserProfileForm from './components/UserProfileForm';
+import { NewEventForm } from './components/NewEventForm';
 
 /**
  * COMPONENT
