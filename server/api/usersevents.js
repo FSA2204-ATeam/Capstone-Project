@@ -1,17 +1,17 @@
-const router = require("express").Router();
-const axios = require("axios");
+const router = require('express').Router();
+const axios = require('axios');
 const {
   models: { Event, User, UsersEvents },
-} = require("../db");
+} = require('../db');
 
-const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
+const { requireToken, isAdmin } = require('../api/gateKeepingMiddleware');
 module.exports = router;
 
-router.post("/", requireToken, async (req, res, next) => {
+router.post('/', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     const [newEvent, created] = await Event.findOrCreate({
-      where: { databaseId: req.body.databaseId },
+      where: req.body,
       defaults: req.body,
     });
     await newEvent.setUsers(user);
@@ -21,7 +21,7 @@ router.post("/", requireToken, async (req, res, next) => {
   }
 });
 
-router.get("/", requireToken, async (req, res, next) => {
+router.get('/', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     const data = await UsersEvents.findAll({
@@ -31,7 +31,7 @@ router.get("/", requireToken, async (req, res, next) => {
     });
     //   include: { model: Event, where: { eventId: { $col: "id" } } },
     // });
-    console.log("Associations -->", data);
+    console.log('Associations -->', data);
     res.json(data);
   } catch (error) {
     next(error);

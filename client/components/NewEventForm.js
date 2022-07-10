@@ -4,7 +4,6 @@ import axios from 'axios';
 
 export const NewEventForm = (latLng) => {
   const [values, setValues] = useState({
-    databaseId: 'testest',
     name: '',
     shortDesc: '',
     datePart: '',
