@@ -1,54 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import FormInput from './FormInput';
 
-export const NewEventForm = () => {
+export const NewEventForm = (latLng) => {
   const [values, setValues] = useState({
-    title: '',
-    email: '',
-    birthday: '',
-    password: '',
-    confirmPassword: '',
+    name: '',
+    shortDesc: '',
+    datePart: '',
+    timePart: '',
+    eventLat: 0,
+    eventLng: 0,
   });
+
+  useEffect(() => {
+    console.log('useEffect running');
+    setValues({ eventLat: latLng.position.lat, eventLng: latLng.position.lng });
+  }, [latLng]);
 
   const inputs = [
     {
       id: 1,
-      name: 'title',
+      name: 'name',
       type: 'text',
       placeholder: 'Title',
-      errorMessage: 'Title should be 3-200 characters long!',
+      errorMessage: 'Title should be 2-50 characters long!',
       label: 'title',
-      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+      pattern: '^[A-Za-z0-9]{2,50}$',
       required: true,
     },
     {
       id: 2,
-      name: 'description',
+      name: 'shortDesc',
       type: 'text',
       placeholder: 'Description',
       errorMessage: 'Description should be 3-1024 characters!',
       label: 'description',
-      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+      pattern: '^[A-Za-z0-9]{3,1024}$',
       required: true,
     },
     {
       id: 3,
-      name: 'start',
+      name: 'datePart',
       type: 'date',
       placeholder: 'Start',
-      label: 'DateTimePicker',
+      label: 'Start Date',
     },
     {
       id: 4,
-      name: 'end',
+      name: 'timePart',
       type: 'time',
       placeholder: 'End',
-      label: 'endDate',
+      label: 'Start Time',
     },
   ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(values);
   };
 
   const onChange = (e) => {

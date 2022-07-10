@@ -172,7 +172,7 @@ const MapContainer = ({
                       onCloseClick={() => setSelectedEvent(null)}
                     >
                       <div>
-                        <NewEventForm />
+                        <NewEventForm position={newEvtPosition} />
                       </div>
                     </InfoWindow>
                   )}
