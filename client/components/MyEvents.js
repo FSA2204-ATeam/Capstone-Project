@@ -41,7 +41,7 @@ const MyEvents = () => {
               variant="elevation"
               style={{ background: "lightGray" }}
             >
-              <h3>{event.name}</h3>
+              <h1>{event.name}</h1>
               <p>
                 {event.datePart} from {event.timePart}
               </p>

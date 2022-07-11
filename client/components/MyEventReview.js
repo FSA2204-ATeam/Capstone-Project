@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSentimentAnalysis } from "../store/sentimentAnalysis";
 
 function MyEventReview({ props }) {
-  console.log("GRAB MY EVENT?", props);
   const [review, setReview] = useState("");
   const [analysis, setAnalysis] = useState({});
   const analysisResult = useSelector((state) => state.analysis);
@@ -17,20 +16,20 @@ function MyEventReview({ props }) {
 
   return (
     <div>
-      <h1>Header</h1>
-      <p>This is a test of where this thing is.</p>
+      <h3>My Review</h3>
+      <p>Please fill enter your thoughts and feelings about the event</p>
       <form id="test-review-submit" onSubmit={handleSubmit}>
         <label>
           Review:
           <input
             name="review"
             type="text"
-            placeholder="Review"
+            placeholder="Your response here..."
             value={review}
             onChange={(e) => setReview(e.target.value)}
           />
         </label>
-        <button type="submit">Submit Review</button>
+        <button type="submit">Submit</button>
       </form>
 
       <p></p>
