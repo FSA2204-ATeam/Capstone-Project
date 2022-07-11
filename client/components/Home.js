@@ -101,7 +101,7 @@ const MapContainer = ({
 
   return (
     <div>
-      <Container maxWidth="lg" sx={{ marginY: 12 }}>
+      <Container maxWidth={false} sx={{ marginY: 12 }}>
         <Grid container spacing={5} style={{ justifyContent: 'space-around' }}>
           <LoadScript
             mapIds={['61b5009386a6596e']}
@@ -176,28 +176,21 @@ const MapContainer = ({
                 <div>
                   <Button
                     style={{
-                      marginTop: 10, // was set to 70 in main
-                      marginLeft: 860,
-                      height: "60px",
-                      width: "60px",
+                      marginTop: "5vh",
+                      marginLeft: "80vw",
                     }}
                     variant="contained"
                     size="large"
-                    color="#808080"
+                    color="default"
                     onClick={openPopover}
                   >
-                    USER
-                    {/* {firstname} */}
+                   {firstname[0].toUpperCase()}
                   </Button>
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
-                    anchorPosition={{ top: 150, left: 980 }}
+                    anchorPosition={{ top: 100, left: 980 }}
                     anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    transformOrigin={{
                       vertical: "top",
                       horizontal: "right",
                     }}
@@ -210,38 +203,29 @@ const MapContainer = ({
                 <div>
                   <Button
                     style={{
-                      marginTop: 10, // was 70 in main
-                      marginLeft: 860,
-                      height: "60px",
-                      width: "60px",
+                      marginTop: "5vh",
+                      marginLeft: "70vw",
                     }}
                     variant="contained"
                     size="large"
-                    color="#808080"
+                    color="default"
                     onClick={openPopover}
                   >
-                    😀
+                  😀
                   </Button>
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
-                    anchorPosition={{ top: 150, left: 980 }}
+                    anchorPosition={{ top: 100, left: 980 }}
                     anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    transformOrigin={{
                       vertical: "top",
                       horizontal: "right",
                     }}
                     onClose={() => setAnchor(null)}
                   >
                     <Card
-                      xs={12}
-                      md={6}
-                      lg={3}
                       elevation={3}
-                      className={classes.p}
+                      className={classes.h4}
                       variant="elevation"
                       style={{ background: "#808080" }}
                     >
@@ -261,12 +245,8 @@ const MapContainer = ({
                           anchorReference="anchorPosition"
                           isOpen={popoverLogin}
                           target="Login"
-                          anchorPosition={{ top: 150, left: 980 }}
+                          anchorPosition={{ top: 100, left: 980 }}
                           anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                          }}
-                          transformOrigin={{
                             vertical: 'top',
                             horizontal: 'right',
                           }}
@@ -280,12 +260,8 @@ const MapContainer = ({
                           anchorReference="anchorPosition"
                           isOpen={popoverSignup}
                           target="Signup"
-                          anchorPosition={{ top: 150, left: 980 }}
+                          anchorPosition={{ top: 100, left: 980 }}
                           anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                          }}
-                          transformOrigin={{
                             vertical: 'top',
                             horizontal: 'right',
                           }}
@@ -336,6 +312,7 @@ const mapState = (state) => {
     isLoggedIn: !!state.auth.id,
     isAdmin: state.auth.isAdmin,
     usersEvents: state.usersEvents,
+    firstname: state.auth.firstname
   };
 };
 

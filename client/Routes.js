@@ -20,15 +20,11 @@ class Routes extends Component {
   }
 
   render() {
-    // const {isLoggedIn} = this.props
-
     return (
       <div>
         <Switch>
           <Route exact path="/home" component={Home} />
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={PopUpWindowLogin} />
-          <Route exact path="/signup" component={PopUpWindowSignUp} />
           <Route exact path="/profile" component={UserProfileForm} />
           <Route exact path="/speechtotext" component={SpeechToText} />
           <Route exact path="/testing" component={TestingGround} />
