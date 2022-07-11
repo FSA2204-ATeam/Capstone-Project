@@ -21,18 +21,14 @@ router.post('/', requireToken, async (req, res, next) => {
   }
 });
 
-router.get('/', requireToken, async (req, res, next) => {
+router.put("/", requireToken, async (req, res, next) => {
   try {
-    const user = await User.findByToken(req.headers.authorization);
-    const data = await UsersEvents.findAll({
-      where: {
-        userId: user.dataValues.id,
+    const event = await Event.update(
+      {
+        totalGuests: req.body.totalGuests,
       },
-    });
-    //   include: { model: Event, where: { eventId: { $col: "id" } } },
-    // });
-    console.log('Associations -->', data);
-    res.json(data);
+      { where: { id: req.body.id } }
+    );
   } catch (error) {
     next(error);
   }
