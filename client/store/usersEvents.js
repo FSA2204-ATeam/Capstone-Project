@@ -55,14 +55,12 @@ export const fetchUserEvents = () => async (dispatch) => {
 
 export const setUserEvents = (userId) => async (dispatch) => {
   try {
-    console.log("userEvents THUNK activated");
     const { data } = await axios.get("/api/usersEvents", {
       headers: {
         authorization: token,
       },
     });
-    console.log("DID MAKE IT?-->", data);
-    //dispatch(_setUserEvents(data));
+    dispatch(_setUserEvents(data));
   } catch (error) {
     console.error(error);
   }
@@ -74,6 +72,9 @@ const usersEventsReducer = (state = [], action) => {
       return action.userRSVP;
     case FETCH_USER_EVENTS:
       return action.userEvents;
+    case SET_USER_EVENTS:
+      console.log(action.events);
+      return action.events;
     default:
       return state;
   }

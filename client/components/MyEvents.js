@@ -6,13 +6,17 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
 const MyEvents = () => {
-  const usersEvents = useSelector((state) => state.usersEvents);
+  //const usersEvents = useSelector((state) => state.usersEvents);
   const user = useSelector((state) => state.auth);
+  const myEvents = useSelector((state) => state.usersEvents);
   const dispatch = useDispatch();
 
+  console.log("USER AND MY EVENTS", user, myEvents);
+
   useEffect(() => {
-    console.log("ID", user.id);
     dispatch(setUserEvents(user.id));
+    // console.log("ID", user.id);
+    // console.log("ASSOCIATED EVENTS", myEvents);
   }, []);
 
   return (
