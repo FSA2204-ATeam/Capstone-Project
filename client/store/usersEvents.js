@@ -117,7 +117,12 @@ const usersEventsReducer = (state = { events: [], reviews: [] }, action) => {
     case SET_USER_EVENTS:
       return { ...state, events: action.events };
     case REMOVE_USER_EVENT:
-      return state.filter((event) => event.id !== action.userEvent.eventId);
+      return {
+        ...state,
+        events: state.events.filter(
+          (event) => event.id !== action.userEvent.eventId
+        ),
+      };
     default:
       return state;
   }
