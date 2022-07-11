@@ -4,6 +4,7 @@ const token = window.localStorage.getItem("token");
 
 const SET_USER_RSVP = "SET_USER_RSVP";
 const FETCH_USER_EVENTS = "FETCH_USER_EVENTS";
+const FETCH_USER_REVIEWS = "FETCH_USER_REVIEWS";
 const SET_USER_EVENTS = "SET_USER_EVENTS";
 const REMOVE_USER_EVENT = "REMOVE_USER_EVENT";
 
@@ -15,6 +16,11 @@ export const _setUserRSVP = (idx) => ({
 export const _fetchUserEvents = (userEvents) => ({
   type: FETCH_USER_EVENTS,
   userEvents,
+});
+
+export const _fetchUserReviews = (reviews) => ({
+  type: FETCH_USER_REVIEWS,
+  reviews,
 });
 
 export const _setUserEvents = (events) => ({
@@ -59,6 +65,19 @@ export const fetchUserEvents = () => async (dispatch) => {
   }
 };
 
+export const fetchUserReviews = () => async (dispatch) => {
+  try {
+    const { data } = await axios.get("/api/usersEvents/userReviews", {
+      headers: {
+        authorization: token,
+      },
+    });
+    console.log("ASSOCIATIONS RETRIEVED", data);
+    dispatch(_fetchUserReviews(data));
+  } catch (error) {
+    console.error(error);
+  }
+};
 export const setUserEvents = (userId) => async (dispatch) => {
   try {
     const { data } = await axios.get("/api/usersEvents", {
@@ -86,15 +105,17 @@ export const removeUsersEvent = (eventId, userId) => async (dispatch) => {
   }
 };
 
-const usersEventsReducer = (state = [], action) => {
+const usersEventsReducer = (state = { events: [], reviews: [] }, action) => {
   switch (action.type) {
     case SET_USER_RSVP:
       console.log(action.userRSVP);
       return action.userRSVP;
     case FETCH_USER_EVENTS:
-      return action.userEvents;
+      return { ...state, events: action.userEvents };
+    case FETCH_USER_REVIEWS:
+      return { ...state, reviews: action.reviews };
     case SET_USER_EVENTS:
-      return action.events;
+      return { ...state, events: action.events };
     case REMOVE_USER_EVENT:
       return state.filter((event) => event.id !== action.userEvent.eventId);
     default:

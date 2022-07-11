@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useReducer } from "react";
-import { setUserEvents, removeUsersEvent } from "../store/usersEvents";
+import {
+  setUserEvents,
+  removeUsersEvent,
+  fetchUserReviews,
+} from "../store/usersEvents";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -20,11 +24,13 @@ import SingleEvent from "./SingleEvent";
 
 const MyEvents = () => {
   const user = useSelector((state) => state.auth);
-  const myEvents = useSelector((state) => state.usersEvents);
+  const myEvents = useSelector((state) => state.usersEvents.events);
+  const myReviews = useSelector((state) => state.usersEvents.reviews);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setUserEvents(user.id));
+    dispatch(fetchUserReviews());
   }, []);
 
   const onRemoveClick = (eventId, userId) => {

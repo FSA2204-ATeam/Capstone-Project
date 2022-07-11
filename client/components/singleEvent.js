@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 const SingleEvent = ({ props }) => {
-  console.log("These are passed props--->", props);
   return (
     <div>
       <h3>My Event Details</h3>

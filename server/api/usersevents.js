@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const axios = require("axios");
 const {
   models: { Event, User, UsersEvents },
 } = require("../db");
@@ -55,8 +54,23 @@ router.get("/", requireToken, async (req, res, next) => {
     const data = await User.findByPk(user.dataValues.id, {
       include: [Event],
     });
-    console.log("EVENTS & ASSSOCIATIONS", data);
+    //console.log("EVENTS & ASSSOCIATIONS", data);
     res.json(data.dataValues.events);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/userReviews", requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    const data = await UsersEvents.findAll({
+      where: {
+        userId: user.id,
+      },
+    });
+    console.log("API results for reviews", data);
+    res.json(data);
   } catch (error) {
     next(error);
   }

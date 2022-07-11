@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSentimentAnalysis } from "../store/sentimentAnalysis";
 
@@ -20,7 +20,6 @@ function MyEventReview({ props }) {
       <p>Please fill enter your thoughts and feelings about the event</p>
       <form id="test-review-submit" onSubmit={handleSubmit}>
         <label>
-          Review:
           <input
             name="review"
             type="text"
@@ -31,8 +30,6 @@ function MyEventReview({ props }) {
         </label>
         <button type="submit">Submit</button>
       </form>
-
-      <p></p>
     </div>
   );
 }
