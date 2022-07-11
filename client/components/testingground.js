@@ -19,7 +19,7 @@ export const _setSentimentAnalysis = (analysis) => ({
 export const getSentimentAnalysis = (review) => {
   return async (dispatch) => {
     try {
-      // console.log("inside getSentimentAnalysis: ", review);
+      console.log("inside getSentimentAnalysis: ", review);
       const { data } = await axios.post("/api/sentimentAnalysis", null, {
         headers: { review },
       });

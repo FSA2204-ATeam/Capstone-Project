@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   GoogleMap,
   LoadScript,
@@ -78,8 +78,8 @@ const MapContainer = ({
   });
 
   const mapStyles = {
-    height: '100vh',
-    width: '100%',
+    height: "100vh",
+    width: "100%",
   };
 
   useEffect(() => {
@@ -97,17 +97,17 @@ const MapContainer = ({
 
   const [newEvtPosition, setNewEvtPosition] = useState({});
   const handleDblClick = (e) => {
-    console.log('DoubleClickEvent!!!!!!!!', e);
+    console.log("DoubleClickEvent!!!!!!!!", e);
     setNewEvtPosition(e);
   };
 
   return (
     <div>
       <Container maxWidth="lg" sx={{ marginY: 12 }}>
-        <Grid container spacing={5} style={{ justifyContent: 'space-around' }}>
+        <Grid container spacing={5} style={{ justifyContent: "space-around" }}>
           <LoadScript
-            mapIds={['61b5009386a6596e']}
-            googleMapsApiKey={'AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78'}
+            mapIds={["61b5009386a6596e"]}
+            googleMapsApiKey={"AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78"}
           >
             <GoogleMap
               onClick={() => setSelectedEvent(null)}
@@ -269,12 +269,12 @@ const MapContainer = ({
                           target="Login"
                           anchorPosition={{ top: 150, left: 980 }}
                           anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
+                            vertical: "top",
+                            horizontal: "right",
                           }}
                           transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
+                            vertical: "top",
+                            horizontal: "right",
                           }}
                           onClose={() => setAnchor(null)}
                         >
@@ -288,12 +288,12 @@ const MapContainer = ({
                           target="Signup"
                           anchorPosition={{ top: 150, left: 980 }}
                           anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
+                            vertical: "top",
+                            horizontal: "right",
                           }}
                           transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
+                            vertical: "top",
+                            horizontal: "right",
                           }}
                           onClose={() => setAnchor(null)}
                         >
@@ -304,9 +304,9 @@ const MapContainer = ({
                           <Button
                             id="Login"
                             style={{
-                              margin: '0 auto',
-                              display: 'flex',
-                              background: '#94C973',
+                              margin: "0 auto",
+                              display: "flex",
+                              background: "#94C973",
                             }}
                             onClick={toggleLogin}
                           >
@@ -315,9 +315,9 @@ const MapContainer = ({
                           <Button
                             id="Signup"
                             style={{
-                              margin: '0 auto',
-                              display: 'flex',
-                              background: '#68BBE3',
+                              margin: "0 auto",
+                              display: "flex",
+                              background: "#68BBE3",
                             }}
                             onClick={toggleSignup}
                           >

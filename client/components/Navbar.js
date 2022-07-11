@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import { useNavStyles } from "../theme";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const classes = useNavStyles();
@@ -15,8 +16,9 @@ const Navbar = () => {
       <AppBar position="fixed">
         <Toolbar>
           <Typography className={classes.title} variant="h4" noWrap>
-              URBAN SAFARI
+            URBAN SAFARI
           </Typography>
+          <Link to="./events/myevents">MY EVENTS</Link>
         </Toolbar>
       </AppBar>
     </div>
