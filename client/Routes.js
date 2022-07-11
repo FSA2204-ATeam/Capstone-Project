@@ -11,8 +11,7 @@ import { fetchUserPreferences } from "./store";
 import UserProfileForm from "./components/UserProfileForm";
 import MyEventReview from "./components/MyEventReview";
 import MyEvents from "./components/MyEvents";
-import { NewEventForm } from './components/NewEventForm';
-
+import { NewEventForm } from "./components/NewEventForm";
 
 /**
  * COMPONENT
@@ -23,8 +22,6 @@ class Routes extends Component {
   }
 
   render() {
-    // const {isLoggedIn} = this.props
-
     return (
       <div>
         <Switch>
