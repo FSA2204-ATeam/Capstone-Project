@@ -10,6 +10,7 @@ import { fetchUserEvents } from "./store/usersEvents";
 import { fetchUserPreferences } from "./store";
 import UserProfileForm from "./components/UserProfileForm";
 import TestingGround from "./components/testingground";
+import MyEvents from "./components/MyEvents";
 
 /**
  * COMPONENT
@@ -32,6 +33,7 @@ class Routes extends Component {
           <Route exact path="/profile" component={UserProfileForm} />
           <Route exact path="/speechtotext" component={SpeechToText} />
           <Route exact path="/testing" component={TestingGround} />
+          <Route exact path="/events/myevents" component={MyEvents} />
         </Switch>
       </div>
     );

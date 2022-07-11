@@ -4,6 +4,7 @@ const token = window.localStorage.getItem("token");
 
 const SET_USER_RSVP = "SET_USER_RSVP";
 const FETCH_USER_EVENTS = "FETCH_USER_EVENTS";
+const SET_USER_EVENTS = "SET_USER_EVENTS";
 
 export const _setUserRSVP = (idx) => ({
   type: SET_USER_RSVP,
@@ -13,6 +14,11 @@ export const _setUserRSVP = (idx) => ({
 export const _fetchUserEvents = (userEvents) => ({
   type: FETCH_USER_EVENTS,
   userEvents,
+});
+
+export const _setUserEvents = (events) => ({
+  type: SET_USER_EVENTS,
+  events,
 });
 
 export const setUserRSVP = (event) => async (dispatch) => {
@@ -42,6 +48,21 @@ export const fetchUserEvents = () => async (dispatch) => {
       },
     });
     dispatch(_fetchUserEvents(data));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const setUserEvents = (userId) => async (dispatch) => {
+  try {
+    console.log("userEvents THUNK activated");
+    const { data } = await axios.get("/api/usersEvents", {
+      headers: {
+        authorization: token,
+      },
+    });
+    console.log("DID MAKE IT?-->", data);
+    //dispatch(_setUserEvents(data));
   } catch (error) {
     console.error(error);
   }

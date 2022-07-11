@@ -5,6 +5,8 @@ const {
 } = require("../db");
 const User = require("../db/models/User");
 const formatDate = require("../../script/formatDate");
+const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
+module.exports = router;
 
 router.get("/", async (req, res, next) => {
   let startDate = formatDate(0);
@@ -73,6 +75,7 @@ router.post("/:userId", async (req, res, next) => {
 
 router.get("/:userId", async (req, res, next) => {
   try {
+    console.log("PARAMS", req.params);
     const events = await Event.findAll({
       where: { id: req.params.userId },
     });
@@ -82,4 +85,12 @@ router.get("/:userId", async (req, res, next) => {
   }
 });
 
+router.get("/myevents", requireToken, async (req, res, next) => {
+  try {
+    console.log("DID I MAKE IT????");
+    console.log("REQ BODY", req.body);
+  } catch (error) {
+    next(error);
+  }
+});
 module.exports = router;

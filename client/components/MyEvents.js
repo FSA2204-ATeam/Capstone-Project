@@ -1,64 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { connect } from "react-redux";
+import { setUserEvents } from "../store/usersEvents";
+import { me } from "../store/auth";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
-const MyEvents = (props) => {
-  //   useEffect(() => {
-  //     setUsersEvents();
-  //   });
+const MyEvents = () => {
+  const usersEvents = useSelector((state) => state.usersEvents);
+  const user = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
-  console.log("State--->", state);
+  useEffect(() => {
+    console.log("ID", user.id);
+    dispatch(setUserEvents(user.id));
+  }, []);
+
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <h1>{`${props.userProfile.username}'s profile`}</h1>
-        {inputs.map((input) => (
-          <FormInput
-            key={input.id}
-            {...input}
-            value={values[input.name]}
-            onChange={onChange}
-          />
-        ))}
-        <div>
-          {categoryPreferences
-            ? Object.keys(categoryPreferences).map((category, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  className={
-                    categoryPreferences[category]
-                      ? "categoryButton Selected"
-                      : "categoryButton"
-                  }
-                  onClick={() => handleCatSelect(category)}
-                >
-                  {category.slice(4)}
-                </button>
-              ))
-            : null}
-        </div>
-        <button>Update</button>
-      </form>
+      {/* {usersEvents.map((element) => {
+        return <div key={element.eventId}>{element.eventId}</div>;
+      })}
+      ; */}
+      HELLO WORLD I AM HERE DO YOU SEE ME?
     </div>
   );
 };
 
-const mapState = (state) => {
-  return {
-    userProfile: state.auth,
-    userPreferences: state.preferences,
-    //usersEvents: state.usersEvents,
-  };
-};
+// const mapState = (state) => {
+//   return {
+//     user: state.auth,
+//   };
+// };
 
-const mapDispatch = (dispatch) => {
-  return {
-    updateState(user, prefs) {
-      dispatch(updateProfile(user));
-      dispatch(updatePreferences(prefs));
-    },
-  };
-};
+// const mapDispatch = (dispatch) => {
+//   return {
+//     // loadInitialData() {
+//     //   dispatch(me());
+//     // },
+//   };
+// };
 
-export default connect(mapState, mapDispatch)(UserProfileForm);
+export default MyEvents;

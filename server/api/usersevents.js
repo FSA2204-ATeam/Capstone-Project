@@ -37,12 +37,10 @@ router.put("/", requireToken, async (req, res, next) => {
 router.get("/", requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-    const data = await UsersEvents.findAll({
-      where: {
-        userId: user.dataValues.id,
-      },
+    const data = await User.findByPk(user.dataValues.id, {
+      include: [Event],
     });
-    res.json(data);
+    res.json(data.dataValues.events);
   } catch (error) {
     next(error);
   }

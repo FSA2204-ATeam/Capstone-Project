@@ -5,6 +5,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import auth from "./auth";
 import preferences from "./userPreferences";
 import usersEvents from "./usersEvents";
+//import events from "./events";
 
 const reducer = combineReducers({ auth, preferences, usersEvents });
 const middleware = composeWithDevTools(
@@ -16,3 +17,4 @@ export default store;
 export * from "./auth";
 export * from "./userPreferences";
 export * from "./usersEvents";
+//export * from "./events";
