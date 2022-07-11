@@ -1,16 +1,18 @@
+
 const router = require("express").Router();
+
 const {
   models: { Event, User, UsersEvents },
-} = require("../db");
+} = require('../db');
 
-const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
+const { requireToken, isAdmin } = require('../api/gateKeepingMiddleware');
 module.exports = router;
 
-router.post("/", requireToken, async (req, res, next) => {
+router.post('/', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     const [newEvent, created] = await Event.findOrCreate({
-      where: { databaseId: req.body.databaseId },
+      where: req.body,
       defaults: req.body,
     });
     await newEvent.setUsers(user);
@@ -75,3 +77,4 @@ router.get("/userReviews", requireToken, async (req, res, next) => {
     next(error);
   }
 });
+

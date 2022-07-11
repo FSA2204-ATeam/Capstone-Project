@@ -4,19 +4,21 @@ import {
   LoadScript,
   Marker,
   InfoWindow,
-} from "@react-google-maps/api";
-import { Room, Star, StarBorder } from "@material-ui/icons";
-import axios from "axios";
-import User from "./PopUpWindowLogin";
-import { connect, useSelector } from "react-redux";
-import { logout } from "../store";
-import { setUserRSVP } from "../store/usersEvents";
-import PopUpWindowLogin from "./PopUpWindowLogin";
-import PopUpWindowSignUp from "./PopUpWindowSignUp";
-import PopUpWindowLogged from "./PopUpWindowLogged";
-import { Link } from "react-router-dom";
-import { Grid, Popover } from "@material-ui/core";
-import { useFrontEndStyles } from "../theme";
+} from '@react-google-maps/api';
+import { Room, Star, StarBorder } from '@material-ui/icons';
+import axios from 'axios';
+import User from './PopUpWindowLogin';
+import { connect, useSelector } from 'react-redux';
+import { logout } from '../store';
+import { setUserRSVP } from '../store/usersEvents';
+import PopUpWindowLogin from './PopUpWindowLogin';
+import PopUpWindowSignUp from './PopUpWindowSignUp';
+import PopUpWindowLogged from './PopUpWindowLogged';
+import { Link } from 'react-router-dom';
+import { Grid, Popover } from '@material-ui/core';
+import { useFrontEndStyles } from '../theme';
+import UserProfileForm from './UserProfileForm';
+import { NewEventForm } from './NewEventForm';
 
 import {
   Button,
@@ -30,7 +32,7 @@ import {
   IconButton,
   Tooltip,
   Container,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
 const MapContainer = ({
   isLoggedIn,
@@ -83,8 +85,8 @@ const MapContainer = ({
   useEffect(() => {
     const getEvents = async () => {
       try {
-        const events = await axios.get("/api/events");
-        console.log("events data --->", events.data);
+        const events = await axios.get('/api/events');
+        console.log('events data --->', events.data);
         setEvents(events.data);
       } catch (err) {
         console.log(err);
@@ -116,7 +118,7 @@ const MapContainer = ({
               zoom={13}
               center={mapCenter}
               options={{
-                mapId: "61b5009386a6596e",
+                mapId: '61b5009386a6596e',
                 zoomControl: false,
                 streetViewControl: false,
                 mapTypeControl: false,
@@ -148,7 +150,7 @@ const MapContainer = ({
                               <div>
                                 {event.datePart} from {event.timePart}
                               </div>
-                              {console.log("API events", events)}
+                              {console.log('API events', events)}
                               <button onClick={() => onRSVPClick(event)}>
                                 RSVP
                               </button>
@@ -159,16 +161,21 @@ const MapContainer = ({
                     );
                   })
                 : null}
-              {newEvtPosition && (
-                <Marker key={1234} id={1234} position={newEvtPosition}>
-                  {/* <InfoWindow
-                  position={{
-                    lat: 40.7589,
-                    lng: -73.9851,
-                  }}
-                >
-                  <div>awesomeness</div>
-                </InfoWindow> */}
+              {newEvtPosition.lat && (
+                <Marker position={newEvtPosition}>
+                  {newEvtPosition.lat && (
+                    <InfoWindow
+                      position={{
+                        lat: parseFloat(newEvtPosition.lat),
+                        lng: parseFloat(newEvtPosition.lng),
+                      }}
+                      onCloseClick={() => setSelectedEvent(null)}
+                    >
+                      <div>
+                        <NewEventForm position={newEvtPosition} />
+                      </div>
+                    </InfoWindow>
+                  )}
                 </Marker>
               )}
               {isLoggedIn ? (
@@ -177,8 +184,8 @@ const MapContainer = ({
                     style={{
                       marginTop: 10, // was set to 70 in main
                       marginLeft: 860,
-                      height: "60px",
-                      width: "60px",
+                      height: '60px',
+                      width: '60px',
                     }}
                     variant="contained"
                     size="large"
@@ -193,12 +200,12 @@ const MapContainer = ({
                     anchorReference="anchorPosition"
                     anchorPosition={{ top: 150, left: 980 }}
                     anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
+                      vertical: 'top',
+                      horizontal: 'right',
                     }}
                     transformOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
+                      vertical: 'top',
+                      horizontal: 'right',
                     }}
                     onClose={() => setAnchor(null)}
                   >
@@ -211,8 +218,8 @@ const MapContainer = ({
                     style={{
                       marginTop: 10, // was 70 in main
                       marginLeft: 860,
-                      height: "60px",
-                      width: "60px",
+                      height: '60px',
+                      width: '60px',
                     }}
                     variant="contained"
                     size="large"
@@ -226,12 +233,12 @@ const MapContainer = ({
                     anchorReference="anchorPosition"
                     anchorPosition={{ top: 150, left: 980 }}
                     anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
+                      vertical: 'top',
+                      horizontal: 'right',
                     }}
                     transformOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
+                      vertical: 'top',
+                      horizontal: 'right',
                     }}
                     onClose={() => setAnchor(null)}
                   >
@@ -242,7 +249,7 @@ const MapContainer = ({
                       elevation={3}
                       className={classes.p}
                       variant="elevation"
-                      style={{ background: "#808080" }}
+                      style={{ background: '#808080' }}
                     >
                       <CardContent>
                         <CardHeader
