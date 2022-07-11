@@ -48,7 +48,7 @@ const MyEvents = () => {
               <Button onClick={() => onRemoveClick(event.id, user.id)}>
                 Remove
               </Button>
-              <Link to="/review">Review</Link>
+              <Link to="/myeventreview">Review</Link>
             </Card>
           </div>
         );

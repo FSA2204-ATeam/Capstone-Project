@@ -5,9 +5,10 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import auth from "./auth";
 import preferences from "./userPreferences";
 import usersEvents from "./usersEvents";
+import sentiment from "./sentimentAnalysis";
 //import events from "./events";
 
-const reducer = combineReducers({ auth, preferences, usersEvents });
+const reducer = combineReducers({ auth, preferences, usersEvents, sentiment });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );
@@ -17,4 +18,4 @@ export default store;
 export * from "./auth";
 export * from "./userPreferences";
 export * from "./usersEvents";
-//export * from "./events";
+export * from "./sentimentAnalysis";

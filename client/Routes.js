@@ -9,7 +9,7 @@ import { me } from "./store";
 import { fetchUserEvents } from "./store/usersEvents";
 import { fetchUserPreferences } from "./store";
 import UserProfileForm from "./components/UserProfileForm";
-import TestingGround from "./components/testingground";
+import MyEventReview from "./components/MyEventReview";
 import MyEvents from "./components/MyEvents";
 
 /**
@@ -32,9 +32,8 @@ class Routes extends Component {
           <Route exact path="/signup" component={PopUpWindowSignUp} />
           <Route exact path="/profile" component={UserProfileForm} />
           <Route exact path="/speechtotext" component={SpeechToText} />
-          <Route exact path="/testing" component={TestingGround} />
+          <Route exact path="/myeventreview" component={MyEventReview} />
           <Route exact path="/events/myevents" component={MyEvents} />
-          <Route exact path="/review" />
         </Switch>
       </div>
     );
