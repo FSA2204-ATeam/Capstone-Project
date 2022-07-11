@@ -36,7 +36,7 @@ const MyEvents = () => {
   const onRemoveClick = (eventId, userId) => {
     dispatch(removeUsersEvent(eventId, userId));
   };
-
+  console.log("MY REVIEWS", myReviews);
   return (
     <div>
       <h1>{`${user.username}'s Events`}:</h1>
