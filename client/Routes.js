@@ -1,15 +1,16 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import PopUpWindowLogin from "./components/PopUpWindowLogin";
-import PopUpWindowSignUp from "./components/PopUpWindowSignUp";
-import SpeechToText from "./components/SpeechToText";
-import Home from "./components/Home";
-import { me } from "./store";
-import { fetchUserEvents } from "./store/usersEvents";
-import { fetchUserPreferences } from "./store";
-import UserProfileForm from "./components/UserProfileForm";
-import TestingGround from "./components/testingground";
+
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import PopUpWindowLogin from './components/PopUpWindowLogin';
+import PopUpWindowSignUp from './components/PopUpWindowSignUp';
+import SpeechToText from './components/SpeechToText';
+import Home from './components/Home';
+import { me } from './store';
+import { fetchUserEvents } from './store/usersEvents';
+import { fetchUserPreferences } from './store';
+import UserProfileForm from './components/UserProfileForm';
+import { NewEventForm } from './components/NewEventForm';
 
 /**
  * COMPONENT
@@ -31,7 +32,7 @@ class Routes extends Component {
           <Route exact path="/signup" component={PopUpWindowSignUp} />
           <Route exact path="/profile" component={UserProfileForm} />
           <Route exact path="/speechtotext" component={SpeechToText} />
-          <Route exact path="/testing" component={TestingGround} />
+          <Route exact path="/newEvent" component={NewEventForm} />
         </Switch>
       </div>
     );
