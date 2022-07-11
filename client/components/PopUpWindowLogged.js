@@ -11,6 +11,8 @@ import { useHistory } from "react-router-dom";
 
 
 const PopUpWindowCardLogged = () => {
+  // const [firstname, setFirstname] = useState("");
+  const firstname = useSelector((state) => state.auth.firstname);
   const classes = useFrontEndStyles();
 
   const dispatch = useDispatch();
@@ -34,12 +36,12 @@ const PopUpWindowCardLogged = () => {
   // };
 
   return (
-    <Card xs={12} md={6} lg={3} elevation={3} className={classes.p} variant="elevation" style={{background: "#808080"}} >
+    <Card xs={12} md={6} lg={3} elevation={3} className={classes.popover} variant="elevation" style={{background: "#808080"}} >
       <CardContent>
-      <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
+      <CardHeader align="center" title={<Typography>Welcome!</Typography>} />
       </CardContent>
-      <Typography className={classes.h4}>
-        Welcome USERNAME!
+      <Typography>
+        Welcome {firstname}!
         Histoy?
         My profile/preferences
       </Typography>

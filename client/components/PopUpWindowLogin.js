@@ -41,10 +41,7 @@ const PopUpWindowLogin = () => {
   };
 
   return (
-    <Card xs={12} md={6} lg={3} elevation={3} className={classes.h4} variant="elevation" style={{background: "#808080"}} >
-    <CardContent>
-    <CardHeader align="center" />
-    </CardContent>
+    <Card xs={12} md={6} lg={3} elevation={3} className={classes.popover} variant="elevation" style={{background: "#808080"}} >
     <CardActions>
     <form onSubmit={handleSubmit}>
       <Grid container alignItems="center" direction="column">

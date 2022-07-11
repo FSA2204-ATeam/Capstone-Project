@@ -225,7 +225,7 @@ const MapContainer = ({
                   >
                     <Card
                       elevation={3}
-                      className={classes.h4}
+                      className={classes.popover}
                       variant="elevation"
                       style={{ background: "#808080" }}
                     >
@@ -233,7 +233,7 @@ const MapContainer = ({
                         <CardHeader
                           align="center"
                           title={
-                            <Typography className={classes.h4}>
+                            <Typography>
                               Welcome!
                             </Typography>
                           }
