@@ -15,6 +15,7 @@ import {
   Tooltip,
   Container,
 } from "@material-ui/core";
+import MyEventReview from "./MyEventReview";
 
 const MyEvents = () => {
   const user = useSelector((state) => state.auth);
@@ -48,7 +49,7 @@ const MyEvents = () => {
               <Button onClick={() => onRemoveClick(event.id, user.id)}>
                 Remove
               </Button>
-              <Link to="/myeventreview">Review</Link>
+              <MyEventReview props={event} />
             </Card>
           </div>
         );

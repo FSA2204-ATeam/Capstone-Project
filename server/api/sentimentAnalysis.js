@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const NaturalLanguageUnderstandingV1 = require("ibm-watson/natural-language-understanding/v1");
 const { IamAuthenticator } = require("ibm-watson/auth");
+const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
+const {
+  models: { Event, User, UsersEvents },
+} = require("../db");
 
 router.post("/", async (req, res, next) => {
   const API_KEY = process.env.WATSON_IBM_API_KEY;
@@ -37,6 +41,24 @@ router.post("/", async (req, res, next) => {
     });
 
   res.send(document);
+});
+
+router.put("/", requireToken, async (req, res, next) => {
+  try {
+    console.log("req.body", req.body);
+    const user = await User.findByToken(req.headers.authorization);
+    const updated = await UsersEvents.update(
+      {
+        review: req.body.review,
+        sentimentScore: req.body.score,
+        sentimentLabel: req.body.label,
+      },
+      { where: { eventId: req.body.eventId, userId: user.id } }
+    );
+    console.log("DID I UPDATE?", updated);
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;

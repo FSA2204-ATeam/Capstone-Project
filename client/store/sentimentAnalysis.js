@@ -1,4 +1,5 @@
 import axios from "axios";
+const token = window.localStorage.getItem("token");
 
 const GET_SENTIMENT_ANALYSIS = "GET_SENTIMENT_ANALYSIS";
 const SET_SENTIMENT_ANALYSIS = "SET_SENTIMENT_ANALYSIS";
@@ -13,10 +14,9 @@ export const _setSentimentAnalysis = (analysis) => ({
   analysis,
 });
 
-export const getSentimentAnalysis = (review) => {
+export const getSentimentAnalysis = (review, eventId) => {
   return async (dispatch) => {
     try {
-      console.log("inside getSentimentAnalysis: ", review);
       const { data } = await axios.post("/api/sentimentAnalysis", null, {
         headers: { review },
       });
@@ -24,7 +24,24 @@ export const getSentimentAnalysis = (review) => {
         `Watson says my review is ${data.label}, with a score of ${data.score}!`
       );
       dispatch(_getSentimentAnalysis(data));
-      dispatch(_setSentimentAnalysis(data));
+      console.log("AXIOS PUT ACTIVATION with", data);
+      console.log("Event id gradded?", eventId);
+
+      const { updated } = await axios.put(
+        "/api/sentimentAnalysis",
+        {
+          ...data,
+          eventId: eventId,
+          review: review,
+        },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      console.log("Updated UserEvent", updated);
+      //dispatch(_setSentimentAnalysis(data));
     } catch (err) {
       console.error(err);
     }
