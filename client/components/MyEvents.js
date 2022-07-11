@@ -16,6 +16,7 @@ import {
   Container,
 } from "@material-ui/core";
 import MyEventReview from "./MyEventReview";
+import SingleEvent from "./SingleEvent";
 
 const MyEvents = () => {
   const user = useSelector((state) => state.auth);
@@ -49,6 +50,7 @@ const MyEvents = () => {
               <Button onClick={() => onRemoveClick(event.id, user.id)}>
                 Remove
               </Button>
+              <SingleEvent props={event} />
               <MyEventReview props={event} />
             </Card>
           </div>
