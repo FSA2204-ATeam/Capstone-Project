@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from "react";
 import { setUserEvents, removeUsersEvent } from "../store/usersEvents";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   Button,
   Card,
@@ -18,12 +19,7 @@ import {
 const MyEvents = () => {
   const user = useSelector((state) => state.auth);
   const myEvents = useSelector((state) => state.usersEvents);
-  //const userEvent = useSelector((state) => state.userEvents);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setUserEvents(user.id));
-  }, []);
 
   useEffect(() => {
     dispatch(setUserEvents(user.id));
@@ -42,7 +38,7 @@ const MyEvents = () => {
             <Card
               elevation={3}
               variant="elevation"
-              style={{ background: "lightBlue" }}
+              style={{ background: "lightGray" }}
             >
               <h3>{event.name}</h3>
               <p>
@@ -52,6 +48,7 @@ const MyEvents = () => {
               <Button onClick={() => onRemoveClick(event.id, user.id)}>
                 Remove
               </Button>
+              <Link to="/review">Review</Link>
             </Card>
           </div>
         );

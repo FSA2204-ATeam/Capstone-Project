@@ -55,6 +55,7 @@ router.get("/", requireToken, async (req, res, next) => {
     const data = await User.findByPk(user.dataValues.id, {
       include: [Event],
     });
+    console.log("EVENTS & ASSSOCIATIONS", data);
     res.json(data.dataValues.events);
   } catch (error) {
     next(error);

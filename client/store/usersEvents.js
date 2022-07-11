@@ -89,15 +89,14 @@ export const removeUsersEvent = (eventId, userId) => async (dispatch) => {
 const usersEventsReducer = (state = [], action) => {
   switch (action.type) {
     case SET_USER_RSVP:
+      console.log(action.userRSVP);
       return action.userRSVP;
     case FETCH_USER_EVENTS:
       return action.userEvents;
     case SET_USER_EVENTS:
       return action.events;
     case REMOVE_USER_EVENT:
-      console.log("REDUCER", action.userEvent);
-      //NEED TO FILTER STATE HERE:::::::::::::
-      return action.userEvent;
+      return state.filter((event) => event.id !== action.userEvent.eventId);
     default:
       return state;
   }

@@ -34,6 +34,7 @@ class Routes extends Component {
           <Route exact path="/speechtotext" component={SpeechToText} />
           <Route exact path="/testing" component={TestingGround} />
           <Route exact path="/events/myevents" component={MyEvents} />
+          <Route exact path="/review" />
         </Switch>
       </div>
     );
