@@ -34,6 +34,21 @@ router.put("/", requireToken, async (req, res, next) => {
   }
 });
 
+router.delete("/", requireToken, async (req, res, next) => {
+  try {
+    const removedRSVP = await UsersEvents.findOne({
+      where: {
+        userId: req.body.userId,
+        eventId: req.body.eventId,
+      },
+    });
+    await removedRSVP.destroy();
+    res.json(removedRSVP);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get("/", requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);

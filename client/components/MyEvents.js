@@ -1,47 +1,63 @@
 import React, { useState, useEffect, useReducer } from "react";
-import { connect } from "react-redux";
-import { setUserEvents } from "../store/usersEvents";
-import { me } from "../store/auth";
-import axios from "axios";
+import { setUserEvents, removeUsersEvent } from "../store/usersEvents";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  Button,
+  Card,
+  Box,
+  CardMedia,
+  CardContent,
+  CardHeader,
+  CardActions,
+  Typography,
+  IconButton,
+  Tooltip,
+  Container,
+} from "@material-ui/core";
 
 const MyEvents = () => {
-  //const usersEvents = useSelector((state) => state.usersEvents);
   const user = useSelector((state) => state.auth);
   const myEvents = useSelector((state) => state.usersEvents);
+  //const userEvent = useSelector((state) => state.userEvents);
   const dispatch = useDispatch();
-
-  console.log("USER AND MY EVENTS", user, myEvents);
 
   useEffect(() => {
     dispatch(setUserEvents(user.id));
-    // console.log("ID", user.id);
-    // console.log("ASSOCIATED EVENTS", myEvents);
   }, []);
+
+  useEffect(() => {
+    dispatch(setUserEvents(user.id));
+  }, []);
+
+  const onRemoveClick = (eventId, userId) => {
+    dispatch(removeUsersEvent(eventId, userId));
+  };
 
   return (
     <div>
-      {/* {usersEvents.map((element) => {
-        return <div key={element.eventId}>{element.eventId}</div>;
+      <h1>{`${user.username}'s Events`}:</h1>
+      {myEvents.map((event) => {
+        return (
+          <div key={event.id}>
+            <Card
+              elevation={3}
+              variant="elevation"
+              style={{ background: "lightBlue" }}
+            >
+              <h3>{event.name}</h3>
+              <p>
+                {event.datePart} from {event.timePart}
+              </p>
+              <Button>Details</Button>
+              <Button onClick={() => onRemoveClick(event.id, user.id)}>
+                Remove
+              </Button>
+            </Card>
+          </div>
+        );
       })}
-      ; */}
-      HELLO WORLD I AM HERE DO YOU SEE ME?
     </div>
   );
 };
-
-// const mapState = (state) => {
-//   return {
-//     user: state.auth,
-//   };
-// };
-
-// const mapDispatch = (dispatch) => {
-//   return {
-//     // loadInitialData() {
-//     //   dispatch(me());
-//     // },
-//   };
-// };
 
 export default MyEvents;
