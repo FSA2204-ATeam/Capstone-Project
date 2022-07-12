@@ -99,21 +99,25 @@ const MapContainer = ({
     setNewEvtPosition(e);
   };
 
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth)
-  const [innerHeight, setInnerHeight] = useState(window.innerHeight)
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth*0.80)
+  const [innerHeight, setInnerHeight] = useState(window.innerHeight*0.15)
 
   window.addEventListener('resize', function(event){
-    setInnerWidth(Math.floor(window.innerWidth*0.1));
-    setInnerHeight(Math.floor(window.innerHeight*0.85)); 
+    setInnerWidth(Math.floor(window.innerWidth*0.80));
+    setInnerHeight(Math.floor(window.innerHeight*0.15)); 
   }); 
 
-  const popupStyle = {
+  const popHeight = innerHeight*1.6;
+  const popWidth = innerWidth*1.08;
+
+
+  const buttonStyle = {
     marginTop: innerHeight,
     marginLeft: innerWidth,
     height: "60px",
     width: "60px"
   }
-
+  console.log(popHeight, popWidth, "------------")
   return (
     <div>
       <Container maxWidth={false} sx={{ marginY: 12 }}>
@@ -189,23 +193,22 @@ const MapContainer = ({
               )}
               {isLoggedIn ? (
                 <div>
-                  {/* <Box
-                  sx={{ display: 'flex', p: 1, justifyContent: 'flex-end', borderRadius: 0 }}
-                  > */}
                   <Button
-                    style={popupStyle}
+                    style={buttonStyle}
                     variant="contained"
-                    size="large"
                     onClick={openPopover}
                   >
                    {firstname[0].toUpperCase()}
                   </Button>
-                  {/* </Box> */}
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
-                    anchorPosition={{ top: 100, left: 980 }}
+                    anchorPosition={{ top: popHeight, left: popWidth }}
                     anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    transformOrigin={{
                       vertical: "top",
                       horizontal: "right",
                     }}
@@ -220,13 +223,8 @@ const MapContainer = ({
                   sx={{ display: 'flex', p: 1, justifyContent: 'flex-end',  bgcolor: '#808080', borderRadius: 0 }}
                   > */}
                   <Button
-                    style={{
-                      marginTop: "5vh",
-                      marginLeft: "70vw",
-                    }}
+                    style={buttonStyle}
                     variant="contained"
-                    size="large"
-                    color="default"
                     onClick={openPopover}
                   >
                   😀
@@ -235,7 +233,7 @@ const MapContainer = ({
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
-                    anchorPosition={{ top: 100, left: 980 }}
+                    anchorPosition={{ top: popHeight, left: popWidth }}
                     anchorOrigin={{
                       vertical: "top",
                       horizontal: "right",
@@ -264,7 +262,7 @@ const MapContainer = ({
                           anchorReference="anchorPosition"
                           isOpen={popoverLogin}
                           target="Login"
-                          anchorPosition={{ top: 100, left: 980 }}
+                          anchorPosition={{ top: popHeight, left: popWidth }}
                           anchorOrigin={{
                             vertical: 'top',
                             horizontal: 'right',
@@ -279,7 +277,7 @@ const MapContainer = ({
                           anchorReference="anchorPosition"
                           isOpen={popoverSignup}
                           target="Signup"
-                          anchorPosition={{ top: 100, left: 980 }}
+                          anchorPosition={{ top: popHeight, left: popWidth }}
                           anchorOrigin={{
                             vertical: 'top',
                             horizontal: 'right',
