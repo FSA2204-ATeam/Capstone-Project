@@ -36,11 +36,14 @@ const MyEvents = () => {
   const onRemoveClick = (eventId, userId) => {
     dispatch(removeUsersEvent(eventId, userId));
   };
+
+  const [onShowDetailsClick, setOnShowDetailsClick] = useState(null);
+
   console.log("MY REVIEWS", myReviews);
   return (
     <div>
       <h1>{`${user.username}'s Events`}:</h1>
-      {myEvents.map((event) => {
+      {myEvents.map((event, idx) => {
         return (
           <div key={event.id}>
             <Card
@@ -52,11 +55,21 @@ const MyEvents = () => {
               <p>
                 {event.datePart} from {event.timePart}
               </p>
-              <Button>Details</Button>
+              <Button
+                onClick={() =>
+                  onShowDetailsClick !== null && onShowDetailsClick === idx
+                    ? setOnShowDetailsClick(null)
+                    : setOnShowDetailsClick(idx)
+                }
+              >
+                Details
+              </Button>
               <Button onClick={() => onRemoveClick(event.id, user.id)}>
                 Remove
               </Button>
-              <SingleEvent props={event} />
+              {onShowDetailsClick === idx ? (
+                <SingleEvent props={event} />
+              ) : null}
               <MyEventReview props={event} />
             </Card>
           </div>
