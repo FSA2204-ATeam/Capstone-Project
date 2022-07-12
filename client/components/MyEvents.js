@@ -36,11 +36,15 @@ const MyEvents = () => {
   const onRemoveClick = (eventId, userId) => {
     dispatch(removeUsersEvent(eventId, userId));
   };
-  console.log("MY REVIEWS", myReviews);
+
+  const [onShowDetailsClick, setOnShowDetailsClick] = useState(null);
+  const [onReviewClick, setOnReviewClick] = useState(null);
+
+  //console.log("MY REVIEWS", myReviews);
   return (
     <div>
       <h1>{`${user.username}'s Events`}:</h1>
-      {myEvents.map((event) => {
+      {myEvents.map((event, idx) => {
         return (
           <div key={event.id}>
             <Card
@@ -52,12 +56,37 @@ const MyEvents = () => {
               <p>
                 {event.datePart} from {event.timePart}
               </p>
-              <Button>Details</Button>
+              <Button
+                onClick={() => {
+                  onShowDetailsClick !== null && onShowDetailsClick === idx
+                    ? setOnShowDetailsClick(null)
+                    : setOnShowDetailsClick(idx);
+                  onReviewClick !== null && idx !== onReviewClick
+                    ? setOnReviewClick(null)
+                    : null;
+                }}
+              >
+                Details
+              </Button>
+              <Button
+                onClick={() => {
+                  onReviewClick !== null && onReviewClick === idx
+                    ? setOnReviewClick(null)
+                    : setOnReviewClick(idx);
+                  onShowDetailsClick !== null && idx !== onShowDetailsClick
+                    ? setOnShowDetailsClick(null)
+                    : null;
+                }}
+              >
+                Review
+              </Button>
               <Button onClick={() => onRemoveClick(event.id, user.id)}>
                 Remove
               </Button>
-              <SingleEvent props={event} />
-              <MyEventReview props={event} />
+              {onShowDetailsClick === idx ? (
+                <SingleEvent props={event} />
+              ) : null}
+              {onReviewClick === idx ? <MyEventReview event={event} /> : null}
             </Card>
           </div>
         );

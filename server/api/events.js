@@ -85,12 +85,4 @@ router.get("/:userId", async (req, res, next) => {
   }
 });
 
-router.get("/myevents", requireToken, async (req, res, next) => {
-  try {
-    console.log("DID I MAKE IT????");
-    console.log("REQ BODY", req.body);
-  } catch (error) {
-    next(error);
-  }
-});
 module.exports = router;
