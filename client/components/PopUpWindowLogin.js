@@ -41,10 +41,10 @@ const PopUpWindowLogin = () => {
   };
 
   return (
-    <Card xs={12} md={6} lg={3} elevation={3} className={classes.p} variant="elevation" style={{background: "#808080"}} >
-    <CardContent>
-    <CardHeader align="center" />
-    </CardContent>
+    // <Box
+    //   sx={{ display: 'flex', justifyContent: 'flex-end',  bgcolor: '#808080', borderRadius: 0 }}
+    // >
+    <Card className={classes.popover} variant="elevation" style={{background: "#808080"}} >
     <CardActions>
     <form onSubmit={handleSubmit}>
       <Grid container alignItems="center" direction="column">
@@ -56,6 +56,7 @@ const PopUpWindowLogin = () => {
             type="text"
             variant="outlined"
             value={formValues.username}
+            margin="dense"
             onChange={handleChange}
           />
         </Grid>
@@ -67,6 +68,7 @@ const PopUpWindowLogin = () => {
             type="text"
             variant="outlined"
             value={formValues.password}
+            margin="dense"
             onChange={handleChange}
           />
         </Grid>
@@ -77,6 +79,7 @@ const PopUpWindowLogin = () => {
     </form>
     </CardActions>
   </Card>
+  // </Box>
   );
 };
 export default PopUpWindowLogin;

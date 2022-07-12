@@ -12,16 +12,16 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const classes = useNavStyles();
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed">
-        <Toolbar>
-          <Typography className={classes.title} variant="h4" noWrap>
-            URBAN SAFARI
-          </Typography>
-          <Link to="./events/myevents">MY EVENTS</Link>
-        </Toolbar>
-      </AppBar>
-    </div>
+    // <div>
+    <AppBar position="fixed">
+      <Toolbar>
+        <Typography className={classes.title} variant="h4" noWrap>
+          URBAN SAFARI
+        </Typography>
+        <Link to="./events/myevents">MY EVENTS</Link>
+      </Toolbar>
+    </AppBar>
+    // </div>
   );
 };
 

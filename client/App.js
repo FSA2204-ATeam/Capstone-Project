@@ -1,7 +1,7 @@
 import React from "react";
 import "regenerator-runtime/runtime";
-import Navbar from "./components/Navbar";
 import Routes from "./Routes";
+import Navbar from "./components/Navbar"
 
 const App = () => {
   return (

@@ -4,21 +4,21 @@ import {
   LoadScript,
   Marker,
   InfoWindow,
-} from '@react-google-maps/api';
-import { Room, Star, StarBorder } from '@material-ui/icons';
-import axios from 'axios';
-import User from './PopUpWindowLogin';
-import { connect, useSelector } from 'react-redux';
-import { logout } from '../store';
-import { setUserRSVP } from '../store/usersEvents';
-import PopUpWindowLogin from './PopUpWindowLogin';
-import PopUpWindowSignUp from './PopUpWindowSignUp';
-import PopUpWindowLogged from './PopUpWindowLogged';
-import { Link } from 'react-router-dom';
-import { Grid, Popover } from '@material-ui/core';
-import { useFrontEndStyles } from '../theme';
-import UserProfileForm from './UserProfileForm';
-import { NewEventForm } from './NewEventForm';
+} from "@react-google-maps/api";
+import { Room, Star, StarBorder } from "@material-ui/icons";
+import axios from "axios";
+import User from "./PopUpWindowLogin";
+import { connect, useSelector } from "react-redux";
+import { logout } from "../store";
+import { setUserRSVP } from "../store/usersEvents";
+import PopUpWindowLogin from "./PopUpWindowLogin";
+import PopUpWindowSignUp from "./PopUpWindowSignUp";
+import PopUpWindowLogged from "./PopUpWindowLogged";
+import { Link } from "react-router-dom";
+import { Grid, Popover } from "@material-ui/core";
+import { useFrontEndStyles } from "../theme";
+import UserProfileForm from "./UserProfileForm";
+import { NewEventForm } from "./NewEventForm";
 
 import {
   Button,
@@ -32,7 +32,7 @@ import {
   IconButton,
   Tooltip,
   Container,
-} from '@material-ui/core';
+} from "@material-ui/core";
 
 const MapContainer = ({
   isLoggedIn,
@@ -85,8 +85,8 @@ const MapContainer = ({
   useEffect(() => {
     const getEvents = async () => {
       try {
-        const events = await axios.get('/api/events');
-        console.log('events data --->', events.data);
+        const events = await axios.get("/api/events");
+        console.log("events data --->", events.data);
         setEvents(events.data);
       } catch (err) {
         console.log(err);
@@ -101,9 +101,27 @@ const MapContainer = ({
     setNewEvtPosition(e);
   };
 
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth * 0.8);
+  const [innerHeight, setInnerHeight] = useState(window.innerHeight * 0.15);
+
+  window.addEventListener("resize", function (event) {
+    setInnerWidth(Math.floor(window.innerWidth * 0.8));
+    setInnerHeight(Math.floor(window.innerHeight * 0.15));
+  });
+
+  const popHeight = innerHeight * 1.6;
+  const popWidth = innerWidth * 1.08;
+
+  const buttonStyle = {
+    marginTop: innerHeight,
+    marginLeft: innerWidth,
+    height: "60px",
+    width: "60px",
+  };
+  console.log(innerHeight, popHeight, "****", innerWidth, popWidth, "--------");
   return (
     <div>
-      <Container maxWidth="lg" sx={{ marginY: 12 }}>
+      <Container maxWidth={false} sx={{ marginY: 12 }}>
         <Grid container spacing={5} style={{ justifyContent: "space-around" }}>
           <LoadScript
             mapIds={["61b5009386a6596e"]}
@@ -118,7 +136,7 @@ const MapContainer = ({
               zoom={13}
               center={mapCenter}
               options={{
-                mapId: '61b5009386a6596e',
+                mapId: "61b5009386a6596e",
                 zoomControl: false,
                 streetViewControl: false,
                 mapTypeControl: false,
@@ -150,7 +168,7 @@ const MapContainer = ({
                               <div>
                                 {event.datePart} from {event.timePart}
                               </div>
-                              {console.log('API events', events)}
+                              {console.log("API events", events)}
                               <button onClick={() => onRSVPClick(event)}>
                                 RSVP
                               </button>
@@ -180,32 +198,32 @@ const MapContainer = ({
               )}
               {isLoggedIn ? (
                 <div>
+                  {/* <Popover
+                  open={true}
+                  >
+                  <Card>
+                  <CardActions> */}
                   <Button
-                    style={{
-                      marginTop: 10, // was set to 70 in main
-                      marginLeft: 860,
-                      height: '60px',
-                      width: '60px',
-                    }}
+                    style={buttonStyle}
                     variant="contained"
-                    size="large"
-                    color="#808080"
                     onClick={openPopover}
                   >
-                    USER
-                    {/* {firstname} */}
+                    {firstname[0].toUpperCase()}
                   </Button>
+                  {/* </CardActions>
+                    </Card>
+                  </Popover> */}
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
-                    anchorPosition={{ top: 150, left: 980 }}
+                    anchorPosition={{ top: popHeight, left: popWidth }}
                     anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
+                      vertical: "top",
+                      horizontal: "right",
                     }}
                     transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
+                      vertical: "top",
+                      horizontal: "right",
                     }}
                     onClose={() => setAnchor(null)}
                   >
@@ -215,50 +233,37 @@ const MapContainer = ({
               ) : (
                 <div>
                   <Button
-                    style={{
-                      marginTop: 10, // was 70 in main
-                      marginLeft: 860,
-                      height: '60px',
-                      width: '60px',
-                    }}
+                    style={buttonStyle}
                     variant="contained"
-                    size="large"
-                    color="#808080"
                     onClick={openPopover}
                   >
                     😀
                   </Button>
+                  {/* </Box> */}
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
-                    anchorPosition={{ top: 150, left: 980 }}
+                    anchorPosition={{ top: popHeight, left: popWidth }}
                     anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
+                      vertical: "top",
+                      horizontal: "right",
                     }}
                     transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
+                      vertical: "top",
+                      horizontal: "right",
                     }}
                     onClose={() => setAnchor(null)}
                   >
                     <Card
-                      xs={12}
-                      md={6}
-                      lg={3}
                       elevation={3}
-                      className={classes.p}
+                      className={classes.popover}
                       variant="elevation"
-                      style={{ background: '#808080' }}
+                      style={{ background: "#808080" }}
                     >
                       <CardContent>
                         <CardHeader
                           align="center"
-                          title={
-                            <Typography className={classes.h4}>
-                              Welcome!
-                            </Typography>
-                          }
+                          title={<Typography>Welcome!</Typography>}
                         />
                       </CardContent>
                       {popoverLogin ? (
@@ -267,7 +272,7 @@ const MapContainer = ({
                           anchorReference="anchorPosition"
                           isOpen={popoverLogin}
                           target="Login"
-                          anchorPosition={{ top: 150, left: 980 }}
+                          anchorPosition={{ top: popHeight, left: popWidth }}
                           anchorOrigin={{
                             vertical: "top",
                             horizontal: "right",
@@ -286,7 +291,7 @@ const MapContainer = ({
                           anchorReference="anchorPosition"
                           isOpen={popoverSignup}
                           target="Signup"
-                          anchorPosition={{ top: 150, left: 980 }}
+                          anchorPosition={{ top: popHeight, left: popWidth }}
                           anchorOrigin={{
                             vertical: "top",
                             horizontal: "right",
@@ -342,6 +347,7 @@ const mapState = (state) => {
     isLoggedIn: !!state.auth.id,
     isAdmin: state.auth.isAdmin,
     usersEvents: state.usersEvents,
+    firstname: state.auth.firstname,
   };
 };
 

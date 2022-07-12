@@ -1,14 +1,12 @@
 import { createTheme } from "@material-ui/core/styles";
-import {
-  amber,
-} from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core/styles";
+import green from "@material-ui/core/styles";
 
 const theme = createTheme({
   components: {
     MuiTypography: {
       root: {
-        fontFamily: "Emilys Candy",
+        fontFamily: "Roboto",
       },
       variants: [
         {
@@ -19,106 +17,48 @@ const theme = createTheme({
             fontSize: 11,
           },
         },
-        {
-          props: {
-            variant: "button",
-          },
-          style: {
-            fontSize: 9,
-          },
-        },
-        {
-          props: {
-            variant: "body1",
-          },
-          style: {
-            fontSize: 25,
-          },
-        },
       ],
     },
-  },
-  palette: {
-    primary: {
-      main: "#F5DADF",
-    },
-
-    secondary: {
-      main: "#000000",
-      contrastText: amber[900],
-    },
-  },
+  }
 });
-
-theme.overrides = {
-  MuiButton: {
-    root: {
-      borderRadius: 15,
-      textTransform: "none",
-      fontSize: 20,
-      fontFamily: "Emilys Candy",
-    },
-    containedPrimary: {
-      "&:hover": {
-        backgroundColor: theme.palette.secondary.main,
-        color: theme.palette.primary.dark,
-      },
-    },
-    containedSecondary: {
-      fontWeight: 700,
-    },
-  },
-};
 
 export const useFrontEndStyles = makeStyles((theme) => ({
   root: {
     display: "flex grow",
-    maxHeight: "100%",
-    minHeight: "100%",
-    maxWidth: 300,
-    minWidth: 200,
-    color: "#808080",
+    maxHeight: "60%",
+    minHeight: "60%",
   },
-  p: {
-    display: "flex grow",
-    maxHeight: "100%",
-    minHeight: "100%",
-    maxWidth: 300,
-    minWidth: 200,
-    color: "#808080",
-    fontSize: 20,
-    fontFamily: "Arial",
-  },
-  h4: {
+  popover: {
     textAlign: "center",
     display: "flex grow",
-    maxHeight: "100%",
-    minHeight: "100%",
-    maxWidth: 500,
+    maxHeight: "60%",
+    minHeight: "60%",
+    maxWidth: 200,
     minWidth: 200,
     color: "#000000",
-    fontSize: 20,
+    fontSize: 10,
     fontFamily: "Arial",
   },
 }));
 
 export const useNavStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 4,
-    marginBottom: 25,
-    backgroundColor: "#8FA01F"
+    flexGrow: 1,
+    // color: green,
+    // color: "inherit",
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
+  appBar: {
+    height: 60,
+    color: "#8FA01F",
   },
   title: {
-    flexGrow: 1,
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block",
+      margin: 0
     },
     color: "#3D550C",
-    backgroundColor: "#8FA01F"
+    backgroundColor: "#8FA01F",
   }
 }));
 

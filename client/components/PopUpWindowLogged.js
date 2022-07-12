@@ -9,8 +9,9 @@ import { useFrontEndStyles } from "../theme";
 import {logout} from '../store'
 import { useHistory } from "react-router-dom";
 
-
 const PopUpWindowCardLogged = () => {
+  // const [firstname, setFirstname] = useState("");
+  const firstname = useSelector((state) => state.auth.firstname);
   const classes = useFrontEndStyles();
 
   const dispatch = useDispatch();
@@ -22,24 +23,23 @@ const PopUpWindowCardLogged = () => {
     dispatch(logout()),
     history.push("/")
     );
-
+    
   // const handleClick = (event) => {
   //   event.preventDefault();
   //   dispatch(HERE WE HAVE TO DECIDE WHAT TO DISPATCH AFTER WE CLICK ON the wild button)
   //   console.log(event);
   // };
 
-  // const handleClickLogout = () => {
-  //   dispatch(logout())
-  // };
-
   return (
-    <Card xs={12} md={6} lg={3} elevation={3} className={classes.p} variant="elevation" style={{background: "#808080"}} >
+    // <Box
+    //   sx={{ display: 'flex', justifyContent: 'flex-end', bgcolor: '#808080', borderRadius: 0 }}
+    // >
+    <Card className={classes.popover} variant="elevation" style={{background: "#808080"}} >
       <CardContent>
-      <CardHeader align="center" title={<Typography className={classes.h4}>Welcome!</Typography>} />
+      <CardHeader align="center" title={<Typography>Welcome!</Typography>} />
       </CardContent>
-      <Typography className={classes.h4}>
-        Welcome USERNAME!
+      <Typography>
+        Welcome {firstname}!
         Histoy?
         My profile/preferences
       </Typography>
@@ -52,6 +52,7 @@ const PopUpWindowCardLogged = () => {
         </Button>
       </CardActions>
     </Card>
+    // </Box>
   );
 }
 
