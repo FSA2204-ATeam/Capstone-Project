@@ -86,9 +86,7 @@ const MyEvents = () => {
               {onShowDetailsClick === idx ? (
                 <SingleEvent props={event} />
               ) : null}
-              {onReviewClick === idx ? (
-                <MyEventReview myReview={event.users_events.review} />
-              ) : null}
+              {onReviewClick === idx ? <MyEventReview event={event} /> : null}
             </Card>
           </div>
         );

@@ -2,18 +2,26 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSentimentAnalysis } from "../store/sentimentAnalysis";
+import { setUserEvents } from "../store/usersEvents";
 
-function MyEventReview({ myReview }) {
+function MyEventReview({ event }) {
+  const user = useSelector((state) => state.auth);
   const [review, setReview] = useState("");
   const [analysis, setAnalysis] = useState({});
   const analysisResult = useSelector((state) => state.analysis);
   const dispatch = useDispatch();
 
+  const eventId = event.id;
+
+  useEffect(() => {
+    dispatch(setUserEvents(user.id));
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("REVIEW COMPONENT event", event);
-    dispatch(getSentimentAnalysis(review, event.id));
+    dispatch(getSentimentAnalysis(review, eventId));
   };
+  const myReview = event.users_events.review;
 
   return (
     <div>

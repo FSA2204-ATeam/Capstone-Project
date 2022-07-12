@@ -15,6 +15,7 @@ export const _setSentimentAnalysis = (analysis) => ({
 });
 
 export const getSentimentAnalysis = (review, eventId) => {
+  console.log("RIGHT STUFF?", review, eventId);
   return async (dispatch) => {
     try {
       const { data } = await axios.post("/api/sentimentAnalysis", null, {
