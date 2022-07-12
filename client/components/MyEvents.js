@@ -38,6 +38,7 @@ const MyEvents = () => {
   };
 
   const [onShowDetailsClick, setOnShowDetailsClick] = useState(null);
+  const [onReviewClick, setOnReviewClick] = useState(null);
 
   console.log("MY REVIEWS", myReviews);
   return (
@@ -56,13 +57,29 @@ const MyEvents = () => {
                 {event.datePart} from {event.timePart}
               </p>
               <Button
-                onClick={() =>
+                onClick={() => {
                   onShowDetailsClick !== null && onShowDetailsClick === idx
                     ? setOnShowDetailsClick(null)
-                    : setOnShowDetailsClick(idx)
-                }
+                    : setOnShowDetailsClick(idx);
+                  onReviewClick !== null && onShowDetailsClick !== onReviewClick
+                    ? null
+                    : setOnReviewClick(null);
+                }}
               >
                 Details
+              </Button>
+              <Button
+                onClick={() => {
+                  onReviewClick !== null && onReviewClick === idx
+                    ? setOnReviewClick(null)
+                    : setOnReviewClick(idx);
+                  onShowDetailsClick !== null &&
+                  onReviewClick !== onShowDetailsClick
+                    ? null
+                    : setOnShowDetailsClick(null);
+                }}
+              >
+                Review
               </Button>
               <Button onClick={() => onRemoveClick(event.id, user.id)}>
                 Remove
@@ -70,7 +87,7 @@ const MyEvents = () => {
               {onShowDetailsClick === idx ? (
                 <SingleEvent props={event} />
               ) : null}
-              <MyEventReview props={event} />
+              {onReviewClick === idx ? <MyEventReview props={event} /> : null}
             </Card>
           </div>
         );
