@@ -13,11 +13,11 @@ const Event = db.define("event", {
   shortDesc: {
     type: Sequelize.STRING,
   },
-  timePart: {
-    type: Sequelize.STRING,
+  startDate: {
+    type: Sequelize.DATE,
   },
-  datePart: {
-    type: Sequelize.STRING,
+  endDate: {
+    type: Sequelize.DATE,
   },
   permalink: {
     type: Sequelize.STRING,
