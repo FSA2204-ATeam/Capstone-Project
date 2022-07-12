@@ -61,9 +61,9 @@ const MyEvents = () => {
                   onShowDetailsClick !== null && onShowDetailsClick === idx
                     ? setOnShowDetailsClick(null)
                     : setOnShowDetailsClick(idx);
-                  onReviewClick !== null && onShowDetailsClick !== onReviewClick
-                    ? null
-                    : setOnReviewClick(null);
+                  onReviewClick !== null && idx !== onReviewClick
+                    ? setOnReviewClick(null)
+                    : null;
                 }}
               >
                 Details
@@ -73,10 +73,9 @@ const MyEvents = () => {
                   onReviewClick !== null && onReviewClick === idx
                     ? setOnReviewClick(null)
                     : setOnReviewClick(idx);
-                  onShowDetailsClick !== null &&
-                  onReviewClick !== onShowDetailsClick
-                    ? null
-                    : setOnShowDetailsClick(null);
+                  onShowDetailsClick !== null && idx !== onShowDetailsClick
+                    ? setOnShowDetailsClick(null)
+                    : null;
                 }}
               >
                 Review
