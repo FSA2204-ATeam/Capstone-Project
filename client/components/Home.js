@@ -117,7 +117,7 @@ const MapContainer = ({
     height: "60px",
     width: "60px"
   }
-  console.log(popHeight, popWidth, "------------")
+  console.log(innerHeight, popHeight, "****", innerWidth, popWidth, "--------")
   return (
     <div>
       <Container maxWidth={false} sx={{ marginY: 12 }}>
@@ -193,13 +193,21 @@ const MapContainer = ({
               )}
               {isLoggedIn ? (
                 <div>
-                  <Button
-                    style={buttonStyle}
-                    variant="contained"
-                    onClick={openPopover}
+                  {/* <Popover
+                  open={true}
                   >
-                   {firstname[0].toUpperCase()}
-                  </Button>
+                  <Card>
+                  <CardActions> */}
+                    <Button
+                      style={buttonStyle}
+                      variant="contained"
+                      onClick={openPopover}
+                    >
+                    {firstname[0].toUpperCase()}
+                    </Button>
+                    {/* </CardActions>
+                    </Card>
+                  </Popover> */}
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
@@ -219,9 +227,6 @@ const MapContainer = ({
                 </div>
               ) : (
                 <div>
-                  {/* <Box
-                  sx={{ display: 'flex', p: 1, justifyContent: 'flex-end',  bgcolor: '#808080', borderRadius: 0 }}
-                  > */}
                   <Button
                     style={buttonStyle}
                     variant="contained"
