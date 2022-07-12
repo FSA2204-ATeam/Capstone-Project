@@ -40,7 +40,7 @@ const MyEvents = () => {
   const [onShowDetailsClick, setOnShowDetailsClick] = useState(null);
   const [onReviewClick, setOnReviewClick] = useState(null);
 
-  console.log("MY REVIEWS", myReviews);
+  //console.log("MY REVIEWS", myReviews);
   return (
     <div>
       <h1>{`${user.username}'s Events`}:</h1>
@@ -86,7 +86,9 @@ const MyEvents = () => {
               {onShowDetailsClick === idx ? (
                 <SingleEvent props={event} />
               ) : null}
-              {onReviewClick === idx ? <MyEventReview props={event} /> : null}
+              {onReviewClick === idx ? (
+                <MyEventReview myReview={event.users_events.review} />
+              ) : null}
             </Card>
           </div>
         );

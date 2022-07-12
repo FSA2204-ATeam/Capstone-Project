@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSentimentAnalysis } from "../store/sentimentAnalysis";
 
-function MyEventReview({ props }) {
+function MyEventReview({ myReview }) {
   const [review, setReview] = useState("");
   const [analysis, setAnalysis] = useState({});
   const analysisResult = useSelector((state) => state.analysis);
@@ -11,7 +11,8 @@ function MyEventReview({ props }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(getSentimentAnalysis(review, props.id));
+    console.log("REVIEW COMPONENT event", event);
+    dispatch(getSentimentAnalysis(review, event.id));
   };
 
   return (
@@ -23,7 +24,7 @@ function MyEventReview({ props }) {
           <input
             name="review"
             type="text"
-            placeholder="Your response here..."
+            placeholder={myReview ? myReview : "Your response here..."}
             value={review}
             onChange={(e) => setReview(e.target.value)}
           />
