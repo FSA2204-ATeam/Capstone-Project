@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
   let addressUrl = `https://api.nyc.gov/calendar/search?startDate=${startDate} 12:00 AM&endDate=${endDate} 12:00 AM&pageNumber=`;
   let events = [];
 
-  for (let pgno = 1; pgno <= 1; pgno++) {
+  for (let pgno = 1; pgno <= 5; pgno++) {
     try {
       const { data } = await axios.get(`${addressUrl}${pgno}`, {
         headers: {
