@@ -32,8 +32,8 @@ router.get("/", async (req, res, next) => {
           events.push({
             name: evt.name,
             shortDesc: evt.shortDesc,
-            timePart: evt.timePart,
-            datePart: evt.datePart,
+            startDate: evt.startDate,
+            endDate: evt.endDate,
             permalink: evt.permalink,
             address: evt.address,
             eventLat: evt.geometry[0].lat,
