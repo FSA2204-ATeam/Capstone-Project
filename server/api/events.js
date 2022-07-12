@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios");
+
 const {
   models: { Event },
 } = require("../db");
@@ -8,11 +9,10 @@ const formatDate = require("../../script/formatDate");
 const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
 module.exports = router;
 
+// Gets event list from NYC API
 router.get("/", async (req, res, next) => {
   let startDate = formatDate(0);
   let endDate = formatDate(1);
-
-  console.log(`Looking for Events between ${startDate} and ${endDate}!`);
 
   let addressUrl = `https://api.nyc.gov/calendar/search?startDate=${startDate} 12:00 AM&endDate=${endDate} 12:00 AM&pageNumber=`;
   let events = [];
@@ -41,48 +41,18 @@ router.get("/", async (req, res, next) => {
             databaseId: evt.id.toString(),
           })
         );
+
+      const { creationResult } = await Event.bulkCreate(events, {
+        ignoreDuplicates: true,
+      });
     } catch (error) {
       next(error);
     }
   }
-  console.log(`${events.length} events found!`);
-  res.json(events);
+  res.send(events);
 });
 
-router.post("/:userId", async (req, res, next) => {
-  try {
-    const [newEvent, created] = await Event.findOrCreate({
-      where: {
-        name: "97 Street Greenmarket Friday",
-        shortDesc: "Farmers Market",
-        timePart: "8am to 5pm",
-        datePart: "Jul 1",
-        permalink:
-          "http://www1.nyc.gov/events/97-street-greenmarket-friday/379910/1",
-        address:
-          " WEST   97 STREET between COLUMBUS AVENUE and AMSTERDAM AVENUE  Manhattan",
-        eventLat: "40.8134463",
-        eventLng: "-73.9562105",
-      },
-    });
-    const user = await User.findByPk(req.params.userId);
-    await newEvent.setUsers(user);
-    res.json(newEvent);
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.get("/:userId", async (req, res, next) => {
-  try {
-    console.log("PARAMS", req.params);
-    const events = await Event.findAll({
-      where: { id: req.params.userId },
-    });
-    res.json(events);
-  } catch (error) {
-    next(error);
-  }
-});
+// feeling wild get route
+// axios get  our own database pull events from now to the future
 
 module.exports = router;
