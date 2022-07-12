@@ -44,6 +44,9 @@ const PopUpWindowSignUp = () => {
   };
 
   return (
+    // <Box
+    //   sx={{ display: 'flex', justifyContent: 'flex-end',  bgcolor: '#808080', borderRadius: 0 }}
+    // >
     <Card xs={12} md={6} lg={3} elevation={3} className={classes.popover} variant="elevation" style={{background: "#808080"}} >
     <CardActions>
     <form onSubmit={handleSubmit}>
@@ -110,6 +113,7 @@ const PopUpWindowSignUp = () => {
     </form>
     </CardActions>
   </Card>
+  // </Box>
   );
 };
 export default PopUpWindowSignUp;

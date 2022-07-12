@@ -9,7 +9,6 @@ import { useFrontEndStyles } from "../theme";
 import {logout} from '../store'
 import { useHistory } from "react-router-dom";
 
-
 const PopUpWindowCardLogged = () => {
   // const [firstname, setFirstname] = useState("");
   const firstname = useSelector((state) => state.auth.firstname);
@@ -24,19 +23,18 @@ const PopUpWindowCardLogged = () => {
     dispatch(logout()),
     history.push("/")
     );
-
+    
   // const handleClick = (event) => {
   //   event.preventDefault();
   //   dispatch(HERE WE HAVE TO DECIDE WHAT TO DISPATCH AFTER WE CLICK ON the wild button)
   //   console.log(event);
   // };
 
-  // const handleClickLogout = () => {
-  //   dispatch(logout())
-  // };
-
   return (
-    <Card xs={12} md={6} lg={3} elevation={3} className={classes.popover} variant="elevation" style={{background: "#808080"}} >
+    // <Box
+    //   sx={{ display: 'flex', justifyContent: 'flex-end', bgcolor: '#808080', borderRadius: 0 }}
+    // >
+    <Card className={classes.popover} variant="elevation" style={{background: "#808080"}} >
       <CardContent>
       <CardHeader align="center" title={<Typography>Welcome!</Typography>} />
       </CardContent>
@@ -54,6 +52,7 @@ const PopUpWindowCardLogged = () => {
         </Button>
       </CardActions>
     </Card>
+    // </Box>
   );
 }
 

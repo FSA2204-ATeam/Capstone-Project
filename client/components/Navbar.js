@@ -11,15 +11,15 @@ import { useNavStyles } from "../theme";
 const Navbar = () => {
   const classes = useNavStyles();
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed">
+    // <div>
+      <AppBar position="fixed" >
         <Toolbar>
-          <Typography className={classes.title} variant="h4" noWrap>
+          <Typography className={classes.title} variant="h4">
               URBAN SAFARI
           </Typography>
         </Toolbar>
       </AppBar>
-    </div>
+    // </div>
   );
 };
 

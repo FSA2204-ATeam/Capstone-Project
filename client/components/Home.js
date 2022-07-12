@@ -99,6 +99,21 @@ const MapContainer = ({
     setNewEvtPosition(e);
   };
 
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth)
+  const [innerHeight, setInnerHeight] = useState(window.innerHeight)
+
+  window.addEventListener('resize', function(event){
+    setInnerWidth(Math.floor(window.innerWidth*0.1));
+    setInnerHeight(Math.floor(window.innerHeight*0.85)); 
+  }); 
+
+  const popupStyle = {
+    marginTop: innerHeight,
+    marginLeft: innerWidth,
+    height: "60px",
+    width: "60px"
+  }
+
   return (
     <div>
       <Container maxWidth={false} sx={{ marginY: 12 }}>
@@ -174,18 +189,18 @@ const MapContainer = ({
               )}
               {isLoggedIn ? (
                 <div>
+                  {/* <Box
+                  sx={{ display: 'flex', p: 1, justifyContent: 'flex-end', borderRadius: 0 }}
+                  > */}
                   <Button
-                    style={{
-                      marginTop: "5vh",
-                      marginLeft: "80vw",
-                    }}
+                    style={popupStyle}
                     variant="contained"
                     size="large"
-                    color="default"
                     onClick={openPopover}
                   >
                    {firstname[0].toUpperCase()}
                   </Button>
+                  {/* </Box> */}
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
@@ -201,6 +216,9 @@ const MapContainer = ({
                 </div>
               ) : (
                 <div>
+                  {/* <Box
+                  sx={{ display: 'flex', p: 1, justifyContent: 'flex-end',  bgcolor: '#808080', borderRadius: 0 }}
+                  > */}
                   <Button
                     style={{
                       marginTop: "5vh",
@@ -213,6 +231,7 @@ const MapContainer = ({
                   >
                   😀
                   </Button>
+                  {/* </Box> */}
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
