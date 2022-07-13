@@ -27,7 +27,7 @@ const PopUpWindowCardLogged = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [activeEvents, setActiveEvents] = useState(events);
+  const [activeEvents, setActiveEvents] = useState([]);
 
   const [closeLogout, setCloseLogout] = useState(true);
   const toggleCloseLogout = () => (
@@ -66,7 +66,7 @@ const PopUpWindowCardLogged = () => {
       <CardActions>
         <Button
           style={{ margin: '0 auto', display: 'flex', background: '#A16AE8' }}
-          onClick={uniqueRandomizer(events.length)} // return random =  [ 3, 1, 0, 2]
+          //onClick={uniqueRandomizer(activeEvents.length)} // return random =  [ 3, 1, 0, 2]
 
           // single event will be set to events[random[idx = 0]]
           // if "next" is selected, then increment idx+1  if idx+1 === NULL display "no more events"
