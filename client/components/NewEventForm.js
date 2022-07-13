@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import FormInput from './FormInput';
 import axios from 'axios';
+import DateFnsUtils from '@date-io/date-fns';
+import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 export const NewEventForm = (latLng) => {
   const [values, setValues] = useState({
@@ -11,6 +13,9 @@ export const NewEventForm = (latLng) => {
     eventLat: 0,
     eventLng: 0,
   });
+
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   useEffect(() => {
     console.log('useEffect running');
@@ -42,20 +47,20 @@ export const NewEventForm = (latLng) => {
       pattern: '^[A-Za-z0-9]{3,1024}$',
       required: true,
     },
-    {
-      id: 3,
-      name: 'datePart',
-      type: 'date',
-      placeholder: 'Start',
-      label: 'Start Date',
-    },
-    {
-      id: 4,
-      name: 'timePart',
-      type: 'time',
-      placeholder: 'End',
-      label: 'Start Time',
-    },
+    // {
+    //   id: 3,
+    //   name: 'datePart',
+    //   type: 'datetime-local',
+    //   placeholder: 'Start',
+    //   label: 'Start Date',
+    // },
+    // {
+    //   id: 4,
+    //   name: 'timePart',
+    //   type: 'time',
+    //   placeholder: 'End',
+    //   label: 'Start Time',
+    // },
   ];
 
   const handleSubmit = async (e) => {
@@ -89,6 +94,21 @@ export const NewEventForm = (latLng) => {
             onChange={onChange}
           />
         ))}
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <DateTimePicker
+            label="Start Date & Time"
+            value={startDate}
+            onChange={setStartDate}
+          />
+          <DateTimePicker
+            label="End Date & Time"
+            value={endDate}
+            onChange={() => {
+              setEndDate();
+              console.log(endDate);
+            }}
+          />
+        </MuiPickersUtilsProvider>
         <button>Submit</button>
       </form>
     </div>
