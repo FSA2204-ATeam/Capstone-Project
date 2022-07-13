@@ -15,11 +15,7 @@ const setAllEvts = (allEvts) => ({
 export const fetchAllEvts = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
-    const { data } = await axios.get('/ENTER NEW ROUTE HERE', {
-      headers: {
-        authorization: token,
-      },
-    });
+    const { data } = await axios.get('/api/events');
     return dispatch(setAllEvts(data));
   }
 };
