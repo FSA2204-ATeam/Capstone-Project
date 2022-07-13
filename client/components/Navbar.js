@@ -19,7 +19,10 @@ const Navbar = () => {
             URBAN SAFARI
           </Typography>
           <Link to="/events/myevents">MY EVENTS</Link>
+<<<<<<< Updated upstream
           <Link to="/profile">PROFILE</Link>
+=======
+>>>>>>> Stashed changes
         </Toolbar>
       </AppBar>
     </div>

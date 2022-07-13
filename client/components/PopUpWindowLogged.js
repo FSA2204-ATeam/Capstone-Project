@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useEffect, useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import {
   Button,
   Card,
@@ -12,26 +12,30 @@ import {
   IconButton,
   Tooltip,
   Container,
-} from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
-import fetchUsers from "../store/users";
-import { Link } from "react-router-dom";
-import { grey } from "@material-ui/core/colors";
-import { useFrontEndStyles } from "../theme";
-import { logout } from "../store";
-import { useHistory } from "react-router-dom";
+} from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import fetchUsers from '../store/users';
+import { Link } from 'react-router-dom';
+import { grey } from '@material-ui/core/colors';
+import { useFrontEndStyles } from '../theme';
+import { logout } from '../store';
+import { useHistory } from 'react-router-dom';
 
-const PopUpWindowCardLogged = ({ events }) => {
+const PopUpWindowCardLogged = () => {
   const classes = useFrontEndStyles();
 
   const dispatch = useDispatch();
   const history = useHistory();
 
+<<<<<<< Updated upstream
   const [activeEvents, setActiveEvents] = useState(events);
+=======
+  //const [events, setEvents] = useState(events);
+>>>>>>> Stashed changes
 
   const [closeLogout, setCloseLogout] = useState(true);
   const toggleCloseLogout = () => (
-    setCloseLogout(!closeLogout), dispatch(logout()), history.push("/")
+    setCloseLogout(!closeLogout), dispatch(logout()), history.push('/')
   );
 
   // const handleClick = (event) => {
@@ -52,7 +56,7 @@ const PopUpWindowCardLogged = ({ events }) => {
       elevation={3}
       className={classes.p}
       variant="elevation"
-      style={{ background: "#808080" }}
+      style={{ background: '#808080' }}
     >
       <CardContent>
         <CardHeader
@@ -65,7 +69,7 @@ const PopUpWindowCardLogged = ({ events }) => {
       </Typography>
       <CardActions>
         <Button
-          style={{ margin: "0 auto", display: "flex", background: "#A16AE8" }}
+          style={{ margin: '0 auto', display: 'flex', background: '#A16AE8' }}
           onClick={uniqueRandomizer(events.length)} // return random =  [ 3, 1, 0, 2]
 
           // single event will be set to events[random[idx = 0]]
@@ -75,7 +79,7 @@ const PopUpWindowCardLogged = ({ events }) => {
         </Button>
         <Button
           href="/"
-          style={{ margin: "0 auto", display: "flex", background: "#68BBE3" }}
+          style={{ margin: '0 auto', display: 'flex', background: '#68BBE3' }}
           onClick={toggleCloseLogout}
         >
           Logout
