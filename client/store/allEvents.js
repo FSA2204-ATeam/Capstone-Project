@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const TOKEN = 'token';
-
 // ACTION TYPES
 const SET_All_EVENTS = 'SET_All_EVENTS';
 
@@ -13,14 +11,11 @@ const setAllEvts = (allEvts) => ({
 
 // THUNK CREATORS
 export const fetchAllEvts = () => async (dispatch) => {
-  const token = window.localStorage.getItem(TOKEN);
-  if (token) {
-    const { data } = await axios.get('/ENTER NEW ROUTE HERE', {
-      headers: {
-        authorization: token,
-      },
-    });
+  try {
+    const { data } = await axios.get('/api/events');
     return dispatch(setAllEvts(data));
+  } catch (err) {
+    console.error(err);
   }
 };
 

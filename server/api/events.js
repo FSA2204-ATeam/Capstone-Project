@@ -1,14 +1,14 @@
-const router = require("express").Router();
-const axios = require("axios");
+const router = require('express').Router();
+const axios = require('axios');
 const {
   models: { Event },
-} = require("../db");
-const User = require("../db/models/User");
-const formatDate = require("../../script/formatDate");
-const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
-const { Op } = require("sequelize");
+} = require('../db');
+const User = require('../db/models/User');
+const formatDate = require('../../script/formatDate');
+const { requireToken, isAdmin } = require('../api/gateKeepingMiddleware');
+const { Op } = require('sequelize');
 
-router.get("/", async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   let [searchStart, searchEnd, startDate, endDate] = formatDate(1);
 
   let addressUrl = `https://api.nyc.gov/calendar/search?startDate=${startDate} 12:00 AM&endDate=${endDate} 12:00 AM&pageNumber=`;
@@ -31,22 +31,22 @@ router.get("/", async (req, res, next) => {
     // and also to the events array
 
     console.log(
-      "dbEvents.length before filter: ",
+      'dbEvents.length before filter: ',
       dbEvents.length,
-      "dbEvents.length after filter",
+      'dbEvents.length after filter',
       dbEvents.filter((event) => event.dataValues.source !== null).length
     );
 
     if (
       dbEvents.filter((event) => {
         event.dataValues.source !== null;
-      }).length === 0
+      }).length <= 5
     ) {
       for (let pgno = 1; pgno <= 5; pgno++) {
         const { data } = await axios.get(`${addressUrl}${pgno}`, {
           headers: {
-            "Cache-Control": "no-cache",
-            "Ocp-Apim-Subscription-Key": `${process.env.NYC_EVENTS_API_KEY}`,
+            'Cache-Control': 'no-cache',
+            'Ocp-Apim-Subscription-Key': `${process.env.NYC_EVENTS_API_KEY}`,
           },
         });
 
@@ -63,7 +63,7 @@ router.get("/", async (req, res, next) => {
               eventLat: evt.geometry[0].lat,
               eventLng: evt.geometry[0].lng,
               databaseId: evt.id.toString(),
-              source: "NYC API",
+              source: 'NYC API',
             })
           );
 

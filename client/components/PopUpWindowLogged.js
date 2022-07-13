@@ -52,7 +52,7 @@ const PopUpWindowCardLogged = () => {
       elevation={3}
       className={classes.p}
       variant="elevation"
-      style={{ background: '#808080' }}
+      style={{ background: '#FFFFFF' }}
     >
       <CardContent>
         <CardHeader

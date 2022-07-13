@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
-const token = window.localStorage.getItem("token");
+const token = window.localStorage.getItem('token');
 
-const SET_USER_RSVP = "SET_USER_RSVP";
-const FETCH_USER_EVENTS = "FETCH_USER_EVENTS";
-const FETCH_USER_REVIEWS = "FETCH_USER_REVIEWS";
-const SET_USER_EVENTS = "SET_USER_EVENTS";
-const REMOVE_USER_EVENT = "REMOVE_USER_EVENT";
+const SET_USER_RSVP = 'SET_USER_RSVP';
+const FETCH_USER_EVENTS = 'FETCH_USER_EVENTS';
+const FETCH_USER_REVIEWS = 'FETCH_USER_REVIEWS';
+const SET_USER_EVENTS = 'SET_USER_EVENTS';
+const REMOVE_USER_EVENT = 'REMOVE_USER_EVENT';
 
 export const _setUserRSVP = (idx) => ({
   type: SET_USER_RSVP,
@@ -34,14 +34,15 @@ export const _removeUserEvent = (userEvent) => ({
 });
 
 export const setUserRSVP = (event) => async (dispatch) => {
+  //REFACTOR TO CREATE ASSOCIATION ONLY
   try {
-    const { data } = await axios.post("/api/usersEvents", event, {
+    const { data } = await axios.post('/api/usersEvents', event, {
       headers: {
         authorization: token,
       },
     });
     data.totalGuests++;
-    const { updatedData } = await axios.put("/api/usersEvents", data, {
+    const { updatedData } = await axios.put('/api/usersEvents', data, {
       headers: {
         authorization: token,
       },
@@ -54,7 +55,7 @@ export const setUserRSVP = (event) => async (dispatch) => {
 
 export const fetchUserEvents = () => async (dispatch) => {
   try {
-    const { data } = await axios.get("/api/usersEvents", {
+    const { data } = await axios.get('/api/usersEvents', {
       headers: {
         authorization: token,
       },
@@ -67,12 +68,12 @@ export const fetchUserEvents = () => async (dispatch) => {
 
 export const fetchUserReviews = () => async (dispatch) => {
   try {
-    const { data } = await axios.get("/api/usersEvents/userReviews", {
+    const { data } = await axios.get('/api/usersEvents/userReviews', {
       headers: {
         authorization: token,
       },
     });
-    console.log("ASSOCIATIONS RETRIEVED", data);
+    console.log('ASSOCIATIONS RETRIEVED', data);
     dispatch(_fetchUserReviews(data));
   } catch (error) {
     console.error(error);
@@ -80,7 +81,7 @@ export const fetchUserReviews = () => async (dispatch) => {
 };
 export const setUserEvents = (userId) => async (dispatch) => {
   try {
-    const { data } = await axios.get("/api/usersEvents", {
+    const { data } = await axios.get('/api/usersEvents', {
       headers: {
         authorization: token,
       },
@@ -93,7 +94,7 @@ export const setUserEvents = (userId) => async (dispatch) => {
 
 export const removeUsersEvent = (eventId, userId) => async (dispatch) => {
   try {
-    const { data: userEvent } = await axios.delete("/api/usersEvents", {
+    const { data: userEvent } = await axios.delete('/api/usersEvents', {
       headers: {
         authorization: token,
       },
