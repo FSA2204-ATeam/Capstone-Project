@@ -8,23 +8,20 @@ export const NewEventForm = (latLng) => {
   const [values, setValues] = useState({
     name: '',
     shortDesc: '',
-    datePart: '',
-    timePart: '',
-    eventLat: 0,
-    eventLng: 0,
+    eventLat: latLng.position.lat,
+    eventLng: latLng.position.lng,
   });
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
-  useEffect(() => {
-    console.log('useEffect running');
-    setValues({
-      ...values,
-      eventLat: latLng.position.lat,
-      eventLng: latLng.position.lng,
-    });
-  }, [latLng]);
+  // useEffect(() => {
+  //   setValues({
+  //     ...values,
+  //     eventLat: latLng.position.lat,
+  //     eventLng: latLng.position.lng,
+  //   });
+  // }, [latLng]);
 
   const inputs = [
     {
@@ -47,28 +44,17 @@ export const NewEventForm = (latLng) => {
       pattern: '^[A-Za-z0-9]{3,1024}$',
       required: true,
     },
-    // {
-    //   id: 3,
-    //   name: 'datePart',
-    //   type: 'datetime-local',
-    //   placeholder: 'Start',
-    //   label: 'Start Date',
-    // },
-    // {
-    //   id: 4,
-    //   name: 'timePart',
-    //   type: 'time',
-    //   placeholder: 'End',
-    //   label: 'Start Time',
-    // },
   ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
+
+    const newEvent = { ...values, startDate, endDate };
+    console.log(newEvent);
+
     const token = window.localStorage.getItem('token');
     if (token) {
-      const newUserEvt = await axios.post('api/usersevents', values, {
+      const newUserEvt = await axios.post('api/usersevents', newEvent, {
         headers: {
           authorization: token,
         },
@@ -79,7 +65,6 @@ export const NewEventForm = (latLng) => {
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-    console.log('form values ----->', values);
   };
 
   return (
@@ -94,22 +79,27 @@ export const NewEventForm = (latLng) => {
             onChange={onChange}
           />
         ))}
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <DateTimePicker
-            label="Start Date & Time"
-            value={startDate}
-            onChange={setStartDate}
-          />
-          <DateTimePicker
-            label="End Date & Time"
-            value={endDate}
-            onChange={() => {
-              setEndDate();
-              console.log(endDate);
-            }}
-          />
-        </MuiPickersUtilsProvider>
-        <button>Submit</button>
+        <p>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DateTimePicker
+              label="Event starts"
+              value={startDate}
+              onChange={setStartDate}
+            />
+          </MuiPickersUtilsProvider>
+        </p>
+        <p>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DateTimePicker
+              label="Event ends"
+              value={endDate}
+              onChange={setEndDate}
+            />
+          </MuiPickersUtilsProvider>
+        </p>
+        <p>
+          <button>Submit</button>
+        </p>
       </form>
     </div>
   );
