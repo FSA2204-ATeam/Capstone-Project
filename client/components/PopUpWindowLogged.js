@@ -27,7 +27,7 @@ const PopUpWindowCardLogged = ({ events }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [events, setEvents] = useState(events);
+  const [activeEvents, setActiveEvents] = useState(events);
 
   const [closeLogout, setCloseLogout] = useState(true);
   const toggleCloseLogout = () => (

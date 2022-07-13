@@ -48,6 +48,9 @@ const Event = db.define("event", {
   category: {
     type: Sequelize.STRING,
   },
+  source: {
+    type: Sequelize.STRING,
+  },
 });
 
 module.exports = Event;
