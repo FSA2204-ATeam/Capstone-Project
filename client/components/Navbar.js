@@ -6,20 +6,63 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+import Button from '@material-ui/core/Button';
 import { useNavStyles } from '../theme';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const classes = useNavStyles();
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed">
+    <div>
+      <AppBar
+        style={{
+          backgroundColor: '#FFFFFF',
+          display: 'flex',
+          justifyContent: 'space-around',
+          margin: '1rem',
+        }}
+        className={{ padding: '10px', marginLeft: '1rem' }}
+        position="fixed"
+      >
         <Toolbar>
           <Typography className={classes.title} variant="h4" noWrap>
             URBAN SAFARI
           </Typography>
-          <Link to="/events/myevents">MY EVENTS</Link>
-          <Link to="/profile">PROFILE</Link>
+          <Button
+            href="/home"
+            style={{
+              margin: '15px',
+              display: 'flex',
+              background: '#FFFFFF',
+              fontColor: '#000000',
+            }}
+          >
+            HOME
+          </Button>
+
+          <Button
+            href="/events/myevents"
+            style={{
+              margin: '15px',
+              display: 'flex',
+              background: '#FFFFFF',
+              fontColor: '#000000',
+            }}
+          >
+            MY EVENTS
+          </Button>
+
+          <Button
+            href="/profile"
+            style={{
+              margin: '15px',
+              display: 'flex',
+              background: '#FFFFFF',
+              fontColor: '#000000',
+            }}
+          >
+            PROFILE
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
