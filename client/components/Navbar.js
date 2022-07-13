@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import { useNavStyles } from '../theme';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn }) => {
   const classes = useNavStyles();
   return (
     <div>
@@ -19,15 +19,15 @@ const Navbar = () => {
           backgroundColor: '#FFFFFF',
           display: 'flex',
           justifyContent: 'space-around',
-          margin: '1rem',
+          margin: '0rem',
         }}
-        className={{ padding: '10px', marginLeft: '1rem' }}
         position="fixed"
       >
         <Toolbar>
           <Typography className={classes.title} variant="h4" noWrap>
             URBAN SAFARI
           </Typography>
+
           <Button
             href="/home"
             style={{
@@ -40,29 +40,33 @@ const Navbar = () => {
             HOME
           </Button>
 
-          <Button
-            href="/events/myevents"
-            style={{
-              margin: '15px',
-              display: 'flex',
-              background: '#FFFFFF',
-              fontColor: '#000000',
-            }}
-          >
-            MY EVENTS
-          </Button>
+          {isLoggedIn ? (
+            <>
+              <Button
+                href="/events/myevents"
+                style={{
+                  margin: '15px',
+                  display: 'flex',
+                  background: '#FFFFFF',
+                  fontColor: '#000000',
+                }}
+              >
+                MY EVENTS
+              </Button>
 
-          <Button
-            href="/profile"
-            style={{
-              margin: '15px',
-              display: 'flex',
-              background: '#FFFFFF',
-              fontColor: '#000000',
-            }}
-          >
-            PROFILE
-          </Button>
+              <Button
+                href="/profile"
+                style={{
+                  margin: '15px',
+                  display: 'flex',
+                  background: '#FFFFFF',
+                  fontColor: '#000000',
+                }}
+              >
+                PROFILE
+              </Button>
+            </>
+          ) : null}
         </Toolbar>
       </AppBar>
     </div>

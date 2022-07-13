@@ -102,7 +102,7 @@ const MapContainer = ({
 
   return (
     <div>
-      <Container maxWidth="lg" sx={{ marginY: 12 }}>
+      <Container maxWidth="xl" sx={{ marginY: 12 }}>
         <Grid container spacing={5} style={{ justifyContent: 'space-around' }}>
           <LoadScript
             mapIds={['61b5009386a6596e']}
@@ -227,7 +227,7 @@ const MapContainer = ({
                     color="#FFFFFF"
                     onClick={openPopover}
                   >
-                    😀
+                    LOGIN
                   </Button>
                   <Popover
                     open={Boolean(anchor)}

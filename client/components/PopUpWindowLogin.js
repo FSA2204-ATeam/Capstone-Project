@@ -83,7 +83,7 @@ const PopUpWindowLogin = () => {
                 id="password"
                 name="password"
                 label="Password"
-                type="text"
+                type="password"
                 variant="outlined"
                 value={formValues.password}
                 onChange={handleChange}
