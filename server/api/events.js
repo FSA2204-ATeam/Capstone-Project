@@ -1,13 +1,11 @@
 const router = require("express").Router();
 const axios = require("axios");
-
 const {
   models: { Event },
 } = require("../db");
 const User = require("../db/models/User");
 const formatDate = require("../../script/formatDate");
 const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
-module.exports = router;
 
 // Gets event list from NYC API
 router.get("/", async (req, res, next) => {
@@ -16,6 +14,9 @@ router.get("/", async (req, res, next) => {
 
   let addressUrl = `https://api.nyc.gov/calendar/search?startDate=${startDate} 12:00 AM&endDate=${endDate} 12:00 AM&pageNumber=`;
   let events = [];
+
+  try {
+  } catch (error) {}
 
   for (let pgno = 1; pgno <= 5; pgno++) {
     try {
@@ -39,6 +40,7 @@ router.get("/", async (req, res, next) => {
             eventLat: evt.geometry[0].lat,
             eventLng: evt.geometry[0].lng,
             databaseId: evt.id.toString(),
+            source: "NYC API ",
           })
         );
 
