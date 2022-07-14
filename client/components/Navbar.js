@@ -1,14 +1,14 @@
-import { logout } from '../store';
-import { connect } from 'react-redux';
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
-import Button from '@material-ui/core/Button';
-import { useNavStyles } from '../theme';
-import { Link } from 'react-router-dom';
+import { logout } from "../store";
+import { connect } from "react-redux";
+import React from "react";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import InputBase from "@material-ui/core/InputBase";
+import SearchIcon from "@material-ui/icons/Search";
+import Button from "@material-ui/core/Button";
+import { useNavStyles } from "../theme";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ isLoggedIn }) => {
   const classes = useNavStyles();
@@ -16,10 +16,10 @@ const Navbar = ({ isLoggedIn }) => {
     <div>
       <AppBar
         style={{
-          backgroundColor: '#FFFFFF',
-          display: 'flex',
-          justifyContent: 'space-around',
-          margin: '0rem',
+          backgroundColor: "#FFFFFF",
+          display: "flex",
+          justifyContent: "space-around",
+          margin: "0rem",
         }}
         position="fixed"
       >
@@ -31,10 +31,10 @@ const Navbar = ({ isLoggedIn }) => {
           <Button
             href="/home"
             style={{
-              margin: '15px',
-              display: 'flex',
-              background: '#FFFFFF',
-              fontColor: '#000000',
+              margin: "15px",
+              display: "flex",
+              background: "#FFFFFF",
+              fontColor: "#000000",
             }}
           >
             HOME
@@ -45,22 +45,22 @@ const Navbar = ({ isLoggedIn }) => {
               <Button
                 href="/events/myevents"
                 style={{
-                  margin: '15px',
-                  display: 'flex',
-                  background: '#FFFFFF',
-                  fontColor: '#000000',
+                  margin: "15px",
+                  display: "flex",
+                  background: "#FFFFFF",
+                  fontColor: "#000000",
                 }}
               >
                 MY EVENTS
               </Button>
 
               <Button
-                href="/profile"
+                href="/testing"
                 style={{
-                  margin: '15px',
-                  display: 'flex',
-                  background: '#FFFFFF',
-                  fontColor: '#000000',
+                  margin: "15px",
+                  display: "flex",
+                  background: "#FFFFFF",
+                  fontColor: "#000000",
                 }}
               >
                 PROFILE
