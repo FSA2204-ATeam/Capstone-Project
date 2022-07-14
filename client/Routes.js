@@ -12,7 +12,7 @@ import UserProfileForm from "./components/UserProfileForm";
 import MyEventReview from "./components/MyEventReview";
 import MyEvents from "./components/MyEvents";
 import { NewEventForm } from "./components/NewEventForm";
-import { fetchAllEvts } from "./store/allEvents";
+import { getEvents } from "./store/events";
 import Randomizer from "./components/Randomizer";
 
 /**
@@ -62,7 +62,7 @@ const mapDispatch = (dispatch) => {
       dispatch(me());
       dispatch(fetchUserEvents());
       dispatch(fetchUserPreferences());
-      dispatch(fetchAllEvts());
+      dispatch(getEvents());
     },
   };
 };

@@ -16,23 +16,13 @@ const containerStyle = {
 const center = { lat: 40.7589, lng: -73.9851 };
 
 const Randomizer = () => {
-  const allEvents = useSelector((state) => state.allEvents);
+  const allEvents = useSelector((state) => state.events);
 
   const [randomOrder, setRandomOrder] = useState([]);
 
   useEffect(() => {
-    console.log(
-      "inside Randomizer useEvent: ",
-      uniqueRandomizer(allEvents.length)
-    );
     setRandomOrder(uniqueRandomizer(allEvents.length));
-    console.log(
-      "inside Randomizer useEffect: ",
-      uniqueRandomizer(allEvents.length)
-    );
   }, [allEvents]);
-
-  console.log("inside Randomizer Component - All Events: ", randomOrder);
 
   const { isLoaded } = useJsApiLoader({
     id: "61b5009386a6596e",
@@ -64,7 +54,7 @@ const Randomizer = () => {
           fullscreenControl: false,
         }}
       >
-        {/* {allEvents[0] ? <MapSingleEvent randomOrder={randomOrder} /> : null} */}
+        {randomOrder[0] ? <MapSingleEvent randomOrder={randomOrder} /> : null}
       </GoogleMap>
     </div>
   ) : (

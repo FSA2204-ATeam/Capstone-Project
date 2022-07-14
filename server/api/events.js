@@ -1,26 +1,24 @@
 const router = require("express").Router();
 const axios = require("axios");
 const {
-  models: { Event },
+  models: { Event, UsersEvents },
 } = require("../db");
 const User = require("../db/models/User");
 const formatDate = require("../../script/formatDate");
 const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
 const { Op } = require("sequelize");
 
-// ret
 router.get("/", async (req, res, next) => {
-  let [searchStart, searchEnd, startDate, endDate] = formatDate(1);
+  let [searchStart, searchEnd, startDate, endDate] = formatDate(5);
 
   let addressUrl = `https://api.nyc.gov/calendar/search?startDate=${startDate} 12:00 AM&endDate=${endDate} 12:00 AM&pageNumber=`;
   let events = [];
 
-  console.log(`Searching for events between ${startDate} and ${endDate}`);
   try {
     let dbEvents = await Event.findAll({
       where: {
         startDate: {
-          [Op.and]: [{ [Op.gte]: searchStart }, { [Op.lte]: searchEnd }],
+          [Op.gte]: searchStart,
         },
       },
     });
@@ -60,18 +58,41 @@ router.get("/", async (req, res, next) => {
               source: "NYC API",
             })
           );
-
-        const { creationResult } = await Event.bulkCreate(events, {
-          ignoreDuplicates: true,
-        });
       }
-    }
-    events.push(...dbEvents);
+      await Event.bulkCreate(events, {
+        ignoreDuplicates: true,
+      });
+
+      const updatedEvents = await Event.findAll({
+        where: {
+          startDate: {
+            [Op.gte]: searchStart,
+          },
+        },
+      });
+
+      res.send(updatedEvents);
+    } else res.send(dbEvents);
   } catch (error) {
     next(error);
   }
+});
 
-  res.send(events);
+router.post("/", requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+
+    const newEvent = await Event.create(req.body);
+    await newEvent.setUsers(user);
+    await UsersEvents.update(
+      { host: true },
+      { where: { eventId: newEvent.id, userId: user.id } }
+    );
+
+    // res.json(newEvent);
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;

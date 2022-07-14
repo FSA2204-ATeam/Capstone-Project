@@ -2,16 +2,21 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserRSVP } from "../store/usersEvents";
 import { InfoWindow } from "@react-google-maps/api";
-import uniqueRandomizer from "../../script/uniqueRandomizer";
 
-const MapSingleEvent = (randomOrder) => {
+const MapSingleEvent = ({ randomOrder }) => {
   const dispatch = useDispatch();
 
-  const allEvents = useSelector((state) => state.allEvents);
-  console.log("allEvents inside mapSingleComponent", allEvents);
-  const [idx, setIdx] = useState(0);
+  const allEvents = useSelector((state) => state.events);
+  const usersEvents = useSelector((state) => state.usersEvents);
 
-  console.log("loooking for first random event", randomOrder[idx]);
+  const [myAssociations, setMyAssociations] = useState(
+    usersEvents.events.map((ele) => ele.users_events).map((ele) => ele.eventId)
+  );
+
+  console.log("My Associations: ", myAssociations);
+  console.log("UsersEvents ", usersEvents);
+
+  const [idx, setIdx] = useState(0);
 
   const [activeEvent, setActiveEvent] = useState(allEvents[randomOrder[idx]]);
 
@@ -20,15 +25,21 @@ const MapSingleEvent = (randomOrder) => {
   };
 
   const onNextButton = () => {
-    if (randomOrder[idx + 1]) setIdx(idx++);
-    else setIdx(0);
+    randomOrder[idx + 1] !== undefined ? setIdx(idx + 1) : setIdx(0);
   };
 
   useEffect(() => {
-    setActiveEvent(allEvents(randomOrder[idx]));
-  });
+    setActiveEvent(allEvents[randomOrder[idx]]);
+  }, [idx]);
 
-  console.log("activeEvent", activeEvent);
+  useEffect(() => {
+    setMyAssociations(
+      usersEvents.events
+        .map((ele) => ele.users_events)
+        .map((ele) => ele.eventId)
+    );
+  }, [usersEvents]);
+
   return (
     <div>
       <InfoWindow
@@ -43,8 +54,11 @@ const MapSingleEvent = (randomOrder) => {
           <div>
             {activeEvent.startDate} from {activeEvent.endDate}
           </div>
-
-          <button onClick={() => onRSVPClick(activeEvent)}>RSVP</button>
+          {myAssociations.includes(activeEvent.id) ? (
+            <>You've already RSVP'd to this event</>
+          ) : (
+            <button onClick={() => onRSVPClick(activeEvent)}>RSVP</button>
+          )}
           <button onClick={() => onNextButton()}>Next</button>
         </div>
       </InfoWindow>
