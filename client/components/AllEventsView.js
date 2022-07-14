@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 const AllEventsView = () => {
     const allEvents = useSelector((state) => state.allEvents);
     const [selectedEvent, setSelectedEvent] = useState(null);
-
+    
     const onMarkerClick = (idx) => {
         setSelectedEvent(idx);
     };
@@ -17,6 +17,9 @@ const AllEventsView = () => {
     const onRSVPClick = (event) => {
         dispatch(setUserRSVP(event));
       };
+      
+    // var date_test = new Date("2011-07-14 11:23:00".replace(/-/g,"/"));
+    // console.log(date_test);
 
     return (
         <div>
@@ -42,7 +45,7 @@ const AllEventsView = () => {
                             <div>
                               <div>{event.shortDesc}</div>
                               <div>
-                                {event.startDate} from {event.endDate}
+                                {new Date(event.startDate).toLocaleDateString('en-us', { weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"numeric"})} from {new Date(event.endDate).toLocaleDateString('en-us', { weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"numeric"})}
                               </div>
                               <button onClick={() => onRSVPClick(event)}>
                                 RSVP
