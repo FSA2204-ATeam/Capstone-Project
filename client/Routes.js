@@ -13,6 +13,7 @@ import MyEventReview from './components/MyEventReview';
 import MyEvents from './components/MyEvents';
 import { NewEventForm } from './components/NewEventForm';
 import { fetchAllEvts } from './store/allEvents';
+import LandingPage from './components/LandingPage';
 
 /**
  * COMPONENT
@@ -27,6 +28,7 @@ class Routes extends Component {
       <div>
         <Switch>
           <Route exact path="/home" component={Home} />
+          <Route exact path="/landing" component={LandingPage} />
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={PopUpWindowLogin} />
           <Route exact path="/signup" component={PopUpWindowSignUp} />
