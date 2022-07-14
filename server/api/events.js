@@ -1,14 +1,15 @@
-const router = require('express').Router();
-const axios = require('axios');
+const router = require("express").Router();
+const axios = require("axios");
 const {
   models: { Event },
-} = require('../db');
-const User = require('../db/models/User');
-const formatDate = require('../../script/formatDate');
-const { requireToken, isAdmin } = require('../api/gateKeepingMiddleware');
-const { Op } = require('sequelize');
+} = require("../db");
+const User = require("../db/models/User");
+const formatDate = require("../../script/formatDate");
+const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
+const { Op } = require("sequelize");
 
-router.get('/', async (req, res, next) => {
+// ret
+router.get("/", async (req, res, next) => {
   let [searchStart, searchEnd, startDate, endDate] = formatDate(1);
 
   let addressUrl = `https://api.nyc.gov/calendar/search?startDate=${startDate} 12:00 AM&endDate=${endDate} 12:00 AM&pageNumber=`;
@@ -27,26 +28,19 @@ router.get('/', async (req, res, next) => {
     // received events from database
     // if statement below checks to see if any events in search period is from
     // NYC API SOURCE
-    // if none exist, an api call to NYC is executed and added to the database
+    // if less than 10 exist, an api call to NYC is executed and added to the database
     // and also to the events array
-
-    console.log(
-      'dbEvents.length before filter: ',
-      dbEvents.length,
-      'dbEvents.length after filter',
-      dbEvents.filter((event) => event.dataValues.source !== null).length
-    );
 
     if (
       dbEvents.filter((event) => {
         event.dataValues.source !== null;
       }).length <= 5
     ) {
-      for (let pgno = 1; pgno <= 5; pgno++) {
-        const { data } = await axios.get(`${addressUrl}${pgno}`, {
+      for (let pgNo = 1; pgNo <= 5; pgNo++) {
+        const { data } = await axios.get(`${addressUrl}${pgNo}`, {
           headers: {
-            'Cache-Control': 'no-cache',
-            'Ocp-Apim-Subscription-Key': `${process.env.NYC_EVENTS_API_KEY}`,
+            "Cache-Control": "no-cache",
+            "Ocp-Apim-Subscription-Key": `${process.env.NYC_EVENTS_API_KEY}`,
           },
         });
 
@@ -63,7 +57,7 @@ router.get('/', async (req, res, next) => {
               eventLat: evt.geometry[0].lat,
               eventLng: evt.geometry[0].lng,
               databaseId: evt.id.toString(),
-              source: 'NYC API',
+              source: "NYC API",
             })
           );
 
@@ -71,8 +65,8 @@ router.get('/', async (req, res, next) => {
           ignoreDuplicates: true,
         });
       }
-      events.push(...dbEvents);
     }
+    events.push(...dbEvents);
   } catch (error) {
     next(error);
   }
