@@ -376,7 +376,7 @@ const containerStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  width: "90vw",
+  width: "100vw",
   height: "80vh",
 };
 
@@ -392,8 +392,9 @@ const Randomizer = () => {
   const [map, setMap] = useState(null);
 
   const onLoad = useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
+    // this interferes with the ability to use zoom seetings. do not utilize.
+    // const bounds = new window.google.maps.LatLngBounds(center);
+    // map.fitBounds(bounds);
     setMap(map);
   }, []);
 
@@ -407,13 +408,11 @@ const Randomizer = () => {
       <p>This is my Randomizer</p>
       <h4>Testing Area!!!</h4>
       <GoogleMap
-        display="flex"
-        justifyContent="center"
         mapContainerStyle={containerStyle}
+        zoom={12}
         center={center}
         onLoad={onLoad}
         onUnmount={onUnmount}
-        zoom={10}
         options={{
           mapId: "61b5009386a6596e",
           zoomControl: false,
