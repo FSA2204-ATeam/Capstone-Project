@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Marker, InfoWindow } from '@react-google-maps/api';
+import { setUserRSVP } from '../store';
+import { useDispatch } from 'react-redux';
 
 const AllEventsView = () => {
     const allEvents = useSelector((state) => state.allEvents);
+    const [selectedEvent, setSelectedEvent] = useState(null);
+
+    const onMarkerClick = (idx) => {
+        setSelectedEvent(idx);
+    };
+
+    const dispatch = useDispatch();
+
+    const onRSVPClick = (event) => {
+        dispatch(setUserRSVP(event));
+      };
 
     return (
         <div>
@@ -16,12 +29,31 @@ const AllEventsView = () => {
                       lat: parseFloat(event.eventLat),
                       lng: parseFloat(event.eventLng),
                     }}
-                    // onClick={() => onMarkerClick(idx, event.lat, event.lng)}
+                    onClick={() => onMarkerClick(idx, event.lat, event.lng)}
                   >
+                    {selectedEvent === idx ? (
+                          <InfoWindow
+                            position={{
+                              lat: parseFloat(event.eventLat),
+                              lng: parseFloat(event.eventLng),
+                            }}
+                            onCloseClick={() => setSelectedEvent(null)}
+                          >
+                            <div>
+                              <div>{event.shortDesc}</div>
+                              <div>
+                                {event.startDate} from {event.endDate}
+                              </div>
+                              <button onClick={() => onRSVPClick(event)}>
+                                RSVP
+                              </button>
+                            </div>
+                          </InfoWindow>
+                        ) : null}
                   </Marker>
                 )
             }))
-            : null
+            : (null)
         }
         </div>
     )
