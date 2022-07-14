@@ -86,7 +86,6 @@ const MapContainer = ({
     const getEvents = async () => {
       try {
         const events = await axios.get("/api/events");
-        console.log("events data --->", events.data);
         setEvents(events.data);
       } catch (err) {
         console.log(err);
@@ -121,7 +120,7 @@ const MapContainer = ({
   console.log(innerHeight, popHeight, "****", innerWidth, popWidth, "--------");
   return (
     <div>
-      <Container maxWidth={false} sx={{ marginY: 12 }}>
+      <Container maxWidth="xl" sx={{ marginY: 12 }}>
         <Grid container spacing={5} style={{ justifyContent: "space-around" }}>
           <LoadScript
             mapIds={["61b5009386a6596e"]}
@@ -204,8 +203,16 @@ const MapContainer = ({
                   <Card>
                   <CardActions> */}
                   <Button
-                    style={buttonStyle}
+                    style={{
+                      backgroundColor: "#FFFFFF",
+                      marginTop: 130, // was set to 70 in main
+                      marginLeft: 46,
+                      height: "60px",
+                      width: "60px",
+                    }}
                     variant="contained"
+                    size="large"
+                    color="#FFFFFF"
                     onClick={openPopover}
                   >
                     {firstname[0].toUpperCase()}
@@ -216,41 +223,49 @@ const MapContainer = ({
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
-                    anchorPosition={{ top: popHeight, left: popWidth }}
+                    anchorPosition={{ top: 200, left: 50 }}
                     anchorOrigin={{
                       vertical: "top",
-                      horizontal: "right",
+                      horizontal: "left",
                     }}
                     transformOrigin={{
                       vertical: "top",
-                      horizontal: "right",
+                      horizontal: "left",
                     }}
                     onClose={() => setAnchor(null)}
                   >
-                    <PopUpWindowLogged />
+                    <PopUpWindowLogged events={events} />
                   </Popover>
                 </div>
               ) : (
                 <div>
                   <Button
-                    style={buttonStyle}
+                    style={{
+                      backgroundColor: "#FFFFFF",
+                      marginTop: 130, // was set to 70 in main
+                      marginLeft: 46,
+                      height: "60px",
+                      width: "60px",
+                    }}
                     variant="contained"
+                    size="large"
+                    color="#FFFFFF"
                     onClick={openPopover}
                   >
-                    😀
+                    LOGIN
                   </Button>
                   {/* </Box> */}
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
-                    anchorPosition={{ top: popHeight, left: popWidth }}
+                    anchorPosition={{ top: 200, left: 50 }}
                     anchorOrigin={{
                       vertical: "top",
-                      horizontal: "right",
+                      horizontal: "left",
                     }}
                     transformOrigin={{
                       vertical: "top",
-                      horizontal: "right",
+                      horizontal: "left",
                     }}
                     onClose={() => setAnchor(null)}
                   >
@@ -258,7 +273,7 @@ const MapContainer = ({
                       elevation={3}
                       className={classes.popover}
                       variant="elevation"
-                      style={{ background: "#808080" }}
+                      style={{ background: "#FFFFFF" }}
                     >
                       <CardContent>
                         <CardHeader
@@ -266,20 +281,21 @@ const MapContainer = ({
                           title={<Typography>Welcome!</Typography>}
                         />
                       </CardContent>
+
                       {popoverLogin ? (
                         <Popover
                           open={Boolean(anchor)}
                           anchorReference="anchorPosition"
                           isOpen={popoverLogin}
                           target="Login"
-                          anchorPosition={{ top: popHeight, left: popWidth }}
+                          anchorPosition={{ top: 200, left: 50 }}
                           anchorOrigin={{
                             vertical: "top",
-                            horizontal: "right",
+                            horizontal: "left",
                           }}
                           transformOrigin={{
                             vertical: "top",
-                            horizontal: "right",
+                            horizontal: "left",
                           }}
                           onClose={() => setAnchor(null)}
                         >
@@ -291,14 +307,14 @@ const MapContainer = ({
                           anchorReference="anchorPosition"
                           isOpen={popoverSignup}
                           target="Signup"
-                          anchorPosition={{ top: popHeight, left: popWidth }}
+                          anchorPosition={{ top: 200, left: 50 }}
                           anchorOrigin={{
                             vertical: "top",
-                            horizontal: "right",
+                            horizontal: "left",
                           }}
                           transformOrigin={{
                             vertical: "top",
-                            horizontal: "right",
+                            horizontal: "left",
                           }}
                           onClose={() => setAnchor(null)}
                         >
