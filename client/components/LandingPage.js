@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import AllEventsView from './AllEventsView';
 import { NewEventForm } from './NewEventForm';
+import { useSelector } from 'react-redux';
 
 const LandingPage = () => {
   const [wildMode, setWildMode] = useState(true);
   const [newEvtPosition, setNewEvtPosition] = useState({});
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const [userButtonOn, setUserButtonOn] = useState(false);
 
   return (
     <div>
@@ -49,6 +52,15 @@ const LandingPage = () => {
                   )}
                 </Marker>
               )}
+            </div>
+          )}
+          {userButtonOn && (
+            <div>
+            {isLoggedIn ? (
+              null //USER button --> popupwindowlogged component
+              ) : (
+              null //login button --> popupwindowlogin && popupwindowsignup
+            )}
             </div>
           )}
         </GoogleMap>
