@@ -17,9 +17,6 @@ const AllEventsView = () => {
     const onRSVPClick = (event) => {
         dispatch(setUserRSVP(event));
       };
-      
-    // var date_test = new Date("2011-07-14 11:23:00".replace(/-/g,"/"));
-    // console.log(date_test);
 
     return (
         <div>
