@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import AllEventsView from './AllEventsView';
 
 const LandingPage = () => {
     const [wildMode, setWildMode] = useState(true);
@@ -27,6 +28,9 @@ const LandingPage = () => {
                 fullscreenControl: false,
               }}
             >  
+            {!wildMode ? (null) : (
+                <AllEventsView/>
+            )}
             </GoogleMap>
         </LoadScript>
         </div>
