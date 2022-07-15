@@ -31,7 +31,7 @@ const PopUpWindowCardLogged = () => {
 
   const [closeLogout, setCloseLogout] = useState(true);
   const toggleCloseLogout = () => (
-    setCloseLogout(!closeLogout), dispatch(logout()), history.push('/')
+    setCloseLogout(!closeLogout), dispatch(logout()), history.push('/landing')
   );
 
   // const handleClick = (event) => {
@@ -74,7 +74,6 @@ const PopUpWindowCardLogged = () => {
           Feeling Wild
         </Button>
         <Button
-          href="/"
           style={{ margin: '0 auto', display: 'flex', background: '#68BBE3' }}
           onClick={toggleCloseLogout}
         >

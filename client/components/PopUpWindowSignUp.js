@@ -37,7 +37,7 @@ const defaultValues = {
 const PopUpWindowSignUp = () => {
   const classes = useFrontEndStyles();
   const [formValues, setFormValues] = useState(defaultValues);
-
+  
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
@@ -55,19 +55,6 @@ const PopUpWindowSignUp = () => {
   };
 
   return (
-    <Card
-      xs={12}
-      md={6}
-      lg={3}
-      elevation={3}
-      className={classes.p}
-      variant="elevation"
-      style={{ background: '#FFFFFF' }}
-    >
-      <CardContent>
-        <CardHeader align="center" />
-      </CardContent>
-      <CardActions>
         <form onSubmit={handleSubmit}>
           <Grid
             container
@@ -135,12 +122,10 @@ const PopUpWindowSignUp = () => {
               type="submit"
               style={{ background: '#68BBE3' }}
             >
-              Sign Up
+              Submit
             </Button>
           </Grid>
         </form>
-      </CardActions>
-    </Card>
   );
 };
 export default PopUpWindowSignUp;

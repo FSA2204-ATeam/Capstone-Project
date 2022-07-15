@@ -1,30 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Grid from '@material-ui/core/Grid';
+import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Slider from '@material-ui/core/Slider';
-import Button from '@material-ui/core/Button';
 import { authenticate } from '../store';
 import { useDispatch } from 'react-redux';
 import { useFrontEndStyles } from '../theme';
-import {
-  Card,
-  Box,
-  CardMedia,
-  CardContent,
-  CardHeader,
-  CardActions,
-  Typography,
-  IconButton,
-  Tooltip,
-  Container,
-} from '@material-ui/core';
+import { Grid, Button, Card, CardContent, CardHeader, CardActions } from '@material-ui/core';
+import PopUpWindowSignUp from './PopUpWindowSignUp';
 
 const defaultValues = {
   username: '',
@@ -34,6 +14,7 @@ const defaultValues = {
 const PopUpWindowLogin = () => {
   const classes = useFrontEndStyles();
   const [formValues, setFormValues] = useState(defaultValues);
+  const [loginButtonOn, setLoginButtonOn] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -50,6 +31,10 @@ const PopUpWindowLogin = () => {
     dispatch(authenticate(formValues, 'login'));
     console.log(event);
   };
+
+  const closeLoginPopover = (event) => {
+    setLoginButtonOn(event.target);
+  }
 
   return (
     <Card
@@ -92,9 +77,19 @@ const PopUpWindowLogin = () => {
             <Button
               variant="contained"
               type="submit"
-              style={{ background: '#94C973' }}
+              style={{ display: 'flex', background: '#94C973' }}
+              onClick={() => closeLoginPopover(null)}
             >
               Log in
+            </Button>
+            <Button
+              variant="contained"
+              type="submit"
+              style={{ display: 'flex', background: '#68BBE3' }}
+              onClick={() => closeLoginPopover(null)}
+            >
+              Sign Up
+              {/* <PopUpWindowSignUp/> */}
             </Button>
           </Grid>
         </form>

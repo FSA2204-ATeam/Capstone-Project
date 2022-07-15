@@ -3,12 +3,19 @@ import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/ap
 import AllEventsView from './AllEventsView';
 import { NewEventForm } from './NewEventForm';
 import { useSelector } from 'react-redux';
+import { Button, Popover, CardContent, CardHeader, CardActions } from '@material-ui/core';
+import PopUpWindowLogged from './PopUpWindowLogged';
+import PopUpWindowLogin from './PopUpWindowLogin';
 
 const LandingPage = () => {
   const [wildMode, setWildMode] = useState(true);
   const [newEvtPosition, setNewEvtPosition] = useState({});
   const isLoggedIn = useSelector((state) => !!state.auth.id);
-  const [userButtonOn, setUserButtonOn] = useState(false);
+  const [anchor, setAnchor] = useState(null);
+
+  const openPopover = (event) => {
+    setAnchor(event.target);
+  };
 
   return (
     <div>
@@ -54,15 +61,46 @@ const LandingPage = () => {
               )}
             </div>
           )}
-          {userButtonOn && (
             <div>
-            {isLoggedIn ? (
-              null //USER button --> popupwindowlogged component
+              <Button
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  marginTop: 130,
+                  marginLeft: 46,
+                  height: '60px',
+                  width: '60px',
+                }}
+                variant="contained"
+                size="large"
+                color="#FFFFFF"
+                onClick={openPopover}
+              >
+                {isLoggedIn ? ("USERNAME") : ("LOGIN")}
+              </Button>
+              <Popover
+                open={Boolean(anchor)}
+                anchorReference="anchorPosition"
+                anchorPosition={{ top: 200, left: 50 }}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                onClose={() => setAnchor(null)}
+              >
+              {isLoggedIn ? (
+              <div>
+                <PopUpWindowLogged/>
+                {/* <PopUpWindowLogged events={events}/> */}
+              </div>
               ) : (
-              null //login button --> popupwindowlogin && popupwindowsignup
-            )}
+                <PopUpWindowLogin/>
+              )}
+              </Popover>
             </div>
-          )}
         </GoogleMap>
       </LoadScript>
     </div>
