@@ -53,6 +53,17 @@ const Navbar = ({ isLoggedIn }) => {
               >
                 MY EVENTS
               </Button>
+              <Button
+                href="/profile"
+                style={{
+                  margin: "15px",
+                  display: "flex",
+                  background: "#FFFFFF",
+                  fontColor: "#000000",
+                }}
+              >
+                PROFILE
+              </Button>
 
               <Button
                 href="/testing"
@@ -63,7 +74,7 @@ const Navbar = ({ isLoggedIn }) => {
                   fontColor: "#000000",
                 }}
               >
-                PROFILE
+                TESTING
               </Button>
             </>
           ) : null}

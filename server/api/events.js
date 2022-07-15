@@ -90,7 +90,8 @@ router.post("/", requireToken, async (req, res, next) => {
       { where: { eventId: newEvent.id, userId: user.id } }
     );
 
-    // res.json(newEvent);
+    // can return a custom status to trigger user acknowledgement?
+    res.status(200);
   } catch (error) {
     next(error);
   }

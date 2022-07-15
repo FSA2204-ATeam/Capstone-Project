@@ -24,7 +24,7 @@ export const NewEventForm = (latLng) => {
       placeholder: "Title",
       errorMessage: "Title should be 2-50 characters long!",
       label: "title",
-      pattern: "^[A-Za-z0-9 ]{2,50}$",
+      pattern: "^{2,50}$",
       required: true,
     },
     {
@@ -34,7 +34,7 @@ export const NewEventForm = (latLng) => {
       placeholder: "Description",
       errorMessage: "Description should be 3-1024 characters!",
       label: "description",
-      pattern: "^[A-Za-z0-9 ]{3,1024}$",
+      pattern: "^{3,1024}$",
       required: true,
     },
   ];
