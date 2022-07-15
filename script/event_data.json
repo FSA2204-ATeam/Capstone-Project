@@ -1,6 +1,6 @@
 [
   {
-    "name": "57 Street Wednesday  Saturday",
+    "name": "Karaoke at Dive Bar",
     "shortDesc": "Farmers Market",
     "startDate": "2022-07-09T08:00:00.000-04:00",
     "endDate": "2022-07-09T18:00:00.000-04:00",
@@ -9,8 +9,7 @@
     "eventLat": "40.7830603",
     "eventLng": "-73.9712488",
     "databaseId": "380053",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "HHFM Lenox Avenue Market",
@@ -22,8 +21,7 @@
     "eventLat": "40.7830603",
     "eventLng": "-73.9712488",
     "databaseId": "379341",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "Union Square Greenmarket Monday, Wednesday, Friday and Saturday",
@@ -35,8 +33,7 @@
     "eventLat": "40.7358984",
     "eventLng": "-73.9912281",
     "databaseId": "378676",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "Forest Fitness",
@@ -48,8 +45,7 @@
     "eventLat": "40.8625073",
     "eventLng": "-73.9327086",
     "databaseId": "331550",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Birding: Hawk Watch",
@@ -61,8 +57,7 @@
     "eventLat": "40.7463889",
     "eventLng": "-73.84506759999999",
     "databaseId": "388450",
-    "category": "nature",
-    "source": "NYC API"
+    "category": "nature"
   },
   {
     "name": "NYC Parks Presents: Pickleball Festival at St Mary's Park",
@@ -74,8 +69,7 @@
     "eventLat": "40.8117387",
     "eventLng": "-73.9120243",
     "databaseId": "388451",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Old Cathedral Outdoor Market",
@@ -87,8 +81,7 @@
     "eventLat": "40.7193939",
     "eventLng": "-73.9972731",
     "databaseId": "379106",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "RB Farmers Market Maria Hernandez Park",
@@ -100,8 +93,7 @@
     "eventLat": "40.6987489",
     "eventLng": "-73.9197228",
     "databaseId": "378849",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "2022 Fordham Road Sidewalk Sale",
@@ -113,8 +105,7 @@
     "eventLat": "40.8416035",
     "eventLng": "-73.9011331",
     "databaseId": "379954",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Farm Exploration Days",
@@ -126,8 +117,7 @@
     "eventLat": "40.7841949",
     "eventLng": "-73.92590330000002",
     "databaseId": "353765",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Free Helmet Fitting and Distribution Event",
@@ -139,8 +129,7 @@
     "eventLat": "40.6931051",
     "eventLng": "-73.77849239999999",
     "databaseId": "371022",
-    "category": "safety",
-    "source": "NYC API"
+    "category": "safety"
   },
   {
     "name": "Summer on the Hudson: Star Gazing",
@@ -152,8 +141,7 @@
     "eventLat": "40.7799189",
     "eventLng": "-73.98878789999999",
     "databaseId": "388449",
-    "category": "science",
-    "source": "NYC API"
+    "category": "science"
   },
   {
     "name": "Murray Hill Farmers Market",
@@ -165,8 +153,7 @@
     "eventLat": "40.7641964",
     "eventLng": "-73.9617361",
     "databaseId": "379063",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "92 St Greenmarket Sunday",
@@ -178,8 +165,7 @@
     "eventLat": "40.7832685",
     "eventLng": "-73.9507498",
     "databaseId": "379880",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "Carrol Gardens Greenmarket",
@@ -191,8 +177,7 @@
     "eventLat": "40.6793313",
     "eventLng": "-73.9954833",
     "databaseId": "379772",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "Cortelyou Greenmarket Sunday",
@@ -204,8 +189,7 @@
     "eventLat": "40.6412697",
     "eventLng": "-73.9639694",
     "databaseId": "379695",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "Forest Hills Greenmarket Sunday",
@@ -217,8 +201,7 @@
     "eventLat": "40.7489985",
     "eventLng": "-73.89559869999999",
     "databaseId": "380111",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "Jackson Heights Greenmarket Sunday",
@@ -230,8 +213,7 @@
     "eventLat": "40.7537122",
     "eventLng": "-73.9146889",
     "databaseId": "379418",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "Old Cathedral Outdoor Market",
@@ -243,8 +225,7 @@
     "eventLat": "40.7193939",
     "eventLng": "-73.9972731",
     "databaseId": "379107",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "2022 Fordham Road Sidewalk Sale",
@@ -256,8 +237,7 @@
     "eventLat": "40.8416035",
     "eventLng": "-73.9011331",
     "databaseId": "379955",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Union Square Greenmarket Monday, Wednesday, Friday and Saturday",
@@ -269,8 +249,7 @@
     "eventLat": "40.7358984",
     "eventLng": "-73.9912281",
     "databaseId": "378677",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "Adult Lap Swim",
@@ -282,8 +261,7 @@
     "eventLat": "40.6739246",
     "eventLng": "-73.9349259",
     "databaseId": "389845",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Arts   Crafts",
@@ -295,8 +273,7 @@
     "eventLat": "40.8242705",
     "eventLng": "-73.9424573",
     "databaseId": "389911",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Ballroom Dance for Beginners",
@@ -308,8 +285,7 @@
     "eventLat": "40.5918312",
     "eventLng": "-74.1391991",
     "databaseId": "389916",
-    "category": "dance",
-    "source": "NYC API"
+    "category": "dance"
   },
   {
     "name": "Digital Media Club",
@@ -321,8 +297,7 @@
     "eventLat": "40.7517748",
     "eventLng": "-73.9900696",
     "databaseId": "389955",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Intro to Social Media",
@@ -334,8 +309,7 @@
     "eventLat": "40.611862",
     "eventLng": "-74.031745",
     "databaseId": "390038",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Pickleball",
@@ -347,8 +321,7 @@
     "eventLat": "40.8242705",
     "eventLng": "-73.9424573",
     "databaseId": "390280",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Senior Fitness",
@@ -360,8 +333,7 @@
     "eventLat": "40.8128918",
     "eventLng": "-73.9394264",
     "databaseId": "390307",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Summertime Techies",
@@ -373,8 +345,7 @@
     "eventLat": "40.74826849999999",
     "eventLng": "-74.00206469999999",
     "databaseId": "390338",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Adult Lap Swim",
@@ -386,8 +357,7 @@
     "eventLat": "40.7714364",
     "eventLng": "-73.98868349999999",
     "databaseId": "389846",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Kids Touch Rugby",
@@ -399,8 +369,7 @@
     "eventLat": "40.7201302",
     "eventLng": "-73.94999290000001",
     "databaseId": "390212",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Puppet Time at Elmhurst Park",
@@ -412,8 +381,7 @@
     "eventLat": "40.7298841",
     "eventLng": "-73.88509130000001",
     "databaseId": "390289",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Samba Class",
@@ -425,8 +393,7 @@
     "eventLat": "40.7201776",
     "eventLng": "-73.9496702",
     "databaseId": "390298",
-    "category": "dance",
-    "source": "NYC API"
+    "category": "dance"
   },
   {
     "name": "Summertime Techies",
@@ -438,8 +405,7 @@
     "eventLat": "40.6739246",
     "eventLng": "-73.9349259",
     "databaseId": "390339",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Walking Group",
@@ -451,8 +417,7 @@
     "eventLat": "40.7210549",
     "eventLng": "-73.95244",
     "databaseId": "390397",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Games  Play",
@@ -464,8 +429,7 @@
     "eventLat": "40.611862",
     "eventLng": "-74.031745",
     "databaseId": "389988",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Beginners Pickleball Clinic",
@@ -477,8 +441,7 @@
     "eventLat": "40.6118688",
     "eventLng": "-74.0317395",
     "databaseId": "389919",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "OneonOne Help",
@@ -490,8 +453,7 @@
     "eventLat": "40.8440083",
     "eventLng": "-73.9189894",
     "databaseId": "390240",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Vocal Class",
@@ -503,8 +465,7 @@
     "eventLat": "40.7201776",
     "eventLng": "-73.9496702",
     "databaseId": "390392",
-    "category": "music",
-    "source": "NYC API"
+    "category": "music"
   },
   {
     "name": "Open Play Teen Basketball",
@@ -516,8 +477,7 @@
     "eventLat": "40.842804",
     "eventLng": "-73.93419",
     "databaseId": "390268",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Table Tennis Room",
@@ -529,8 +489,7 @@
     "eventLat": "40.5918312",
     "eventLng": "-74.1391991",
     "databaseId": "390355",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Childrens Kickball",
@@ -542,8 +501,7 @@
     "eventLat": "40.7361601",
     "eventLng": "-73.9756582",
     "databaseId": "389939",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Filmmaking",
@@ -555,8 +513,7 @@
     "eventLat": "40.8128918",
     "eventLng": "-73.9394264",
     "databaseId": "389980",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "General Open Swim",
@@ -568,8 +525,7 @@
     "eventLat": "40.7714364",
     "eventLng": "-73.98868349999999",
     "databaseId": "389996",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Intermediate Audio and Video Production",
@@ -581,8 +537,7 @@
     "eventLat": "40.8440083",
     "eventLng": "-73.9189894",
     "databaseId": "390016",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Senior Dominoes Kapic",
@@ -594,8 +549,7 @@
     "eventLat": "40.638148",
     "eventLng": "-74.0756332",
     "databaseId": "390304",
-    "category": "games",
-    "source": "NYC API"
+    "category": "games"
   },
   {
     "name": "Open Youth Basketball",
@@ -607,8 +561,7 @@
     "eventLat": "40.7714364",
     "eventLng": "-73.98868349999999",
     "databaseId": "390274",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Family Swimming",
@@ -620,8 +573,7 @@
     "eventLat": "40.6739246",
     "eventLng": "-73.9349259",
     "databaseId": "389976",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Intro to Logic Pro X",
@@ -633,8 +585,7 @@
     "eventLat": "40.7201776",
     "eventLng": "-73.9496702",
     "databaseId": "390029",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "OneOnOne Help",
@@ -646,8 +597,7 @@
     "eventLat": "40.8242705",
     "eventLng": "-73.9424573",
     "databaseId": "390238",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Resume Writing",
@@ -659,8 +609,7 @@
     "eventLat": "40.8128918",
     "eventLng": "-73.9394264",
     "databaseId": "390293",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Summertime Techies",
@@ -672,8 +621,7 @@
     "eventLat": "40.6739246",
     "eventLng": "-73.9349259",
     "databaseId": "390346",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Digital Media Club",
@@ -685,8 +633,7 @@
     "eventLat": "40.7513963",
     "eventLng": "-73.8339489",
     "databaseId": "389956",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Pickleball",
@@ -698,8 +645,7 @@
     "eventLat": "40.7361601",
     "eventLng": "-73.9756582",
     "databaseId": "390281",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Teen Swim ages 1317",
@@ -711,8 +657,7 @@
     "eventLat": "40.7714364",
     "eventLng": "-73.98868349999999",
     "databaseId": "390377",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Introduction to Baseball",
@@ -724,8 +669,7 @@
     "eventLat": "40.81295069999999",
     "eventLng": "-73.9394781",
     "databaseId": "390043",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Movie Nights Waynes World 2",
@@ -737,8 +681,7 @@
     "eventLat": "40.7535965",
     "eventLng": "-73.98323259999999",
     "databaseId": "390229",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Adult Lap Swim",
@@ -750,8 +693,7 @@
     "eventLat": "40.6739246",
     "eventLng": "-73.9349259",
     "databaseId": "389849",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Open Badminton",
@@ -763,8 +705,7 @@
     "eventLat": "40.7105672",
     "eventLng": "-73.9970098",
     "databaseId": "390262",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Adult Basketball",
@@ -776,8 +717,7 @@
     "eventLat": "40.74826849999999",
     "eventLng": "-74.00206469999999",
     "databaseId": "389842",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Adult Open Basketball",
@@ -789,8 +729,7 @@
     "eventLat": "40.8128918",
     "eventLng": "-73.9394264",
     "databaseId": "389894",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Old School RB Dance Fitness",
@@ -802,8 +741,7 @@
     "eventLat": "40.82642360000001",
     "eventLng": "-73.9559555",
     "databaseId": "390237",
-    "category": "dance",
-    "source": "NYC API"
+    "category": "dance"
   },
   {
     "name": "Open Adult Basketball",
@@ -815,8 +753,7 @@
     "eventLat": "40.7714364",
     "eventLng": "-73.98868349999999",
     "databaseId": "390256",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Table Tennis Adult Open Play",
@@ -828,8 +765,7 @@
     "eventLat": "40.7564652",
     "eventLng": "-73.96514619999999",
     "databaseId": "390354",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Adult Open Gym",
@@ -841,8 +777,7 @@
     "eventLat": "40.8440083",
     "eventLng": "-73.9189894",
     "databaseId": "389896",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Early Bird Open Adult Basketball",
@@ -854,8 +789,7 @@
     "eventLat": "40.7513963",
     "eventLng": "-73.8339489",
     "databaseId": "389963",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Table Tennis Room",
@@ -867,8 +801,7 @@
     "eventLat": "40.5918312",
     "eventLng": "-74.1391991",
     "databaseId": "390356",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Its My Park at Sunset Park",
@@ -880,8 +813,7 @@
     "eventLat": "40.6468857",
     "eventLng": "-74.00203359999999",
     "databaseId": "390046",
-    "category": "volunteer",
-    "source": "NYC API"
+    "category": "volunteer"
   },
   {
     "name": "Ft Washington Greenmarket Tuesday",
@@ -893,8 +825,7 @@
     "eventLat": "40.8408407",
     "eventLng": "-73.9396297",
     "databaseId": "380135",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "Lincoln Hospital Greenmarket Tuesday  Friday",
@@ -906,8 +837,7 @@
     "eventLat": "40.812119",
     "eventLng": "-73.904099",
     "databaseId": "379306",
-    "category": "food",
-    "source": "NYC API"
+    "category": "food"
   },
   {
     "name": "Summertime Techies",
@@ -919,8 +849,7 @@
     "eventLat": "40.7513963",
     "eventLng": "-73.8339489",
     "databaseId": "390347",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Mommy  Me Exercise",
@@ -932,8 +861,7 @@
     "eventLat": "40.7201776",
     "eventLng": "-73.9496702",
     "databaseId": "390223",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Open Adult Baseketball",
@@ -945,8 +873,7 @@
     "eventLat": "40.7714364",
     "eventLng": "-73.98868349999999",
     "databaseId": "390253",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Quilting",
@@ -958,8 +885,7 @@
     "eventLat": "40.611862",
     "eventLng": "-74.031745",
     "databaseId": "390291",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Oil Painting",
@@ -971,8 +897,7 @@
     "eventLat": "40.611862",
     "eventLng": "-74.031745",
     "databaseId": "390235",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Greenbelt Native Plant Center Tour",
@@ -984,8 +909,7 @@
     "eventLat": "40.596244",
     "eventLng": "-74.18116999999999",
     "databaseId": "389999",
-    "category": "nature",
-    "source": "NYC API"
+    "category": "nature"
   },
   {
     "name": "KIM Austin J McDonald Playground",
@@ -997,8 +921,7 @@
     "eventLat": "40.6297104",
     "eventLng": "-74.115174",
     "databaseId": "390058",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Bayswater Park",
@@ -1010,8 +933,7 @@
     "eventLat": "40.5962225",
     "eventLng": "-73.76769329999999",
     "databaseId": "390067",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Bowne Park",
@@ -1023,8 +945,7 @@
     "eventLat": "40.7704771",
     "eventLng": "-73.8072049",
     "databaseId": "390076",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Carmansville Playground",
@@ -1036,8 +957,7 @@
     "eventLat": "40.8296624",
     "eventLng": "-73.94436999999999",
     "databaseId": "390085",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Charybdis Playground",
@@ -1049,8 +969,7 @@
     "eventLat": "40.7798628",
     "eventLng": "-73.9224407",
     "databaseId": "390088",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Columbus Park",
@@ -1062,8 +981,7 @@
     "eventLat": "40.7155504",
     "eventLng": "-74.00004229999999",
     "databaseId": "390091",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM DeMatti Playground",
@@ -1075,8 +993,7 @@
     "eventLat": "40.6145077",
     "eventLng": "-74.07425649999999",
     "databaseId": "390100",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Dyker Beach Park",
@@ -1088,8 +1005,7 @@
     "eventLat": "40.6091564",
     "eventLng": "-74.0199569",
     "databaseId": "390103",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM J Hood Wright",
@@ -1101,8 +1017,7 @@
     "eventLat": "40.8453853",
     "eventLng": "-73.94052669999999",
     "databaseId": "390127",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Little Flower Playground",
@@ -1114,8 +1029,7 @@
     "eventLat": "40.7127787",
     "eventLng": "-73.9884835",
     "databaseId": "390142",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Park of the Americas",
@@ -1127,8 +1041,7 @@
     "eventLat": "40.7488561",
     "eventLng": "-73.8629112",
     "databaseId": "390160",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Samuel Seabury",
@@ -1140,8 +1053,7 @@
     "eventLat": "40.7854039",
     "eventLng": "-73.9507677",
     "databaseId": "390169",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Sol Lain Playground",
@@ -1153,8 +1065,7 @@
     "eventLat": "40.7142911",
     "eventLng": "-73.9840313",
     "databaseId": "390181",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM St Vartans Park",
@@ -1166,8 +1077,7 @@
     "eventLat": "40.7451124",
     "eventLng": "-73.9736293",
     "databaseId": "390187",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Stroud Playground",
@@ -1179,8 +1089,7 @@
     "eventLat": "40.6750757",
     "eventLng": "-73.9621417",
     "databaseId": "390193",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM The Big Park",
@@ -1192,8 +1101,7 @@
     "eventLat": "40.6302938",
     "eventLng": "-74.16531999999999",
     "databaseId": "390196",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Tompkins Square Park",
@@ -1205,8 +1113,7 @@
     "eventLat": "40.7266662",
     "eventLng": "-73.98309499999999",
     "databaseId": "390199",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "KIM Vincent Abate Playground",
@@ -1218,8 +1125,7 @@
     "eventLat": "40.7213117",
     "eventLng": "-73.94988169999999",
     "databaseId": "390202",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Mah Jong",
@@ -1231,8 +1137,7 @@
     "eventLat": "40.611862",
     "eventLng": "-74.031745",
     "databaseId": "390219",
-    "category": "social",
-    "source": "NYC API"
+    "category": "social"
   },
   {
     "name": "Open Access Table Tennis",
@@ -1244,8 +1149,7 @@
     "eventLat": "40.842804",
     "eventLng": "-73.93419",
     "databaseId": "390250",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Open Play Pickleball",
@@ -1257,8 +1161,7 @@
     "eventLat": "40.842804",
     "eventLng": "-73.93419",
     "databaseId": "390266",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Toddlers program in the sprinklers",
@@ -1270,8 +1173,7 @@
     "eventLat": "40.82430799999999",
     "eventLng": "-73.942442",
     "databaseId": "390383",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Active Reader",
@@ -1283,8 +1185,7 @@
     "eventLat": "40.8766525",
     "eventLng": "-73.8786095",
     "databaseId": "389841",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Arts  Crafts",
@@ -1296,8 +1197,7 @@
     "eventLat": "40.7201776",
     "eventLng": "-73.9496702",
     "databaseId": "389909",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Tae Kwon Do",
@@ -1309,8 +1209,7 @@
     "eventLat": "40.7150139",
     "eventLng": "-73.9603664",
     "databaseId": "390362",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Intro to Digital Audio Macs",
@@ -1322,8 +1221,7 @@
     "eventLat": "40.8440083",
     "eventLng": "-73.9189894",
     "databaseId": "390024",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Intro to Digital Photography",
@@ -1335,8 +1233,7 @@
     "eventLat": "40.6739246",
     "eventLng": "-73.9349259",
     "databaseId": "390025",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Intro to Email and Internet",
@@ -1348,8 +1245,7 @@
     "eventLat": "40.611862",
     "eventLng": "-74.031745",
     "databaseId": "390028",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Intro to MS Word",
@@ -1361,8 +1257,7 @@
     "eventLat": "40.8242705",
     "eventLng": "-73.9424573",
     "databaseId": "390032",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Mobile Media Workshops",
@@ -1374,8 +1269,7 @@
     "eventLat": "40.7513963",
     "eventLng": "-73.8339489",
     "databaseId": "390222",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Puppet Time at Alfred E Smith Playground",
@@ -1387,8 +1281,7 @@
     "eventLat": "40.7101922",
     "eventLng": "-73.9976262",
     "databaseId": "390286",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Screenwriting for Film  TV",
@@ -1400,8 +1293,7 @@
     "eventLat": "40.8128918",
     "eventLng": "-73.9394264",
     "databaseId": "390303",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Senior Open Swim",
@@ -1413,8 +1305,7 @@
     "eventLat": "40.7714364",
     "eventLng": "-73.98868349999999",
     "databaseId": "390308",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Story time with Tots",
@@ -1426,8 +1317,7 @@
     "eventLat": "40.7201776",
     "eventLng": "-73.9496702",
     "databaseId": "390325",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Toddler Soccer",
@@ -1439,8 +1329,7 @@
     "eventLat": "40.8766525",
     "eventLng": "-73.8786095",
     "databaseId": "390382",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Senior Power Hours",
@@ -1452,8 +1341,7 @@
     "eventLat": "40.7714364",
     "eventLng": "-73.98868349999999",
     "databaseId": "390311",
-    "category": "social",
-    "source": "NYC API"
+    "category": "social"
   },
   {
     "name": "Summer Fun Experience",
@@ -1465,8 +1353,7 @@
     "eventLat": "40.8149605",
     "eventLng": "-73.88909149999999",
     "databaseId": "390331",
-    "category": "social",
-    "source": "NYC API"
+    "category": "social"
   },
   {
     "name": "Tots Percussion Class",
@@ -1478,8 +1365,7 @@
     "eventLat": "40.7201776",
     "eventLng": "-73.9496702",
     "databaseId": "390386",
-    "category": "music",
-    "source": "NYC API"
+    "category": "music"
   },
   {
     "name": "Adult Lap Swim",
@@ -1491,8 +1377,7 @@
     "eventLat": "40.6739246",
     "eventLng": "-73.9349259",
     "databaseId": "389850",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Adult Open Badminton",
@@ -1504,8 +1389,7 @@
     "eventLat": "40.7513963",
     "eventLng": "-73.8339489",
     "databaseId": "389892",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Arts   Crafts",
@@ -1517,8 +1401,7 @@
     "eventLat": "40.8242705",
     "eventLng": "-73.9424573",
     "databaseId": "389912",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Chess",
@@ -1530,8 +1413,7 @@
     "eventLat": "40.611862",
     "eventLng": "-74.031745",
     "databaseId": "389929",
-    "category": "games",
-    "source": "NYC API"
+    "category": "games"
   },
   {
     "name": "Concert Taikoza",
@@ -1543,8 +1425,7 @@
     "eventLat": "40.8463679",
     "eventLng": "-73.94149299999999",
     "databaseId": "389945",
-    "category": "music",
-    "source": "NYC API"
+    "category": "music"
   },
   {
     "name": "Digital Media Club",
@@ -1556,8 +1437,7 @@
     "eventLat": "40.7517748",
     "eventLng": "-73.9900696",
     "databaseId": "389957",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Garden Kitchen Lab",
@@ -1569,8 +1449,7 @@
     "eventLat": "40.7517748",
     "eventLng": "-73.9900696",
     "databaseId": "389991",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Intro to Tablets",
@@ -1582,8 +1461,7 @@
     "eventLat": "40.611862",
     "eventLng": "-74.031745",
     "databaseId": "390040",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Open Play Adult Basketball",
@@ -1595,8 +1473,7 @@
     "eventLat": "40.842804",
     "eventLng": "-73.93419",
     "databaseId": "390263",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Skills and Drills",
@@ -1608,8 +1485,7 @@
     "eventLat": "40.7714364",
     "eventLng": "-73.98868349999999",
     "databaseId": "390312",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Arts Craft  Board Games",
@@ -1621,8 +1497,7 @@
     "eventLat": "40.7199522",
     "eventLng": "-73.9814913",
     "databaseId": "389906",
-    "category": "social",
-    "source": "NYC API"
+    "category": "social"
   },
   {
     "name": "Bingo",
@@ -1634,8 +1509,7 @@
     "eventLat": "40.611862",
     "eventLng": "-74.031745",
     "databaseId": "389920",
-    "category": "games",
-    "source": "NYC API"
+    "category": "games"
   },
   {
     "name": "Summer Sports Time",
@@ -1647,8 +1521,7 @@
     "eventLat": "40.7199522",
     "eventLng": "-73.9814913",
     "databaseId": "390334",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Summertime Techies",
@@ -1660,8 +1533,7 @@
     "eventLat": "40.74826849999999",
     "eventLng": "-74.00206469999999",
     "databaseId": "390348",
-    "category": "education",
-    "source": "NYC API"
+    "category": "education"
   },
   {
     "name": "Adult Lap Swim",
@@ -1673,8 +1545,7 @@
     "eventLat": "40.7714364",
     "eventLng": "-73.98868349999999",
     "databaseId": "389851",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Book Club",
@@ -1686,8 +1557,7 @@
     "eventLat": "40.611862",
     "eventLng": "-74.031745",
     "databaseId": "389922",
-    "category": "social",
-    "source": "NYC API"
+    "category": "social"
   },
   {
     "name": "Cornhole",
@@ -1699,8 +1569,7 @@
     "eventLat": "40.7361601",
     "eventLng": "-73.9756582",
     "databaseId": "389947",
-    "category": "games",
-    "source": "NYC API"
+    "category": "games"
   },
   {
     "name": "Learn to Play Softball",
@@ -1712,8 +1581,7 @@
     "eventLat": "40.8440083",
     "eventLng": "-73.9189894",
     "databaseId": "390217",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Samba Class",
@@ -1725,8 +1593,7 @@
     "eventLat": "40.7201776",
     "eventLng": "-73.9496702",
     "databaseId": "390299",
-    "category": "dance",
-    "source": "NYC API"
+    "category": "dance"
   },
   {
     "name": "Sports Coordination",
@@ -1738,8 +1605,7 @@
     "eventLat": "40.81295069999999",
     "eventLng": "-73.9394781",
     "databaseId": "390315",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Studio Recording Sessions",
@@ -1751,8 +1617,7 @@
     "eventLat": "40.6739246",
     "eventLng": "-73.9349259",
     "databaseId": "390329",
-    "category": "music",
-    "source": "NYC API"
+    "category": "music"
   },
   {
     "name": "Children SwimTeen Swim",
@@ -1764,8 +1629,7 @@
     "eventLat": "40.6739246",
     "eventLng": "-73.9349259",
     "databaseId": "389933",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Coach Darryls Youth Basketball Program",
@@ -1777,8 +1641,7 @@
     "eventLat": "40.7201776",
     "eventLng": "-73.9496702",
     "databaseId": "389941",
-    "category": "sports",
-    "source": "NYC API"
+    "category": "sports"
   },
   {
     "name": "Teen Craft",
@@ -1792,8 +1655,7 @@
     "eventLat": "40.8128918",
     "eventLng": "-73.9394264",
     "databaseId": "390366",
-    "category": "arts",
-    "source": "NYC API"
+    "category": "arts"
   },
   {
     "name": "Teen Get your Game On",
@@ -1807,7 +1669,6 @@
     "eventLat": "40.7201776",
     "eventLng": "-73.9496702",
     "databaseId": "390369",
-    "category": "games",
-    "source": "NYC API"
+    "category": "games"
   }
 ]

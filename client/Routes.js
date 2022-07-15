@@ -1,18 +1,19 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
-import PopUpWindowLogin from './components/PopUpWindowLogin';
-import PopUpWindowSignUp from './components/PopUpWindowSignUp';
-import SpeechToText from './components/SpeechToText';
-import Home from './components/Home';
-import { me } from './store';
-import { fetchUserEvents } from './store/usersEvents';
-import { fetchUserPreferences } from './store';
-import UserProfileForm from './components/UserProfileForm';
-import MyEventReview from './components/MyEventReview';
-import MyEvents from './components/MyEvents';
-import { NewEventForm } from './components/NewEventForm';
-import { fetchAllEvts } from './store/allEvents';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import PopUpWindowLogin from "./components/PopUpWindowLogin";
+import PopUpWindowSignUp from "./components/PopUpWindowSignUp";
+import SpeechToText from "./components/SpeechToText";
+import Home from "./components/Home";
+import { me } from "./store";
+import { fetchUserEvents } from "./store/usersEvents";
+import { fetchUserPreferences } from "./store";
+import UserProfileForm from "./components/UserProfileForm";
+import MyEventReview from "./components/MyEventReview";
+import MyEvents from "./components/MyEvents";
+import { NewEventForm } from "./components/NewEventForm";
+import { getEvents } from "./store/events";
+import Randomizer from "./components/Randomizer";
 
 /**
  * COMPONENT
@@ -35,6 +36,9 @@ class Routes extends Component {
           <Route exact path="/myeventreview" component={MyEventReview} />
           <Route exact path="/events/myevents" component={MyEvents} />
           <Route exact path="/newEvent" component={NewEventForm} />
+          {/* TEMPORARY */}
+          <Route exact path="/testing" component={Randomizer} />
+          {/* TEMPORARY */}
         </Switch>
       </div>
     );
@@ -58,7 +62,7 @@ const mapDispatch = (dispatch) => {
       dispatch(me());
       dispatch(fetchUserEvents());
       dispatch(fetchUserPreferences());
-      dispatch(fetchAllEvts());
+      dispatch(getEvents());
     },
   };
 };
