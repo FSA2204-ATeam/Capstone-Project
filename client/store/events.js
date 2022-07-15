@@ -6,9 +6,9 @@ const GET_EVENTS = "GET_EVENTS";
 const FETCH_EVENTS = "FETCH_EVENTS";
 const ADD_USER_DEFINED_EVENT = "ADD_USER_DEFINED_EVENT";
 
-export const _getEvents = (allEvents) => ({
+export const _getEvents = (events) => ({
   type: GET_EVENTS,
-  allEvents,
+  events,
 });
 
 export const _fetchEvents = (events) => ({

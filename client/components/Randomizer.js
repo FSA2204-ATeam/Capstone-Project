@@ -16,7 +16,7 @@ const containerStyle = {
 const center = { lat: 40.7589, lng: -73.9851 };
 
 const Randomizer = () => {
-  const allEvents = useSelector((state) => state.events);
+  const allEvents = useSelector((state) => state.events.events);
 
   const [randomOrder, setRandomOrder] = useState([]);
 

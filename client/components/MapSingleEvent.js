@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserRSVP } from "../store/usersEvents";
 import { InfoWindow } from "@react-google-maps/api";
+import { friendlyDate } from "../../script/formatDate";
 
 const MapSingleEvent = ({ randomOrder }) => {
   const dispatch = useDispatch();
 
-  const allEvents = useSelector((state) => state.events);
+  const allEvents = useSelector((state) => state.events.events);
   const usersEvents = useSelector((state) => state.usersEvents);
 
   const [myAssociations, setMyAssociations] = useState(
@@ -52,7 +53,11 @@ const MapSingleEvent = ({ randomOrder }) => {
         <div>
           <div>{activeEvent.shortDesc}</div>
           <div>
-            {activeEvent.startDate} from {activeEvent.endDate}
+            {`${new Date(
+              Date.parse(activeEvent.startDate)
+            ).toLocaleString()} to ${new Date(
+              Date.parse(activeEvent.endDate)
+            ).toLocaleString()}`}
           </div>
           {myAssociations.includes(activeEvent.id) ? (
             <>You've already RSVP'd to this event</>
