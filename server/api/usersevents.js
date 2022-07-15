@@ -11,13 +11,19 @@ module.exports = router;
 router.post("/", requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-    const [newEvent, created] = await Event.findOrCreate({
+    const event = await Event.findOne({
       where: req.body,
-      defaults: req.body,
     });
-
-    await newEvent.setUsers(user); ///set value of host to true
-    res.json(newEvent);
+    await event.setUsers(user);
+    const association = await UsersEvents.findOne({
+      where: {
+        userId: user.id,
+        eventId: event.id,
+      },
+    });
+    event.dataValues.totalGuests++;
+    //console.log("Association created? -->"event);
+    res.json(event);
   } catch (error) {
     next(error);
   }

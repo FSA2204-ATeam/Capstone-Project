@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserRSVP } from "../store/usersEvents";
+import { setUserRSVP, fetchUserEvents } from "../store/usersEvents";
 import { InfoWindow } from "@react-google-maps/api";
 import { friendlyDate } from "../../script/formatDate";
 
@@ -9,29 +9,21 @@ const MapSingleEvent = ({ randomOrder }) => {
 
   const allEvents = useSelector((state) => state.events.events);
   const usersEvents = useSelector((state) => state.usersEvents);
+  const currentEvent = useSelector((state) => state.usersEvents.event);
 
   const [myAssociations, setMyAssociations] = useState(
     usersEvents.events.map((ele) => ele.users_events).map((ele) => ele.eventId)
   );
-
-  console.log("My Associations: ", myAssociations);
-  console.log("UsersEvents ", usersEvents);
-
   const [idx, setIdx] = useState(0);
-
   const [activeEvent, setActiveEvent] = useState(allEvents[randomOrder[idx]]);
-
-  const onRSVPClick = (event) => {
-    dispatch(setUserRSVP(event));
-  };
-
-  const onNextButton = () => {
-    randomOrder[idx + 1] !== undefined ? setIdx(idx + 1) : setIdx(0);
-  };
 
   useEffect(() => {
     setActiveEvent(allEvents[randomOrder[idx]]);
   }, [idx]);
+
+  useEffect(() => {
+    dispatch(fetchUserEvents());
+  }, []);
 
   useEffect(() => {
     setMyAssociations(
@@ -40,6 +32,14 @@ const MapSingleEvent = ({ randomOrder }) => {
         .map((ele) => ele.eventId)
     );
   }, [usersEvents]);
+
+  const onRSVPClick = (event) => {
+    dispatch(setUserRSVP(event));
+  };
+
+  const onNextButton = () => {
+    randomOrder[idx + 1] !== undefined ? setIdx(idx + 1) : setIdx(0);
+  };
 
   return (
     <div>

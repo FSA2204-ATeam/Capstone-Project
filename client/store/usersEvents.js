@@ -8,9 +8,9 @@ const FETCH_USER_REVIEWS = "FETCH_USER_REVIEWS";
 const SET_USER_EVENTS = "SET_USER_EVENTS";
 const REMOVE_USER_EVENT = "REMOVE_USER_EVENT";
 
-export const _setUserRSVP = (idx) => ({
+export const _setUserRSVP = (event) => ({
   type: SET_USER_RSVP,
-  idx,
+  event,
 });
 
 export const _fetchUserEvents = (userEvents) => ({
@@ -34,20 +34,13 @@ export const _removeUserEvent = (userEvent) => ({
 });
 
 export const setUserRSVP = (event) => async (dispatch) => {
-  //REFACTOR TO CREATE ASSOCIATION ONLY
   try {
     const { data } = await axios.post("/api/usersEvents", event, {
       headers: {
         authorization: token,
       },
     });
-    data.totalGuests++;
-    const { updatedData } = await axios.put("/api/usersEvents", data, {
-      headers: {
-        authorization: token,
-      },
-    });
-    dispatch(_setUserRSVP(userRSVP));
+    dispatch(_setUserRSVP(data));
   } catch (error) {
     console.error(error);
   }
@@ -106,11 +99,13 @@ export const removeUsersEvent = (eventId, userId) => async (dispatch) => {
   }
 };
 
-const usersEventsReducer = (state = { events: [], reviews: [] }, action) => {
+const usersEventsReducer = (
+  state = { events: [], reviews: [], event: {} },
+  action
+) => {
   switch (action.type) {
     case SET_USER_RSVP:
-      console.log(action.userRSVP);
-      return action.userRSVP;
+      return { ...state, event: action.event };
     case FETCH_USER_EVENTS:
       return { ...state, events: action.userEvents };
     case FETCH_USER_REVIEWS:
