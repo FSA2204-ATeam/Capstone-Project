@@ -15,6 +15,7 @@ const PopUpWindowLogin = () => {
   const classes = useFrontEndStyles();
   const [formValues, setFormValues] = useState(defaultValues);
   const [loginButtonOn, setLoginButtonOn] = useState(null);
+  const [signupButton, setSignupButton] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -36,6 +37,10 @@ const PopUpWindowLogin = () => {
     setLoginButtonOn(event.target);
   }
 
+  const handleSignup = (event) => {
+    setSignupButton(event.target);
+  }
+
   return (
     <Card
       xs={12}
@@ -50,6 +55,7 @@ const PopUpWindowLogin = () => {
         <CardHeader align="center" />
       </CardContent>
       <CardActions>
+        {!signupButton ?
         <form onSubmit={handleSubmit}>
           <Grid container alignItems="center" direction="column">
             <Grid item>
@@ -86,13 +92,15 @@ const PopUpWindowLogin = () => {
               variant="contained"
               type="submit"
               style={{ display: 'flex', background: '#68BBE3' }}
-              onClick={() => closeLoginPopover(null)}
+              onClick={handleSignup}
             >
               Sign Up
-              {/* <PopUpWindowSignUp/> */}
             </Button>
           </Grid>
         </form>
+        : (
+          <PopUpWindowSignUp/>
+        )}
       </CardActions>
     </Card>
   );
