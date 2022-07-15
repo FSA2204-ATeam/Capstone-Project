@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import FormInput from './FormInput';
-import axios from 'axios';
-import DateFnsUtils from '@date-io/date-fns';
-import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import React, { useState, useEffect } from "react";
+import FormInput from "./FormInput";
+import DateFnsUtils from "@date-io/date-fns";
+import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { addUserDefinedEvent } from "../store";
+import { useDispatch } from "react-redux";
 
 export const NewEventForm = (latLng) => {
   const [values, setValues] = useState({
-    name: '',
-    shortDesc: '',
+    name: "",
+    shortDesc: "",
     eventLat: latLng.position.lat,
     eventLng: latLng.position.lng,
   });
@@ -15,52 +16,36 @@ export const NewEventForm = (latLng) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
-  // useEffect(() => {
-  //   setValues({
-  //     ...values,
-  //     eventLat: latLng.position.lat,
-  //     eventLng: latLng.position.lng,
-  //   });
-  // }, [latLng]);
-
   const inputs = [
     {
       id: 1,
-      name: 'name',
-      type: 'text',
-      placeholder: 'Title',
-      errorMessage: 'Title should be 2-50 characters long!',
-      label: 'title',
-      pattern: '^[A-Za-z0-9]{2,50}$',
+      name: "name",
+      type: "",
+      placeholder: "Title",
+      errorMessage: "Title should be 2-50 characters long!",
+      label: "title",
+      pattern: "^{2,50}$",
       required: true,
     },
     {
       id: 2,
-      name: 'shortDesc',
-      type: 'text',
-      placeholder: 'Description',
-      errorMessage: 'Description should be 3-1024 characters!',
-      label: 'description',
-      pattern: '^[A-Za-z0-9]{3,1024}$',
+      name: "shortDesc",
+      type: "text",
+      placeholder: "Description",
+      errorMessage: "Description should be 3-1024 characters!",
+      label: "description",
+      pattern: "^{3,1024}$",
       required: true,
     },
   ];
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newEvent = { ...values, startDate, endDate };
-    console.log(newEvent);
-
-    const token = window.localStorage.getItem('token');
-    if (token) {
-      const newUserEvt = await axios.post('api/usersevents', newEvent, {
-        headers: {
-          authorization: token,
-        },
-      });
-      console.log('new user event from db', newUserEvt);
-    }
+    dispatch(addUserDefinedEvent(newEvent));
   };
 
   const onChange = (e) => {

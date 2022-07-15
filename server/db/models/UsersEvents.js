@@ -15,6 +15,10 @@ const UsersEvents = db.define("users_events", {
   sentimentLabel: {
     type: Sequelize.STRING,
   },
+  host: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 module.exports = UsersEvents;

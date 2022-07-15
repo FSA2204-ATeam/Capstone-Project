@@ -1,5 +1,5 @@
-const formatDate = (offset) => {
-  const formatter = (date) => {
+const formatDate = (offset = 1) => {
+  const friendlyDate = (date) => {
     const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
     const month =
       date.getMonth() + 1 < 10
@@ -12,11 +12,11 @@ const formatDate = (offset) => {
 
   let searchStart = new Date();
   searchStart.setHours(0, 0, 0, 0);
-  startDate = formatter(searchStart);
+  startDate = friendlyDate(searchStart);
   let searchEnd = new Date();
   searchEnd.setHours(0, 0, 0, 0);
   searchEnd.setDate(searchEnd.getDate() + offset);
-  endDate = formatter(searchEnd);
+  endDate = friendlyDate(searchEnd);
 
   return [searchStart, searchEnd, startDate, endDate];
 };
