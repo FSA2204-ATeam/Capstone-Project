@@ -1,3 +1,4 @@
+
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
@@ -14,6 +15,7 @@ import MyEvents from "./components/MyEvents";
 import { NewEventForm } from "./components/NewEventForm";
 import { getEvents } from "./store/events";
 import Randomizer from "./components/Randomizer";
+import LandingPage from './components/LandingPage';
 
 /**
  * COMPONENT
@@ -28,6 +30,7 @@ class Routes extends Component {
       <div>
         <Switch>
           <Route exact path="/home" component={Home} />
+          <Route exact path="/landing" component={LandingPage} />
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={PopUpWindowLogin} />
           <Route exact path="/signup" component={PopUpWindowSignUp} />
