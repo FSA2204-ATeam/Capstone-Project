@@ -8,33 +8,28 @@ const MapSingleEvent = ({ randomOrder }) => {
   const dispatch = useDispatch();
 
   const allEvents = useSelector((state) => state.events.events);
-  const usersEvents = useSelector((state) => state.usersEvents);
-  const currentEvent = useSelector((state) => state.usersEvents.event);
+  const usersEvents = useSelector((state) => state.usersEvents.events);
 
-  const [myAssociations, setMyAssociations] = useState(
-    usersEvents.events.map((ele) => ele.users_events).map((ele) => ele.eventId)
-  );
+  const [myAssociations, setMyAssociations] = useState(usersEvents);
+  console.log("ASS", myAssociations);
   const [idx, setIdx] = useState(0);
+  const [myEvents, setMyEvents] = useState(usersEvents);
   const [activeEvent, setActiveEvent] = useState(allEvents[randomOrder[idx]]);
+
+  useEffect(() => {
+    setMyEvents(usersEvents);
+  }, [usersEvents]);
 
   useEffect(() => {
     setActiveEvent(allEvents[randomOrder[idx]]);
   }, [idx]);
 
   useEffect(() => {
-    dispatch(fetchUserEvents());
-  }, []);
-
-  useEffect(() => {
-    setMyAssociations(
-      usersEvents.events
-        .map((ele) => ele.users_events)
-        .map((ele) => ele.eventId)
-    );
+    setMyAssociations(usersEvents.map((ele) => ele.id));
   }, [usersEvents]);
 
-  const onRSVPClick = (event) => {
-    dispatch(setUserRSVP(event));
+  const onRSVPClick = (activeEvent) => {
+    dispatch(setUserRSVP(activeEvent));
   };
 
   const onNextButton = () => {

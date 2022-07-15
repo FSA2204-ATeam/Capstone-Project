@@ -40,7 +40,13 @@ export const setUserRSVP = (event) => async (dispatch) => {
         authorization: token,
       },
     });
-    dispatch(_setUserRSVP(data));
+
+    const { data: updated } = await axios.put("/api/usersEvents", data, {
+      headers: {
+        authorization: token,
+      },
+    });
+    dispatch(_setUserRSVP(updated));
   } catch (error) {
     console.error(error);
   }
@@ -99,13 +105,15 @@ export const removeUsersEvent = (eventId, userId) => async (dispatch) => {
   }
 };
 
-const usersEventsReducer = (
-  state = { events: [], reviews: [], event: {} },
-  action
-) => {
+const usersEventsReducer = (state = { events: [], reviews: [] }, action) => {
   switch (action.type) {
     case SET_USER_RSVP:
-      return { ...state, event: action.event };
+      return {
+        ...state,
+        events: state.events.map((event) =>
+          event.id === action.event.id ? action.event : event
+        ),
+      };
     case FETCH_USER_EVENTS:
       return { ...state, events: action.userEvents };
     case FETCH_USER_REVIEWS:
