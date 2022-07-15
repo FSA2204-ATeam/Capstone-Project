@@ -1,25 +1,25 @@
-const router = require('express').Router();
-const axios = require('axios');
+const router = require("express").Router();
+const axios = require("axios");
 const {
-  models: { Event },
-} = require('../db');
-const User = require('../db/models/User');
-const formatDate = require('../../script/formatDate');
-const { requireToken, isAdmin } = require('../api/gateKeepingMiddleware');
-const { Op } = require('sequelize');
+  models: { Event, UsersEvents },
+} = require("../db");
+const User = require("../db/models/User");
+const formatDate = require("../../script/formatDate");
 
-router.get('/', async (req, res, next) => {
-  let [searchStart, searchEnd, startDate, endDate] = formatDate(1);
+const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
+const { Op } = require("sequelize");
+
+router.get("/", async (req, res, next) => {
+  let [searchStart, searchEnd, startDate, endDate] = formatDate(5);
 
   let addressUrl = `https://api.nyc.gov/calendar/search?startDate=${startDate} 12:00 AM&endDate=${endDate} 12:00 AM&pageNumber=`;
   let events = [];
 
-  console.log(`Searching for events between ${startDate} and ${endDate}`);
   try {
     let dbEvents = await Event.findAll({
       where: {
         startDate: {
-          [Op.and]: [{ [Op.gte]: searchStart }, { [Op.lte]: searchEnd }],
+          [Op.gte]: searchStart,
         },
       },
     });
@@ -27,26 +27,19 @@ router.get('/', async (req, res, next) => {
     // received events from database
     // if statement below checks to see if any events in search period is from
     // NYC API SOURCE
-    // if none exist, an api call to NYC is executed and added to the database
+    // if less than 10 exist, an api call to NYC is executed and added to the database
     // and also to the events array
-
-    console.log(
-      'dbEvents.length before filter: ',
-      dbEvents.length,
-      'dbEvents.length after filter',
-      dbEvents.filter((event) => event.dataValues.source !== null).length
-    );
 
     if (
       dbEvents.filter((event) => {
         event.dataValues.source !== null;
       }).length <= 5
     ) {
-      for (let pgno = 1; pgno <= 5; pgno++) {
-        const { data } = await axios.get(`${addressUrl}${pgno}`, {
+      for (let pgNo = 1; pgNo <= 5; pgNo++) {
+        const { data } = await axios.get(`${addressUrl}${pgNo}`, {
           headers: {
-            'Cache-Control': 'no-cache',
-            'Ocp-Apim-Subscription-Key': `${process.env.NYC_EVENTS_API_KEY}`,
+            "Cache-Control": "no-cache",
+            "Ocp-Apim-Subscription-Key": `${process.env.NYC_EVENTS_API_KEY}`,
           },
         });
 
@@ -63,21 +56,45 @@ router.get('/', async (req, res, next) => {
               eventLat: evt.geometry[0].lat,
               eventLng: evt.geometry[0].lng,
               databaseId: evt.id.toString(),
-              source: 'NYC API',
+              source: "NYC API",
             })
           );
-
-        const { creationResult } = await Event.bulkCreate(events, {
-          ignoreDuplicates: true,
-        });
       }
-      events.push(...dbEvents);
-    }
+      await Event.bulkCreate(events, {
+        ignoreDuplicates: true,
+      });
+
+      const updatedEvents = await Event.findAll({
+        where: {
+          startDate: {
+            [Op.gte]: searchStart,
+          },
+        },
+      });
+
+      res.send(updatedEvents);
+    } else res.send(dbEvents);
   } catch (error) {
     next(error);
   }
+});
 
-  res.send(events);
+router.post("/", requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+
+    const newEvent = await Event.create(req.body);
+    await newEvent.setUsers(user);
+    await UsersEvents.update(
+      { host: true },
+      { where: { eventId: newEvent.id, userId: user.id } }
+    );
+
+    // can return a custom status to trigger user acknowledgement?
+    res.status(200);
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;

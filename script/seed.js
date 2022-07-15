@@ -87,8 +87,8 @@ async function seed() {
   ]);
 
   console.log(`seeded ${users.length} users`);
-  console.log(`seeded ${events.length} events`);
-  console.log(`seeded ${crossover.length} crossover(s)`);
+  // console.log(`seeded ${events.length} events`);
+  // console.log(`seeded ${crossover.length} crossover(s)`);
   console.log(`seeded successfully`);
   return {
     users: {

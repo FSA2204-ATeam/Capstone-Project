@@ -3,63 +3,69 @@ import axios from "axios";
 const token = window.localStorage.getItem("token");
 
 const GET_EVENTS = "GET_EVENTS";
-const FETCH_USER_EVENTS = "FETCH_USER_EVENTS";
-// const SET_USER_EVENTS = "SET_USER_EVENTS";
+const FETCH_EVENTS = "FETCH_EVENTS";
+const ADD_USER_DEFINED_EVENT = "ADD_USER_DEFINED_EVENT";
 
 export const _getEvents = (events) => ({
   type: GET_EVENTS,
   events,
 });
 
-export const _fetchUserEvents = (events) => ({
+export const _fetchEvents = (events) => ({
   type: FETCH_USER_EVENTS,
   events,
 });
 
-// export const _setUserEvents = (events) => ({
-//   type: SET_USER_EVENTS,
-//   events,
-// });
+export const _addUserDefinedEvent = (event) => ({
+  type: ADD_USER_DEFINED_EVENT,
+  event,
+});
 
 export const getEvents = () => async (dispatch) => {
   try {
-    const { data } = await axios.get("/api/events");
+    const { data } = await axios.get("/api/events", {
+      headers: { authorization: token },
+    });
     dispatch(_getEvents(data));
   } catch (error) {
     console.error(error);
   }
 };
 
-export const fetchUserEvents = (userId) => async (dispatch) => {
+export const fetchEvents = (userId) => async (dispatch) => {
   try {
-    const { data } = await axios.get(`/api/events/:${userId}`, userId);
+    const { data } = await axios.get(`/api/events/:${userId}`, userId, {
+      headers: { authorization: token },
+    });
     dispatch(_fetchUserEvents(data));
   } catch (error) {
     console.error(error);
   }
 };
 
-// export const setUserEvents = (userId) => async (dispatch) => {
-//   try {
-//     console.log("userEvents THUNK activated");
-//     const { data } = await axios.get("/api/events/myevents", {
-//       headers: {
-//         authorization: token,
-//       },
-//     });
-//     console.log("DID MAKE IT?-->", data);
-//     dispatch(_setUserEvents(data));
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
+export const addUserDefinedEvent = (event) => async (dispatch) => {
+  try {
+    const { data } = await axios.post("/api/events", event, {
+      headers: {
+        authorization: token,
+      },
+    });
+    console.log(data);
 
-const eventsReducer = (state = [], action) => {
+    return dispatch(addUserDefinedEvent(data));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const eventsReducer = (state = { events: [], event: {} }, action) => {
   switch (action.type) {
     case GET_EVENTS:
-      return action.events;
-    case FETCH_USER_EVENTS:
-      return action.events;
+      return { ...state, events: action.events };
+    case FETCH_EVENTS:
+      return { ...state, events: action.events };
+    case ADD_USER_DEFINED_EVENT:
+      return { ...state, event: action.event };
     default:
       return state;
   }
