@@ -107,11 +107,6 @@ export const removeUsersEvent = (eventId, userId) => async (dispatch) => {
 const usersEventsReducer = (state = { events: [], reviews: [] }, action) => {
   switch (action.type) {
     case SET_USER_RSVP:
-      console.log("Action Event", action.event);
-      console.log("Copy of State", {
-        ...state,
-        events: [...state.events, action.event],
-      });
       return { ...state, events: [...state.events, action.event] };
     case FETCH_USER_EVENTS:
       return { ...state, events: action.userEvents };
