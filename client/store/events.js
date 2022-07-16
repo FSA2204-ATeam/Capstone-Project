@@ -5,6 +5,7 @@ const token = window.localStorage.getItem("token");
 const GET_EVENTS = "GET_EVENTS";
 const FETCH_EVENTS = "FETCH_EVENTS";
 const ADD_USER_DEFINED_EVENT = "ADD_USER_DEFINED_EVENT";
+const UPDATE_USER_DEFINED_EVENT = "UPDATE_USER_DEFINED_EVENT";
 
 export const _getEvents = (events) => ({
   type: GET_EVENTS,
@@ -18,6 +19,11 @@ export const _fetchEvents = (events) => ({
 
 export const _addUserDefinedEvent = (event) => ({
   type: ADD_USER_DEFINED_EVENT,
+  event,
+});
+
+export const _updateUserDefinedEvent = (event) => ({
+  type: UPDATE_USER_DEFINED_EVENT,
   event,
 });
 
@@ -53,6 +59,22 @@ export const addUserDefinedEvent = (event) => async (dispatch) => {
     console.log(data);
 
     return dispatch(addUserDefinedEvent(data));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const updateUserDefinedEvent = (event, userId) => async (dispatch) => {
+  try {
+    console.log("Axios event prop", event);
+    const { data: updated } = await axios.put("/api/events", event, {
+      headers: {
+        authorization: token,
+      },
+    });
+    if (updated) {
+      dispatch(fetchEvents(userId));
+    }
   } catch (err) {
     console.error(err);
   }

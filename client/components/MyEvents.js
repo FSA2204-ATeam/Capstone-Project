@@ -21,6 +21,7 @@ import {
 } from "@material-ui/core";
 import MyEventReview from "./MyEventReview";
 import SingleEvent from "./SingleEvent";
+import UpdateHostedEvent from "./UpdateHostedEvent";
 
 const MyEvents = () => {
   const user = useSelector((state) => state.auth);
@@ -29,16 +30,34 @@ const MyEvents = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(myEvents);
     dispatch(setUserEvents(user.id));
     dispatch(fetchUserReviews());
   }, []);
+
+  useEffect(() => {});
+
+  useEffect(() => {
+    setMyHostedEvents(
+      myEvents.filter((element) => element.users_events.host === true)
+    );
+  }, [myEvents]);
 
   const onRemoveClick = (eventId, userId) => {
     dispatch(removeUsersEvent(eventId, userId));
   };
 
+  // const onUpdateClick = (event) => {
+  //   console.log("Updated Clicked");
+  // };
+
   const [onShowDetailsClick, setOnShowDetailsClick] = useState(null);
   const [onReviewClick, setOnReviewClick] = useState(null);
+  const [onUpdateClick, setUpdateClick] = useState(null);
+  const [myHostedEvents, setMyHostedEvents] = useState(
+    myEvents.filter((element) => element.users_events.host === true)
+  );
+  console.log("My Hosted Events -->", myHostedEvents);
 
   return (
     <div>
@@ -79,10 +98,25 @@ const MyEvents = () => {
               <Button onClick={() => onRemoveClick(event.id, user.id)}>
                 Remove
               </Button>
+              {event.users_events.host === true ? (
+                <Button
+                  onClick={() => {
+                    onUpdateClick !== null
+                      ? setUpdateClick(null)
+                      : setUpdateClick(idx);
+                  }}
+                >
+                  Update
+                </Button>
+              ) : null}
               {onShowDetailsClick === idx ? (
                 <SingleEvent props={event} />
               ) : null}
+
               {onReviewClick === idx ? <MyEventReview event={event} /> : null}
+              {onUpdateClick === idx ? (
+                <UpdateHostedEvent event={event} />
+              ) : null}
             </Card>
           </div>
         );

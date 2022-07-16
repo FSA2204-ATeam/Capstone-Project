@@ -97,4 +97,19 @@ router.post("/", requireToken, async (req, res, next) => {
   }
 });
 
+router.put("/", requireToken, async (req, res, next) => {
+  try {
+    console.log("Updated Req.body", req.body);
+    const updated = await Event.update(req.body, {
+      where: {
+        id: req.body.id,
+      },
+    });
+    console.log("did I update", updated);
+    res.json(updated);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
