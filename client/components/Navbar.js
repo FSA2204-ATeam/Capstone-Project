@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = ({ isLoggedIn }) => {
   const classes = useNavStyles();
+
   return (
     <div>
       <AppBar
@@ -24,18 +25,13 @@ const Navbar = ({ isLoggedIn }) => {
         position="fixed"
       >
         <Toolbar>
-          <Typography className={classes.title} variant="h4" noWrap>
+          <Typography className={classes.title} variant="h4">
             URBAN SAFARI
           </Typography>
 
           <Button
             href="/home"
-            style={{
-              margin: "15px",
-              display: "flex",
-              background: "#FFFFFF",
-              fontColor: "#000000",
-            }}
+            color="secondary"
           >
             HOME
           </Button>
@@ -44,12 +40,7 @@ const Navbar = ({ isLoggedIn }) => {
             <>
               <Button
                 href="/testing"
-                style={{
-                  margin: "15px",
-                  display: "flex",
-                  background: "#FFFFFF",
-                  fontColor: "#000000",
-                }}
+                className={classes.navButton}
               >
                 TESTING
               </Button>

@@ -1,6 +1,6 @@
 import { createTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
-import { white, grey, black, green, brown } from '@material-ui/core/colors';
+import { white, black, green, brown } from '@material-ui/core/colors';
 
 const theme = createTheme({
   palette: {
@@ -9,7 +9,7 @@ const theme = createTheme({
     },
     secondary: {
       main: green[700],
-      contrastText: black
+      contrastText: green[700]
     },
   },
 });
@@ -37,13 +37,11 @@ export const useFrontEndStyles = makeStyles((theme) => ({
 }));
 
 export const useNavStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 4,
-    marginBottom: 25,
-    backgroundColor: white,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
+  navButton: {
+    margin: "15px",
+    display: "flex",
+    background: white,
+    fontColor: green[700],
   },
   title: {
     flexGrow: 1,
