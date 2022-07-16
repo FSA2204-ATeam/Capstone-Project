@@ -8,7 +8,7 @@ const theme = createTheme({
       main: purple[500],
     },
     secondary: {
-      main: grey[500],
+      main: green[500],
       contrastText: black
     },
     typography: {

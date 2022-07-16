@@ -34,7 +34,6 @@ const PopUpWindowLogin = () => {
   };
 
   const closeLoginPopover = (event) => {
-    () => alert('You logged in!');
     setLoginButtonOn(event.target);
   }
 
@@ -44,19 +43,19 @@ const PopUpWindowLogin = () => {
 
   return (
     <Card
-      xs={12}
-      md={6}
-      lg={3}
-      elevation={3}
-      className={classes.p}
-      variant="elevation"
-      style={{ background: '#FFFFFF' }}
+      // xs={12}
+      // md={6}
+      // lg={3}
+      // elevation={3}
+      // className={classes.p}
+      // variant="elevation"
+      // style={{ background: '#FFFFFF' }}
     >
       <CardActions>
         {!signupButton ? (
         <form onSubmit={handleSubmit}>
-          <Grid container alignItems="center" direction="column">
-            <Grid item>
+          <Grid  direction="column" container>
+            <Grid item >
               <TextField
                 id="username-input"
                 name="username"
@@ -67,7 +66,7 @@ const PopUpWindowLogin = () => {
                 onChange={handleChange}
               />
             </Grid>
-            <Grid item>
+            <Grid item >
               <TextField
                 id="password"
                 name="password"
@@ -80,8 +79,9 @@ const PopUpWindowLogin = () => {
             </Grid>
             <ButtonGroup
               variant="contained"
+              size="medium"
               color="secondary"
-              // style={{ display: 'flex', background: '#94C973' }}
+              style={{justifyContent: "center"}}
             >
             <Button
               type="submit"
