@@ -1,44 +1,46 @@
 import { createTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
-import { white, grey, black, green, brown, purple, blue} from '@material-ui/core/colors';
+import { white, grey, black, green, brown } from '@material-ui/core/colors';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: brown[500],
     },
     secondary: {
-      main: green[500],
+      main: green[700],
       contrastText: black
     },
   },
 });
 
-
 export const useFrontEndStyles = makeStyles((theme) => ({
   cHeader: {
     color: black,
-    fontSize: 20,
+    fontSize: 25,
+    fontWeight: 'bold',
     fontFamily: 'Arial',
   },
-  h4: {
-    textAlign: 'center',
-    display: 'flex grow',
-    maxHeight: '100%',
-    minHeight: '100%',
-    maxWidth: 500,
-    minWidth: 200,
-    color: '#000000',
-    fontSize: 20,
+  typography: {
+    color: black,
+    fontSize: 15,
+    fontWeight: 'italic',
     fontFamily: 'Arial',
+    align: 'center'
   },
+  links: {
+    display: "flex",
+    fontSize: 15,
+    fontColor: black,
+    backgroundColor: brown
+  }
 }));
 
 export const useNavStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 4,
     marginBottom: 25,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: white,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -49,8 +51,7 @@ export const useNavStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
-    color: '#3D550C',
-    backgroundColor: '#FFFFFF',
+    color: green[700],
   },
 }));
 

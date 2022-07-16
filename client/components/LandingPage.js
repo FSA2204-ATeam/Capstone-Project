@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/ap
 import AllEventsView from './AllEventsView';
 import { NewEventForm } from './NewEventForm';
 import { useSelector } from 'react-redux';
-import { Button, Popover, CardContent, CardHeader, CardActions } from '@material-ui/core';
+import { Button, Popover, CardContent, CardHeader, CardActions, Typography } from '@material-ui/core';
 import PopUpWindowLogged from './PopUpWindowLogged';
 import PopUpWindowLogin from './PopUpWindowLogin';
 
@@ -75,7 +75,10 @@ const LandingPage = () => {
                 color="#FFFFFF"
                 onClick={openPopover}
               >
-                {isLoggedIn ? ("USERNAME") : ("LOGIN")}
+                {isLoggedIn ? 
+                <Typography color="secondary">USER</Typography>
+                :
+                <Typography color="secondary">LOGIN</Typography>}
               </Button>
               <Popover
                 open={Boolean(anchor)}

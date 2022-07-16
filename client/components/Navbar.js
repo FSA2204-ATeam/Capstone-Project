@@ -43,29 +43,6 @@ const Navbar = ({ isLoggedIn }) => {
           {isLoggedIn ? (
             <>
               <Button
-                href="/events/myevents"
-                style={{
-                  margin: "15px",
-                  display: "flex",
-                  background: "#FFFFFF",
-                  fontColor: "#000000",
-                }}
-              >
-                MY EVENTS
-              </Button>
-              <Button
-                href="/profile"
-                style={{
-                  margin: "15px",
-                  display: "flex",
-                  background: "#FFFFFF",
-                  fontColor: "#000000",
-                }}
-              >
-                PROFILE
-              </Button>
-
-              <Button
                 href="/testing"
                 style={{
                   margin: "15px",

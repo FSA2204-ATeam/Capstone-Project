@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Card, CardContent, CardHeader, CardActions, Typography } from '@material-ui/core';
+import { Button, Grid, Card, ButtonGroup, CardContent, CardHeader, CardActions, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { useFrontEndStyles } from '../theme';
 import { logout } from '../store';
 import { useHistory } from 'react-router-dom';
-import theme from '../theme';
 
 const PopUpWindowCardLogged = () => {
   // const [activeEvents, setActiveEvents] = useState([]);
@@ -25,27 +24,36 @@ const PopUpWindowCardLogged = () => {
   // };
 
   return (
+    <div>
     <Card
-      // xs={12}
-      // md={6}
-      // lg={3}
-      // elevation={3}
-      // className={theme}
-      // variant="elevation"
-      // style={{ background: '#FFFFFF' }}
     >
       <CardContent>
         <CardHeader
           align="center"
           title={<Typography className={classes.cHeader}>Welcome!</Typography>}
         />
-      </CardContent>
-      <Typography >
-        Welcome USERNAME! Histoy? My profile/preferences
-      </Typography>
-      <CardActions>
+        <Typography className={classes.typography}>
         <Button
-          style={{ margin: '0 auto', display: 'flex', background: '#A16AE8' }}
+          href="/profile"
+          className={classes.links}
+          >
+            PROFILE
+        </Button>
+        <Button
+          href="/events/myevents"
+          className={classes.links}
+          >
+            MY EVENTS
+        </Button>
+        </Typography>
+      </CardContent>
+      <CardActions>
+      <ButtonGroup
+              variant="contained"
+              size="small"
+              color="secondary"
+            >
+        <Button
           //onClick={uniqueRandomizer(activeEvents.length)} // return random =  [ 3, 1, 0, 2]
 
           // single event will be set to events[random[idx = 0]]
@@ -54,13 +62,14 @@ const PopUpWindowCardLogged = () => {
           Feeling Wild
         </Button>
         <Button
-          style={{ margin: '0 auto', display: 'flex', background: '#68BBE3' }}
           onClick={toggleCloseLogout}
         >
           Logout
         </Button>
+        </ButtonGroup>
       </CardActions>
     </Card>
+    </div>
   );
 };
 
