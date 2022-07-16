@@ -25,28 +25,33 @@ class Routes extends Component {
   }
 
   render() {
+    const { isLoggedIn } = this.props;
     return (
       <div>
-        <Switch>
-          {/* <Route exact path="/home" component={Home} /> */}
-          <Route exact path="/landing" component={LandingPage} />
-
-          {/* <Route exact path="/" component={Home} /> */}
-          <Route exact path="/login" component={PopUpWindowLogin} />
-          {/* <Route exact path="/signup" component={PopUpWindowSignUp} /> */}
-
-          <Route exact path="/profile" component={UserProfileForm} />
-          <Route exact path="/speechtotext" component={SpeechToText} />
-          <Route exact path="/myeventreview" component={MyEventReview} />
-          <Route exact path="/events/myevents" component={MyEvents} />
-          <Route exact path="/newEvent" component={NewEventForm} />
-          {/* TEMPORARY */}
-          <Route exact path="/home" component={LandingPage} />
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/signup" component={PopUpWindowLogin} />
-          <Route exact path="/testing" component={Randomizer} />
-          {/* TEMPORARY */}
-        </Switch>
+        {isLoggedIn ? (
+          <Switch>
+            {/* <Route exact path="/home" component={Home} /> */}
+            <Route exact path="/landing" component={LandingPage} />
+            {/* <Route exact path="/" component={Home} /> */}
+            <Route exact path="/login" component={PopUpWindowLogin} />
+            {/* <Route exact path="/signup" component={PopUpWindowSignUp} /> */}
+            <Route exact path="/signup" component={PopUpWindowLogin} />
+            <Route exact path="/home" component={LandingPage} />
+            <Route exact path="/" component={LandingPage} />
+          </Switch>
+        ) : (
+          <Switch>
+            <Route exact path="/landing" component={LandingPage} />
+            <Route exact path="/home" component={LandingPage} />
+            <Route exact path="/profile" component={UserProfileForm} />
+            <Route exact path="/speechtotext" component={SpeechToText} />
+            <Route exact path="/myeventreview" component={MyEventReview} />
+            <Route exact path="/events/myevents" component={MyEvents} />
+            <Route exact path="/newEvent" component={NewEventForm} />
+            <Route exact path="/testing" component={Randomizer} />
+            <Route exact path="/" component={LandingPage} />
+          </Switch>
+        )}
       </div>
     );
   }
