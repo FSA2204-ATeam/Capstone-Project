@@ -6,7 +6,7 @@ import {
   fetchUserEvents,
 } from "../store/usersEvents";
 
-import { InfoWindow } from "@react-google-maps/api";
+import { InfoWindow, Marker } from "@react-google-maps/api";
 
 const MapSingleEvent = ({ randomOrder }) => {
   const dispatch = useDispatch();
@@ -42,30 +42,44 @@ const MapSingleEvent = ({ randomOrder }) => {
 
   return (
     <div>
-      <InfoWindow
+      <Marker
+        key={activeEvent.id}
+        id={activeEvent.id}
         position={{
-          lat: parseFloat(activeEvent.eventLat),
-          lng: parseFloat(activeEvent.eventLng),
+          lat: activeEvent.eventLat,
+          lng: activeEvent.eventLng,
         }}
-        //onCloseClick={() => setActiveEvent(null)}
       >
-        <div>
-          <div>{activeEvent.shortDesc}</div>
+        <InfoWindow
+          position={{
+            lat: parseFloat(activeEvent.eventLat),
+            lng: parseFloat(activeEvent.eventLng),
+          }}
+          //onCloseClick={() => setActiveEvent(null)}
+        >
           <div>
-            {`${new Date(
-              Date.parse(activeEvent.startDate)
-            ).toLocaleString()} to ${new Date(
-              Date.parse(activeEvent.endDate)
-            ).toLocaleString()}`}
+            <div>
+              <div>{activeEvent.name}</div>
+              <div>{activeEvent.shortDesc}</div>
+            </div>
+            <div>
+              {`${new Date(
+                Date.parse(activeEvent.startDate)
+              ).toLocaleString()} to ${new Date(
+                Date.parse(activeEvent.endDate)
+              ).toLocaleString()}`}
+            </div>
+            {myAssociations.includes(activeEvent.id) ? (
+              <em>Thank you for selecting this event to attend!</em>
+            ) : (
+              <button onClick={() => onRSVPClick(activeEvent)}>
+                Let's Go!
+              </button>
+            )}
+            <button onClick={() => onNextButton()}>Next</button>
           </div>
-          {myAssociations.includes(activeEvent.id) ? (
-            <>You've already RSVP'd to this event</>
-          ) : (
-            <button onClick={() => onRSVPClick(activeEvent)}>RSVP</button>
-          )}
-          <button onClick={() => onNextButton()}>Next</button>
-        </div>
-      </InfoWindow>
+        </InfoWindow>
+      </Marker>
     </div>
   );
 };
