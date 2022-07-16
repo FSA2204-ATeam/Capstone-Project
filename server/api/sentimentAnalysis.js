@@ -55,7 +55,13 @@ router.put("/", requireToken, async (req, res, next) => {
       },
       { where: { eventId: req.body.eventId, userId: user.id } }
     );
-    console.log("DID I UPDATE?", updated);
+    const reviewedEvent = await UsersEvents.findOne({
+      where: {
+        eventId: req.body.eventId,
+        userId: user.id,
+      },
+    });
+    res.json(reviewedEvent);
   } catch (error) {
     next(error);
   }

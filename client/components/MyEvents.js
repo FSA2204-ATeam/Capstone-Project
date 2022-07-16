@@ -52,9 +52,6 @@ const MyEvents = () => {
               style={{ background: "lightGray" }}
             >
               <h1>{event.name}</h1>
-              <p>
-                {event.datePart} from {event.timePart}
-              </p>
               <Button
                 onClick={() => {
                   onShowDetailsClick !== null && onShowDetailsClick === idx
