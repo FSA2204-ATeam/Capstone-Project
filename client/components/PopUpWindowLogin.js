@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import { authenticate } from '../store';
 import { useDispatch } from 'react-redux';
 import { useFrontEndStyles } from '../theme';
-import { Grid, Button, Card, CardContent, CardHeader, CardActions } from '@material-ui/core';
+import { Grid, Button, Card, CardContent, CardHeader, CardActions, ButtonGroup } from '@material-ui/core';
 import PopUpWindowSignUp from './PopUpWindowSignUp';
 
 const defaultValues = {
@@ -34,6 +34,7 @@ const PopUpWindowLogin = () => {
   };
 
   const closeLoginPopover = (event) => {
+    () => alert('You logged in!');
     setLoginButtonOn(event.target);
   }
 
@@ -51,11 +52,8 @@ const PopUpWindowLogin = () => {
       variant="elevation"
       style={{ background: '#FFFFFF' }}
     >
-      <CardContent>
-        <CardHeader align="center" />
-      </CardContent>
       <CardActions>
-        {!signupButton ?
+        {!signupButton ? (
         <form onSubmit={handleSubmit}>
           <Grid container alignItems="center" direction="column">
             <Grid item>
@@ -80,25 +78,27 @@ const PopUpWindowLogin = () => {
                 onChange={handleChange}
               />
             </Grid>
-            <Button
+            <ButtonGroup
               variant="contained"
+              color="secondary"
+              // style={{ display: 'flex', background: '#94C973' }}
+            >
+            <Button
               type="submit"
-              style={{ display: 'flex', background: '#94C973' }}
               onClick={() => closeLoginPopover(null)}
             >
               Log in
             </Button>
             <Button
-              variant="contained"
               type="submit"
-              style={{ display: 'flex', background: '#68BBE3' }}
               onClick={handleSignup}
             >
               Sign Up
             </Button>
+            </ButtonGroup>
           </Grid>
         </form>
-        : (
+        ) : (
           <PopUpWindowSignUp/>
         )}
       </CardActions>

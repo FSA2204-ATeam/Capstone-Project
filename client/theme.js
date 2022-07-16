@@ -1,83 +1,24 @@
 import { createTheme } from '@material-ui/core/styles';
-import { amber } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
-import { white } from '@material-ui/core/styles';
+import { white, grey, black, green, brown, purple, blue} from '@material-ui/core/colors';
 
 const theme = createTheme({
-  components: {
-    MuiTypography: {
-      root: {
-        fontFamily: 'Emilys Candy',
-      },
-      variants: [
-        {
-          props: {
-            variant: 'body2',
-          },
-          style: {
-            fontSize: 11,
-          },
-        },
-        {
-          props: {
-            variant: 'button',
-          },
-          style: {
-            fontSize: 9,
-          },
-        },
-        {
-          props: {
-            variant: 'body1',
-          },
-          style: {
-            fontSize: 25,
-          },
-        },
-      ],
-    },
-  },
   palette: {
     primary: {
-      main: '#F5DADF',
+      main: purple[500],
     },
-
     secondary: {
-      main: '#000000',
-      contrastText: amber[900],
+      main: grey[500],
+      contrastText: black
     },
+    typography: {
+      fontFamily: 'Arial',
+    }
   },
 });
 
-// theme.overrides = {
-//   MuiButton: {
-//     root: {
-//       borderRadius: 15,
-//       textTransform: 'none',
-//       fontSize: 20,
-//       fontFamily: 'Emilys Candy',
-//     },
-//     containedPrimary: {
-//       '&:hover': {
-//         backgroundColor: theme.palette.secondary.main,
-//         color: theme.palette.primary.dark,
-//       },
-//     },
-//     containedSecondary: {
-//       fontWeight: 700,
-//     },
-//   },
-// };
 
 export const useFrontEndStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex grow',
-    maxHeight: '100%',
-    minHeight: '100%',
-    maxWidth: 300,
-    minWidth: 200,
-    color: '#808080',
-  },
   p: {
     display: 'flex grow',
     maxHeight: '100%',
