@@ -1,20 +1,19 @@
-
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import PopUpWindowLogin from "./components/PopUpWindowLogin";
-import PopUpWindowSignUp from "./components/PopUpWindowSignUp";
-import SpeechToText from "./components/SpeechToText";
-import Home from "./components/Home";
-import { me } from "./store";
-import { fetchUserEvents } from "./store/usersEvents";
-import { fetchUserPreferences } from "./store";
-import UserProfileForm from "./components/UserProfileForm";
-import MyEventReview from "./components/MyEventReview";
-import MyEvents from "./components/MyEvents";
-import { NewEventForm } from "./components/NewEventForm";
-import { getEvents } from "./store/events";
-import Randomizer from "./components/Randomizer";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import PopUpWindowLogin from './components/PopUpWindowLogin';
+import PopUpWindowSignUp from './components/PopUpWindowSignUp';
+import SpeechToText from './components/SpeechToText';
+import Home from './components/Home';
+import { me } from './store';
+import { fetchUserEvents } from './store/usersEvents';
+import { fetchUserPreferences } from './store';
+import UserProfileForm from './components/UserProfileForm';
+import MyEventReview from './components/MyEventReview';
+import MyEvents from './components/MyEvents';
+import { NewEventForm } from './components/NewEventForm';
+import { getEvents } from './store/events';
+import Randomizer from './components/Randomizer';
 import LandingPage from './components/LandingPage';
 
 /**
