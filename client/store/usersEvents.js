@@ -84,6 +84,7 @@ export const setUserEvents = (userId) => async (dispatch) => {
         authorization: token,
       },
     });
+    console.log("usersEvent", data);
     dispatch(_setUserEvents(data));
   } catch (error) {
     console.error(error);

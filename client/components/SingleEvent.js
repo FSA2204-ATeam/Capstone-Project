@@ -8,7 +8,14 @@ const SingleEvent = ({ props }) => {
     <div>
       <h3>My Event Details</h3>
       <div>
-        <p>Info: {props.shortDesc} </p>
+        <p>{props.shortDesc} </p>
+        <p>
+          {`${new Date(
+            Date.parse(props.startDate)
+          ).toLocaleString()} to ${new Date(
+            Date.parse(props.endDate)
+          ).toLocaleString()}`}
+        </p>
         <p>Address: {props.address}</p>
         <p>Current RSVPs: {props.totalGuests}</p>
         <a href={`${props.permalink}`}>Website</a>

@@ -2,26 +2,24 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSentimentAnalysis } from "../store/sentimentAnalysis";
-import { setUserEvents } from "../store/usersEvents";
+import { fetchUserReviews, setUserEvents } from "../store/usersEvents";
 
 function MyEventReview({ event }) {
   const user = useSelector((state) => state.auth);
-  const [review, setReview] = useState("");
-  const [analysis, setAnalysis] = useState({});
-  const analysisResult = useSelector((state) => state.analysis);
+  const update = useSelector((state) => state.usersEvents);
+  const analysisResult = useSelector((state) => state.sentiment);
+  const [review, setReview] = useState(event.users_events.review);
   const dispatch = useDispatch();
-
   const eventId = event.id;
 
   useEffect(() => {
     dispatch(setUserEvents(user.id));
-  }, []);
+  }, [analysisResult]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(getSentimentAnalysis(review, eventId));
   };
-  const myReview = event.users_events.review;
 
   return (
     <div>
@@ -32,12 +30,16 @@ function MyEventReview({ event }) {
           <input
             name="review"
             type="text"
-            placeholder={myReview ? myReview : "Your response here..."}
+            placeholder={"Your response here..."}
             value={review}
             onChange={(e) => setReview(e.target.value)}
           />
         </label>
-        <button type="submit">Submit</button>
+        {review ? (
+          <button type="submit">Update</button>
+        ) : (
+          <button type="submit">Submit</button>
+        )}
       </form>
     </div>
   );
