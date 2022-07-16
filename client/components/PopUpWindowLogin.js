@@ -1,30 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Radio from "@material-ui/core/Radio";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import Slider from "@material-ui/core/Slider";
-import Button from "@material-ui/core/Button";
-import { authenticate } from "../store";
-import { useDispatch } from "react-redux";
-import { useFrontEndStyles } from "../theme";
-import {
-  Card,
-  Box,
-  CardMedia,
-  CardContent,
-  CardHeader,
-  CardActions,
-  Typography,
-  IconButton,
-  Tooltip,
-  Container,
-} from "@material-ui/core";
+
+import React, { useState } from 'react';
+import { authenticate } from '../store';
+import { useDispatch } from 'react-redux';
+import { Grid, Button, TextField, ButtonGroup } from '@material-ui/core';
+import PopUpWindowSignUp from './PopUpWindowSignUp';
 
 const defaultValues = {
   username: "",
@@ -32,8 +11,9 @@ const defaultValues = {
 };
 
 const PopUpWindowLogin = () => {
-  const classes = useFrontEndStyles();
   const [formValues, setFormValues] = useState(defaultValues);
+  const [loginButtonOn, setLoginButtonOn] = useState(null);
+  const [signupButton, setSignupButton] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -51,55 +31,76 @@ const PopUpWindowLogin = () => {
     console.log(event);
   };
 
+  const closeLoginPopover = (event) => {
+    setLoginButtonOn(event.target);
+  }
+
+  const handleSignup = (event) => {
+    setSignupButton(event.target);
+  }
+
   return (
-    <Card
-      xs={12}
-      md={6}
-      lg={3}
-      elevation={3}
-      className={classes.p}
-      variant="elevation"
-      style={{ background: "#FFFFFF" }}
-    >
-      <CardContent>
-        <CardHeader align="center" />
-      </CardContent>
-      <CardActions>
+
+    <div>
+        {!signupButton ? (
         <form onSubmit={handleSubmit}>
-          <Grid container alignItems="center" direction="column">
-            <Grid item>
+          <Grid
+          container
+          spacing={1}
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          >
+            <Grid item >
               <TextField
                 id="username-input"
                 name="username"
-                label="Userame"
+                placeholder="Userame"
                 type="text"
                 variant="outlined"
                 value={formValues.username}
                 onChange={handleChange}
               />
             </Grid>
-            <Grid item>
+            <Grid item >
               <TextField
                 id="password"
                 name="password"
-                label="Password"
+                placeholder="Password"
                 type="password"
                 variant="outlined"
                 value={formValues.password}
                 onChange={handleChange}
               />
             </Grid>
-            <Button
+            <Grid item >
+            <ButtonGroup
               variant="contained"
+              size="small"
+              color="secondary"
+            >
+            <Button
               type="submit"
-              style={{ background: "#94C973" }}
+
+              onClick={() => closeLoginPopover(null)}
+
             >
               Log in
             </Button>
+            <Button
+              type="submit"
+              onClick={handleSignup}
+            >
+              Sign Up
+            </Button>
+            </ButtonGroup>
+            </Grid>
           </Grid>
         </form>
-      </CardActions>
-    </Card>
+        ) : (
+          <PopUpWindowSignUp/>
+        )}
+    </div>
   );
 };
 export default PopUpWindowLogin;

@@ -1,39 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  Button,
-  Card,
-  Box,
-  CardMedia,
-  CardContent,
-  CardHeader,
-  CardActions,
-  Typography,
-  IconButton,
-  Tooltip,
-  Container,
-} from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
-import fetchUsers from "../store/users";
-import { Link } from "react-router-dom";
-import { grey } from "@material-ui/core/colors";
-import { useFrontEndStyles } from "../theme";
-import { logout } from "../store";
-import { useHistory } from "react-router-dom";
+
+import React, { useState } from 'react';
+import { Button, Grid, Card, ButtonGroup, CardContent, CardHeader, CardActions, Typography } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { useFrontEndStyles } from '../theme';
+import { logout } from '../store';
+import { useHistory } from 'react-router-dom';
 
 const PopUpWindowCardLogged = () => {
-  // const [firstname, setFirstname] = useState("");
-  const firstname = useSelector((state) => state.auth.firstname);
+  // const [activeEvents, setActiveEvents] = useState([]);
+  const [closeLogout, setCloseLogout] = useState(true);
+
   const classes = useFrontEndStyles();
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [activeEvents, setActiveEvents] = useState([]);
-
-  const [closeLogout, setCloseLogout] = useState(true);
   const toggleCloseLogout = () => (
-    setCloseLogout(!closeLogout), dispatch(logout()), history.push("/")
+
+    setCloseLogout(!closeLogout), dispatch(logout()), history.push('/landing')
   );
 
   // const handleClick = (event) => {
@@ -43,27 +27,37 @@ const PopUpWindowCardLogged = () => {
   // };
 
   return (
+    <div>
     <Card
-      xs={12}
-      md={6}
-      lg={3}
-      elevation={3}
-      className={classes.p}
-      variant="elevation"
-      style={{ background: "#FFFFFF" }}
     >
       <CardContent>
         <CardHeader
           align="center"
-          title={<Typography className={classes.h4}>Welcome!</Typography>}
+          title={<Typography className={classes.cHeader}>Welcome!</Typography>}
         />
-      </CardContent>
-      <Typography className={classes.h4}>
-        Welcome USERNAME! Histoy? My profile/preferences
-      </Typography>
-      <CardActions>
+        <Typography className={classes.typography}>
         <Button
-          style={{ margin: "0 auto", display: "flex", background: "#A16AE8" }}
+          href="/profile"
+          className={classes.links}
+          >
+            PROFILE
+        </Button>
+        <Button
+          href="/events/myevents"
+          className={classes.links}
+          >
+            MY EVENTS
+        </Button>
+        </Typography>
+      </CardContent>
+      <CardActions>
+      <ButtonGroup
+              variant="contained"
+              size="small"
+              color="secondary"
+            >
+        <Button
+
           //onClick={uniqueRandomizer(activeEvents.length)} // return random =  [ 3, 1, 0, 2]
 
           // single event will be set to events[random[idx = 0]]
@@ -72,15 +66,14 @@ const PopUpWindowCardLogged = () => {
           Feeling Wild
         </Button>
         <Button
-          href="/"
-          style={{ margin: "0 auto", display: "flex", background: "#68BBE3" }}
           onClick={toggleCloseLogout}
         >
           Logout
         </Button>
+        </ButtonGroup>
       </CardActions>
     </Card>
-    // </Box>
+    </div>
   );
 };
 

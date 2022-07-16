@@ -1,115 +1,53 @@
-import { createTheme } from "@material-ui/core/styles";
-import { amber } from "@material-ui/core/colors";
-import { makeStyles } from "@material-ui/core/styles";
-import { white } from "@material-ui/core/styles";
+
+import { createTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
+import { white, black, green, brown } from '@material-ui/core/colors';
 
 const theme = createTheme({
-  components: {
-    MuiTypography: {
-      root: {
-        fontFamily: "Emilys Candy",
-      },
-      variants: [
-        {
-          props: {
-            variant: "body2",
-          },
-          style: {
-            fontSize: 11,
-          },
-        },
-        {
-          props: {
-            variant: "button",
-          },
-          style: {
-            fontSize: 9,
-          },
-        },
-        {
-          props: {
-            variant: "body1",
-          },
-          style: {
-            fontSize: 25,
-          },
-        },
-      ],
-    },
-  },
   palette: {
     primary: {
-      main: "#F5DADF",
-    },
+      main: brown[500],
 
+    },
     secondary: {
-      main: "#000000",
-      contrastText: amber[900],
+
+      main: green[700],
+      contrastText: green[700]
+
     },
   },
 });
 
-// theme.overrides = {
-//   MuiButton: {
-//     root: {
-//       borderRadius: 15,
-//       textTransform: 'none',
-//       fontSize: 20,
-//       fontFamily: 'Emilys Candy',
-//     },
-//     containedPrimary: {
-//       '&:hover': {
-//         backgroundColor: theme.palette.secondary.main,
-//         color: theme.palette.primary.dark,
-//       },
-//     },
-//     containedSecondary: {
-//       fontWeight: 700,
-//     },
-//   },
-// };
-
 export const useFrontEndStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex grow",
-    maxHeight: "100%",
-    minHeight: "100%",
-    maxWidth: 300,
-    minWidth: 200,
-    color: "#808080",
+
+  cHeader: {
+    color: black,
+    fontSize: 25,
+    fontWeight: 'bold',
+    fontFamily: 'Arial',
   },
-  p: {
-    display: "flex grow",
-    maxHeight: "100%",
-    minHeight: "100%",
-    maxWidth: 300,
-    minWidth: 200,
-    color: "#808080",
-    fontSize: 20,
-    fontFamily: "Arial",
+  typography: {
+    color: black,
+    fontSize: 15,
+    fontWeight: 'italic',
+    fontFamily: 'Arial',
+    align: 'center'
   },
-  h4: {
-    textAlign: "center",
-    display: "flex grow",
-    maxHeight: "100%",
-    minHeight: "100%",
-    maxWidth: 500,
-    minWidth: 200,
-    color: "#000000",
-    fontSize: 20,
-    fontFamily: "Arial",
-  },
+  links: {
+    display: "flex",
+    fontSize: 15,
+    fontColor: black,
+    backgroundColor: brown
+  }
 }));
 
 export const useNavStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 4,
-    marginBottom: 25,
-    backgroundColor: "#FFFFFF",
-  },
-  appBar: {
-    height: 60,
-    color: "#8FA01F",
+  navButton: {
+    margin: "15px",
+    display: "flex",
+    background: white,
+    fontColor: green[700],
+
   },
   title: {
     flexGrow: 1,
@@ -117,8 +55,7 @@ export const useNavStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
-    color: "#3D550C",
-    backgroundColor: "#FFFFFF",
+    color: green[700],
   },
 }));
 

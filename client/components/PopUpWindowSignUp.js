@@ -1,30 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Radio from "@material-ui/core/Radio";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import Slider from "@material-ui/core/Slider";
-import Button from "@material-ui/core/Button";
-import { registration } from "../store";
-import { useDispatch } from "react-redux";
-import { useFrontEndStyles } from "../theme";
-import {
-  Card,
-  Box,
-  CardMedia,
-  CardContent,
-  CardHeader,
-  CardActions,
-  Typography,
-  IconButton,
-  Tooltip,
-  Container,
-} from "@material-ui/core";
+
+import React, { useState } from 'react';
+import { registration } from '../store';
+import { useDispatch } from 'react-redux';
+import { Grid, TextField, Button, ButtonGroup } from '@material-ui/core';
+import PopUpWindowLogin from './PopUpWindowLogin';
+
 
 const defaultValues = {
   firstname: "",
@@ -35,8 +15,8 @@ const defaultValues = {
 };
 
 const PopUpWindowSignUp = () => {
-  const classes = useFrontEndStyles();
   const [formValues, setFormValues] = useState(defaultValues);
+  const [backButton, setBackButton] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -54,32 +34,28 @@ const PopUpWindowSignUp = () => {
     console.log(event);
   };
 
+  const handleBackButton = (event) => {
+    setBackButton(event.target);
+  }
+
   return (
-    <Card
-      xs={12}
-      md={6}
-      lg={3}
-      elevation={3}
-      className={classes.p}
-      variant="elevation"
-      style={{ background: "#FFFFFF" }}
-    >
-      <CardContent>
-        <CardHeader align="center" />
-      </CardContent>
-      <CardActions>
+
+    <div>
+      {!backButton ? (
+
         <form onSubmit={handleSubmit}>
           <Grid
-            container
-            alignItems="center"
-            justify="center"
-            direction="column"
+          container
+          spacing={1}
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
           >
             <Grid item>
               <TextField
                 id="firstname-input"
                 name="firstname"
-                label="Firstname"
+                placeholder="Firstname"
                 type="text"
                 variant="outlined"
                 value={formValues.firstname}
@@ -90,7 +66,7 @@ const PopUpWindowSignUp = () => {
               <TextField
                 id="lastname-input"
                 name="lastname"
-                label="Lastname"
+                placeholder="Lastname"
                 type="text"
                 variant="outlined"
                 value={formValues.lastname}
@@ -101,7 +77,7 @@ const PopUpWindowSignUp = () => {
               <TextField
                 id="username-input"
                 name="username"
-                label="Username"
+                placeholder="Username"
                 type="text"
                 variant="outlined"
                 value={formValues.username}
@@ -112,8 +88,8 @@ const PopUpWindowSignUp = () => {
               <TextField
                 id="password-input"
                 name="password"
-                label="Password"
-                type="text"
+                placeholder="Password"
+                type="password"
                 variant="outlined"
                 value={formValues.password}
                 onChange={handleChange}
@@ -123,24 +99,37 @@ const PopUpWindowSignUp = () => {
               <TextField
                 id="email-input"
                 name="email"
-                label="Email"
+                placeholder="Email"
                 type="text"
                 variant="outlined"
                 value={formValues.email}
                 onChange={handleChange}
               />
             </Grid>
-            <Button
+            <ButtonGroup
               variant="contained"
-              type="submit"
-              style={{ background: "#68BBE3" }}
+              size="small"
+              color="secondary"
             >
-              Sign Up
+            <Button
+              type="submit"
+
+            >
+              Submit
             </Button>
+            <Button
+              type="button"
+              onClick={handleBackButton}
+            >
+              Back
+            </Button>
+            </ButtonGroup>
           </Grid>
         </form>
-      </CardActions>
-    </Card>
+    ) : (
+      <PopUpWindowLogin/>
+    )}
+    </div>
   );
 };
 export default PopUpWindowSignUp;
