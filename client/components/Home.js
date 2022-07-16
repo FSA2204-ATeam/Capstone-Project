@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   GoogleMap,
   LoadScript,
   Marker,
   InfoWindow,
-} from '@react-google-maps/api';
-import { Room, Star, StarBorder } from '@material-ui/icons';
-import axios from 'axios';
-import User from './PopUpWindowLogin';
-import { connect, useSelector } from 'react-redux';
-import { logout } from '../store';
-import { setUserRSVP } from '../store/usersEvents';
-import PopUpWindowLogin from './PopUpWindowLogin';
-import PopUpWindowSignUp from './PopUpWindowSignUp';
-import PopUpWindowLogged from './PopUpWindowLogged';
-import { Link } from 'react-router-dom';
-import { Grid, Popover } from '@material-ui/core';
-import { useFrontEndStyles } from '../theme';
-import UserProfileForm from './UserProfileForm';
-import { NewEventForm } from './NewEventForm';
+} from "@react-google-maps/api";
+import { Room, Star, StarBorder } from "@material-ui/icons";
+import axios from "axios";
+import User from "./PopUpWindowLogin";
+import { connect, useSelector } from "react-redux";
+import { logout } from "../store";
+import { setUserRSVP } from "../store/usersEvents";
+import PopUpWindowLogin from "./PopUpWindowLogin";
+import PopUpWindowSignUp from "./PopUpWindowSignUp";
+import PopUpWindowLogged from "./PopUpWindowLogged";
+import { Link } from "react-router-dom";
+import { Grid, Popover } from "@material-ui/core";
+import { useFrontEndStyles } from "../theme";
+import UserProfileForm from "./UserProfileForm";
+import { NewEventForm } from "./NewEventForm";
 
 import {
   Button,
@@ -32,7 +32,7 @@ import {
   IconButton,
   Tooltip,
   Container,
-} from '@material-ui/core';
+} from "@material-ui/core";
 
 const MapContainer = ({
   isLoggedIn,
@@ -78,14 +78,14 @@ const MapContainer = ({
   });
 
   const mapStyles = {
-    height: '100vh',
-    width: '100%',
+    height: "100vh",
+    width: "100%",
   };
 
   useEffect(() => {
     const getEvents = async () => {
       try {
-        const events = await axios.get('/api/events');
+        const events = await axios.get("/api/events");
         setEvents(events.data);
       } catch (err) {
         console.log(err);
@@ -96,17 +96,35 @@ const MapContainer = ({
 
   const [newEvtPosition, setNewEvtPosition] = useState({});
   const handleDblClick = (e) => {
-    console.log('DoubleClickEvent!!!!!!!!', e);
+    console.log("DoubleClickEvent!!!!!!!!", e);
     setNewEvtPosition(e);
   };
 
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth * 0.8);
+  const [innerHeight, setInnerHeight] = useState(window.innerHeight * 0.15);
+
+  window.addEventListener("resize", function (event) {
+    setInnerWidth(Math.floor(window.innerWidth * 0.8));
+    setInnerHeight(Math.floor(window.innerHeight * 0.15));
+  });
+
+  const popHeight = innerHeight * 1.6;
+  const popWidth = innerWidth * 1.08;
+
+  const buttonStyle = {
+    marginTop: innerHeight,
+    marginLeft: innerWidth,
+    height: "60px",
+    width: "60px",
+  };
+  console.log(innerHeight, popHeight, "****", innerWidth, popWidth, "--------");
   return (
     <div>
       <Container maxWidth="xl" sx={{ marginY: 12 }}>
-        <Grid container spacing={5} style={{ justifyContent: 'space-around' }}>
+        <Grid container spacing={5} style={{ justifyContent: "space-around" }}>
           <LoadScript
-            mapIds={['61b5009386a6596e']}
-            googleMapsApiKey={'AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78'}
+            mapIds={["61b5009386a6596e"]}
+            googleMapsApiKey={"AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78"}
           >
             <GoogleMap
               onClick={() => setSelectedEvent(null)}
@@ -117,7 +135,7 @@ const MapContainer = ({
               zoom={13}
               center={mapCenter}
               options={{
-                mapId: '61b5009386a6596e',
+                mapId: "61b5009386a6596e",
                 zoomControl: false,
                 streetViewControl: false,
                 mapTypeControl: false,
@@ -149,7 +167,7 @@ const MapContainer = ({
                               <div>
                                 {event.datePart} from {event.timePart}
                               </div>
-                              {console.log('API events', events)}
+                              {console.log("API events", events)}
                               <button onClick={() => onRSVPClick(event)}>
                                 RSVP
                               </button>
@@ -179,33 +197,40 @@ const MapContainer = ({
               )}
               {isLoggedIn ? (
                 <div>
+                  {/* <Popover
+                  open={true}
+                  >
+                  <Card>
+                  <CardActions> */}
                   <Button
                     style={{
-                      backgroundColor: '#FFFFFF',
+                      backgroundColor: "#FFFFFF",
                       marginTop: 130, // was set to 70 in main
                       marginLeft: 46,
-                      height: '60px',
-                      width: '60px',
+                      height: "60px",
+                      width: "60px",
                     }}
                     variant="contained"
                     size="large"
                     color="#FFFFFF"
                     onClick={openPopover}
                   >
-                    USER
-                    {/* {firstname} */}
+                    {firstname[0].toUpperCase()}
                   </Button>
+                  {/* </CardActions>
+                    </Card>
+                  </Popover> */}
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
                     anchorPosition={{ top: 200, left: 50 }}
                     anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'left',
+                      vertical: "top",
+                      horizontal: "left",
                     }}
                     transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'left',
+                      vertical: "top",
+                      horizontal: "left",
                     }}
                     onClose={() => setAnchor(null)}
                   >
@@ -216,11 +241,11 @@ const MapContainer = ({
                 <div>
                   <Button
                     style={{
-                      backgroundColor: '#FFFFFF',
+                      backgroundColor: "#FFFFFF",
                       marginTop: 130, // was set to 70 in main
                       marginLeft: 46,
-                      height: '60px',
-                      width: '60px',
+                      height: "60px",
+                      width: "60px",
                     }}
                     variant="contained"
                     size="large"
@@ -229,37 +254,31 @@ const MapContainer = ({
                   >
                     LOGIN
                   </Button>
+                  {/* </Box> */}
                   <Popover
                     open={Boolean(anchor)}
                     anchorReference="anchorPosition"
                     anchorPosition={{ top: 200, left: 50 }}
                     anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'left',
+                      vertical: "top",
+                      horizontal: "left",
                     }}
                     transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'left',
+                      vertical: "top",
+                      horizontal: "left",
                     }}
                     onClose={() => setAnchor(null)}
                   >
                     <Card
-                      xs={12}
-                      md={6}
-                      lg={3}
                       elevation={3}
-                      className={classes.p}
+                      className={classes.popover}
                       variant="elevation"
-                      style={{ background: '#FFFFFF' }}
+                      style={{ background: "#FFFFFF" }}
                     >
                       <CardContent>
                         <CardHeader
                           align="center"
-                          title={
-                            <Typography className={classes.h4}>
-                              Welcome!
-                            </Typography>
-                          }
+                          title={<Typography>Welcome!</Typography>}
                         />
                       </CardContent>
 
@@ -271,12 +290,12 @@ const MapContainer = ({
                           target="Login"
                           anchorPosition={{ top: 200, left: 50 }}
                           anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
+                            vertical: "top",
+                            horizontal: "left",
                           }}
                           transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
+                            vertical: "top",
+                            horizontal: "left",
                           }}
                           onClose={() => setAnchor(null)}
                         >
@@ -290,12 +309,12 @@ const MapContainer = ({
                           target="Signup"
                           anchorPosition={{ top: 200, left: 50 }}
                           anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
+                            vertical: "top",
+                            horizontal: "left",
                           }}
                           transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
+                            vertical: "top",
+                            horizontal: "left",
                           }}
                           onClose={() => setAnchor(null)}
                         >
@@ -306,9 +325,9 @@ const MapContainer = ({
                           <Button
                             id="Login"
                             style={{
-                              margin: '0 auto',
-                              display: 'flex',
-                              background: '#94C973',
+                              margin: "0 auto",
+                              display: "flex",
+                              background: "#94C973",
                             }}
                             onClick={toggleLogin}
                           >
@@ -317,9 +336,9 @@ const MapContainer = ({
                           <Button
                             id="Signup"
                             style={{
-                              margin: '0 auto',
-                              display: 'flex',
-                              background: '#68BBE3',
+                              margin: "0 auto",
+                              display: "flex",
+                              background: "#68BBE3",
                             }}
                             onClick={toggleSignup}
                           >
@@ -344,6 +363,7 @@ const mapState = (state) => {
     isLoggedIn: !!state.auth.id,
     isAdmin: state.auth.isAdmin,
     usersEvents: state.usersEvents,
+    firstname: state.auth.firstname,
   };
 };
 

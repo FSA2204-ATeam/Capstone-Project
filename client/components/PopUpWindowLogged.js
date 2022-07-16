@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Button,
   Card,
@@ -12,16 +12,18 @@ import {
   IconButton,
   Tooltip,
   Container,
-} from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
-import fetchUsers from '../store/users';
-import { Link } from 'react-router-dom';
-import { grey } from '@material-ui/core/colors';
-import { useFrontEndStyles } from '../theme';
-import { logout } from '../store';
-import { useHistory } from 'react-router-dom';
+} from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import fetchUsers from "../store/users";
+import { Link } from "react-router-dom";
+import { grey } from "@material-ui/core/colors";
+import { useFrontEndStyles } from "../theme";
+import { logout } from "../store";
+import { useHistory } from "react-router-dom";
 
 const PopUpWindowCardLogged = () => {
+  // const [firstname, setFirstname] = useState("");
+  const firstname = useSelector((state) => state.auth.firstname);
   const classes = useFrontEndStyles();
 
   const dispatch = useDispatch();
@@ -31,17 +33,13 @@ const PopUpWindowCardLogged = () => {
 
   const [closeLogout, setCloseLogout] = useState(true);
   const toggleCloseLogout = () => (
-    setCloseLogout(!closeLogout), dispatch(logout()), history.push('/')
+    setCloseLogout(!closeLogout), dispatch(logout()), history.push("/")
   );
 
   // const handleClick = (event) => {
   //   event.preventDefault();
   //   dispatch(HERE WE HAVE TO DECIDE WHAT TO DISPATCH AFTER WE CLICK ON the wild button)
   //   console.log(event);
-  // };
-
-  // const handleClickLogout = () => {
-  //   dispatch(logout())
   // };
 
   return (
@@ -52,7 +50,7 @@ const PopUpWindowCardLogged = () => {
       elevation={3}
       className={classes.p}
       variant="elevation"
-      style={{ background: '#FFFFFF' }}
+      style={{ background: "#FFFFFF" }}
     >
       <CardContent>
         <CardHeader
@@ -65,7 +63,7 @@ const PopUpWindowCardLogged = () => {
       </Typography>
       <CardActions>
         <Button
-          style={{ margin: '0 auto', display: 'flex', background: '#A16AE8' }}
+          style={{ margin: "0 auto", display: "flex", background: "#A16AE8" }}
           //onClick={uniqueRandomizer(activeEvents.length)} // return random =  [ 3, 1, 0, 2]
 
           // single event will be set to events[random[idx = 0]]
@@ -75,13 +73,14 @@ const PopUpWindowCardLogged = () => {
         </Button>
         <Button
           href="/"
-          style={{ margin: '0 auto', display: 'flex', background: '#68BBE3' }}
+          style={{ margin: "0 auto", display: "flex", background: "#68BBE3" }}
           onClick={toggleCloseLogout}
         >
           Logout
         </Button>
       </CardActions>
     </Card>
+    // </Box>
   );
 };
 

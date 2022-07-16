@@ -1,45 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserRSVP } from "../store/usersEvents";
+import {
+  setUserEvents,
+  setUserRSVP,
+  fetchUserEvents,
+} from "../store/usersEvents";
+
 import { InfoWindow } from "@react-google-maps/api";
-import { friendlyDate } from "../../script/formatDate";
 
 const MapSingleEvent = ({ randomOrder }) => {
   const dispatch = useDispatch();
 
+  const user = useSelector((state) => state.auth);
+  const myEvents = useSelector((state) => state.usersEvents.events);
   const allEvents = useSelector((state) => state.events.events);
-  const usersEvents = useSelector((state) => state.usersEvents);
 
-  const [myAssociations, setMyAssociations] = useState(
-    usersEvents.events.map((ele) => ele.users_events).map((ele) => ele.eventId)
-  );
-
-  console.log("My Associations: ", myAssociations);
-  console.log("UsersEvents ", usersEvents);
-
+  const [myAssociations, setMyAssociations] = useState(myEvents);
   const [idx, setIdx] = useState(0);
-
   const [activeEvent, setActiveEvent] = useState(allEvents[randomOrder[idx]]);
 
-  const onRSVPClick = (event) => {
-    dispatch(setUserRSVP(event));
-  };
-
-  const onNextButton = () => {
-    randomOrder[idx + 1] !== undefined ? setIdx(idx + 1) : setIdx(0);
-  };
+  useEffect(() => {
+    dispatch(setUserEvents(user.id));
+    dispatch(fetchUserEvents());
+  }, []);
 
   useEffect(() => {
     setActiveEvent(allEvents[randomOrder[idx]]);
   }, [idx]);
 
   useEffect(() => {
-    setMyAssociations(
-      usersEvents.events
-        .map((ele) => ele.users_events)
-        .map((ele) => ele.eventId)
-    );
-  }, [usersEvents]);
+    setMyAssociations(myEvents.map((ele) => ele.id));
+  }, [myEvents]);
+
+  const onRSVPClick = (activeEvent) => {
+    dispatch(setUserRSVP(activeEvent));
+  };
+
+  const onNextButton = () => {
+    randomOrder[idx + 1] !== undefined ? setIdx(idx + 1) : setIdx(0);
+  };
 
   return (
     <div>
