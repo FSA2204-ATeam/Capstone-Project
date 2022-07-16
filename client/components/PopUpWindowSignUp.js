@@ -85,7 +85,7 @@ const PopUpWindowSignUp = () => {
                 id="password-input"
                 name="password"
                 placeholder="Password"
-                type="text"
+                type="password"
                 variant="outlined"
                 value={formValues.password}
                 onChange={handleChange}

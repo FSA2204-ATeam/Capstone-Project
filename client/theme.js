@@ -11,21 +11,13 @@ const theme = createTheme({
       main: green[500],
       contrastText: black
     },
-    typography: {
-      fontFamily: 'Arial',
-    }
   },
 });
 
 
 export const useFrontEndStyles = makeStyles((theme) => ({
-  p: {
-    display: 'flex grow',
-    maxHeight: '100%',
-    minHeight: '100%',
-    maxWidth: 300,
-    minWidth: 200,
-    color: '#808080',
+  cHeader: {
+    color: black,
     fontSize: 20,
     fontFamily: 'Arial',
   },

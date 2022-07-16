@@ -1,35 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import {
-  Button,
-  Card,
-  Box,
-  CardMedia,
-  CardContent,
-  CardHeader,
-  CardActions,
-  Typography,
-  IconButton,
-  Tooltip,
-  Container,
-} from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
-import fetchUsers from '../store/users';
-import { Link } from 'react-router-dom';
-import { grey } from '@material-ui/core/colors';
+import React, { useState } from 'react';
+import { Button, Card, CardContent, CardHeader, CardActions, Typography } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 import { useFrontEndStyles } from '../theme';
 import { logout } from '../store';
 import { useHistory } from 'react-router-dom';
+import theme from '../theme';
 
 const PopUpWindowCardLogged = () => {
+  // const [activeEvents, setActiveEvents] = useState([]);
+  const [closeLogout, setCloseLogout] = useState(true);
   const classes = useFrontEndStyles();
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [activeEvents, setActiveEvents] = useState([]);
-
-  const [closeLogout, setCloseLogout] = useState(true);
   const toggleCloseLogout = () => (
     setCloseLogout(!closeLogout), dispatch(logout()), history.push('/landing')
   );
@@ -40,27 +24,23 @@ const PopUpWindowCardLogged = () => {
   //   console.log(event);
   // };
 
-  // const handleClickLogout = () => {
-  //   dispatch(logout())
-  // };
-
   return (
     <Card
-      xs={12}
-      md={6}
-      lg={3}
-      elevation={3}
-      className={classes.p}
-      variant="elevation"
-      style={{ background: '#FFFFFF' }}
+      // xs={12}
+      // md={6}
+      // lg={3}
+      // elevation={3}
+      // className={theme}
+      // variant="elevation"
+      // style={{ background: '#FFFFFF' }}
     >
       <CardContent>
         <CardHeader
           align="center"
-          title={<Typography className={classes.h4}>Welcome!</Typography>}
+          title={<Typography className={classes.cHeader}>Welcome!</Typography>}
         />
       </CardContent>
-      <Typography className={classes.h4}>
+      <Typography >
         Welcome USERNAME! Histoy? My profile/preferences
       </Typography>
       <CardActions>
