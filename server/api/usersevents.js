@@ -27,7 +27,7 @@ router.put("/", requireToken, async (req, res, next) => {
     const event = await Event.findOne({
       where: { id: req.body.id },
     });
-    await event.setUsers(user);
+    //await event.setUsers(user);
     await Event.update(
       {
         totalGuests: req.body.totalGuests,

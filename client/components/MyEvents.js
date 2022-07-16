@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect, useReducer } from "react";
 import {
   setUserEvents,
   removeUsersEvent,
   fetchUserReviews,
-} from '../store/usersEvents';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+} from "../store/usersEvents";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   Button,
   Card,
@@ -18,12 +18,11 @@ import {
   IconButton,
   Tooltip,
   Container,
-} from '@material-ui/core';
-import MyEventReview from './MyEventReview';
-import SingleEvent from './SingleEvent';
+} from "@material-ui/core";
+import MyEventReview from "./MyEventReview";
+import SingleEvent from "./SingleEvent";
 
 const MyEvents = () => {
-  console.log('MY EVENTS COMPONENT RUNNING');
   const user = useSelector((state) => state.auth);
   const myEvents = useSelector((state) => state.usersEvents.events);
   const myReviews = useSelector((state) => state.usersEvents.reviews);
@@ -41,7 +40,6 @@ const MyEvents = () => {
   const [onShowDetailsClick, setOnShowDetailsClick] = useState(null);
   const [onReviewClick, setOnReviewClick] = useState(null);
 
-  //console.log("MY REVIEWS", myReviews);
   return (
     <div>
       <h1>{`${user.username}'s Events`}:</h1>
@@ -51,7 +49,7 @@ const MyEvents = () => {
             <Card
               elevation={3}
               variant="elevation"
-              style={{ background: 'lightGray' }}
+              style={{ background: "lightGray" }}
             >
               <h1>{event.name}</h1>
               <p>

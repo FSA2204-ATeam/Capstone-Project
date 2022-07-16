@@ -41,12 +41,12 @@ export const setUserRSVP = (event) => async (dispatch) => {
       },
     });
 
-    const { data: updated } = await axios.put("/api/usersEvents", data, {
+    const { data: updatedEvent } = await axios.put("/api/usersEvents", data, {
       headers: {
         authorization: token,
       },
     });
-    dispatch(_setUserRSVP(updated));
+    dispatch(_setUserRSVP(updatedEvent));
   } catch (error) {
     console.error(error);
   }
@@ -72,7 +72,6 @@ export const fetchUserReviews = () => async (dispatch) => {
         authorization: token,
       },
     });
-    console.log("ASSOCIATIONS RETRIEVED", data);
     dispatch(_fetchUserReviews(data));
   } catch (error) {
     console.error(error);
@@ -108,12 +107,12 @@ export const removeUsersEvent = (eventId, userId) => async (dispatch) => {
 const usersEventsReducer = (state = { events: [], reviews: [] }, action) => {
   switch (action.type) {
     case SET_USER_RSVP:
-      return {
+      console.log("Action Event", action.event);
+      console.log("Copy of State", {
         ...state,
-        events: state.events.map((event) =>
-          event.id === action.event.id ? action.event : event
-        ),
-      };
+        events: [...state.events, action.event],
+      });
+      return { ...state, events: [...state.events, action.event] };
     case FETCH_USER_EVENTS:
       return { ...state, events: action.userEvents };
     case FETCH_USER_REVIEWS:

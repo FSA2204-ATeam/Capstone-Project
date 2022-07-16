@@ -16,7 +16,6 @@ const MapSingleEvent = ({ randomOrder }) => {
   const allEvents = useSelector((state) => state.events.events);
 
   const [myAssociations, setMyAssociations] = useState(myEvents);
-
   const [idx, setIdx] = useState(0);
   const [activeEvent, setActiveEvent] = useState(allEvents[randomOrder[idx]]);
 
@@ -26,14 +25,12 @@ const MapSingleEvent = ({ randomOrder }) => {
   }, []);
 
   useEffect(() => {
-    console.log("did idx update?", idx);
     setActiveEvent(allEvents[randomOrder[idx]]);
   }, [idx]);
 
   useEffect(() => {
-    console.log("did usersEvents update my associations?", myAssociations);
     setMyAssociations(myEvents.map((ele) => ele.id));
-  }, [idx]);
+  }, [myEvents]);
 
   const onRSVPClick = (activeEvent) => {
     dispatch(setUserRSVP(activeEvent));
