@@ -58,11 +58,7 @@ const Randomizer = () => {
       </GoogleMap>
     </div>
   ) : (
-    <div>
-      <h1>HELLO THERE</h1>
-      <p>This is my Randomizer</p>
-      <h4>Testing Area!!!</h4>
-    </div>
+    <></>
   );
 };
 

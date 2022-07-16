@@ -1,9 +1,9 @@
 import React from "react";
 import "regenerator-runtime/runtime";
-import Navbar from "./components/Navbar";
 import Routes from "./Routes";
 import { ThemeProvider } from "@material-ui/core";
 import theme from "./theme";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (

@@ -1,15 +1,17 @@
+
 import React, { useState } from 'react';
 import { registration } from '../store';
 import { useDispatch } from 'react-redux';
 import { Grid, TextField, Button, ButtonGroup } from '@material-ui/core';
 import PopUpWindowLogin from './PopUpWindowLogin';
 
+
 const defaultValues = {
-  firstname: '',
-  lastname: '',
-  username: '',
-  password: '',
-  email: '',
+  firstname: "",
+  lastname: "",
+  username: "",
+  password: "",
+  email: "",
 };
 
 const PopUpWindowSignUp = () => {
@@ -28,7 +30,7 @@ const PopUpWindowSignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(registration(formValues, 'signup'));
+    dispatch(registration(formValues, "signup"));
     console.log(event);
   };
 
@@ -37,8 +39,10 @@ const PopUpWindowSignUp = () => {
   }
 
   return (
+
     <div>
       {!backButton ? (
+
         <form onSubmit={handleSubmit}>
           <Grid
           container
@@ -109,6 +113,7 @@ const PopUpWindowSignUp = () => {
             >
             <Button
               type="submit"
+
             >
               Submit
             </Button>

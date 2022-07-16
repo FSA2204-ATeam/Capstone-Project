@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button, Grid, Card, ButtonGroup, CardContent, CardHeader, CardActions, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
@@ -8,12 +9,14 @@ import { useHistory } from 'react-router-dom';
 const PopUpWindowCardLogged = () => {
   // const [activeEvents, setActiveEvents] = useState([]);
   const [closeLogout, setCloseLogout] = useState(true);
+
   const classes = useFrontEndStyles();
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   const toggleCloseLogout = () => (
+
     setCloseLogout(!closeLogout), dispatch(logout()), history.push('/landing')
   );
 
@@ -54,6 +57,7 @@ const PopUpWindowCardLogged = () => {
               color="secondary"
             >
         <Button
+
           //onClick={uniqueRandomizer(activeEvents.length)} // return random =  [ 3, 1, 0, 2]
 
           // single event will be set to events[random[idx = 0]]

@@ -24,10 +24,8 @@ export const getSentimentAnalysis = (review, eventId) => {
         `Watson says my review is ${data.label}, with a score of ${data.score}!`
       );
       dispatch(_getSentimentAnalysis(data));
-      console.log("AXIOS PUT ACTIVATION with", data);
-      console.log("Event id gradded?", eventId);
 
-      const { updated } = await axios.put(
+      const updated = await axios.put(
         "/api/sentimentAnalysis",
         {
           ...data,
@@ -40,8 +38,8 @@ export const getSentimentAnalysis = (review, eventId) => {
           },
         }
       );
-      console.log("Updated UserEvent", updated);
-      //dispatch(_setSentimentAnalysis(data));
+      console.log("whole association", updated.data);
+      //dispatch(_setSentimentAnalysis(updated.data));
     } catch (err) {
       console.error(err);
     }

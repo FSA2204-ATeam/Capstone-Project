@@ -5,33 +5,38 @@ const {
 } = require("../db");
 
 const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
+
 module.exports = router;
 
-//NEW USER CREATED EVENT ROUTE (CHANGE THIS TO BE CREATE EVENT, CREATE NEW ROUTE FOR RSVP ASSOCIATION)
 router.post("/", requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-    const [newEvent, created] = await Event.findOrCreate({
+    const event = await Event.findOne({
       where: req.body,
-      defaults: req.body,
     });
-
-    await newEvent.setUsers(user); ///set value of host to true
-    res.json(newEvent);
+    await event.setUsers(user);
+    event.totalGuests++;
+    res.json(event);
   } catch (error) {
     next(error);
   }
 });
-
-//RSVP ROUTE (ADDS ASSOCIATION WHEN USER RSVPs)
 router.put("/", requireToken, async (req, res, next) => {
   try {
-    const event = await Event.update(
+    const user = await User.findByToken(req.headers.authorization);
+    const event = await Event.findOne({
+      where: { id: req.body.id },
+    });
+    await Event.update(
       {
         totalGuests: req.body.totalGuests,
       },
-      { where: { id: req.body.id } }
+      { where: { id: event.id } }
     );
+    const updatedEvent = await Event.findOne({
+      where: { id: req.body.id },
+    });
+    res.json(updatedEvent);
   } catch (error) {
     next(error);
   }
