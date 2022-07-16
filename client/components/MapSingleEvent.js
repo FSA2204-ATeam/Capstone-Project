@@ -47,7 +47,7 @@ const MapSingleEvent = ({ randomOrder }) => {
           lat: parseFloat(activeEvent.eventLat),
           lng: parseFloat(activeEvent.eventLng),
         }}
-        onCloseClick={() => setActiveEvent(null)}
+        //onCloseClick={() => setActiveEvent(null)}
       >
         <div>
           <div>{activeEvent.shortDesc}</div>
