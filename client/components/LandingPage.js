@@ -80,7 +80,7 @@ const LandingPage = () => {
               <Popover
                 open={Boolean(anchor)}
                 anchorReference="anchorPosition"
-                anchorPosition={{ top: 200, left: 50 }}
+                anchorPosition={{ top: 215, left: 54 }}
                 anchorOrigin={{
                   vertical: 'top',
                   horizontal: 'left',

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
 import { authenticate } from '../store';
 import { useDispatch } from 'react-redux';
-import { useFrontEndStyles } from '../theme';
-import { Grid, Button, Card, CardContent, CardHeader, CardActions, ButtonGroup } from '@material-ui/core';
+import { Grid, Button, TextField, ButtonGroup } from '@material-ui/core';
 import PopUpWindowSignUp from './PopUpWindowSignUp';
 
 const defaultValues = {
@@ -12,7 +10,6 @@ const defaultValues = {
 };
 
 const PopUpWindowLogin = () => {
-  const classes = useFrontEndStyles();
   const [formValues, setFormValues] = useState(defaultValues);
   const [loginButtonOn, setLoginButtonOn] = useState(null);
   const [signupButton, setSignupButton] = useState(null);
@@ -42,24 +39,21 @@ const PopUpWindowLogin = () => {
   }
 
   return (
-    <Card
-      // xs={12}
-      // md={6}
-      // lg={3}
-      // elevation={3}
-      // className={classes.p}
-      // variant="elevation"
-      // style={{ background: '#FFFFFF' }}
-    >
-      <CardActions>
+    <div>
         {!signupButton ? (
         <form onSubmit={handleSubmit}>
-          <Grid  direction="column" container>
+          <Grid
+          container
+          spacing={1}
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          >
             <Grid item >
               <TextField
                 id="username-input"
                 name="username"
-                label="Userame"
+                placeholder="Userame"
                 type="text"
                 variant="outlined"
                 value={formValues.username}
@@ -70,18 +64,18 @@ const PopUpWindowLogin = () => {
               <TextField
                 id="password"
                 name="password"
-                label="Password"
+                placeholder="Password"
                 type="password"
                 variant="outlined"
                 value={formValues.password}
                 onChange={handleChange}
               />
             </Grid>
+            <Grid item >
             <ButtonGroup
               variant="contained"
-              size="medium"
+              size="small"
               color="secondary"
-              style={{justifyContent: "center"}}
             >
             <Button
               type="submit"
@@ -96,13 +90,13 @@ const PopUpWindowLogin = () => {
               Sign Up
             </Button>
             </ButtonGroup>
+            </Grid>
           </Grid>
         </form>
         ) : (
           <PopUpWindowSignUp/>
         )}
-      </CardActions>
-    </Card>
+    </div>
   );
 };
 export default PopUpWindowLogin;
