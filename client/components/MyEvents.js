@@ -29,10 +29,6 @@ const MyEvents = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("IM HERE");
-  }, [myEvents]);
-
-  useEffect(() => {
     dispatch(setUserEvents(user.id));
     dispatch(fetchUserReviews());
   }, []);
