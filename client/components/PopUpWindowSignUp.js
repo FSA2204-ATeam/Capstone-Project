@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { registration } from '../store';
 import { useDispatch } from 'react-redux';
-import { useFrontEndStyles } from '../theme';
-import { Grid, TextField, Button } from '@material-ui/core';
+import { Grid, TextField, Button, ButtonGroup } from '@material-ui/core';
 import PopUpWindowLogin from './PopUpWindowLogin';
 
 const defaultValues = {
@@ -14,7 +13,6 @@ const defaultValues = {
 };
 
 const PopUpWindowSignUp = () => {
-  const classes = useFrontEndStyles();
   const [formValues, setFormValues] = useState(defaultValues);
   const [backButton, setBackButton] = useState(null);
 
@@ -43,16 +41,17 @@ const PopUpWindowSignUp = () => {
       {!backButton ? (
         <form onSubmit={handleSubmit}>
           <Grid
-            container
-            alignItems="center"
-            justify="center"
-            direction="column"
+          container
+          spacing={1}
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
           >
             <Grid item>
               <TextField
                 id="firstname-input"
                 name="firstname"
-                label="Firstname"
+                placeholder="Firstname"
                 type="text"
                 variant="outlined"
                 value={formValues.firstname}
@@ -63,7 +62,7 @@ const PopUpWindowSignUp = () => {
               <TextField
                 id="lastname-input"
                 name="lastname"
-                label="Lastname"
+                placeholder="Lastname"
                 type="text"
                 variant="outlined"
                 value={formValues.lastname}
@@ -74,7 +73,7 @@ const PopUpWindowSignUp = () => {
               <TextField
                 id="username-input"
                 name="username"
-                label="Username"
+                placeholder="Username"
                 type="text"
                 variant="outlined"
                 value={formValues.username}
@@ -85,7 +84,7 @@ const PopUpWindowSignUp = () => {
               <TextField
                 id="password-input"
                 name="password"
-                label="Password"
+                placeholder="Password"
                 type="text"
                 variant="outlined"
                 value={formValues.password}
@@ -96,28 +95,30 @@ const PopUpWindowSignUp = () => {
               <TextField
                 id="email-input"
                 name="email"
-                label="Email"
+                placeholder="Email"
                 type="text"
                 variant="outlined"
                 value={formValues.email}
                 onChange={handleChange}
               />
             </Grid>
-            <Button
+            <ButtonGroup
               variant="contained"
+              size="small"
+              color="secondary"
+            >
+            <Button
               type="submit"
-              style={{ background: '#68BBE3' }}
             >
               Submit
             </Button>
             <Button
-              variant="contained"
               type="button"
-              style={{ display: 'flex', background: '#68BBE3' }}
               onClick={handleBackButton}
             >
               Back
             </Button>
+            </ButtonGroup>
           </Grid>
         </form>
     ) : (
