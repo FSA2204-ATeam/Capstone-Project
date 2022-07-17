@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import FormInput from "./FormInput";
 import DateFnsUtils from "@date-io/date-fns";
 import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { addUserDefinedEvent } from "../store";
-import { useDispatch } from "react-redux";
+import { updateUserDefinedEvent } from "../store/events";
+import { setUserEvents } from "../store/usersEvents";
 
-export const NewEventForm = (latLng) => {
+export const UpdateHostedEvent = ({ event }) => {
+  const user = useSelector((state) => state.auth);
   const [values, setValues] = useState({
-    name: "",
-    shortDesc: "",
-    eventLat: latLng.position.lat,
-    eventLng: latLng.position.lng,
+    name: event.name,
+    shortDesc: event.shortDesc,
   });
-
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(event.startDate);
+  const [endDate, setEndDate] = useState(event.endDate);
 
   const inputs = [
     {
@@ -44,8 +43,8 @@ export const NewEventForm = (latLng) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newEvent = { ...values, startDate, endDate };
-    dispatch(addUserDefinedEvent(newEvent));
+    const newEvent = { ...values, startDate, endDate, id: event.id };
+    dispatch(updateUserDefinedEvent(newEvent, user.id));
   };
 
   const onChange = (e) => {
@@ -55,7 +54,7 @@ export const NewEventForm = (latLng) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h1>New Event Form</h1>
+        <h1>Update Event Form</h1>
         {inputs.map((input) => (
           <FormInput
             key={input.id}
@@ -64,7 +63,7 @@ export const NewEventForm = (latLng) => {
             onChange={onChange}
           />
         ))}
-        <p>
+        <div>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DateTimePicker
               label="Event starts"
@@ -72,8 +71,8 @@ export const NewEventForm = (latLng) => {
               onChange={setStartDate}
             />
           </MuiPickersUtilsProvider>
-        </p>
-        <p>
+        </div>
+        <div>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DateTimePicker
               label="Event ends"
@@ -81,11 +80,13 @@ export const NewEventForm = (latLng) => {
               onChange={setEndDate}
             />
           </MuiPickersUtilsProvider>
-        </p>
-        <p>
-          <button>Submit</button>
-        </p>
+        </div>
+        <div>
+          <button>Update</button>
+        </div>
       </form>
     </div>
   );
 };
+
+export default UpdateHostedEvent;

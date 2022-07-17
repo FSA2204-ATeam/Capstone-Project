@@ -1,44 +1,42 @@
+import { createTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
+import { grey, green, brown } from "@material-ui/core/colors";
 
-import { createTheme } from '@material-ui/core/styles';
-import { makeStyles } from '@material-ui/core/styles';
-import { white, black, green, brown } from '@material-ui/core/colors';
+const white = grey[50];
+const black = grey[900];
 
 const theme = createTheme({
   palette: {
     primary: {
       main: brown[500],
-
     },
     secondary: {
-
       main: green[700],
-      contrastText: green[700]
-
+      contrastText: green[700],
     },
   },
 });
 
 export const useFrontEndStyles = makeStyles((theme) => ({
-
   cHeader: {
     color: black,
     fontSize: 25,
-    fontWeight: 'bold',
-    fontFamily: 'Arial',
+    fontWeight: "bold",
+    fontFamily: "Arial",
   },
   typography: {
     color: black,
     fontSize: 15,
-    fontWeight: 'italic',
-    fontFamily: 'Arial',
-    align: 'center'
+    fontWeight: "italic",
+    fontFamily: "Arial",
+    align: "center",
   },
   links: {
     display: "flex",
     fontSize: 15,
     fontColor: black,
-    backgroundColor: brown
-  }
+    backgroundColor: brown,
+  },
 }));
 
 export const useNavStyles = makeStyles((theme) => ({
@@ -47,7 +45,6 @@ export const useNavStyles = makeStyles((theme) => ({
     display: "flex",
     background: white,
     fontColor: green[700],
-
   },
   title: {
     flexGrow: 1,
