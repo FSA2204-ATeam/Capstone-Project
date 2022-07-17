@@ -22,7 +22,7 @@ import InfoModal from './InfoModal';
 
 const LandingPage = () => {
   const [wildMode, setWildMode] = useState(true);
-  const [newEvtPosition, setNewEvtPosition] = useState({});
+
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const [anchor, setAnchor] = useState(null);
 
@@ -36,6 +36,21 @@ const LandingPage = () => {
     setShowInfoModal(!showInfoModal);
   };
 
+  //NEW EVENT FORM HANDLER
+  const [newEvtPosition, setNewEvtPosition] = useState({});
+  const cancelNewEvt = (e) => {
+    console.log('cancel triggered', e);
+    setNewEvtPosition({});
+  };
+
+  // const openNewEventForm = () => {
+  //   setShowNewEventForm(!showNewEventForm);
+  //   console.log('openNewEventForm', showNewEventForm, newEvtPosition);
+  // };
+  // useEffect(() => {
+  //   console.log('useEffect Triggered');
+  // }, [showNewEventForm]);
+
   return (
     <div>
       {showInfoModal ? <InfoModal setShowInfoModal={setShowInfoModal} /> : null}
@@ -44,11 +59,13 @@ const LandingPage = () => {
         googleMapsApiKey={'AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78'}
       >
         <GoogleMap
-          //   onClick={() => setSelectedEvent(null)}
-
+          onClick={() => setNewEvtPosition({})}
           onDblClick={(e) => {
             isLoggedIn
-              ? setNewEvtPosition({ lat: e.latLng.lat(), lng: e.latLng.lng() })
+              ? setNewEvtPosition({
+                  lat: e.latLng.lat(),
+                  lng: e.latLng.lng(),
+                })
               : null;
           }}
           mapContainerStyle={{ height: '100vh', width: '100vw' }}
@@ -67,9 +84,13 @@ const LandingPage = () => {
             <button className="infoWindowButton" onClick={openInfoModal}>
               ?
             </button>
+
             {!wildMode ? null : (
               <div>
                 <AllEventsView />
+
+                {/* NEW EVENT START */}
+
                 {newEvtPosition.lat && (
                   <Marker position={newEvtPosition}>
                     {newEvtPosition.lat && (
@@ -78,7 +99,7 @@ const LandingPage = () => {
                           lat: parseFloat(newEvtPosition.lat),
                           lng: parseFloat(newEvtPosition.lng),
                         }}
-                        //   onCloseClick={() => setSelectedEvent(null)}
+                        onCloseClick={cancelNewEvt}
                       >
                         <div>
                           <NewEventForm position={newEvtPosition} />
@@ -87,8 +108,11 @@ const LandingPage = () => {
                     )}
                   </Marker>
                 )}
+
+                {/* NEW EVENT END */}
               </div>
             )}
+
             <div>
               <Button
                 style={{
@@ -101,7 +125,12 @@ const LandingPage = () => {
                 variant="contained"
                 size="large"
                 color="#FFFFFF"
-                onClick={openPopover}
+                onClick={(e) => {
+                  setNewEvtPosition({});
+                  openPopover(e);
+                }}
+
+                // onClick={openPopover}
               >
                 {isLoggedIn ? (
                   <Typography color="secondary">USER</Typography>
