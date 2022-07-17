@@ -30,6 +30,14 @@ const LandingPage = () => {
     setAnchor(event.target);
   };
 
+  //SCREEN SIZE HANDLER
+  const [scrnAnchrLeft, setScrnAnchrLeft] = useState(
+    Math.floor((window.innerWidth / 100) * 3)
+  );
+  window.addEventListener('resize', function (event) {
+    setScrnAnchrLeft(Math.floor((window.innerWidth / 100) * 3));
+  });
+
   //MODAL HANDLER
   const [showInfoModal, setShowInfoModal] = useState(false);
   const openInfoModal = () => {
@@ -42,14 +50,6 @@ const LandingPage = () => {
     console.log('cancel triggered', e);
     setNewEvtPosition({});
   };
-
-  // const openNewEventForm = () => {
-  //   setShowNewEventForm(!showNewEventForm);
-  //   console.log('openNewEventForm', showNewEventForm, newEvtPosition);
-  // };
-  // useEffect(() => {
-  //   console.log('useEffect Triggered');
-  // }, [showNewEventForm]);
 
   return (
     <div>
@@ -117,8 +117,8 @@ const LandingPage = () => {
               <Button
                 style={{
                   backgroundColor: '#FFFFFF',
-                  marginTop: '3vh',
-                  marginLeft: 46,
+                  marginTop: `${scrnAnchrLeft}px`,
+                  marginLeft: `${scrnAnchrLeft}px`,
                   height: '60px',
                   width: '60px',
                 }}
@@ -141,7 +141,10 @@ const LandingPage = () => {
               <Popover
                 open={Boolean(anchor)}
                 anchorReference="anchorPosition"
-                anchorPosition={{ top: 215, left: 54 }}
+                anchorPosition={{
+                  top: `${scrnAnchrLeft}`,
+                  left: `${scrnAnchrLeft}`,
+                }}
                 anchorOrigin={{
                   vertical: 'top',
                   horizontal: 'left',
