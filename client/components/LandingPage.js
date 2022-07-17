@@ -89,7 +89,7 @@ const LandingPage = () => {
               <Button
                 style={{
                   backgroundColor: '#FFFFFF',
-                  marginTop: 130,
+                  marginTop: '3vh',
                   marginLeft: 46,
                   height: '60px',
                   width: '60px',
