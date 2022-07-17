@@ -9,23 +9,26 @@ import {
   CardActions,
   Typography,
 } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFrontEndStyles } from '../theme';
 import { logout } from '../store';
 import { useHistory } from 'react-router-dom';
+import UserProfileForm from './UserProfileForm';
+import MyEvents from './MyEvents';
 
 const PopUpWindowCardLogged = () => {
   // const [activeEvents, setActiveEvents] = useState([]);
   const [closeLogout, setCloseLogout] = useState(true);
-
   const classes = useFrontEndStyles();
-
   const dispatch = useDispatch();
   const history = useHistory();
-
   const toggleCloseLogout = () => (
     setCloseLogout(!closeLogout), dispatch(logout()), history.push('/landing')
   );
+
+  //COMPONENT DISPLAY STATE
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const [displayComponent, setDisplayComponent] = useState('welcome');
 
   // const handleClick = (event) => {
   //   event.preventDefault();
@@ -35,41 +38,69 @@ const PopUpWindowCardLogged = () => {
 
   return (
     <div>
-      <Card>
-        <CardContent>
-          <CardHeader
-            align="center"
-            title={
-              <Typography className={classes.cHeader}>Welcome!</Typography>
+      {displayComponent !== 'welcome' ? (
+        <Button onClick={() => setDisplayComponent('welcome')}>BACK</Button>
+      ) : null}
+      {isLoggedIn ? (
+        <>
+          {(() => {
+            switch (displayComponent) {
+              case 'welcome':
+                return (
+                  <Card>
+                    <CardContent>
+                      <CardHeader
+                        align="center"
+                        title={
+                          <Typography className={classes.cHeader}>
+                            Welcome!
+                          </Typography>
+                        }
+                      />
+                      <Typography className={classes.typography}>
+                        <Button
+                          // href="/profile" className={classes.links}
+                          onClick={() => setDisplayComponent('profile')}
+                        >
+                          MY PROFILE
+                        </Button>
+                        <Button onClick={() => setDisplayComponent('myEvents')}>
+                          MY EVENTS
+                        </Button>
+                        <Button
+
+                        //onClick={uniqueRandomizer(activeEvents.length)} // return random =  [ 3, 1, 0, 2]
+
+                        // single event will be set to events[random[idx = 0]]
+                        // if "next" is selected, then increment idx+1  if idx+1 === NULL display "no more events"
+                        >
+                          Feeling Wild
+                        </Button>
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <ButtonGroup
+                        variant="contained"
+                        size="small"
+                        color="secondary"
+                      >
+                        <Button onClick={toggleCloseLogout}>Logout</Button>
+                      </ButtonGroup>
+                    </CardActions>
+                  </Card>
+                );
+              case 'profile':
+                return <UserProfileForm />;
+              case 'myEvents':
+                return <MyEvents />;
+              // case 'lost':
+              //   return <Lost handleClick={handleClick} />
+              // default:
+              //   return null
             }
-          />
-          <Typography className={classes.typography}>
-            <Button href="/profile" className={classes.links}>
-              PROFILE
-            </Button>
-            <Button href="/events/myevents" className={classes.links}>
-              MY EVENTS
-            </Button>
-            <Button href="/testing" className={classes.links}>
-              TESTING
-            </Button>
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <ButtonGroup variant="contained" size="small" color="secondary">
-            <Button
-
-            //onClick={uniqueRandomizer(activeEvents.length)} // return random =  [ 3, 1, 0, 2]
-
-            // single event will be set to events[random[idx = 0]]
-            // if "next" is selected, then increment idx+1  if idx+1 === NULL display "no more events"
-            >
-              Feeling Wild
-            </Button>
-            <Button onClick={toggleCloseLogout}>Logout</Button>
-          </ButtonGroup>
-        </CardActions>
-      </Card>
+          })()}
+        </>
+      ) : null}
     </div>
   );
 };
