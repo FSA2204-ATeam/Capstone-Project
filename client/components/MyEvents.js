@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer } from 'react';
 import {
   setUserEvents,
   removeUsersEvent,
   fetchUserReviews,
-} from "../store/usersEvents";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+} from '../store/usersEvents';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Card,
@@ -18,17 +18,16 @@ import {
   IconButton,
   Tooltip,
   Container,
-} from "@material-ui/core";
-import MyEventReview from "./MyEventReview";
-import SingleEvent from "./SingleEvent";
-import UpdateHostedEvent from "./UpdateHostedEvent";
+} from '@material-ui/core';
+import MyEventReview from './MyEventReview';
+import SingleEvent from './SingleEvent';
+import UpdateHostedEvent from './UpdateHostedEvent';
 
 const MyEvents = () => {
   const user = useSelector((state) => state.auth);
   const myEvents = useSelector((state) => state.usersEvents.events);
   const myReviews = useSelector((state) => state.usersEvents.reviews);
 
-  const [myHostedEvents, setMyHostedEvents] = useState([]);
   const [onShowDetailsClick, setOnShowDetailsClick] = useState(null);
   const [onReviewClick, setOnReviewClick] = useState(null);
   const [onUpdateClick, setUpdateClick] = useState(null);
@@ -41,7 +40,7 @@ const MyEvents = () => {
   }, []);
 
   useEffect(() => {
-    console.log("myEvents useEffect fired");
+    console.log('myEvents useEffect fired');
     const result = myEvents.filter((ele) => ele.users_events.host === true);
     console.log(result);
     if (result) setMyHostedEvents(result);
@@ -55,11 +54,9 @@ const MyEvents = () => {
   //   console.log("Updated Clicked");
   // };
 
-  // const [myHostedEvents, setMyHostedEvents] = useState(
-  //   [myEvents.filter((element) => element.users_events.host === true])
-  // );
-
-  console.log("My Hosted Events -->", myHostedEvents);
+  const [myHostedEvents, setMyHostedEvents] = useState(
+    myEvents.filter((element) => element.users_events.host === true)
+  );
 
   return (
     <div>
@@ -70,7 +67,7 @@ const MyEvents = () => {
             <Card
               elevation={3}
               variant="elevation"
-              style={{ background: "lightGray" }}
+              style={{ background: 'lightGray' }}
             >
               <h1>{event.name}</h1>
               <Button

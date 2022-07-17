@@ -1,8 +1,8 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getSentimentAnalysis } from "../store/sentimentAnalysis";
-import { fetchUserReviews, setUserEvents } from "../store/usersEvents";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSentimentAnalysis } from '../store/sentimentAnalysis';
+import { fetchUserReviews, setUserEvents } from '../store/usersEvents';
 
 function MyEventReview({ event }) {
   const user = useSelector((state) => state.auth);
@@ -30,7 +30,7 @@ function MyEventReview({ event }) {
           <input
             name="review"
             type="text"
-            placeholder={"Your response here..."}
+            placeholder={'Your response here...'}
             value={review}
             onChange={(e) => setReview(e.target.value)}
           />

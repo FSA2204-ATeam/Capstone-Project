@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   setUserEvents,
   setUserRSVP,
   fetchUserEvents,
-} from "../store/usersEvents";
+} from '../store/usersEvents';
 
-import { InfoWindow, Marker } from "@react-google-maps/api";
+import { InfoWindow, Marker } from '@react-google-maps/api';
 
 const MapSingleEvent = ({ randomOrder }) => {
   const dispatch = useDispatch();
@@ -33,6 +33,7 @@ const MapSingleEvent = ({ randomOrder }) => {
   }, [myEvents]);
 
   const onRSVPClick = (activeEvent) => {
+    console.log('MapSingleEvent onRSVPClick');
     dispatch(setUserRSVP(activeEvent));
   };
 
