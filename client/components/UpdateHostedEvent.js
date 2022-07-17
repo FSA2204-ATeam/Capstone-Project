@@ -23,7 +23,7 @@ export const UpdateHostedEvent = ({ event }) => {
       placeholder: "Title",
       errorMessage: "Title should be 2-50 characters long!",
       label: "title",
-      pattern: "^{2,50}$",
+      pattern: "^[]{2,50}$",
       required: true,
     },
     {
@@ -33,7 +33,7 @@ export const UpdateHostedEvent = ({ event }) => {
       placeholder: "Description",
       errorMessage: "Description should be 3-1024 characters!",
       label: "description",
-      pattern: "^{3,1024}$",
+      pattern: "^[]{3,1024}$",
       required: true,
     },
   ];
