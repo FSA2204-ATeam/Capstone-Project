@@ -45,9 +45,12 @@ const LandingPage = () => {
       >
         <GoogleMap
           //   onClick={() => setSelectedEvent(null)}
-          onDblClick={(e) =>
-            setNewEvtPosition({ lat: e.latLng.lat(), lng: e.latLng.lng() })
-          }
+
+          onDblClick={(e) => {
+            isLoggedIn
+              ? setNewEvtPosition({ lat: e.latLng.lat(), lng: e.latLng.lng() })
+              : null;
+          }}
           mapContainerStyle={{ height: '100vh', width: '100vw' }}
           zoom={13}
           center={{ lat: 40.7589, lng: -73.9851 }}
@@ -57,6 +60,7 @@ const LandingPage = () => {
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: false,
+            disableDoubleClickZoom: true,
           }}
         >
           <div>
