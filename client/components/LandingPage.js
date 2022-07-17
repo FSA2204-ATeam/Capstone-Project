@@ -20,14 +20,29 @@ import PopUpWindowLogged from './PopUpWindowLogged';
 import PopUpWindowLogin from './PopUpWindowLogin';
 import InfoModal from './InfoModal';
 
-const LandingPage = () => {
-  const [wildMode, setWildMode] = useState(true);
+//FEELING WILD
+import uniqueRandomizer from '../../script/uniqueRandomizer';
+import MapSingleEvent from './MapSingleEvent';
 
+const LandingPage = () => {
+  //DISPLAY STATE HANDLER
+  const [wildMode, setWildMode] = useState(false);
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const [anchor, setAnchor] = useState(null);
-
   const openPopover = (event) => {
     setAnchor(event.target);
+  };
+
+  //WILD MODE HANDLER
+  const allEvents = useSelector((state) => state.events.events);
+  const [randomOrder, setRandomOrder] = useState([]);
+  useEffect(() => {
+    setRandomOrder(uniqueRandomizer(allEvents.length));
+  }, [allEvents]);
+  const wildModeHandler = () => {
+    console.log('wild mode handler triggered');
+    setAnchor(null);
+    setWildMode(true);
   };
 
   //SCREEN SIZE HANDLER
@@ -85,7 +100,9 @@ const LandingPage = () => {
               ?
             </button>
 
-            {!wildMode ? null : (
+            {wildMode ? (
+              <MapSingleEvent randomOrder={randomOrder} />
+            ) : (
               <div>
                 <AllEventsView />
 
@@ -129,8 +146,6 @@ const LandingPage = () => {
                   setNewEvtPosition({});
                   openPopover(e);
                 }}
-
-                // onClick={openPopover}
               >
                 {isLoggedIn ? (
                   <Typography color="secondary">USER</Typography>
@@ -157,7 +172,7 @@ const LandingPage = () => {
               >
                 {isLoggedIn ? (
                   <div>
-                    <PopUpWindowLogged />
+                    <PopUpWindowLogged wildModeHandler={wildModeHandler} />
                     {/* <PopUpWindowLogged events={events}/> */}
                   </div>
                 ) : (

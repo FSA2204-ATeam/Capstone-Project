@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Button,
   Grid,
@@ -16,7 +16,7 @@ import { useHistory } from 'react-router-dom';
 import UserProfileForm from './UserProfileForm';
 import MyEvents from './MyEvents';
 
-const PopUpWindowCardLogged = () => {
+const PopUpWindowCardLogged = ({ wildModeHandler }) => {
   // const [activeEvents, setActiveEvents] = useState([]);
   const [closeLogout, setCloseLogout] = useState(true);
   const classes = useFrontEndStyles();
@@ -29,6 +29,7 @@ const PopUpWindowCardLogged = () => {
   //COMPONENT DISPLAY STATE
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const [displayComponent, setDisplayComponent] = useState('welcome');
+  const anchorRef = useRef();
 
   // const handleClick = (event) => {
   //   event.preventDefault();
@@ -68,11 +69,12 @@ const PopUpWindowCardLogged = () => {
                           MY EVENTS
                         </Button>
                         <Button
+                          onClick={() => wildModeHandler()}
 
-                        //onClick={uniqueRandomizer(activeEvents.length)} // return random =  [ 3, 1, 0, 2]
+                          //onClick={uniqueRandomizer(activeEvents.length)} // return random =  [ 3, 1, 0, 2]
 
-                        // single event will be set to events[random[idx = 0]]
-                        // if "next" is selected, then increment idx+1  if idx+1 === NULL display "no more events"
+                          // single event will be set to events[random[idx = 0]]
+                          // if "next" is selected, then increment idx+1  if idx+1 === NULL display "no more events"
                         >
                           Feeling Wild
                         </Button>

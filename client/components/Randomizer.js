@@ -1,16 +1,15 @@
-import React, { useState, useCallback, useEffect } from "react";
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
-import uniqueRandomizer from "../../script/uniqueRandomizer";
-import SingleEvent from "./SingleEvent";
-import MapSingleEvent from "./MapSingleEvent";
-import { useSelector } from "react-redux";
+import React, { useState, useCallback, useEffect } from 'react';
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import uniqueRandomizer from '../../script/uniqueRandomizer';
+import MapSingleEvent from './MapSingleEvent';
+import { useSelector } from 'react-redux';
 
 const containerStyle = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  width: "100vw",
-  height: "100vh",
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100vw',
+  height: '100vh',
 };
 
 const center = { lat: 40.7589, lng: -73.9851 };
@@ -25,8 +24,8 @@ const Randomizer = () => {
   }, [allEvents]);
 
   const { isLoaded } = useJsApiLoader({
-    id: "61b5009386a6596e",
-    googleMapsApiKey: "AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78",
+    id: '61b5009386a6596e',
+    googleMapsApiKey: 'AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78',
   });
   const [map, setMap] = useState(null);
 
@@ -47,7 +46,7 @@ const Randomizer = () => {
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={{
-          mapId: "61b5009386a6596e",
+          mapId: '61b5009386a6596e',
           zoomControl: false,
           streetViewControl: false,
           mapTypeControl: false,
