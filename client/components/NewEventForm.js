@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import FormInput from './FormInput';
-import DateFnsUtils from '@date-io/date-fns';
-import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { addUserDefinedEvent } from '../store';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import FormInput from "./FormInput";
+import DateFnsUtils from "@date-io/date-fns";
+import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { addUserDefinedEvent } from "../store";
+import { useDispatch } from "react-redux";
 
 export const NewEventForm = (latLng) => {
-  console.log('new event form parameter', latLng);
-
   const [toggleOpen, setToggleOpen] = useState(!!latLng.position.lat);
 
   useEffect(() => {
-    console.log('useEffect on new evt form triggered');
+    console.log("useEffect on new evt form triggered");
   }, [latLng]);
 
   const [values, setValues] = useState({
-    name: '',
-    shortDesc: '',
+    name: "",
+    shortDesc: "",
     eventLat: latLng.position.lat,
     eventLng: latLng.position.lng,
   });
@@ -27,21 +25,21 @@ export const NewEventForm = (latLng) => {
   const inputs = [
     {
       id: 1,
-      name: 'name',
-      type: '',
-      placeholder: 'Title',
-      errorMessage: 'Title should be 2-50 characters long!',
-      label: 'title',
+      name: "name",
+      type: "",
+      placeholder: "Title",
+      errorMessage: "Title should be 2-50 characters long!",
+      label: "title",
       pattern: `^[ a-zA-Z0-9!@#$%^&*?,.:;\\-\\()""'']{3,50}$`,
       required: true,
     },
     {
       id: 2,
-      name: 'shortDesc',
-      type: 'text',
-      placeholder: 'Description',
-      errorMessage: 'Description should be 3-1024 characters!',
-      label: 'description',
+      name: "shortDesc",
+      type: "text",
+      placeholder: "Description",
+      errorMessage: "Description should be 3-1024 characters!",
+      label: "description",
       pattern: `^[ a-zA-Z0-9!@#$%^&*?,.:;\\-\\()""'']{3,1024}$`,
       required: true,
     },

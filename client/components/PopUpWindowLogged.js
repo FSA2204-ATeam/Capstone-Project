@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from "react";
 import {
   Button,
   Grid,
@@ -8,13 +8,14 @@ import {
   CardHeader,
   CardActions,
   Typography,
-} from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
-import { useFrontEndStyles } from '../theme';
-import { logout } from '../store';
-import { useHistory } from 'react-router-dom';
-import UserProfileForm from './UserProfileForm';
-import MyEvents from './MyEvents';
+  CardMedia,
+} from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { useFrontEndStyles } from "../theme";
+import { logout } from "../store";
+import { useHistory } from "react-router-dom";
+import UserProfileForm from "./UserProfileForm";
+import MyEvents from "./MyEvents";
 
 const PopUpWindowCardLogged = ({ wildModeHandler }) => {
   // const [activeEvents, setActiveEvents] = useState([]);
@@ -23,12 +24,12 @@ const PopUpWindowCardLogged = ({ wildModeHandler }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const toggleCloseLogout = () => (
-    setCloseLogout(!closeLogout), dispatch(logout()), history.push('/landing')
+    setCloseLogout(!closeLogout), dispatch(logout()), history.push("/landing")
   );
 
   //COMPONENT DISPLAY STATE
   const isLoggedIn = useSelector((state) => !!state.auth.id);
-  const [displayComponent, setDisplayComponent] = useState('welcome');
+  const [displayComponent, setDisplayComponent] = useState("welcome");
   const anchorRef = useRef();
 
   // const handleClick = (event) => {
@@ -39,14 +40,19 @@ const PopUpWindowCardLogged = ({ wildModeHandler }) => {
 
   return (
     <div>
-      {displayComponent !== 'welcome' ? (
-        <Button onClick={() => setDisplayComponent('welcome')}>BACK</Button>
-      ) : null}
+      {displayComponent !== "welcome" ? (
+        <div display="flex">
+          <Button onClick={() => setDisplayComponent("welcome")}>BACK</Button>
+          <img src="/URBAN.png" height="100px" />
+        </div>
+      ) : (
+        <img src="/URBAN.png" height="100px" />
+      )}
       {isLoggedIn ? (
         <>
           {(() => {
             switch (displayComponent) {
-              case 'welcome':
+              case "welcome":
                 return (
                   <Card>
                     <CardContent>
@@ -61,11 +67,11 @@ const PopUpWindowCardLogged = ({ wildModeHandler }) => {
                       <Typography className={classes.typography}>
                         <Button
                           // href="/profile" className={classes.links}
-                          onClick={() => setDisplayComponent('profile')}
+                          onClick={() => setDisplayComponent("profile")}
                         >
                           MY PROFILE
                         </Button>
-                        <Button onClick={() => setDisplayComponent('myEvents')}>
+                        <Button onClick={() => setDisplayComponent("myEvents")}>
                           MY EVENTS
                         </Button>
                         <Button
@@ -91,9 +97,9 @@ const PopUpWindowCardLogged = ({ wildModeHandler }) => {
                     </CardActions>
                   </Card>
                 );
-              case 'profile':
+              case "profile":
                 return <UserProfileForm />;
-              case 'myEvents':
+              case "myEvents":
                 return <MyEvents />;
               // case 'lost':
               //   return <Lost handleClick={handleClick} />

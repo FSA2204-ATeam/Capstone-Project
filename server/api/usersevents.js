@@ -78,7 +78,7 @@ router.get("/userReviews", requireToken, async (req, res, next) => {
         userId: user.id,
       },
     });
-    console.log("API results for reviews", data);
+
     res.json(data);
   } catch (error) {
     next(error);

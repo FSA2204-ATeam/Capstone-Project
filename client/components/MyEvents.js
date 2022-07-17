@@ -27,20 +27,24 @@ const MyEvents = () => {
   const user = useSelector((state) => state.auth);
   const myEvents = useSelector((state) => state.usersEvents.events);
   const myReviews = useSelector((state) => state.usersEvents.reviews);
+
+  const [myHostedEvents, setMyHostedEvents] = useState([]);
+  const [onShowDetailsClick, setOnShowDetailsClick] = useState(null);
+  const [onReviewClick, setOnReviewClick] = useState(null);
+  const [onUpdateClick, setUpdateClick] = useState(null);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(myEvents);
     dispatch(setUserEvents(user.id));
     dispatch(fetchUserReviews());
   }, []);
 
-  useEffect(() => {});
-
   useEffect(() => {
-    setMyHostedEvents(
-      myEvents.filter((element) => element.users_events.host === true)
-    );
+    console.log("myEvents useEffect fired");
+    const result = myEvents.filter((ele) => ele.users_events.host === true);
+    console.log(result);
+    if (result) setMyHostedEvents(result);
   }, [myEvents]);
 
   const onRemoveClick = (eventId, userId) => {
@@ -51,12 +55,10 @@ const MyEvents = () => {
   //   console.log("Updated Clicked");
   // };
 
-  const [onShowDetailsClick, setOnShowDetailsClick] = useState(null);
-  const [onReviewClick, setOnReviewClick] = useState(null);
-  const [onUpdateClick, setUpdateClick] = useState(null);
-  const [myHostedEvents, setMyHostedEvents] = useState(
-    myEvents.filter((element) => element.users_events.host === true)
-  );
+  // const [myHostedEvents, setMyHostedEvents] = useState(
+  //   [myEvents.filter((element) => element.users_events.host === true])
+  // );
+
   console.log("My Hosted Events -->", myHostedEvents);
 
   return (
