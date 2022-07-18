@@ -69,15 +69,6 @@ const LandingPage = () => {
     setNewEvtPosition({});
   };
 
-  // LOGO THINGS
-
-  const paperStyle = {
-    // display: "flex",
-    // flexDirection: "column",
-    // justifyContent: "center",
-    // width: "100px",
-  };
-
   return (
     <div>
       {showInfoModal ? <InfoModal setShowInfoModal={setShowInfoModal} /> : null}
@@ -203,10 +194,6 @@ const LandingPage = () => {
                 transform: "translate(-17%, -65%)",
                 float: "right",
                 display: "inline-block",
-                // marginTop: `${scrnAnchrLeft}px`,
-                // marginLeft: `${scrnAnchrLeft}px`,
-                // height: "60px",
-                // width: "60px",
               }}
             >
               <img src="/URBAN_ICON.png" height="100" />
