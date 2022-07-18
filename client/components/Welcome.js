@@ -40,11 +40,10 @@ const Welcome = ({ wildModeHandler }) => {
 
   return (
     <div>
-      {displayComponent !== "welcome" ? (
         <div display="flex">
           <Button onClick={() => setDisplayComponent("welcome")}>BACK</Button>
+          <img src="/URBAN_ICON.png" height="100px" />
         </div>
-      ) : null}
       {isLoggedIn ? (
         <>
           {(() => {

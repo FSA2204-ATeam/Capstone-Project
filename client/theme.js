@@ -37,6 +37,21 @@ export const useFrontEndStyles = makeStyles((theme) => ({
     fontColor: black,
     backgroundColor: brown,
   },
+  singleEv: {
+    color: black,
+    background: white,
+    fontWeight: "italic",
+    margin: "15px",
+    fontSize: 15,
+    fontFamily: "Arial",
+    align: "center",
+  },
+  myEventsStyle: {
+    fontWeight: "bold",
+    fontSize: 18,
+    fontFamily: "Arial",
+    align: "justify",
+  },
 }));
 
 export const useNavStyles = makeStyles((theme) => ({
@@ -57,3 +72,4 @@ export const useNavStyles = makeStyles((theme) => ({
 }));
 
 export default theme;
+
