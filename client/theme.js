@@ -37,6 +37,19 @@ export const useFrontEndStyles = makeStyles((theme) => ({
     fontColor: black,
     backgroundColor: brown,
   },
+  singleEvHead: {
+    color: black,
+    fontSize: 20,
+    fontWeight: "bold",
+    fontFamily: "Arial",
+    align: "justify",
+  },
+  singleEv: {
+    color: black,
+    fontSize: 15,
+    fontFamily: "Arial",
+    align: "justify",
+  }
 }));
 
 export const useNavStyles = makeStyles((theme) => ({
