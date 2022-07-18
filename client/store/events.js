@@ -50,18 +50,20 @@ export const fetchEvents = (userId) => async (dispatch) => {
   }
 };
 
-export const addUserDefinedEvent = (event) => async (dispatch) => {
-  try {
-    const { data } = await axios.post('/api/events', event, {
-      headers: {
-        authorization: token,
-      },
-    });
-    return dispatch(addUserDefinedEvent(data));
-  } catch (err) {
-    console.error(err);
-  }
-};
+export const addUserDefinedEvent =
+  (event, submissionFeedback) => async (dispatch) => {
+    try {
+      const res = await axios.post('/api/events', event, {
+        headers: {
+          authorization: token,
+        },
+      });
+      if (res.status === 200) submissionFeedback();
+      //return dispatch(_addUserDefinedEvent(data));
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 export const updateUserDefinedEvent = (event, userId) => async (dispatch) => {
   try {
