@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSentimentAnalysis } from '../store/sentimentAnalysis';
 import { fetchUserReviews, setUserEvents } from '../store/usersEvents';
+import { Button } from '@material-ui/core';
 
 function MyEventReview({ event }) {
   const user = useSelector((state) => state.auth);
@@ -55,8 +56,14 @@ function MyEventReview({ event }) {
             onChange={(e) => setReview(e.target.value)}
           />
           {showMic && (
-            <button
+            <Button
               type="button"
+              style={{
+                borderRadius: 6,
+                backgroundColor: '#F0965B',
+                padding: '5px 0px',
+                fontSize: '10px',
+              }}
               onClick={() => {
                 {
                   mic
@@ -68,14 +75,32 @@ function MyEventReview({ event }) {
                 }
               }}
             >
-              {mic ? 'Mic On' : 'Mic Off'}
-            </button>
+              {mic ? 'Turn Off' : 'Turn On'}
+            </Button>
           )}
         </label>
         {review ? (
-          <button type="submit">Update</button>
+          <Button
+            style={{
+              backgroundColor: '#377E3F',
+              padding: '5px 0px',
+              fontSize: '10px',
+            }}
+            type="submit"
+          >
+            Update
+          </Button>
         ) : (
-          <button type="submit">Submit</button>
+          <Button
+            style={{
+              backgroundColor: '#377E3F',
+              padding: '5px 0px',
+              fontSize: '10px',
+            }}
+            type="submit"
+          >
+            Submit
+          </Button>
         )}
       </form>
     </div>
