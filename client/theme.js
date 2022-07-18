@@ -39,6 +39,7 @@ export const useFrontEndStyles = makeStyles((theme) => ({
   },
   singleEvHead: {
     color: black,
+    background: "#F0965B",
     fontSize: 20,
     fontWeight: "bold",
     fontFamily: "Arial",
@@ -46,7 +47,7 @@ export const useFrontEndStyles = makeStyles((theme) => ({
   },
   singleEv: {
     color: black,
-    background: white,
+    background: "#F0965B",
     margin: "20px",
     fontSize: 15,
     fontFamily: "Arial",
