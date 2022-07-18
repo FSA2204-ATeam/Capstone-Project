@@ -12,6 +12,26 @@ function MyEventReview({ event }) {
   const dispatch = useDispatch();
   const eventId = event.id;
 
+  //SPEECH TO TEXT
+  const [showMic, setShowMic] = useState(false);
+  useEffect(() => {
+    if ('webkitSpeechRecognition' in window) {
+      setShowMic(true);
+    } else {
+      console.log('Speech Recognition Not Available');
+    }
+  });
+  let speechRecognition = new webkitSpeechRecognition();
+  speechRecognition.lang = 'en-US';
+  speechRecognition.interimResults = true;
+  speechRecognition.onresult = (event) => {
+    review
+      ? setReview(review + ' ' + event.results[0][0].transcript)
+      : setReview(event.results[0][0].transcript);
+  };
+  const [mic, setMic] = useState(false);
+  //SPEECH TO TEXT ^
+
   useEffect(() => {
     dispatch(setUserEvents(user.id));
   }, [analysisResult]);
@@ -34,6 +54,23 @@ function MyEventReview({ event }) {
             value={review}
             onChange={(e) => setReview(e.target.value)}
           />
+          {showMic && (
+            <button
+              type="button"
+              onClick={() => {
+                {
+                  mic
+                    ? [speechRecognition.stop(), setMic(false)]
+                    : [
+                        speechRecognition.start({ continuous: true }),
+                        setMic(true),
+                      ];
+                }
+              }}
+            >
+              {mic ? 'Mic On' : 'Mic Off'}
+            </button>
+          )}
         </label>
         {review ? (
           <button type="submit">Update</button>
