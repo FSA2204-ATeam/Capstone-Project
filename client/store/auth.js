@@ -40,7 +40,7 @@ export const authenticate =
     try {
       const res = await axios.post(`/auth/${method}`, { username, password });
       window.localStorage.setItem(TOKEN, res.data.token);
-      history.push("/landing");
+      history.push("/");
       dispatch(me());
     } catch (authError) {
       return dispatch(setAuth({ error: authError }));
@@ -58,7 +58,7 @@ export const registration =
         password,
       });
       window.localStorage.setItem(TOKEN, res.data.token);
-      history.push("/landing");
+      history.push("/");
       console.log(res);
       dispatch(me());
     } catch (authError) {
@@ -68,7 +68,7 @@ export const registration =
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
-  history.push("/landing");
+  history.push("/");
 
   return {
     type: SET_AUTH,

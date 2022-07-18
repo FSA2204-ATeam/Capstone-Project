@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 
 const FormInput = (props) => {
   const [focused, setFocused] = useState(false);
-  const { label, errorMessage, onChange, id, ...inputProps } = props;
+  const { toggleOpen, label, errorMessage, onChange, id, ...inputProps } =
+    props;
 
   const handleFocus = (e) => {
-    setFocused(true);
+    toggleOpen ? setFocused(true) : setFocused(false);
   };
 
   return (
@@ -13,8 +14,8 @@ const FormInput = (props) => {
       <label>{label}</label>
       <input
         {...inputProps}
-        onChange={onChange}
-        onBlur={handleFocus}
+        onChange={(e) => [onChange(e), handleFocus(e)]}
+        // onBlur={handleFocus}
         onFocus={() =>
           inputProps.name === 'confirmPassword' && setFocused(true)
         }

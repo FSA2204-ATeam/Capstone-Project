@@ -6,6 +6,12 @@ import { addUserDefinedEvent } from "../store";
 import { useDispatch } from "react-redux";
 
 export const NewEventForm = (latLng) => {
+  const [toggleOpen, setToggleOpen] = useState(!!latLng.position.lat);
+
+  useEffect(() => {
+    console.log("useEffect on new evt form triggered");
+  }, [latLng]);
+
   const [values, setValues] = useState({
     name: "",
     shortDesc: "",
@@ -24,7 +30,7 @@ export const NewEventForm = (latLng) => {
       placeholder: "Title",
       errorMessage: "Title should be 2-50 characters long!",
       label: "title",
-      pattern: "^[]{2,50}$",
+      pattern: `^[ a-zA-Z0-9!@#$%^&*?,.:;\\-\\()""'']{3,50}$`,
       required: true,
     },
     {
@@ -34,7 +40,7 @@ export const NewEventForm = (latLng) => {
       placeholder: "Description",
       errorMessage: "Description should be 3-1024 characters!",
       label: "description",
-      pattern: "^[]{3,1024}$",
+      pattern: `^[ a-zA-Z0-9!@#$%^&*?,.:;\\-\\()""'']{3,1024}$`,
       required: true,
     },
   ];
@@ -54,38 +60,41 @@ export const NewEventForm = (latLng) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <h1>New Event Form</h1>
-        {inputs.map((input) => (
-          <FormInput
-            key={input.id}
-            {...input}
-            value={values[input.name]}
-            onChange={onChange}
-          />
-        ))}
-        <p>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <DateTimePicker
-              label="Event starts"
-              value={startDate}
-              onChange={setStartDate}
+      {toggleOpen ? (
+        <form onSubmit={handleSubmit}>
+          <h1>New Event Form</h1>
+          {inputs.map((input) => (
+            <FormInput
+              toggleOpen={toggleOpen}
+              key={input.id}
+              {...input}
+              value={values[input.name]}
+              onChange={onChange}
             />
-          </MuiPickersUtilsProvider>
-        </p>
-        <p>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <DateTimePicker
-              label="Event ends"
-              value={endDate}
-              onChange={setEndDate}
-            />
-          </MuiPickersUtilsProvider>
-        </p>
-        <p>
-          <button>Submit</button>
-        </p>
-      </form>
+          ))}
+          <p>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <DateTimePicker
+                label="Event starts"
+                value={startDate}
+                onChange={setStartDate}
+              />
+            </MuiPickersUtilsProvider>
+          </p>
+          <p>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <DateTimePicker
+                label="Event ends"
+                value={endDate}
+                onChange={setEndDate}
+              />
+            </MuiPickersUtilsProvider>
+          </p>
+          <p>
+            <button>Submit</button>
+          </p>
+        </form>
+      ) : null}
     </div>
   );
 };

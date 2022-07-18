@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import { authenticate } from '../store';
 import { useDispatch } from 'react-redux';
 import { Grid, Button, TextField, ButtonGroup } from '@material-ui/core';
-import PopUpWindowSignUp from './PopUpWindowSignUp';
+import SignUp from './SignUp';
 
 const defaultValues = {
   username: "",
   password: "",
 };
 
-const PopUpWindowLogin = () => {
+const Login = () => {
   const [formValues, setFormValues] = useState(defaultValues);
   const [loginButtonOn, setLoginButtonOn] = useState(null);
   const [signupButton, setSignupButton] = useState(null);
@@ -98,9 +98,9 @@ const PopUpWindowLogin = () => {
           </Grid>
         </form>
         ) : (
-          <PopUpWindowSignUp/>
+          <SignUp/>
         )}
     </div>
   );
 };
-export default PopUpWindowLogin;
+export default Login;

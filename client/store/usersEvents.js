@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
-const token = window.localStorage.getItem("token");
+const token = window.localStorage.getItem('token');
 
-const SET_USER_RSVP = "SET_USER_RSVP";
-const FETCH_USER_EVENTS = "FETCH_USER_EVENTS";
-const FETCH_USER_REVIEWS = "FETCH_USER_REVIEWS";
-const SET_USER_EVENTS = "SET_USER_EVENTS";
-const REMOVE_USER_EVENT = "REMOVE_USER_EVENT";
+const SET_USER_RSVP = 'SET_USER_RSVP';
+const FETCH_USER_EVENTS = 'FETCH_USER_EVENTS';
+const FETCH_USER_REVIEWS = 'FETCH_USER_REVIEWS';
+const SET_USER_EVENTS = 'SET_USER_EVENTS';
+const REMOVE_USER_EVENT = 'REMOVE_USER_EVENT';
 
 export const _setUserRSVP = (event) => ({
   type: SET_USER_RSVP,
@@ -35,13 +35,13 @@ export const _removeUserEvent = (userEvent) => ({
 
 export const setUserRSVP = (event) => async (dispatch) => {
   try {
-    const { data } = await axios.post("/api/usersEvents", event, {
+    const { data } = await axios.post('/api/usersEvents', event, {
       headers: {
         authorization: token,
       },
     });
 
-    const { data: updatedEvent } = await axios.put("/api/usersEvents", data, {
+    const { data: updatedEvent } = await axios.put('/api/usersEvents', data, {
       headers: {
         authorization: token,
       },
@@ -54,7 +54,7 @@ export const setUserRSVP = (event) => async (dispatch) => {
 
 export const fetchUserEvents = () => async (dispatch) => {
   try {
-    const { data } = await axios.get("/api/usersEvents", {
+    const { data } = await axios.get('/api/usersEvents', {
       headers: {
         authorization: token,
       },
@@ -67,7 +67,7 @@ export const fetchUserEvents = () => async (dispatch) => {
 
 export const fetchUserReviews = () => async (dispatch) => {
   try {
-    const { data } = await axios.get("/api/usersEvents/userReviews", {
+    const { data } = await axios.get('/api/usersEvents/userReviews', {
       headers: {
         authorization: token,
       },
@@ -79,7 +79,7 @@ export const fetchUserReviews = () => async (dispatch) => {
 };
 export const setUserEvents = (userId) => async (dispatch) => {
   try {
-    const { data } = await axios.get("/api/usersEvents", {
+    const { data } = await axios.get('/api/usersEvents', {
       headers: {
         authorization: token,
       },
@@ -92,7 +92,7 @@ export const setUserEvents = (userId) => async (dispatch) => {
 
 export const removeUsersEvent = (eventId, userId) => async (dispatch) => {
   try {
-    const { data: userEvent } = await axios.delete("/api/usersEvents", {
+    const { data: userEvent } = await axios.delete('/api/usersEvents', {
       headers: {
         authorization: token,
       },
@@ -107,7 +107,7 @@ export const removeUsersEvent = (eventId, userId) => async (dispatch) => {
 const usersEventsReducer = (state = { events: [], reviews: [] }, action) => {
   switch (action.type) {
     case SET_USER_RSVP:
-      return { ...state, events: [...state.events, action.event] };
+      return { ...state, events: action.event };
     case FETCH_USER_EVENTS:
       return { ...state, events: action.userEvents };
     case FETCH_USER_REVIEWS:

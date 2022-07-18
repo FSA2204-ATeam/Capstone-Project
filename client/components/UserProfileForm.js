@@ -75,7 +75,7 @@ const UserProfileForm = (props) => {
       type: 'text',
       placeholder: 'Last Name',
       errorMessage: 'Last name should be 1-16 characters!',
-      label: 'First Name',
+      label: 'Last Name',
       pattern: '^[A-Za-z0-9]{1,16}$',
       required: true,
     },

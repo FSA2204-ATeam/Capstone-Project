@@ -16,19 +16,42 @@ import {
   CardActions,
   Typography,
 } from '@material-ui/core';
-import PopUpWindowLogged from './PopUpWindowLogged';
-import PopUpWindowLogin from './PopUpWindowLogin';
+import Welcome from './Welcome';
+import Login from './Login';
 import InfoModal from './InfoModal';
 
+//FEELING WILD
+import uniqueRandomizer from '../../script/uniqueRandomizer';
+import MapSingleEvent from './MapSingleEvent';
+
 const LandingPage = () => {
-  const [wildMode, setWildMode] = useState(true);
-  const [newEvtPosition, setNewEvtPosition] = useState({});
+  //DISPLAY STATE HANDLER
+  const [wildMode, setWildMode] = useState(false);
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const [anchor, setAnchor] = useState(null);
-
   const openPopover = (event) => {
     setAnchor(event.target);
   };
+
+  //WILD MODE HANDLER
+  const allEvents = useSelector((state) => state.events.events);
+  const [randomOrder, setRandomOrder] = useState([]);
+  useEffect(() => {
+    setRandomOrder(uniqueRandomizer(allEvents.length));
+  }, [allEvents]);
+  const wildModeHandler = () => {
+    console.log('wild mode handler triggered');
+    setAnchor(null);
+    setWildMode(true);
+  };
+
+  //SCREEN SIZE HANDLER
+  const [scrnAnchrLeft, setScrnAnchrLeft] = useState(
+    Math.floor((window.innerWidth / 100) * 3)
+  );
+  window.addEventListener('resize', function (event) {
+    setScrnAnchrLeft(Math.floor((window.innerWidth / 100) * 3));
+  });
 
   //MODAL HANDLER
   const [showInfoModal, setShowInfoModal] = useState(false);
@@ -36,36 +59,55 @@ const LandingPage = () => {
     setShowInfoModal(!showInfoModal);
   };
 
+  //NEW EVENT FORM HANDLER
+  const [newEvtPosition, setNewEvtPosition] = useState({});
+  const cancelNewEvt = (e) => {
+    console.log('cancel triggered', e);
+    setNewEvtPosition({});
+  };
+
   return (
     <div>
       {showInfoModal ? <InfoModal setShowInfoModal={setShowInfoModal} /> : null}
       <LoadScript
-        mapIds={['61b5009386a6596e']}
+        mapIds={['3f2b11fd3ce1fda']}
         googleMapsApiKey={'AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78'}
       >
         <GoogleMap
-          //   onClick={() => setSelectedEvent(null)}
-          onDblClick={(e) =>
-            setNewEvtPosition({ lat: e.latLng.lat(), lng: e.latLng.lng() })
-          }
+          onClick={() => setNewEvtPosition({})}
+          onDblClick={(e) => {
+            isLoggedIn
+              ? setNewEvtPosition({
+                  lat: e.latLng.lat(),
+                  lng: e.latLng.lng(),
+                })
+              : null;
+          }}
           mapContainerStyle={{ height: '100vh', width: '100vw' }}
           zoom={13}
           center={{ lat: 40.7589, lng: -73.9851 }}
           options={{
-            mapId: '61b5009386a6596e',
+            mapId: '3f2b11fd3ce1fda',
             zoomControl: false,
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: false,
+            disableDoubleClickZoom: true,
           }}
         >
           <div>
             <button className="infoWindowButton" onClick={openInfoModal}>
               ?
             </button>
-            {!wildMode ? null : (
+
+            {wildMode ? (
+              <MapSingleEvent randomOrder={randomOrder} />
+            ) : (
               <div>
                 <AllEventsView />
+
+                {/* NEW EVENT START */}
+
                 {newEvtPosition.lat && (
                   <Marker position={newEvtPosition}>
                     {newEvtPosition.lat && (
@@ -74,7 +116,7 @@ const LandingPage = () => {
                           lat: parseFloat(newEvtPosition.lat),
                           lng: parseFloat(newEvtPosition.lng),
                         }}
-                        //   onCloseClick={() => setSelectedEvent(null)}
+                        onCloseClick={cancelNewEvt}
                       >
                         <div>
                           <NewEventForm position={newEvtPosition} />
@@ -83,21 +125,27 @@ const LandingPage = () => {
                     )}
                   </Marker>
                 )}
+
+                {/* NEW EVENT END */}
               </div>
             )}
+
             <div>
               <Button
                 style={{
                   backgroundColor: '#FFFFFF',
-                  marginTop: '3vh',
-                  marginLeft: 46,
+                  marginTop: `${scrnAnchrLeft}px`,
+                  marginLeft: `${scrnAnchrLeft}px`,
                   height: '60px',
                   width: '60px',
                 }}
                 variant="contained"
                 size="large"
                 color="#FFFFFF"
-                onClick={openPopover}
+                onClick={(e) => {
+                  setNewEvtPosition({});
+                  openPopover(e);
+                }}
               >
                 {isLoggedIn ? (
                   <Typography color="secondary">USER</Typography>
@@ -108,7 +156,10 @@ const LandingPage = () => {
               <Popover
                 open={Boolean(anchor)}
                 anchorReference="anchorPosition"
-                anchorPosition={{ top: 215, left: 54 }}
+                anchorPosition={{
+                  top: `${scrnAnchrLeft}`,
+                  left: `${scrnAnchrLeft}`,
+                }}
                 anchorOrigin={{
                   vertical: 'top',
                   horizontal: 'left',
@@ -121,11 +172,11 @@ const LandingPage = () => {
               >
                 {isLoggedIn ? (
                   <div>
-                    <PopUpWindowLogged />
-                    {/* <PopUpWindowLogged events={events}/> */}
+                    <Welcome wildModeHandler={wildModeHandler} />
+                    {/* <Welcome events={events}/> */}
                   </div>
                 ) : (
-                  <PopUpWindowLogin />
+                  <Login />
                 )}
               </Popover>
             </div>

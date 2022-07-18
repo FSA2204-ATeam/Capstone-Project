@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import ReactDom from 'react-dom';
+import React, { useRef } from "react";
+import ReactDom from "react-dom";
 
 const InfoModal = ({ setShowInfoModal }) => {
   const infoModalRef = useRef();
@@ -12,8 +12,19 @@ const InfoModal = ({ setShowInfoModal }) => {
   return ReactDom.createPortal(
     <div className="container" ref={infoModalRef} onClick={closeInfoModal}>
       <div className="modal">
-        <h2>Wellcome to Urban Safari!</h2>
-        <h3>Learn how to use the app.</h3>
+        <h2>Welcome to Urban Safari!</h2>
+        <h3>How to Start: </h3>
+        <ul>
+          <li>add more things here</li>
+          <li>
+            To add your event: Double click on the map to create your event.
+          </li>
+          <li>
+            Click on the "Feeling Wild" button to start your adventure! This
+            button will suggest you an event you may want to go to, based on
+            your preferences.
+          </li>
+        </ul>
         <button
           className="modalCloseButton"
           onClick={() => setShowInfoModal(false)}
@@ -22,7 +33,7 @@ const InfoModal = ({ setShowInfoModal }) => {
         </button>
       </div>
     </div>,
-    document.getElementById('portal')
+    document.getElementById("portal")
   );
 };
 export default InfoModal;

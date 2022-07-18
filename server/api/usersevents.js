@@ -1,14 +1,14 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
 const {
   models: { Event, User, UsersEvents },
-} = require("../db");
+} = require('../db');
 
-const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
+const { requireToken, isAdmin } = require('../api/gateKeepingMiddleware');
 
 module.exports = router;
 
-router.post("/", requireToken, async (req, res, next) => {
+router.post('/', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     const event = await Event.findOne({
@@ -21,7 +21,7 @@ router.post("/", requireToken, async (req, res, next) => {
     next(error);
   }
 });
-router.put("/", requireToken, async (req, res, next) => {
+router.put('/', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     const event = await Event.findOne({
@@ -33,16 +33,18 @@ router.put("/", requireToken, async (req, res, next) => {
       },
       { where: { id: event.id } }
     );
-    const updatedEvent = await Event.findOne({
-      where: { id: req.body.id },
+
+    const data = await User.findByPk(user.dataValues.id, {
+      include: [Event],
     });
-    res.json(updatedEvent);
+
+    res.json(data.dataValues.events);
   } catch (error) {
     next(error);
   }
 });
 
-router.delete("/", requireToken, async (req, res, next) => {
+router.delete('/', requireToken, async (req, res, next) => {
   try {
     const removedRSVP = await UsersEvents.findOne({
       where: {
@@ -57,7 +59,7 @@ router.delete("/", requireToken, async (req, res, next) => {
   }
 });
 
-router.get("/", requireToken, async (req, res, next) => {
+router.get('/', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     const data = await User.findByPk(user.dataValues.id, {
@@ -70,7 +72,7 @@ router.get("/", requireToken, async (req, res, next) => {
   }
 });
 
-router.get("/userReviews", requireToken, async (req, res, next) => {
+router.get('/userReviews', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     const data = await UsersEvents.findAll({
@@ -78,7 +80,6 @@ router.get("/userReviews", requireToken, async (req, res, next) => {
         userId: user.id,
       },
     });
-    console.log("API results for reviews", data);
     res.json(data);
   } catch (error) {
     next(error);
