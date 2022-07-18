@@ -46,6 +46,8 @@ export const useFrontEndStyles = makeStyles((theme) => ({
   },
   singleEv: {
     color: black,
+    background: white,
+    margin: "20px",
     fontSize: 15,
     fontFamily: "Arial",
     align: "justify",

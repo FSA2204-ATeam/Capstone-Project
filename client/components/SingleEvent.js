@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { Box, Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Link } from '@material-ui/core';
 import { useFrontEndStyles } from "../theme";
 
 const SingleEvent = ({ props }) => {
@@ -12,7 +11,6 @@ const SingleEvent = ({ props }) => {
     <div>
       <Grid
       container
-      spacing={1}
       direction="column"
       justifyContent="center"
       alignItems="center"
@@ -22,7 +20,10 @@ const SingleEvent = ({ props }) => {
         </Typography>
       <div>
         <Typography className={classes.singleEv}>
-        <p>{props.shortDesc} </p>
+        <Grid item>
+          <p>{props.shortDesc} </p>
+        </Grid>
+        <Grid item>
         <p>
           {`${new Date(
             Date.parse(props.startDate)
@@ -30,9 +31,16 @@ const SingleEvent = ({ props }) => {
             Date.parse(props.endDate)
           ).toLocaleString()}`}
         </p>
+        </Grid>
+        <Grid item>
         <p>Address: {props.address}</p>
+        </Grid>
+        <Grid item>
         <p>Current RSVPs: {props.totalGuests}</p>
-        <a href={`${props.permalink}`}>Website</a>
+        </Grid>
+        <Grid item>
+        <Link href={`${props.permalink}`}>Website</Link>
+        </Grid>
         </Typography>
       </div>
       </Grid>
