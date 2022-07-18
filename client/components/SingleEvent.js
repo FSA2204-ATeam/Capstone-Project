@@ -16,9 +16,9 @@ const SingleEvent = ({ props }) => {
         <p>
           {`${new Date(
             Date.parse(props.startDate)
-          ).toLocaleString()} to ${new Date(
+          ).toLocaleString('en-us', { weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"numeric"})} to ${new Date(
             Date.parse(props.endDate)
-          ).toLocaleString()}`}
+          ).toLocaleString('en-us', { weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"numeric"})}`}
         </p>
         <p>Address: {props.address}</p>
         <p>Current RSVPs: {props.totalGuests}</p>

@@ -68,9 +68,9 @@ const MyEvents = () => {
       {myEvents.map((event, idx) => {
         return (
           <div key={event.id}>
-          <Card>
+          <Card elevation={3} className={classes.singleEv}>
             <CardContent>
-              <Typography className={classes.myEventsStyle}>{event.name}</Typography>
+              <Typography variant="body2">{event.name}</Typography>
               <Button
                 onClick={() => {
                   onShowDetailsClick !== null && onShowDetailsClick === idx

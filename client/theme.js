@@ -39,8 +39,10 @@ export const useFrontEndStyles = makeStyles((theme) => ({
   },
   singleEv: {
     color: black,
+    background: white,
     fontWeight: "italic",
     margin: "15px",
+    borderTop: "1px",
     fontSize: 15,
     fontFamily: "Arial",
     align: "center",
