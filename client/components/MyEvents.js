@@ -64,7 +64,7 @@ const MyEvents = () => {
 
   return (
     <div>
-      <h1>{`${user.username}'s Events`}:</h1>
+      <h1>{`${user.username.toUpperCase()}'s Events`}:</h1>
       {myEvents.map((event, idx) => {
         return (
           <div key={event.id}>

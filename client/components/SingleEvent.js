@@ -9,8 +9,8 @@ const SingleEvent = ({ props }) => {
   
   return (
     <div>
-      <Card elevation={3} className={classes.singleEv}>
-        <CardContent>
+      {/* <Card> */}
+        {/* <CardContent> */}
           <Typography variant="body2">
         <p>{props.shortDesc} </p>
         <p>
@@ -20,14 +20,18 @@ const SingleEvent = ({ props }) => {
             Date.parse(props.endDate)
           ).toLocaleString('en-us', { weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"numeric"})}`}
         </p>
-        <p>Address: {props.address}</p>
+        {props.address ? (
+          <p>Address: {props.address}</p>
+        ) : (
+          null
+        )}
         <p>Current RSVPs: {props.totalGuests}</p>
         <p align="center">
           <Link href={`${props.permalink}`}>Website</Link>
         </p>
           </Typography>
-        </CardContent>
-      </Card>
+        {/* </CardContent> */}
+      {/* </Card> */}
     </div>
   );
 };
