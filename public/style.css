@@ -105,7 +105,7 @@ input:invalid[focused='true'] ~ span {
   text-align: center;
   z-index: -1;
 }
-.ComponentContainer button {
+/* .ComponentContainer button {
   position: absolute;
   left: 0px;
   top: 0px;
@@ -113,14 +113,14 @@ input:invalid[focused='true'] ~ span {
 
   padding: 13px 29px;
   font-size: 1rem;
-  font-weight: bold;
-  /* border-radius: 5px; */
-  border: none;
+  font-weight: bold; */
+/* border-radius: 5px; */
+/* border: none;
   outline: none;
   background: crimson;
   color: white;
   cursor: pointer;
-}
+} */
 #portal .container {
   position: fixed;
   top: 0;
@@ -134,7 +134,7 @@ input:invalid[focused='true'] ~ span {
   background: rgba(0, 0, 0, 0.7);
 }
 .container .modal {
-  z-index: 1;
+  z-index: 77;
   width: 90vw;
   height: 90vh;
   max-width: 800px;
@@ -153,7 +153,22 @@ input:invalid[focused='true'] ~ span {
   top: 7px;
   right: 7px;
   padding: 8px 11px;
-  background: rgb(220, 150, 20);
+  background: rgb(240, 150, 91);
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.infoWindowButton .topRight {
+  z-index: 1;
+  position: relative;
+  bottom: 10vh;
+  left: 10vw;
+  padding: 8px 11px;
+  background: rgb(96, 240, 91);
   color: white;
   font-weight: bold;
   border: none;
@@ -163,12 +178,12 @@ input:invalid[focused='true'] ~ span {
 }
 
 .infoWindowButton {
-  z-index: 77;
+  z-index: 1;
   position: fixed;
   bottom: 3vh;
-  right: 3vw;
+  left: 3vw;
   padding: 8px 11px;
-  background: rgb(220, 150, 20);
+  background: rgb(240, 150, 91);
   color: white;
   font-weight: bold;
   border: none;
@@ -176,6 +191,21 @@ input:invalid[focused='true'] ~ span {
   border-radius: 2px;
   cursor: pointer;
 }
+
+/* .urbanSafariLogo {
+  z-index: 2;
+  position: fixed;
+  top: 300px;
+  right: 300px;
+  padding: 8px 11px;
+  background: rgb(240, 150, 91);
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+} */
 
 @keyframes animate {
   from {

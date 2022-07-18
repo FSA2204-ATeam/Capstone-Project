@@ -38,11 +38,12 @@ const LandingPage = () => {
   const [randomOrder, setRandomOrder] = useState([]);
   useEffect(() => {
     setRandomOrder(uniqueRandomizer(allEvents.length));
-  }, [allEvents]);
+    console.log('CURRENT RANDOM ORDER ', randomOrder);
+  }, [allEvents, wildMode]);
   const wildModeHandler = () => {
     console.log('wild mode handler triggered');
     setAnchor(null);
-    setWildMode(true);
+    setWildMode(!wildMode);
   };
 
   //SCREEN SIZE HANDLER
@@ -96,6 +97,8 @@ const LandingPage = () => {
           }}
         >
           <div>
+            <button className="infoWindowButton .topRight"> US</button>
+
             <button className="infoWindowButton" onClick={openInfoModal}>
               ?
             </button>
@@ -152,6 +155,22 @@ const LandingPage = () => {
                 ) : (
                   <Typography color="secondary">LOGIN</Typography>
                 )}
+              </Button>
+              <Button
+                style={{
+                  // position: 'absolute',
+                  backgroundColor: '#FFFFFF',
+                  marginTop: `${scrnAnchrLeft}px`,
+                  marginleft: '80vw',
+                  height: '60px',
+                  width: '60px',
+                }}
+                // variant="contained"
+                size="large"
+                color="#FFFFFF"
+              >
+                {' '}
+                <img src="/URBAN.png" height="100px" />
               </Button>
               <Popover
                 open={Boolean(anchor)}
