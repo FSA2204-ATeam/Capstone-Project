@@ -17,14 +17,14 @@ import { useHistory } from "react-router-dom";
 import UserProfileForm from "./UserProfileForm";
 import MyEvents from "./MyEvents";
 
-const PopUpWindowCardLogged = ({ wildModeHandler }) => {
+const Welcome = ({ wildModeHandler }) => {
   // const [activeEvents, setActiveEvents] = useState([]);
   const [closeLogout, setCloseLogout] = useState(true);
   const classes = useFrontEndStyles();
   const dispatch = useDispatch();
   const history = useHistory();
   const toggleCloseLogout = () => (
-    setCloseLogout(!closeLogout), dispatch(logout()), history.push("/landing")
+    setCloseLogout(!closeLogout), dispatch(logout()), history.push("/")
   );
 
   //COMPONENT DISPLAY STATE
@@ -113,4 +113,4 @@ const PopUpWindowCardLogged = ({ wildModeHandler }) => {
   );
 };
 
-export default PopUpWindowCardLogged;
+export default Welcome;

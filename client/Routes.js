@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
-import PopUpWindowLogin from './components/PopUpWindowLogin';
-import PopUpWindowSignUp from './components/PopUpWindowSignUp';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 import SpeechToText from './components/SpeechToText';
 import { me } from './store';
 import { fetchUserEvents } from './store/usersEvents';
@@ -28,8 +28,8 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route exact path="/login" component={PopUpWindowLogin} />
-            <Route exact path="/signup" component={PopUpWindowLogin} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Login} />
             <Route exact path="/" component={LandingPage} />
           </Switch>
         ) : (

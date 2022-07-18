@@ -16,8 +16,8 @@ import {
   CardActions,
   Typography,
 } from '@material-ui/core';
-import PopUpWindowLogged from './PopUpWindowLogged';
-import PopUpWindowLogin from './PopUpWindowLogin';
+import Welcome from './Welcome';
+import Login from './Login';
 import InfoModal from './InfoModal';
 
 //FEELING WILD
@@ -172,11 +172,11 @@ const LandingPage = () => {
               >
                 {isLoggedIn ? (
                   <div>
-                    <PopUpWindowLogged wildModeHandler={wildModeHandler} />
-                    {/* <PopUpWindowLogged events={events}/> */}
+                    <Welcome wildModeHandler={wildModeHandler} />
+                    {/* <Welcome events={events}/> */}
                   </div>
                 ) : (
-                  <PopUpWindowLogin />
+                  <Login />
                 )}
               </Popover>
             </div>
