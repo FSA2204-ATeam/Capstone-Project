@@ -38,11 +38,13 @@ const LandingPage = () => {
   const [randomOrder, setRandomOrder] = useState([]);
   useEffect(() => {
     setRandomOrder(uniqueRandomizer(allEvents.length));
-  }, [allEvents]);
+  }, [allEvents, wildMode]);
   const wildModeHandler = () => {
-    console.log('wild mode handler triggered');
     setAnchor(null);
-    setWildMode(true);
+    setWildMode(!wildMode);
+  };
+  const wildModeOff = () => {
+    setWildMode(false);
   };
 
   //SCREEN SIZE HANDLER
@@ -62,7 +64,6 @@ const LandingPage = () => {
   //NEW EVENT FORM HANDLER
   const [newEvtPosition, setNewEvtPosition] = useState({});
   const cancelNewEvt = (e) => {
-    console.log('cancel triggered', e);
     setNewEvtPosition({});
   };
 
@@ -74,7 +75,9 @@ const LandingPage = () => {
         googleMapsApiKey={'AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78'}
       >
         <GoogleMap
-          onClick={() => setNewEvtPosition({})}
+          onClick={() => {
+            [setNewEvtPosition({}), setWildMode(false)];
+          }}
           onDblClick={(e) => {
             isLoggedIn
               ? setNewEvtPosition({
@@ -101,7 +104,10 @@ const LandingPage = () => {
             </button>
 
             {wildMode ? (
-              <MapSingleEvent randomOrder={randomOrder} />
+              <MapSingleEvent
+                randomOrder={randomOrder}
+                wildModeOff={wildModeOff}
+              />
             ) : (
               <div>
                 <AllEventsView />
