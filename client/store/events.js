@@ -1,11 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
+import { fetchUserEvents } from './usersEvents';
 
-const token = window.localStorage.getItem("token");
+const token = window.localStorage.getItem('token');
 
-const GET_EVENTS = "GET_EVENTS";
-const FETCH_EVENTS = "FETCH_EVENTS";
-const ADD_USER_DEFINED_EVENT = "ADD_USER_DEFINED_EVENT";
-const UPDATE_USER_DEFINED_EVENT = "UPDATE_USER_DEFINED_EVENT";
+const GET_EVENTS = 'GET_EVENTS';
+const FETCH_EVENTS = 'FETCH_EVENTS';
+const ADD_USER_DEFINED_EVENT = 'ADD_USER_DEFINED_EVENT';
+const UPDATE_USER_DEFINED_EVENT = 'UPDATE_USER_DEFINED_EVENT';
 
 export const _getEvents = (events) => ({
   type: GET_EVENTS,
@@ -29,7 +30,7 @@ export const _updateUserDefinedEvent = (event) => ({
 
 export const getEvents = () => async (dispatch) => {
   try {
-    const { data } = await axios.get("/api/events", {
+    const { data } = await axios.get('/api/events', {
       headers: { authorization: token },
     });
     dispatch(_getEvents(data));
@@ -40,7 +41,7 @@ export const getEvents = () => async (dispatch) => {
 
 export const fetchEvents = (userId) => async (dispatch) => {
   try {
-    const { data } = await axios.get(`/api/events/:${userId}`, userId, {
+    const { data } = await axios.get(`/api/usersevents`, userId, {
       headers: { authorization: token },
     });
     dispatch(_fetchUserEvents(data));
@@ -51,13 +52,11 @@ export const fetchEvents = (userId) => async (dispatch) => {
 
 export const addUserDefinedEvent = (event) => async (dispatch) => {
   try {
-    const { data } = await axios.post("/api/events", event, {
+    const { data } = await axios.post('/api/events', event, {
       headers: {
         authorization: token,
       },
     });
-    console.log(data);
-
     return dispatch(addUserDefinedEvent(data));
   } catch (err) {
     console.error(err);
@@ -66,14 +65,13 @@ export const addUserDefinedEvent = (event) => async (dispatch) => {
 
 export const updateUserDefinedEvent = (event, userId) => async (dispatch) => {
   try {
-    console.log("Axios event prop", event);
-    const { data: updated } = await axios.put("/api/events", event, {
+    const { data: updated } = await axios.put('/api/events', event, {
       headers: {
         authorization: token,
       },
     });
     if (updated) {
-      dispatch(fetchEvents(userId));
+      return dispatch(fetchUserEvents(userId));
     }
   } catch (err) {
     console.error(err);

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import FormInput from "./FormInput";
-import DateFnsUtils from "@date-io/date-fns";
-import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { updateUserDefinedEvent } from "../store/events";
-import { setUserEvents } from "../store/usersEvents";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import FormInput from './FormInput';
+import DateFnsUtils from '@date-io/date-fns';
+import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { updateUserDefinedEvent } from '../store/events';
+import { setUserEvents } from '../store/usersEvents';
 
 export const UpdateHostedEvent = ({ event }) => {
   const user = useSelector((state) => state.auth);
@@ -18,22 +18,22 @@ export const UpdateHostedEvent = ({ event }) => {
   const inputs = [
     {
       id: 1,
-      name: "name",
-      type: "",
-      placeholder: "Title",
-      errorMessage: "Title should be 2-50 characters long!",
-      label: "title",
-      pattern: "^[]{2,50}$",
+      name: 'name',
+      type: '',
+      placeholder: 'Title',
+      errorMessage: 'Title should be 2-50 characters long!',
+      label: 'title',
+      pattern: `^[ a-zA-Z0-9!@#$%^&*?,.:;\\-\\()""'']{3,50}$`,
       required: true,
     },
     {
       id: 2,
-      name: "shortDesc",
-      type: "text",
-      placeholder: "Description",
-      errorMessage: "Description should be 3-1024 characters!",
-      label: "description",
-      pattern: "^[]{3,1024}$",
+      name: 'shortDesc',
+      type: 'text',
+      placeholder: 'Description',
+      errorMessage: 'Description should be 3-1024 characters!',
+      label: 'description',
+      pattern: `^[ a-zA-Z0-9!@#$%^&*?,.:;\\-\\()""'']{3,1024}$`,
       required: true,
     },
   ];

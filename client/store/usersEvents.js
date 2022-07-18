@@ -33,6 +33,7 @@ export const _removeUserEvent = (userEvent) => ({
   userEvent,
 });
 
+//THUNKS
 export const setUserRSVP = (event) => async (dispatch) => {
   try {
     const { data } = await axios.post('/api/usersEvents', event, {
