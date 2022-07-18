@@ -68,12 +68,8 @@ const MyEvents = () => {
       {myEvents.map((event, idx) => {
         return (
           <div key={event.id}>
-            <Grid
-            container
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            > 
+          <Card>
+            <CardContent>
               <Typography className={classes.myEventsStyle}>{event.name}</Typography>
               <Button
                 onClick={() => {
@@ -121,7 +117,8 @@ const MyEvents = () => {
               {onUpdateClick === idx ? (
                 <UpdateHostedEvent event={event} />
               ) : null}
-            </Grid>
+            </CardContent>
+            </Card>
           </div>
         );
       })}

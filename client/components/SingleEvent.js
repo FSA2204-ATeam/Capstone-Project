@@ -1,13 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Card, CardContent, Typography, Link } from "@material-ui/core";
+import { useFrontEndStyles } from "../theme";
 
 const SingleEvent = ({ props }) => {
+  const classes = useFrontEndStyles();
+  
   return (
     <div>
-      <h3>My Event Details</h3>
-      <div>
+      <Card elevation={3} className={classes.singleEv}>
+        <CardContent>
+          <Typography variant="body2">
         <p>{props.shortDesc} </p>
         <p>
           {`${new Date(
@@ -18,8 +22,12 @@ const SingleEvent = ({ props }) => {
         </p>
         <p>Address: {props.address}</p>
         <p>Current RSVPs: {props.totalGuests}</p>
-        <a href={`${props.permalink}`}>Website</a>
-      </div>
+        <p align="center">
+          <Link href={`${props.permalink}`}>Website</Link>
+        </p>
+          </Typography>
+        </CardContent>
+      </Card>
     </div>
   );
 };
