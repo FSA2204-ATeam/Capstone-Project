@@ -1,7 +1,7 @@
-const { Sequelize, Op } = require('sequelize');
-const db = require('../db');
+const { Sequelize, Op } = require("sequelize");
+const db = require("../db");
 
-const UserPreferences = db.define('userPreferences', {
+const UserPreferences = db.define("userPreferences", {
   CAT_Art: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
@@ -11,6 +11,14 @@ const UserPreferences = db.define('userPreferences', {
     defaultValue: false,
   },
   CAT_Food: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  CAT_Fitness: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  CAT_Education: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
