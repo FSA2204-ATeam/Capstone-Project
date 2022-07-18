@@ -69,8 +69,8 @@ const MyEvents = () => {
         return (
           <div key={event.id}>
           <Card elevation={3} className={classes.singleEv}>
-            <CardContent>
-              <Typography variant="body2">{event.name}</Typography>
+            <CardContent >
+              <Typography className={classes.myEventsStyle}>{event.name}</Typography>
               <Button
                 onClick={() => {
                   onShowDetailsClick !== null && onShowDetailsClick === idx

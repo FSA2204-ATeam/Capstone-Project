@@ -173,7 +173,6 @@ const LandingPage = () => {
                 {isLoggedIn ? (
                   <div>
                     <Welcome wildModeHandler={wildModeHandler} />
-                    {/* <Welcome events={events}/> */}
                   </div>
                 ) : (
                   <Login />

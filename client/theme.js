@@ -42,18 +42,15 @@ export const useFrontEndStyles = makeStyles((theme) => ({
     background: white,
     fontWeight: "italic",
     margin: "15px",
-    borderTop: "1px",
     fontSize: 15,
     fontFamily: "Arial",
     align: "center",
   },
   myEventsStyle: {
-    color: black,
     fontWeight: "bold",
-    margin: "20px",
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: "Arial",
-    align: "center",
+    align: "justify",
   },
 }));
 

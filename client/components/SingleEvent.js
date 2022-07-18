@@ -9,8 +9,6 @@ const SingleEvent = ({ props }) => {
   
   return (
     <div>
-      {/* <Card> */}
-        {/* <CardContent> */}
           <Typography variant="body2">
         <p>{props.shortDesc} </p>
         <p>
@@ -30,8 +28,6 @@ const SingleEvent = ({ props }) => {
           <Link href={`${props.permalink}`}>Website</Link>
         </p>
           </Typography>
-        {/* </CardContent> */}
-      {/* </Card> */}
     </div>
   );
 };
