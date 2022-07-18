@@ -18,10 +18,12 @@ import {
   IconButton,
   Tooltip,
   Container,
+  Grid,
 } from '@material-ui/core';
 import MyEventReview from './MyEventReview';
 import SingleEvent from './SingleEvent';
 import UpdateHostedEvent from './UpdateHostedEvent';
+import { useFrontEndStyles } from "../theme";
 
 const MyEvents = () => {
   const user = useSelector((state) => state.auth);
@@ -31,6 +33,8 @@ const MyEvents = () => {
   const [onShowDetailsClick, setOnShowDetailsClick] = useState(null);
   const [onReviewClick, setOnReviewClick] = useState(null);
   const [onUpdateClick, setUpdateClick] = useState(null);
+
+  const classes = useFrontEndStyles();
 
   const dispatch = useDispatch();
 
@@ -64,12 +68,13 @@ const MyEvents = () => {
       {myEvents.map((event, idx) => {
         return (
           <div key={event.id}>
-            <Card
-              elevation={3}
-              variant="elevation"
-              style={{ background: 'lightGray' }}
+            <Grid
+            container
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
             >
-              <h1>{event.name}</h1>
+              <Typography className={classes.myEventsStyle}>{event.name}</Typography>
               <Button
                 onClick={() => {
                   onShowDetailsClick !== null && onShowDetailsClick === idx
@@ -116,7 +121,7 @@ const MyEvents = () => {
               {onUpdateClick === idx ? (
                 <UpdateHostedEvent event={event} />
               ) : null}
-            </Card>
+            </Grid>
           </div>
         );
       })}
