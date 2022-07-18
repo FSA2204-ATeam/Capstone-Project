@@ -73,7 +73,7 @@ const MyEvents = () => {
             direction="column"
             justifyContent="center"
             alignItems="center"
-            >
+            > 
               <Typography className={classes.myEventsStyle}>{event.name}</Typography>
               <Button
                 onClick={() => {

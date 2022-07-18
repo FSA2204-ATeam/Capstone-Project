@@ -40,7 +40,7 @@ export const useFrontEndStyles = makeStyles((theme) => ({
   singleEvHead: {
     color: black,
     background: "#F0965B",
-    fontSize: 20,
+    fontSize: "18px",
     fontWeight: "bold",
     fontFamily: "Arial",
     align: "justify",
@@ -48,18 +48,19 @@ export const useFrontEndStyles = makeStyles((theme) => ({
   singleEv: {
     color: black,
     background: "#F0965B",
-    margin: "20px",
+    margin: "15px",
     fontSize: 15,
     fontFamily: "Arial",
     align: "justify",
   },
   myEventsStyle: {
     color: black,
+    fontWeight: "bold",
     background: "#F0965B",
     margin: "20px",
     fontSize: 20,
     fontFamily: "Arial",
-    align: "justify",
+    align: "center",
   },
 }));
 
