@@ -8,7 +8,7 @@ import {
 
 import { InfoWindow, Marker } from '@react-google-maps/api';
 
-const MapSingleEvent = ({ randomOrder }) => {
+const MapSingleEvent = ({ randomOrder, wildModeOff }) => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.auth);
@@ -33,7 +33,6 @@ const MapSingleEvent = ({ randomOrder }) => {
   }, [myEvents]);
 
   const onRSVPClick = (activeEvent) => {
-    console.log('MapSingleEvent onRSVPClick');
     dispatch(setUserRSVP(activeEvent));
   };
 
@@ -56,7 +55,7 @@ const MapSingleEvent = ({ randomOrder }) => {
             lat: parseFloat(activeEvent.eventLat),
             lng: parseFloat(activeEvent.eventLng),
           }}
-          //onCloseClick={() => setActiveEvent(null)}
+          onCloseClick={() => wildModeOff()}
         >
           <div>
             <div>

@@ -38,12 +38,13 @@ const LandingPage = () => {
   const [randomOrder, setRandomOrder] = useState([]);
   useEffect(() => {
     setRandomOrder(uniqueRandomizer(allEvents.length));
-    console.log('CURRENT RANDOM ORDER ', randomOrder);
   }, [allEvents, wildMode]);
   const wildModeHandler = () => {
-    console.log('wild mode handler triggered');
     setAnchor(null);
     setWildMode(!wildMode);
+  };
+  const wildModeOff = () => {
+    setWildMode(false);
   };
 
   //SCREEN SIZE HANDLER
@@ -63,7 +64,6 @@ const LandingPage = () => {
   //NEW EVENT FORM HANDLER
   const [newEvtPosition, setNewEvtPosition] = useState({});
   const cancelNewEvt = (e) => {
-    console.log('cancel triggered', e);
     setNewEvtPosition({});
   };
 
@@ -75,7 +75,9 @@ const LandingPage = () => {
         googleMapsApiKey={'AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78'}
       >
         <GoogleMap
-          onClick={() => setNewEvtPosition({})}
+          onClick={() => {
+            [setNewEvtPosition({}), setWildMode(false)];
+          }}
           onDblClick={(e) => {
             isLoggedIn
               ? setNewEvtPosition({
@@ -97,14 +99,15 @@ const LandingPage = () => {
           }}
         >
           <div>
-            <button className="infoWindowButton .topRight"> US</button>
-
             <button className="infoWindowButton" onClick={openInfoModal}>
               ?
             </button>
 
             {wildMode ? (
-              <MapSingleEvent randomOrder={randomOrder} />
+              <MapSingleEvent
+                randomOrder={randomOrder}
+                wildModeOff={wildModeOff}
+              />
             ) : (
               <div>
                 <AllEventsView />
@@ -155,22 +158,6 @@ const LandingPage = () => {
                 ) : (
                   <Typography color="secondary">LOGIN</Typography>
                 )}
-              </Button>
-              <Button
-                style={{
-                  // position: 'absolute',
-                  backgroundColor: '#FFFFFF',
-                  marginTop: `${scrnAnchrLeft}px`,
-                  marginleft: '80vw',
-                  height: '60px',
-                  width: '60px',
-                }}
-                // variant="contained"
-                size="large"
-                color="#FFFFFF"
-              >
-                {' '}
-                <img src="/URBAN.png" height="100px" />
               </Button>
               <Popover
                 open={Boolean(anchor)}
