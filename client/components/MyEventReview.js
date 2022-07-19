@@ -1,9 +1,9 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getSentimentAnalysis } from "../store/sentimentAnalysis";
-import { fetchUserReviews, setUserEvents } from "../store/usersEvents";
-import { Button } from "@material-ui/core";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSentimentAnalysis } from '../store/sentimentAnalysis';
+import { fetchUserReviews, setUserEvents } from '../store/usersEvents';
+import { Button } from '@material-ui/core';
 
 function MyEventReview({ event }) {
   const user = useSelector((state) => state.auth);
@@ -16,18 +16,18 @@ function MyEventReview({ event }) {
   //SPEECH TO TEXT
   const [showMic, setShowMic] = useState(false);
   useEffect(() => {
-    if ("webkitSpeechRecognition" in window) {
+    if ('webkitSpeechRecognition' in window) {
       setShowMic(true);
     } else {
-      console.log("Speech Recognition Not Available");
+      console.log('Speech Recognition Not Available');
     }
   });
   let speechRecognition = new webkitSpeechRecognition();
-  speechRecognition.lang = "en-US";
+  speechRecognition.lang = 'en-US';
   speechRecognition.interimResults = true;
   speechRecognition.onresult = (event) => {
     review
-      ? setReview(review + " " + event.results[0][0].transcript)
+      ? setReview(review + ' ' + event.results[0][0].transcript)
       : setReview(event.results[0][0].transcript);
   };
   const [mic, setMic] = useState(false);
@@ -45,44 +45,67 @@ function MyEventReview({ event }) {
   return (
     <div>
       <form id="test-review-submit" onSubmit={handleSubmit}>
-          <input
-            name="review"
-            type="text"
-            placeholder={"Your response here..."}
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-          />
-          {showMic && (
-            <Button
-              type="button"
-              style={{
-                borderRadius: 6,
-                backgroundColor: "#F0965B",
-                padding: "5px 0px",
-                margin: "5px",
-                fontSize: "10px",
-              }}
-              onClick={() => {
-                {
-                  mic
-                    ? [speechRecognition.stop(), setMic(false)]
-                    : [
-                        speechRecognition.start({ continuous: true }),
-                        setMic(true),
-                      ];
-                }
-              }}
-            >
-              {mic ? "Mic Off" : "Mic On"}
-            </Button>
-          )}
+        <input
+          name="review"
+          type="text"
+          placeholder={'Your response here...'}
+          value={review}
+          onChange={(e) => setReview(e.target.value)}
+        />
+        {mic ? (
+          <Button
+            type="button"
+            style={{
+              borderRadius: 6,
+              backgroundColor: '#F0965B',
+              padding: '5px 0px',
+              margin: '5px',
+              fontSize: '10px',
+            }}
+            onClick={() => {
+              {
+                mic
+                  ? [speechRecognition.stop(), setMic(false)]
+                  : [
+                      speechRecognition.start({ continuous: true }),
+                      setMic(true),
+                    ];
+              }
+            }}
+          >
+            <img src="/mic.png" height="20" />
+          </Button>
+        ) : (
+          <Button
+            type="button"
+            style={{
+              borderRadius: 6,
+              backgroundColor: '#F5F5F5',
+              padding: '5px 0px',
+              margin: '5px',
+              fontSize: '10px',
+            }}
+            onClick={() => {
+              {
+                mic
+                  ? [speechRecognition.stop(), setMic(false)]
+                  : [
+                      speechRecognition.start({ continuous: true }),
+                      setMic(true),
+                    ];
+              }
+            }}
+          >
+            <img src="/mic.png" height="20" />
+          </Button>
+        )}
         {review ? (
           <Button
             style={{
-              backgroundColor: "#F9DB53",
-              padding: "5px 0px",
-              fontSize: "10px",
-              margin: "5px",
+              backgroundColor: '#F9DB53',
+              padding: '5px 0px',
+              fontSize: '10px',
+              margin: '5px',
             }}
             type="submit"
           >
@@ -91,18 +114,18 @@ function MyEventReview({ event }) {
         ) : (
           <Button
             style={{
-              backgroundColor: "#F9DB53",
-              padding: "5px 0px",
-              fontSize: "10px",
+              backgroundColor: '#F9DB53',
+              padding: '5px 0px',
+              fontSize: '10px',
             }}
             type="submit"
           >
             Submit
           </Button>
         )}
-        <p style={{fontSize: "10px", fontFamily: "Poppins"}}>
-        Please enable microphone access to record your thoughts and feelings
-        about the event
+        <p style={{ fontSize: '10px', fontFamily: 'Poppins' }}>
+          Please enable microphone access to record your thoughts and feelings
+          about the event
         </p>
       </form>
     </div>
