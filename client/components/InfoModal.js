@@ -13,16 +13,29 @@ const InfoModal = ({ setShowInfoModal }) => {
     <div className="container" ref={infoModalRef} onClick={closeInfoModal}>
       <div className="modal">
         <h2>Welcome to Urban Safari!</h2>
+        <p>
+          Urban Safari is a roulette style guide to the wildlife of NYC. Using
+          proximity-based mapping, event listing APIs and community sourced
+          parties, this guide application provides users with recommended
+          events.{" "}
+        </p>
         <h3>How to Start: </h3>
         <ul>
-          <li>add more things here</li>
+          <li>
+            Sign up and log in using the button in the top left of the screen
+          </li>
           <li>
             To add your event: Double click on the map to create your event.
           </li>
           <li>
             Click on the "Feeling Wild" button to start your adventure! This
-            button will suggest you an event you may want to go to, based on
-            your preferences.
+            button will suggest a random event. Use the provided buttons to
+            accept or proceed to the next random event.
+          </li>
+          <li>
+            Click on the "Feeling Wild" button to start your adventure! This
+            button will suggest a random event. Use the provided buttons to
+            accept or proceed to the next random event.
           </li>
         </ul>
         <button

@@ -180,16 +180,19 @@ input:invalid[focused="true"] ~ span {
 .infoWindowButton {
   z-index: 1;
   position: fixed;
-  bottom: 3vh;
-  left: 3vw;
+  bottom: 2.5vh;
+  right: 2.5vh;
   padding: 8px 11px;
   background: rgb(240, 150, 91);
-  color: white;
+  color: whitesmoke;
+  font-size: larger;
   font-weight: bold;
   border: none;
   outline: none;
   border-radius: 2px;
   cursor: pointer;
+  height: 40px;
+  width: 40px;
 }
 
 /* .urbanSafariLogo {

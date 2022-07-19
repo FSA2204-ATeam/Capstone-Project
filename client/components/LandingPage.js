@@ -141,7 +141,8 @@ const LandingPage = () => {
             <div>
               <Button
                 style={{
-                  backgroundColor: "#FFFFFF05",
+                  borderRadius: 10,
+                  backgroundColor: "#FFFFFF",
                   marginTop: `${scrnAnchrLeft + 10}px`,
                   marginLeft: `${scrnAnchrLeft + 10}px`,
                   height: "60px",
@@ -156,16 +157,16 @@ const LandingPage = () => {
                 }}
               >
                 {isLoggedIn ? (
-                  // <Typography color="secondary">
                   <img
-                    borderRadius="100px"
+                    style={{
+                      borderRadius: 10,
+                      height: 65,
+                      width: 65,
+                    }}
                     align="center"
-                    height="60"
-                    width="60"
                     src="/userIcon.gif"
                   />
                 ) : (
-                  // </Typography>
                   <Typography color="secondary">LOGIN</Typography>
                 )}
               </Button>
@@ -198,7 +199,7 @@ const LandingPage = () => {
 
             <Button
               style={{
-                transform: "translate(-15%, -73%)",
+                transform: "translate(-6%, -72%)",
                 float: "right",
                 display: "inline-block",
               }}
