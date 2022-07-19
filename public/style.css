@@ -76,11 +76,11 @@ span {
   display: none;
 }
 
-input:invalid[focused='true'] {
+input:invalid[focused="true"] {
   border: 1px solid red;
 }
 
-input:invalid[focused='true'] ~ span {
+input:invalid[focused="true"] ~ span {
   display: block;
 }
 
@@ -91,13 +91,13 @@ input:invalid[focused='true'] ~ span {
   padding: 10px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: inline;
   margin: 0 0.3em 0.3em 0;
   font-size: 16px;
 }
 
 .Selected {
-  background-color: #4caf50;
+  background-color: #3aae3eb5;
 }
 
 .ComponentContainer {
@@ -180,16 +180,19 @@ input:invalid[focused='true'] ~ span {
 .infoWindowButton {
   z-index: 1;
   position: fixed;
-  bottom: 3vh;
-  left: 3vw;
+  bottom: 2.5vh;
+  right: 2.5vh;
   padding: 8px 11px;
   background: rgb(240, 150, 91);
-  color: white;
+  color: whitesmoke;
+  font-size: larger;
   font-weight: bold;
   border: none;
   outline: none;
   border-radius: 2px;
   cursor: pointer;
+  height: 40px;
+  width: 40px;
 }
 
 /* .urbanSafariLogo {

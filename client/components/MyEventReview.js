@@ -1,9 +1,9 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getSentimentAnalysis } from '../store/sentimentAnalysis';
-import { fetchUserReviews, setUserEvents } from '../store/usersEvents';
-import { Button } from '@material-ui/core';
+import React from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSentimentAnalysis } from "../store/sentimentAnalysis";
+import { fetchUserReviews, setUserEvents } from "../store/usersEvents";
+import { Button } from "@material-ui/core";
 
 function MyEventReview({ event }) {
   const user = useSelector((state) => state.auth);
@@ -16,18 +16,18 @@ function MyEventReview({ event }) {
   //SPEECH TO TEXT
   const [showMic, setShowMic] = useState(false);
   useEffect(() => {
-    if ('webkitSpeechRecognition' in window) {
+    if ("webkitSpeechRecognition" in window) {
       setShowMic(true);
     } else {
-      console.log('Speech Recognition Not Available');
+      console.log("Speech Recognition Not Available");
     }
   });
   let speechRecognition = new webkitSpeechRecognition();
-  speechRecognition.lang = 'en-US';
+  speechRecognition.lang = "en-US";
   speechRecognition.interimResults = true;
   speechRecognition.onresult = (event) => {
     review
-      ? setReview(review + ' ' + event.results[0][0].transcript)
+      ? setReview(review + " " + event.results[0][0].transcript)
       : setReview(event.results[0][0].transcript);
   };
   const [mic, setMic] = useState(false);
@@ -45,13 +45,16 @@ function MyEventReview({ event }) {
   return (
     <div>
       <h3>My Review</h3>
-      <p>Please fill enter your thoughts and feelings about the event</p>
+      <p>
+        Please enable microphone access to record your thoughts and feelings
+        about the event
+      </p>
       <form id="test-review-submit" onSubmit={handleSubmit}>
         <label>
           <input
             name="review"
             type="text"
-            placeholder={'Your response here...'}
+            placeholder={"Your response here..."}
             value={review}
             onChange={(e) => setReview(e.target.value)}
           />
@@ -60,9 +63,9 @@ function MyEventReview({ event }) {
               type="button"
               style={{
                 borderRadius: 6,
-                backgroundColor: '#F0965B',
-                padding: '5px 0px',
-                fontSize: '10px',
+                backgroundColor: "#F0965B",
+                padding: "5px 0px",
+                fontSize: "10px",
               }}
               onClick={() => {
                 {
@@ -75,16 +78,16 @@ function MyEventReview({ event }) {
                 }
               }}
             >
-              {mic ? 'Turn Off' : 'Turn On'}
+              {mic ? "Turn Off" : "Turn On"}
             </Button>
           )}
         </label>
         {review ? (
           <Button
             style={{
-              backgroundColor: '#377E3F',
-              padding: '5px 0px',
-              fontSize: '10px',
+              backgroundColor: "#377E3F",
+              padding: "5px 0px",
+              fontSize: "10px",
             }}
             type="submit"
           >
@@ -93,9 +96,9 @@ function MyEventReview({ event }) {
         ) : (
           <Button
             style={{
-              backgroundColor: '#377E3F',
-              padding: '5px 0px',
-              fontSize: '10px',
+              backgroundColor: "#377E3F",
+              padding: "5px 0px",
+              fontSize: "10px",
             }}
             type="submit"
           >
