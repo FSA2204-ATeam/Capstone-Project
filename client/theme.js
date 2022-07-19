@@ -55,22 +55,5 @@ export const useFrontEndStyles = makeStyles((theme) => ({
   },
 }));
 
-export const useNavStyles = makeStyles((theme) => ({
-  navButton: {
-    margin: "15px",
-    display: "flex",
-    background: white,
-    fontColor: green[700],
-  },
-  title: {
-    flexGrow: 1,
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
-    color: green[700],
-  },
-}));
-
 export default theme;
 

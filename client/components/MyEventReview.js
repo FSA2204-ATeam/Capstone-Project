@@ -44,13 +44,11 @@ function MyEventReview({ event }) {
 
   return (
     <div>
-      <h3>My Review</h3>
       <p>
         Please enable microphone access to record your thoughts and feelings
         about the event
       </p>
       <form id="test-review-submit" onSubmit={handleSubmit}>
-        <label>
           <input
             name="review"
             type="text"
@@ -65,6 +63,7 @@ function MyEventReview({ event }) {
                 borderRadius: 6,
                 backgroundColor: "#F0965B",
                 padding: "5px 0px",
+                margin: "5px",
                 fontSize: "10px",
               }}
               onClick={() => {
@@ -81,13 +80,13 @@ function MyEventReview({ event }) {
               {mic ? "Turn Off" : "Turn On"}
             </Button>
           )}
-        </label>
         {review ? (
           <Button
             style={{
-              backgroundColor: "#377E3F",
+              backgroundColor: "#F9DB53",
               padding: "5px 0px",
               fontSize: "10px",
+              margin: "5px",
             }}
             type="submit"
           >
@@ -96,7 +95,7 @@ function MyEventReview({ event }) {
         ) : (
           <Button
             style={{
-              backgroundColor: "#377E3F",
+              backgroundColor: "#F9DB53",
               padding: "5px 0px",
               fontSize: "10px",
             }}
