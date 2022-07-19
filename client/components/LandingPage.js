@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   GoogleMap,
   LoadScript,
   Marker,
   InfoWindow,
   InfoBox,
-} from "@react-google-maps/api";
-import AllEventsView from "./AllEventsView";
-import { NewEventForm } from "./NewEventForm";
-import { useSelector } from "react-redux";
+} from '@react-google-maps/api';
+import AllEventsView from './AllEventsView';
+import { NewEventForm } from './NewEventForm';
+import { useSelector } from 'react-redux';
 import {
   Button,
   Popover,
@@ -17,14 +17,14 @@ import {
   CardActions,
   Typography,
   Paper,
-} from "@material-ui/core";
-import Welcome from "./Welcome";
-import Login from "./Login";
-import InfoModal from "./InfoModal";
+} from '@material-ui/core';
+import Welcome from './Welcome';
+import Login from './Login';
+import InfoModal from './InfoModal';
 
 //FEELING WILD
-import uniqueRandomizer from "../../script/uniqueRandomizer";
-import MapSingleEvent from "./MapSingleEvent";
+import uniqueRandomizer from '../../script/uniqueRandomizer';
+import MapSingleEvent from './MapSingleEvent';
 
 const LandingPage = () => {
   //DISPLAY STATE HANDLER
@@ -53,7 +53,7 @@ const LandingPage = () => {
   const [scrnAnchrLeft, setScrnAnchrLeft] = useState(
     Math.floor((window.innerWidth / 100) * 3)
   );
-  window.addEventListener("resize", function (event) {
+  window.addEventListener('resize', function (event) {
     setScrnAnchrLeft(Math.floor((window.innerWidth / 100) * 3));
   });
 
@@ -65,7 +65,7 @@ const LandingPage = () => {
 
   //NEW EVENT FORM HANDLER
   const [newEvtPosition, setNewEvtPosition] = useState({});
-  const cancelNewEvt = (e) => {
+  const cancelNewEvt = () => {
     setNewEvtPosition({});
   };
 
@@ -73,8 +73,8 @@ const LandingPage = () => {
     <div>
       {showInfoModal ? <InfoModal setShowInfoModal={setShowInfoModal} /> : null}
       <LoadScript
-        mapIds={["3f2b11fd3ce1fda"]}
-        googleMapsApiKey={"AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78"}
+        mapIds={['3f2b11fd3ce1fda']}
+        googleMapsApiKey={'AIzaSyCv34MWCyAXk-l8PBmkFIGDsTUt2S2oe78'}
       >
         <GoogleMap
           onClick={() => {
@@ -88,11 +88,11 @@ const LandingPage = () => {
                 })
               : null;
           }}
-          mapContainerStyle={{ height: "100vh", width: "100vw" }}
+          mapContainerStyle={{ height: '100vh', width: '100vw' }}
           zoom={13}
           center={{ lat: 40.7589, lng: -73.9851 }}
           options={{
-            mapId: "3f2b11fd3ce1fda",
+            mapId: '3f2b11fd3ce1fda',
             zoomControl: false,
             streetViewControl: false,
             mapTypeControl: false,
@@ -178,12 +178,12 @@ const LandingPage = () => {
                   left: `${scrnAnchrLeft}`,
                 }}
                 anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
+                  vertical: 'top',
+                  horizontal: 'left',
                 }}
                 transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
+                  vertical: 'top',
+                  horizontal: 'left',
                 }}
                 onClose={() => setAnchor(null)}
               >
