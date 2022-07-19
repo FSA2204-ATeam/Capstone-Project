@@ -1,10 +1,8 @@
-
-import React, { useState } from 'react';
-import { registration } from '../store';
-import { useDispatch } from 'react-redux';
-import { Grid, TextField, Button, ButtonGroup } from '@material-ui/core';
-import Login from './Login';
-
+import React, { useState } from "react";
+import { registration } from "../store";
+import { useDispatch } from "react-redux";
+import { Grid, TextField, Button, ButtonGroup } from "@material-ui/core";
+import Login from "./Login";
 
 const defaultValues = {
   firstname: "",
@@ -36,26 +34,24 @@ const SignUp = () => {
 
   const handleBackButton = (event) => {
     setBackButton(event.target);
-  }
+  };
 
   return (
-
     <div>
       {!backButton ? (
-
         <form onSubmit={handleSubmit}>
           <Grid
-          container
-          spacing={1}
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
+            container
+            spacing={1}
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
           >
             <Grid item>
               <TextField
                 id="firstname-input"
                 name="firstname"
-                placeholder="Firstname"
+                placeholder="First Name"
                 type="text"
                 variant="outlined"
                 value={formValues.firstname}
@@ -66,7 +62,7 @@ const SignUp = () => {
               <TextField
                 id="lastname-input"
                 name="lastname"
-                placeholder="Lastname"
+                placeholder="Last Name"
                 type="text"
                 variant="outlined"
                 value={formValues.lastname}
@@ -106,29 +102,17 @@ const SignUp = () => {
                 onChange={handleChange}
               />
             </Grid>
-            <ButtonGroup
-              variant="contained"
-              size="small"
-              color="secondary"
-            >
-            <Button
-              type="submit"
-
-            >
-              Submit
-            </Button>
-            <Button
-              type="button"
-              onClick={handleBackButton}
-            >
-              Back
-            </Button>
+            <ButtonGroup variant="contained" size="small" color="secondary">
+              <Button type="submit">Submit</Button>
+              <Button type="button" onClick={handleBackButton}>
+                Back
+              </Button>
             </ButtonGroup>
           </Grid>
         </form>
-    ) : (
-      <Login/>
-    )}
+      ) : (
+        <Login />
+      )}
     </div>
   );
 };

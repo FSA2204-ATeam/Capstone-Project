@@ -1,9 +1,8 @@
-
-import React, { useState } from 'react';
-import { authenticate } from '../store';
-import { useDispatch } from 'react-redux';
-import { Grid, Button, TextField, ButtonGroup } from '@material-ui/core';
-import SignUp from './SignUp';
+import React, { useState } from "react";
+import { authenticate } from "../store";
+import { useDispatch } from "react-redux";
+import { Grid, Button, TextField, ButtonGroup } from "@material-ui/core";
+import SignUp from "./SignUp";
 
 const defaultValues = {
   username: "",
@@ -33,36 +32,35 @@ const Login = () => {
 
   const closeLoginPopover = (event) => {
     setLoginButtonOn(event.target);
-  }
+  };
 
   const handleSignup = (event) => {
     setSignupButton(event.target);
-  }
+  };
 
   return (
-
     <div>
-        {!signupButton ? (
+      {!signupButton ? (
         <form onSubmit={handleSubmit}>
           <Grid
-          container
-          spacing={1}
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
+            container
+            spacing={1}
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
           >
-            <Grid item >
+            <Grid item>
               <TextField
                 id="username-input"
                 name="username"
-                placeholder="Userame"
+                placeholder="Username"
                 type="text"
                 variant="outlined"
                 value={formValues.username}
                 onChange={handleChange}
               />
             </Grid>
-            <Grid item >
+            <Grid item>
               <TextField
                 id="password"
                 name="password"
@@ -73,33 +71,21 @@ const Login = () => {
                 onChange={handleChange}
               />
             </Grid>
-            <Grid item >
-            <ButtonGroup
-              variant="contained"
-              size="small"
-              color="secondary"
-            >
-            <Button
-              type="submit"
-
-              onClick={() => closeLoginPopover(null)}
-
-            >
-              Log in
-            </Button>
-            <Button
-              type="submit"
-              onClick={handleSignup}
-            >
-              Sign Up
-            </Button>
-            </ButtonGroup>
+            <Grid item>
+              <ButtonGroup variant="contained" size="small" color="secondary">
+                <Button type="submit" onClick={() => closeLoginPopover(null)}>
+                  Log in
+                </Button>
+                <Button type="submit" onClick={handleSignup}>
+                  Sign Up
+                </Button>
+              </ButtonGroup>
             </Grid>
           </Grid>
         </form>
-        ) : (
-          <SignUp/>
-        )}
+      ) : (
+        <SignUp />
+      )}
     </div>
   );
 };
