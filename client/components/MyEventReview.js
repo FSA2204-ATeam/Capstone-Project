@@ -44,7 +44,7 @@ function MyEventReview({ event }) {
 
   return (
     <div>
-      <p>
+      <p style={{fontSize: "10px", fontFamily: "Poppins"}}>
         Please enable microphone access to record your thoughts and feelings
         about the event
       </p>
@@ -77,7 +77,7 @@ function MyEventReview({ event }) {
                 }
               }}
             >
-              {mic ? "Turn Off" : "Turn On"}
+              {mic ? "Mic Off" : "Mic On"}
             </Button>
           )}
         {review ? (

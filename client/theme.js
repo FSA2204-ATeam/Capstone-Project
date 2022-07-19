@@ -44,13 +44,12 @@ export const useFrontEndStyles = makeStyles((theme) => ({
     fontWeight: "italic",
     margin: "15px",
     fontSize: 15,
-    fontFamily: "Arial",
+    fontFamily: "Poppins",
     align: "center",
   },
   myEventsStyle: {
-    fontWeight: "bold",
     fontSize: 18,
-    fontFamily: "Arial",
+    fontFamily: "Poppins",
     align: "justify",
   },
 }));
