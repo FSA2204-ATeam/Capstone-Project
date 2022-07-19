@@ -44,11 +44,17 @@ export const UpdateHostedEvent = ({ event }) => {
     e.preventDefault();
 
     const newEvent = { ...values, startDate, endDate, id: event.id };
-    dispatch(updateUserDefinedEvent(newEvent, user.id));
+    dispatch(updateUserDefinedEvent(newEvent, user.id, updateFeedback));
   };
 
   const onChange = (e) => {
+    setSuccessfulUpdate(false);
     setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const [successfulUpdate, setSuccessfulUpdate] = useState(false);
+  const updateFeedback = () => {
+    setSuccessfulUpdate(true);
   };
 
   return (
@@ -83,6 +89,7 @@ export const UpdateHostedEvent = ({ event }) => {
         </div>
         <div>
           <button>Update</button>
+          {successfulUpdate && <p>Event successfully updated.</p>}
         </div>
       </form>
     </div>

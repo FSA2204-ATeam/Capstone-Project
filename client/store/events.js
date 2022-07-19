@@ -65,20 +65,22 @@ export const addUserDefinedEvent =
     }
   };
 
-export const updateUserDefinedEvent = (event, userId) => async (dispatch) => {
-  try {
-    const { data: updated } = await axios.put('/api/events', event, {
-      headers: {
-        authorization: token,
-      },
-    });
-    if (updated) {
-      return dispatch(fetchUserEvents(userId));
+export const updateUserDefinedEvent =
+  (event, userId, updateFeedback) => async (dispatch) => {
+    try {
+      const { data: updated } = await axios.put('/api/events', event, {
+        headers: {
+          authorization: token,
+        },
+      });
+      if (updated) {
+        updateFeedback();
+        return dispatch(fetchUserEvents(userId));
+      }
+    } catch (err) {
+      console.error(err);
     }
-  } catch (err) {
-    console.error(err);
-  }
-};
+  };
 
 const eventsReducer = (state = { events: [], event: {} }, action) => {
   switch (action.type) {
