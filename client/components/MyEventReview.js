@@ -44,10 +44,6 @@ function MyEventReview({ event }) {
 
   return (
     <div>
-      <p style={{fontSize: "10px", fontFamily: "Poppins"}}>
-        Please enable microphone access to record your thoughts and feelings
-        about the event
-      </p>
       <form id="test-review-submit" onSubmit={handleSubmit}>
           <input
             name="review"
@@ -104,6 +100,10 @@ function MyEventReview({ event }) {
             Submit
           </Button>
         )}
+        <p style={{fontSize: "10px", fontFamily: "Poppins"}}>
+        Please enable microphone access to record your thoughts and feelings
+        about the event
+        </p>
       </form>
     </div>
   );

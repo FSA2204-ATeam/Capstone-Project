@@ -8,7 +8,7 @@ const SingleEvent = ({ props }) => {
   const classes = useFrontEndStyles();
   
   return (
-    <div style={{fontSize: "1em", fontFamily: "Poppins"}}>
+    <div style={{fontSize: "15px", fontFamily: "Poppins"}}>
           {/* <Typography variant="body2"> */}
         <p>{props.shortDesc} </p>
         <p>
@@ -24,7 +24,7 @@ const SingleEvent = ({ props }) => {
           null
         )}
         <p>Current RSVPs: {props.totalGuests}</p>
-        <p align="center">
+        <p>
           <Link href={`${props.permalink}`}>Website</Link>
         </p>
           {/* </Typography> */}
