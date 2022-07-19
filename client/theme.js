@@ -8,11 +8,12 @@ const black = grey[900];
 const theme = createTheme({
   palette: {
     primary: {
-      main: brown[500],
+      main: "#F9DB53",
+      contrastText: black,
     },
     secondary: {
-      main: green[700],
-      contrastText: green[700],
+      main: "#F9DB53",
+      contrastText: black,
     },
   },
 });
@@ -22,7 +23,7 @@ export const useFrontEndStyles = makeStyles((theme) => ({
     color: black,
     fontSize: 25,
     fontWeight: "bold",
-    fontFamily: "Arial",
+    fontFamily: "Shrikhand",
   },
   typography: {
     color: black,
@@ -43,31 +44,13 @@ export const useFrontEndStyles = makeStyles((theme) => ({
     fontWeight: "italic",
     margin: "15px",
     fontSize: 15,
-    fontFamily: "Arial",
+    fontFamily: "Poppins",
     align: "center",
   },
   myEventsStyle: {
-    fontWeight: "bold",
     fontSize: 18,
-    fontFamily: "Arial",
+    fontFamily: "Poppins",
     align: "justify",
-  },
-}));
-
-export const useNavStyles = makeStyles((theme) => ({
-  navButton: {
-    margin: "15px",
-    display: "flex",
-    background: white,
-    fontColor: green[700],
-  },
-  title: {
-    flexGrow: 1,
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
-    color: green[700],
   },
 }));
 

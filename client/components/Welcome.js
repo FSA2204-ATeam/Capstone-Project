@@ -32,18 +32,18 @@ const Welcome = ({ wildModeHandler }) => {
   const [displayComponent, setDisplayComponent] = useState("welcome");
   const anchorRef = useRef();
 
-  // const handleClick = (event) => {
-  //   event.preventDefault();
-  //   dispatch(HERE WE HAVE TO DECIDE WHAT TO DISPATCH AFTER WE CLICK ON the wild button)
-  //   console.log(event);
-  // };
-
   return (
     <div>
+      {displayComponent==="welcome" ?
+      (
+        <div display="flex">
+          <Button>BACK</Button>
+        </div>
+      ) : (
         <div display="flex">
           <Button onClick={() => setDisplayComponent("welcome")}>BACK</Button>
-          <img src="/URBAN_ICON.png" height="100px" />
         </div>
+      )}
       {isLoggedIn ? (
         <>
           {(() => {
@@ -56,13 +56,12 @@ const Welcome = ({ wildModeHandler }) => {
                         align="center"
                         title={
                           <Typography className={classes.cHeader}>
-                            Welcome!
+                            Let's Adventure!
                           </Typography>
                         }
                       />
                       <Typography className={classes.typography}>
                         <Button
-                          // href="/profile" className={classes.links}
                           onClick={() => setDisplayComponent("profile")}
                         >
                           MY PROFILE
@@ -72,11 +71,6 @@ const Welcome = ({ wildModeHandler }) => {
                         </Button>
                         <Button
                           onClick={() => wildModeHandler()}
-
-                          //onClick={uniqueRandomizer(activeEvents.length)} // return random =  [ 3, 1, 0, 2]
-
-                          // single event will be set to events[random[idx = 0]]
-                          // if "next" is selected, then increment idx+1  if idx+1 === NULL display "no more events"
                         >
                           Feeling Wild
                         </Button>
@@ -97,10 +91,6 @@ const Welcome = ({ wildModeHandler }) => {
                 return <UserProfileForm />;
               case "myEvents":
                 return <MyEvents />;
-              // case 'lost':
-              //   return <Lost handleClick={handleClick} />
-              // default:
-              //   return null
             }
           })()}
         </>

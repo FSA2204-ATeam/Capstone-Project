@@ -167,7 +167,7 @@ const LandingPage = () => {
                     src="/usericon.gif"
                   />
                 ) : (
-                  <Typography color="secondary">LOGIN</Typography>
+                  <Typography color="000000">LOGIN</Typography>
                 )}
               </Button>
               <Popover
