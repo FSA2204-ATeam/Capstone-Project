@@ -9,7 +9,6 @@ const SingleEvent = ({ props }) => {
   
   return (
     <div style={{fontSize: "15px", fontFamily: "Poppins"}}>
-          {/* <Typography variant="body2"> */}
         <p>{props.shortDesc} </p>
         <p>
           {`${new Date(
@@ -27,7 +26,6 @@ const SingleEvent = ({ props }) => {
         <p>
           <Link href={`${props.permalink}`}>Website</Link>
         </p>
-          {/* </Typography> */}
     </div>
   );
 };

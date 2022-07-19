@@ -114,9 +114,9 @@ const UserProfileForm = (props) => {
       [category]: !categoryPreferences[category],
     });
   };
-  // console.log("State--->", state);
+
   return (
-    <div>
+    <div align="center">
       <form onSubmit={handleSubmit}>
         <h1 align="center" style={{fontFamily: "Shrikhand"}}>{`${props.userProfile.username
           .slice(0, 1)
