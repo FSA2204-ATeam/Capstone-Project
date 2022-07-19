@@ -34,8 +34,7 @@ const Welcome = ({ wildModeHandler }) => {
 
   return (
     <div>
-      {displayComponent==="welcome" ?
-      (
+      {displayComponent === "welcome" ? (
         <div display="flex">
           <Button>BACK</Button>
         </div>
@@ -61,29 +60,36 @@ const Welcome = ({ wildModeHandler }) => {
                         }
                       />
                       <Typography className={classes.typography}>
-                        <Button
-                          onClick={() => setDisplayComponent("profile")}
-                        >
+                        <Button onClick={() => setDisplayComponent("profile")}>
                           MY PROFILE
                         </Button>
                         <Button onClick={() => setDisplayComponent("myEvents")}>
                           MY EVENTS
                         </Button>
-                        <Button
-                          onClick={() => wildModeHandler()}
-                        >
+                        <Button onClick={() => wildModeHandler()}>
                           Feeling Wild
                         </Button>
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <ButtonGroup
-                        variant="contained"
-                        size="small"
-                        color="secondary"
+                      <Grid
+                        container
+                        spacing={1}
+                        direction="column"
+                        justifyContent="center"
+                        alignItems="center"
                       >
-                        <Button onClick={toggleCloseLogout}>Logout</Button>
-                      </ButtonGroup>
+                        <Grid item>
+                          <Button
+                            variant="contained"
+                            size="small"
+                            color="secondary"
+                            onClick={toggleCloseLogout}
+                          >
+                            Logout
+                          </Button>
+                        </Grid>
+                      </Grid>
                     </CardActions>
                   </Card>
                 );
