@@ -39,7 +39,13 @@ function MyEventReview({ event }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(getSentimentAnalysis(review, eventId));
+    dispatch(getSentimentAnalysis(review, eventId, updtSubmissionFeedback));
+  };
+
+  //UPDATE SUBMIT FEEDBACK
+  const [successfulUpdt, setSuccessfulUpdt] = useState(false);
+  const updtSubmissionFeedback = () => {
+    setSuccessfulUpdt(true);
   };
 
   return (
@@ -109,7 +115,7 @@ function MyEventReview({ event }) {
             }}
             type="submit"
           >
-            Update
+            {successfulUpdt ? 'Updated!' : 'Update'}
           </Button>
         ) : (
           <Button
@@ -120,7 +126,7 @@ function MyEventReview({ event }) {
             }}
             type="submit"
           >
-            Submit
+            {successfulUpdt ? 'Submitted!' : 'Submit'}
           </Button>
         )}
         <p style={{ fontSize: '10px', fontFamily: 'Poppins' }}>
