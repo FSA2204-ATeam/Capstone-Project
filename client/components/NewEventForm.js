@@ -72,10 +72,10 @@ export const NewEventForm = (latLng) => {
   };
 
   return (
-    <div>
+    <div align="center">
       {toggleOpen ? (
         <form onSubmit={handleSubmit}>
-          <h1>New Event Form</h1>
+          <h1 style={{fontFamily: "Shrikhand"}}>Add your Event!</h1>
           {inputs.map((input) => (
             <FormInput
               toggleOpen={toggleOpen}
@@ -89,6 +89,7 @@ export const NewEventForm = (latLng) => {
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <DateTimePicker
                 label="Event starts"
+                color="#F9DB53"
                 value={startDate}
                 onChange={setStartDate}
               />
@@ -98,25 +99,36 @@ export const NewEventForm = (latLng) => {
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <DateTimePicker
                 label="Event ends"
+                color="#F9DB53"
                 value={endDate}
                 onChange={setEndDate}
               />
             </MuiPickersUtilsProvider>
           </p>
           <p>
+            {successfulEvt ?
+            (<Button
+              type={'submit'}
+              style={{
+                backgroundColor: '#F9DB53',
+                padding: '5px 0px',
+                fontSize: '10px',
+              }}
+            >
+              Submitted!
+            </Button>
+            ) : (
             <Button
               type={'submit'}
               style={{
-                backgroundColor: '#377E3F',
+                backgroundColor: '#F5F5F5',
                 padding: '5px 0px',
                 fontSize: '10px',
               }}
             >
               Submit
-            </Button>
-            {successfulEvt && (
-              <p color={'green'}>Event Submitted Successfully!</p>
-            )}
+            </Button>)
+            }
           </p>
         </form>
       ) : null}
