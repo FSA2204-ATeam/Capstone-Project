@@ -56,7 +56,7 @@ const Welcome = ({ wildModeHandler }) => {
                         align="center"
                         title={
                           <Typography className={classes.cHeader}>
-                            Welcome!
+                            Let's Adventure!
                           </Typography>
                         }
                       />

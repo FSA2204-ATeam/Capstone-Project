@@ -8,11 +8,12 @@ const black = grey[900];
 const theme = createTheme({
   palette: {
     primary: {
-      main: brown[500],
+      main: "#F9DB53",
+      contrastText: black,
     },
     secondary: {
-      main: green[700],
-      contrastText: green[700],
+      main: "#F9DB53",
+      contrastText: black,
     },
   },
 });
@@ -22,7 +23,7 @@ export const useFrontEndStyles = makeStyles((theme) => ({
     color: black,
     fontSize: 25,
     fontWeight: "bold",
-    fontFamily: "Arial",
+    fontFamily: "Shrikhand",
   },
   typography: {
     color: black,
