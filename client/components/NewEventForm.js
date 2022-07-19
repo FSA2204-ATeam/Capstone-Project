@@ -1,20 +1,27 @@
-import React, { useState, useEffect } from "react";
-import FormInput from "./FormInput";
-import DateFnsUtils from "@date-io/date-fns";
-import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { addUserDefinedEvent } from "../store";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import FormInput from './FormInput';
+import DateFnsUtils from '@date-io/date-fns';
+import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { addUserDefinedEvent } from '../store';
+import { useDispatch } from 'react-redux';
+import {
+  Button,
+  Popover,
+  CardContent,
+  CardHeader,
+  CardActions,
+  Typography,
+  Paper,
+} from '@material-ui/core';
 
 export const NewEventForm = (latLng) => {
   const [toggleOpen, setToggleOpen] = useState(!!latLng.position.lat);
 
-  useEffect(() => {
-    console.log("useEffect on new evt form triggered");
-  }, [latLng]);
+  useEffect(() => {}, [latLng]);
 
   const [values, setValues] = useState({
-    name: "",
-    shortDesc: "",
+    name: '',
+    shortDesc: '',
     eventLat: latLng.position.lat,
     eventLng: latLng.position.lng,
   });
@@ -25,21 +32,21 @@ export const NewEventForm = (latLng) => {
   const inputs = [
     {
       id: 1,
-      name: "name",
-      type: "",
-      placeholder: "Title",
-      errorMessage: "Title should be 2-50 characters long!",
-      label: "title",
+      name: 'name',
+      type: '',
+      placeholder: 'Title',
+      errorMessage: 'Title should be 2-50 characters long!',
+      label: 'title',
       pattern: `^[ a-zA-Z0-9!@#$%^&*?,.:;\\-\\()""'']{3,50}$`,
       required: true,
     },
     {
       id: 2,
-      name: "shortDesc",
-      type: "text",
-      placeholder: "Description",
-      errorMessage: "Description should be 3-1024 characters!",
-      label: "description",
+      name: 'shortDesc',
+      type: 'text',
+      placeholder: 'Description',
+      errorMessage: 'Description should be 3-1024 characters!',
+      label: 'description',
       pattern: `^[ a-zA-Z0-9!@#$%^&*?,.:;\\-\\()""'']{3,1024}$`,
       required: true,
     },
@@ -51,11 +58,17 @@ export const NewEventForm = (latLng) => {
     e.preventDefault();
 
     const newEvent = { ...values, startDate, endDate };
-    dispatch(addUserDefinedEvent(newEvent));
+    dispatch(addUserDefinedEvent(newEvent, submissionFeedback));
   };
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  //EVENT SUBMIT FEEDBACK
+  const [successfulEvt, setSuccessfulEvt] = useState(false);
+  const submissionFeedback = () => {
+    setSuccessfulEvt(true);
   };
 
   return (
@@ -91,7 +104,19 @@ export const NewEventForm = (latLng) => {
             </MuiPickersUtilsProvider>
           </p>
           <p>
-            <button>Submit</button>
+            <Button
+              type={'submit'}
+              style={{
+                backgroundColor: '#377E3F',
+                padding: '5px 0px',
+                fontSize: '10px',
+              }}
+            >
+              Submit
+            </Button>
+            {successfulEvt && (
+              <p color={'green'}>Event Submitted Successfully!</p>
+            )}
           </p>
         </form>
       ) : null}

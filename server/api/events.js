@@ -1,15 +1,15 @@
-const router = require("express").Router();
-const axios = require("axios");
+const router = require('express').Router();
+const axios = require('axios');
 const {
   models: { Event, UsersEvents },
-} = require("../db");
-const User = require("../db/models/User");
-const formatDate = require("../../script/formatDate");
+} = require('../db');
+const User = require('../db/models/User');
+const formatDate = require('../../script/formatDate');
 
-const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
-const { Op } = require("sequelize");
+const { requireToken, isAdmin } = require('../api/gateKeepingMiddleware');
+const { Op } = require('sequelize');
 
-router.get("/", async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   let [searchStart, searchEnd, startDate, endDate] = formatDate(5);
 
   let addressUrl = `https://api.nyc.gov/calendar/search?startDate=${startDate} 12:00 AM&endDate=${endDate} 12:00 AM&pageNumber=`;
@@ -38,8 +38,8 @@ router.get("/", async (req, res, next) => {
       for (let pgNo = 1; pgNo <= 5; pgNo++) {
         const { data } = await axios.get(`${addressUrl}${pgNo}`, {
           headers: {
-            "Cache-Control": "no-cache",
-            "Ocp-Apim-Subscription-Key": `${process.env.NYC_EVENTS_API_KEY}`,
+            'Cache-Control': 'no-cache',
+            'Ocp-Apim-Subscription-Key': `${process.env.NYC_EVENTS_API_KEY}`,
           },
         });
 
@@ -56,7 +56,7 @@ router.get("/", async (req, res, next) => {
               eventLat: evt.geometry[0].lat,
               eventLng: evt.geometry[0].lng,
               databaseId: evt.id.toString(),
-              source: "NYC API",
+              source: 'NYC API',
             })
           );
       }
@@ -79,7 +79,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.post("/", requireToken, async (req, res, next) => {
+router.post('/', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
 
@@ -92,20 +92,21 @@ router.post("/", requireToken, async (req, res, next) => {
 
     // can return a custom status to trigger user acknowledgement?
     res.status(200);
+    res.send();
   } catch (error) {
     next(error);
   }
 });
 
-router.put("/", requireToken, async (req, res, next) => {
+router.put('/', requireToken, async (req, res, next) => {
   try {
-    console.log("Updated Req.body", req.body);
+    console.log('Updated Req.body', req.body);
     const updated = await Event.update(req.body, {
       where: {
         id: req.body.id,
       },
     });
-    console.log("did I update", updated);
+    console.log('did I update', updated);
     res.json(updated);
   } catch (error) {
     next(error);
