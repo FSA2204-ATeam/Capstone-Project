@@ -114,13 +114,13 @@ const UserProfileForm = (props) => {
       [category]: !categoryPreferences[category],
     });
   };
-  // console.log("State--->", state);
+
   return (
-    <div>
+    <div align="center">
       <form onSubmit={handleSubmit}>
-        <h1 align="center">{`${props.userProfile.username
+        <h1 align="center" style={{fontFamily: "Shrikhand"}}>{`${props.userProfile.username
           .slice(0, 1)
-          .toUpperCase()}${props.userProfile.username.slice(1)}'s Events`}</h1>
+          .toUpperCase()}${props.userProfile.username.slice(1)}'s Profile`}</h1>
         {inputs.map((input) => (
           <FormInput
             key={input.id}
