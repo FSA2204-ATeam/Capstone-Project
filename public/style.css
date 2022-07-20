@@ -54,7 +54,7 @@ form div {
 .formInput {
   display: flex;
   flex-direction: column;
-  width: 240px;
+  width: 220px;
 }
 
 input {

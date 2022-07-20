@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { authenticate } from '../store';
-import { useDispatch } from 'react-redux';
-import { Grid, Button, TextField, ButtonGroup } from '@material-ui/core';
-import SignUp from './SignUp';
+import React, { useState } from "react";
+import { authenticate } from "../store";
+import { useDispatch } from "react-redux";
+import { Grid, Button, TextField, ButtonGroup } from "@material-ui/core";
+import SignUp from "./SignUp";
 
 const defaultValues = {
-  username: '',
-  password: '',
+  username: "",
+  password: "",
 };
 
 const Login = () => {
@@ -26,7 +26,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(authenticate(formValues, 'login'));
+    dispatch(authenticate(formValues, "login"));
   };
 
   const closeLoginPopover = (event) => {
@@ -43,10 +43,10 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <Grid
             container
-            spacing={1}
+            // spacing={1}
             direction="column"
-            justifyContent="center"
-            alignItems="center"
+            justifyContent="space-around"
+            alignItems="stretch"
           >
             <Grid item>
               <TextField
@@ -71,7 +71,7 @@ const Login = () => {
               />
             </Grid>
             <Grid item>
-              <ButtonGroup variant="contained" size="small" color="secondary">
+              <ButtonGroup variant="contained" size="medium" color="secondary">
                 <Button type="submit" onClick={() => closeLoginPopover(null)}>
                   Log in
                 </Button>

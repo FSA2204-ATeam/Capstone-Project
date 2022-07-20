@@ -30,10 +30,6 @@ const LandingPage = () => {
   //DISPLAY STATE HANDLER
   const [wildMode, setWildMode] = useState(false);
   const isLoggedIn = useSelector((state) => !!state.auth.id);
-  const [anchor, setAnchor] = useState(null);
-  const openPopover = (event) => {
-    setAnchor(event.target);
-  };
 
   //WILD MODE HANDLER
   const allEvents = useSelector((state) => state.events.events);
@@ -67,6 +63,15 @@ const LandingPage = () => {
   const [newEvtPosition, setNewEvtPosition] = useState({});
   const cancelNewEvt = () => {
     setNewEvtPosition({});
+  };
+
+  // POPOVER OPEN/CLOSE HANDLER
+  const [anchor, setAnchor] = useState(null);
+  const openPopover = (event) => {
+    setAnchor(event.target);
+  };
+  const closePopover = () => {
+    setAnchor(null);
   };
 
   return (
@@ -189,7 +194,10 @@ const LandingPage = () => {
               >
                 {isLoggedIn ? (
                   <div>
-                    <Welcome wildModeHandler={wildModeHandler} />
+                    <Welcome
+                      closePopover={closePopover}
+                      wildModeHandler={wildModeHandler}
+                    />
                   </div>
                 ) : (
                   <Login />
