@@ -36,7 +36,7 @@ export const NewEventForm = (latLng) => {
       type: '',
       placeholder: 'Title',
       errorMessage: 'Title should be 2-50 characters long!',
-      label: 'title',
+      label: 'Title',
       pattern: `^[ a-zA-Z0-9!@#$%^&*?,.:;\\-\\()""'']{3,50}$`,
       required: true,
     },
@@ -46,7 +46,7 @@ export const NewEventForm = (latLng) => {
       type: 'text',
       placeholder: 'Description',
       errorMessage: 'Description should be 3-1024 characters!',
-      label: 'description',
+      label: 'Description',
       pattern: `^[ a-zA-Z0-9!@#$%^&*?,.:;\\-\\()""'']{3,1024}$`,
       required: true,
     },
@@ -75,7 +75,7 @@ export const NewEventForm = (latLng) => {
     <div align="center">
       {toggleOpen ? (
         <form onSubmit={handleSubmit}>
-          <h1 style={{fontFamily: "Shrikhand"}}>Add your Event!</h1>
+          <h1 style={{ fontFamily: 'Shrikhand' }}>Add your Event!</h1>
           {inputs.map((input) => (
             <FormInput
               toggleOpen={toggleOpen}
@@ -106,29 +106,29 @@ export const NewEventForm = (latLng) => {
             </MuiPickersUtilsProvider>
           </p>
           <p>
-            {successfulEvt ?
-            (<Button
-              type={'submit'}
-              style={{
-                backgroundColor: '#F9DB53',
-                padding: '5px 0px',
-                fontSize: '10px',
-              }}
-            >
-              Submitted!
-            </Button>
+            {successfulEvt ? (
+              <Button
+                type={'submit'}
+                style={{
+                  backgroundColor: '#F9DB53',
+                  padding: '5px 0px',
+                  fontSize: '10px',
+                }}
+              >
+                Submitted!
+              </Button>
             ) : (
-            <Button
-              type={'submit'}
-              style={{
-                backgroundColor: '#F5F5F5',
-                padding: '5px 0px',
-                fontSize: '10px',
-              }}
-            >
-              Submit
-            </Button>)
-            }
+              <Button
+                type={'submit'}
+                style={{
+                  backgroundColor: '#F5F5F5',
+                  padding: '5px 0px',
+                  fontSize: '10px',
+                }}
+              >
+                Submit
+              </Button>
+            )}
           </p>
         </form>
       ) : null}

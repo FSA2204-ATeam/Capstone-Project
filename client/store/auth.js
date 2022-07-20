@@ -36,11 +36,12 @@ export const me = () => async (dispatch) => {
 };
 
 export const authenticate =
-  ({username, password}, method) => async (dispatch) => {
+  ({ username, password }, method) =>
+  async (dispatch) => {
     try {
       const res = await axios.post(`/auth/${method}`, { username, password });
       window.localStorage.setItem(TOKEN, res.data.token);
-      history.push("/");
+      history.push('/');
       dispatch(me());
     } catch (authError) {
       return dispatch(setAuth({ error: authError }));
@@ -48,7 +49,8 @@ export const authenticate =
   };
 
 export const registration =
-  ({firstname, lastname, email, username, password}, method) => async (dispatch) => {
+  ({ firstname, lastname, email, username, password }, method) =>
+  async (dispatch) => {
     try {
       const res = await axios.post(`/auth/${method}`, {
         firstname,
@@ -58,8 +60,8 @@ export const registration =
         password,
       });
       window.localStorage.setItem(TOKEN, res.data.token);
-      history.push("/");
-      console.log(res);
+      history.push('/');
+
       dispatch(me());
     } catch (authError) {
       return dispatch(setAuth({ error: authError }));
@@ -68,7 +70,7 @@ export const registration =
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
-  history.push("/");
+  history.push('/');
 
   return {
     type: SET_AUTH,

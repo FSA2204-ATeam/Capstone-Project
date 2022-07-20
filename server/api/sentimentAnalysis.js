@@ -1,19 +1,19 @@
-const router = require("express").Router();
-const NaturalLanguageUnderstandingV1 = require("ibm-watson/natural-language-understanding/v1");
-const { IamAuthenticator } = require("ibm-watson/auth");
-const { requireToken, isAdmin } = require("../api/gateKeepingMiddleware");
+const router = require('express').Router();
+const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
+const { IamAuthenticator } = require('ibm-watson/auth');
+const { requireToken, isAdmin } = require('../api/gateKeepingMiddleware');
 const {
   models: { Event, User, UsersEvents },
-} = require("../db");
+} = require('../db');
 
-router.post("/", async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   const API_KEY = process.env.WATSON_IBM_API_KEY;
 
   const url =
-    "https://api.us-east.natural-language-understanding.watson.cloud.ibm.com/instances/ac94611c-99fa-4a1f-9cea-168ca4361ddb";
+    'https://api.us-east.natural-language-understanding.watson.cloud.ibm.com/instances/ac94611c-99fa-4a1f-9cea-168ca4361ddb';
 
   const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
-    version: "2022-04-07",
+    version: '2022-04-07',
     authenticator: new IamAuthenticator({
       apikey: `${API_KEY}`,
     }),
@@ -43,9 +43,8 @@ router.post("/", async (req, res, next) => {
   res.send(document);
 });
 
-router.put("/", requireToken, async (req, res, next) => {
+router.put('/', requireToken, async (req, res, next) => {
   try {
-    console.log("req.body", req.body);
     const user = await User.findByToken(req.headers.authorization);
     const updated = await UsersEvents.update(
       {

@@ -1,20 +1,20 @@
-"use strict";
+'use strict';
 
-const { Sequelize } = require("sequelize");
-const axios = require("axios");
+const { Sequelize } = require('sequelize');
+const axios = require('axios');
 
 const {
   db,
   models: { User, Event, UsersEvents, UserPreferences },
-} = require("../server/db");
+} = require('../server/db');
 
-const usersSeed = require("./user_data.json");
-const eventsSeed = require("./event_data.json");
+const usersSeed = require('./user_data.json');
+const eventsSeed = require('./event_data.json');
 
 async function seed() {
   await db.sync({ force: true });
   // clears db and matches models to tables
-  console.log("db synced!");
+  console.log('db synced!');
 
   // Creating Users
   const users = await User.bulkCreate(usersSeed);
@@ -87,8 +87,8 @@ async function seed() {
   ]);
 
   console.log(`seeded ${users.length} users`);
-  // console.log(`seeded ${events.length} events`);
-  // console.log(`seeded ${crossover.length} crossover(s)`);
+  console.log(`seeded ${events.length} events`);
+  console.log(`seeded ${crossover.length} crossover(s)`);
   console.log(`seeded successfully`);
   return {
     users: {
@@ -104,16 +104,16 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
-  console.log("seeding...");
+  console.log('seeding...');
   try {
     await seed();
   } catch (err) {
     console.error(err);
     process.exitCode = 1;
   } finally {
-    console.log("closing db connection");
+    console.log('closing db connection');
     await db.close();
-    console.log("db connection closed");
+    console.log('db connection closed');
   }
 }
 

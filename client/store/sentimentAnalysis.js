@@ -1,8 +1,8 @@
-import axios from "axios";
-const token = window.localStorage.getItem("token");
+import axios from 'axios';
+const token = window.localStorage.getItem('token');
 
-const GET_SENTIMENT_ANALYSIS = "GET_SENTIMENT_ANALYSIS";
-const SET_SENTIMENT_ANALYSIS = "SET_SENTIMENT_ANALYSIS";
+const GET_SENTIMENT_ANALYSIS = 'GET_SENTIMENT_ANALYSIS';
+const SET_SENTIMENT_ANALYSIS = 'SET_SENTIMENT_ANALYSIS';
 
 export const _getSentimentAnalysis = (analysis) => ({
   type: GET_SENTIMENT_ANALYSIS,
@@ -14,19 +14,21 @@ export const _setSentimentAnalysis = (analysis) => ({
   analysis,
 });
 
-export const getSentimentAnalysis = (review, eventId) => {
+export const getSentimentAnalysis = (
+  review,
+  eventId,
+  updtSubmissionFeedback
+) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post("/api/sentimentAnalysis", null, {
+      const { data } = await axios.post('/api/sentimentAnalysis', null, {
         headers: { review },
       });
-      console.log(
-        `Watson says my review is ${data.label}, with a score of ${data.score}!`
-      );
+
       dispatch(_getSentimentAnalysis(data));
 
       const updated = await axios.put(
-        "/api/sentimentAnalysis",
+        '/api/sentimentAnalysis',
         {
           ...data,
           eventId: eventId,
@@ -38,8 +40,7 @@ export const getSentimentAnalysis = (review, eventId) => {
           },
         }
       );
-      console.log("whole association", updated.data);
-      //dispatch(_setSentimentAnalysis(updated.data));
+      if (updated.status === 200) updtSubmissionFeedback(data);
     } catch (err) {
       console.error(err);
     }

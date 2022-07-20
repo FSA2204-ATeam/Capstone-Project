@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { registration } from "../store";
-import { useDispatch } from "react-redux";
-import { Grid, TextField, Button, ButtonGroup } from "@material-ui/core";
-import Login from "./Login";
+import React, { useState } from 'react';
+import { registration } from '../store';
+import { useDispatch } from 'react-redux';
+import { Grid, TextField, Button, ButtonGroup } from '@material-ui/core';
+import Login from './Login';
 
 const defaultValues = {
-  firstname: "",
-  lastname: "",
-  username: "",
-  password: "",
-  email: "",
+  firstname: '',
+  lastname: '',
+  username: '',
+  password: '',
+  email: '',
 };
 
 const SignUp = () => {
@@ -28,8 +28,7 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(registration(formValues, "signup"));
-    console.log(event);
+    dispatch(registration(formValues, 'signup'));
   };
 
   const handleBackButton = (event) => {

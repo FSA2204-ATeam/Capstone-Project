@@ -44,19 +44,13 @@ const MyEvents = () => {
   }, []);
 
   useEffect(() => {
-    console.log("myEvents useEffect fired");
     const result = myEvents.filter((ele) => ele.users_events.host === true);
-    console.log(result);
     if (result) setMyHostedEvents(result);
   }, [myEvents]);
 
   const onRemoveClick = (eventId, userId) => {
     dispatch(removeUsersEvent(eventId, userId));
   };
-
-  // const onUpdateClick = (event) => {
-  //   console.log("Updated Clicked");
-  // };
 
   const [myHostedEvents, setMyHostedEvents] = useState(
     myEvents.filter((element) => element.users_events.host === true)
@@ -67,7 +61,6 @@ const MyEvents = () => {
       <h1 align="center" style={{ fontFamily: "Shrikhand" }}>{`${user.username
         .slice(0, 1)
         .toUpperCase()}${user.username.slice(1)}'s Events`}</h1>
-
       {myEvents.length ? (
         myEvents.map((event, idx) => {
           return (

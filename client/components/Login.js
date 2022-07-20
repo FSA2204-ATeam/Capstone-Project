@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { authenticate } from "../store";
-import { useDispatch } from "react-redux";
-import { Grid, Button, TextField, ButtonGroup } from "@material-ui/core";
-import SignUp from "./SignUp";
+import React, { useState } from 'react';
+import { authenticate } from '../store';
+import { useDispatch } from 'react-redux';
+import { Grid, Button, TextField, ButtonGroup } from '@material-ui/core';
+import SignUp from './SignUp';
 
 const defaultValues = {
-  username: "",
-  password: "",
+  username: '',
+  password: '',
 };
 
 const Login = () => {
@@ -26,8 +26,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(authenticate(formValues, "login"));
-    console.log(event);
+    dispatch(authenticate(formValues, 'login'));
   };
 
   const closeLoginPopover = (event) => {
