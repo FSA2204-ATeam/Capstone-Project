@@ -100,7 +100,6 @@ const UserProfileForm = (props) => {
           },
         }
       );
-      console.log(userRes, prefsRes);
       if (userRes.status === 200 && prefsRes.status === 200) {
         updtSubmissionFeedback();
       }

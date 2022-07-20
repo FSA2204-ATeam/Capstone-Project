@@ -23,7 +23,7 @@ import {
 import MyEventReview from './MyEventReview';
 import SingleEvent from './SingleEvent';
 import UpdateHostedEvent from './UpdateHostedEvent';
-import { useFrontEndStyles } from "../theme";
+import { useFrontEndStyles } from '../theme';
 
 const MyEvents = () => {
   const user = useSelector((state) => state.auth);
@@ -44,9 +44,7 @@ const MyEvents = () => {
   }, []);
 
   useEffect(() => {
-    console.log('myEvents useEffect fired');
     const result = myEvents.filter((ele) => ele.users_events.host === true);
-    console.log(result);
     if (result) setMyHostedEvents(result);
   }, [myEvents]);
 
@@ -54,70 +52,70 @@ const MyEvents = () => {
     dispatch(removeUsersEvent(eventId, userId));
   };
 
-  // const onUpdateClick = (event) => {
-  //   console.log("Updated Clicked");
-  // };
-
   const [myHostedEvents, setMyHostedEvents] = useState(
     myEvents.filter((element) => element.users_events.host === true)
   );
 
   return (
     <div>
-      <h1 align="center" style={{fontFamily: "Shrikhand"}} >{`${user.username.slice(0, 1).toUpperCase()}${user.username.slice(1)}'s Events`}</h1>
+      <h1 align="center" style={{ fontFamily: 'Shrikhand' }}>{`${user.username
+        .slice(0, 1)
+        .toUpperCase()}${user.username.slice(1)}'s Events`}</h1>
       {myEvents.map((event, idx) => {
         return (
           <div key={event.id}>
-          <Card elevation={3} className={classes.singleEv}>
-            <CardContent >
-              <Typography className={classes.myEventsStyle}>{event.name}</Typography>
-              <Button
-                onClick={() => {
-                  onShowDetailsClick !== null && onShowDetailsClick === idx
-                    ? setOnShowDetailsClick(null)
-                    : setOnShowDetailsClick(idx);
-                  onReviewClick !== null && idx !== onReviewClick
-                    ? setOnReviewClick(null)
-                    : null;
-                }}
-              >
-                Details
-              </Button>
-              <Button
-                onClick={() => {
-                  onReviewClick !== null && onReviewClick === idx
-                    ? setOnReviewClick(null)
-                    : setOnReviewClick(idx);
-                  onShowDetailsClick !== null && idx !== onShowDetailsClick
-                    ? setOnShowDetailsClick(null)
-                    : null;
-                }}
-              >
-                Review
-              </Button>
-              <Button onClick={() => onRemoveClick(event.id, user.id)}>
-                Remove
-              </Button>
-              {event.users_events.host === true ? (
+            <Card elevation={3} className={classes.singleEv}>
+              <CardContent>
+                <Typography className={classes.myEventsStyle}>
+                  {event.name}
+                </Typography>
                 <Button
                   onClick={() => {
-                    onUpdateClick !== null
-                      ? setUpdateClick(null)
-                      : setUpdateClick(idx);
+                    onShowDetailsClick !== null && onShowDetailsClick === idx
+                      ? setOnShowDetailsClick(null)
+                      : setOnShowDetailsClick(idx);
+                    onReviewClick !== null && idx !== onReviewClick
+                      ? setOnReviewClick(null)
+                      : null;
                   }}
                 >
-                  Update
+                  Details
                 </Button>
-              ) : null}
-              {onShowDetailsClick === idx ? (
-                <SingleEvent props={event} />
-              ) : null}
+                <Button
+                  onClick={() => {
+                    onReviewClick !== null && onReviewClick === idx
+                      ? setOnReviewClick(null)
+                      : setOnReviewClick(idx);
+                    onShowDetailsClick !== null && idx !== onShowDetailsClick
+                      ? setOnShowDetailsClick(null)
+                      : null;
+                  }}
+                >
+                  Review
+                </Button>
+                <Button onClick={() => onRemoveClick(event.id, user.id)}>
+                  Remove
+                </Button>
+                {event.users_events.host === true ? (
+                  <Button
+                    onClick={() => {
+                      onUpdateClick !== null
+                        ? setUpdateClick(null)
+                        : setUpdateClick(idx);
+                    }}
+                  >
+                    Update
+                  </Button>
+                ) : null}
+                {onShowDetailsClick === idx ? (
+                  <SingleEvent props={event} />
+                ) : null}
 
-              {onReviewClick === idx ? <MyEventReview event={event} /> : null}
-              {onUpdateClick === idx ? (
-                <UpdateHostedEvent event={event} />
-              ) : null}
-            </CardContent>
+                {onReviewClick === idx ? <MyEventReview event={event} /> : null}
+                {onUpdateClick === idx ? (
+                  <UpdateHostedEvent event={event} />
+                ) : null}
+              </CardContent>
             </Card>
           </div>
         );

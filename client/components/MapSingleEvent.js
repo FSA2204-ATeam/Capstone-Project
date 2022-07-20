@@ -5,11 +5,25 @@ import {
   setUserRSVP,
   fetchUserEvents,
 } from '../store/usersEvents';
+import {
+  Button,
+  Grid,
+  Card,
+  ButtonGroup,
+  CardContent,
+  CardHeader,
+  CardActions,
+  Typography,
+  CardMedia,
+} from '@material-ui/core';
+import { useFrontEndStyles } from '../theme';
 
 import { InfoWindow, Marker } from '@react-google-maps/api';
 
 const MapSingleEvent = ({ randomOrder, wildModeOff }) => {
   const dispatch = useDispatch();
+
+  const classes = useFrontEndStyles();
 
   const user = useSelector((state) => state.auth);
   const myEvents = useSelector((state) => state.usersEvents.events);
@@ -57,27 +71,54 @@ const MapSingleEvent = ({ randomOrder, wildModeOff }) => {
           }}
           onCloseClick={() => wildModeOff()}
         >
-          <div>
+          <Card style={{ border: 'none', boxShadow: 'none' }}>
             <div>
-              <div>{activeEvent.name}</div>
-              <div>{activeEvent.shortDesc}</div>
+              <div style={{ fontSize: '15px', fontFamily: 'Poppins' }}>
+                <p style={{ fontSize: '20px', fontFamily: 'Poppins' }}>
+                  {' '}
+                  {activeEvent.name}
+                </p>
+                <p>{activeEvent.shortDesc}</p>
+
+                <p>
+                  {`${new Date(
+                    Date.parse(activeEvent.startDate)
+                  ).toLocaleString('en-us', {
+                    weekday: 'short',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                  })} to ${new Date(
+                    Date.parse(activeEvent.endDate)
+                  ).toLocaleString('en-us', {
+                    weekday: 'short',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                  })}`}
+                </p>
+                {myAssociations.includes(activeEvent.id) ? (
+                  <p>Thank you for selecting this event to attend!</p>
+                ) : (
+                  <ButtonGroup
+                    variant="contained"
+                    size="small"
+                    color="secondary"
+                  >
+                    <Button onClick={() => onRSVPClick(activeEvent)}>
+                      Let's Go!
+                    </Button>
+                  </ButtonGroup>
+                )}
+                <>{'             '}</>
+                <ButtonGroup variant="contained" size="small" color="secondary">
+                  <Button onClick={() => onNextButton()}>Next</Button>
+                </ButtonGroup>
+              </div>
             </div>
-            <div>
-              {`${new Date(
-                Date.parse(activeEvent.startDate)
-              ).toLocaleString()} to ${new Date(
-                Date.parse(activeEvent.endDate)
-              ).toLocaleString()}`}
-            </div>
-            {myAssociations.includes(activeEvent.id) ? (
-              <em>Thank you for selecting this event to attend!</em>
-            ) : (
-              <button onClick={() => onRSVPClick(activeEvent)}>
-                Let's Go!
-              </button>
-            )}
-            <button onClick={() => onNextButton()}>Next</button>
-          </div>
+          </Card>
         </InfoWindow>
       </Marker>
     </div>

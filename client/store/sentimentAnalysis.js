@@ -24,9 +24,7 @@ export const getSentimentAnalysis = (
       const { data } = await axios.post('/api/sentimentAnalysis', null, {
         headers: { review },
       });
-      console.log(
-        `Watson says my review is ${data.label}, with a score of ${data.score}!`
-      );
+
       dispatch(_getSentimentAnalysis(data));
 
       const updated = await axios.put(
@@ -43,8 +41,6 @@ export const getSentimentAnalysis = (
         }
       );
       if (updated.status === 200) updtSubmissionFeedback(data);
-      console.log('whole association', updated.data);
-      //dispatch(_setSentimentAnalysis(updated.data));
     } catch (err) {
       console.error(err);
     }

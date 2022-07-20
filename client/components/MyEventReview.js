@@ -19,7 +19,7 @@ function MyEventReview({ event }) {
     if ('webkitSpeechRecognition' in window) {
       setShowMic(true);
     } else {
-      console.log('Speech Recognition Not Available');
+      console.error('Speech Recognition Not Available');
     }
   });
   let speechRecognition = new webkitSpeechRecognition();

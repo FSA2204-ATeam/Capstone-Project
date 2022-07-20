@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
-import SpeechToText from './components/SpeechToText';
+
 import { me } from './store';
 import { fetchUserEvents } from './store/usersEvents';
 import { fetchUserPreferences } from './store';
