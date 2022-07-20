@@ -44,8 +44,10 @@ function MyEventReview({ event }) {
 
   //UPDATE SUBMIT FEEDBACK
   const [successfulUpdt, setSuccessfulUpdt] = useState(false);
-  const updtSubmissionFeedback = () => {
+  const [watsonAnalysis, setWatsonAnalysis] = useState({});
+  const updtSubmissionFeedback = (data) => {
     setSuccessfulUpdt(true);
+    setWatsonAnalysis(data);
   };
 
   return (
@@ -129,6 +131,12 @@ function MyEventReview({ event }) {
             {successfulUpdt ? 'Submitted!' : 'Submit'}
           </Button>
         )}
+        <p>
+          {watsonAnalysis.label &&
+            `Your review is ${
+              watsonAnalysis.label
+            }, with a score of ${watsonAnalysis.score.toFixed(3)}!`}
+        </p>
         <p style={{ fontSize: '10px', fontFamily: 'Poppins' }}>
           Please enable microphone access to record your thoughts and feelings
           about the event

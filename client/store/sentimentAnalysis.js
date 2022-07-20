@@ -42,7 +42,7 @@ export const getSentimentAnalysis = (
           },
         }
       );
-      if (updated.status === 200) updtSubmissionFeedback();
+      if (updated.status === 200) updtSubmissionFeedback(data);
       console.log('whole association', updated.data);
       //dispatch(_setSentimentAnalysis(updated.data));
     } catch (err) {
