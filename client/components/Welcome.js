@@ -17,7 +17,7 @@ import { useHistory } from "react-router-dom";
 import UserProfileForm from "./UserProfileForm";
 import MyEvents from "./MyEvents";
 
-const Welcome = ({ wildModeHandler }) => {
+const Welcome = ({ wildModeHandler, closePopover }) => {
   // const [activeEvents, setActiveEvents] = useState([]);
   const [closeLogout, setCloseLogout] = useState(true);
   const classes = useFrontEndStyles();
@@ -36,7 +36,7 @@ const Welcome = ({ wildModeHandler }) => {
     <div>
       {displayComponent === "welcome" ? (
         <div display="flex">
-          <Button>BACK</Button>
+          <Button onClick={() => closePopover()}>BACK</Button>
         </div>
       ) : (
         <div display="flex">
