@@ -75,11 +75,9 @@ const MapSingleEvent = ({ randomOrder, wildModeOff }) => {
             <div>
               <div style={{ fontSize: '15px', fontFamily: 'Poppins' }}>
                 <p style={{ fontSize: '20px', fontFamily: 'Poppins' }}>
-                  {' '}
                   {activeEvent.name}
                 </p>
                 <p>{activeEvent.shortDesc}</p>
-
                 <p>
                   {`${new Date(
                     Date.parse(activeEvent.startDate)
