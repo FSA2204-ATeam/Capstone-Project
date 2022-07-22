@@ -11,7 +11,7 @@ Feeling Wild? Sign up now to RSVP to, or create, an upcoming event! Navigate to 
 We are a team of urban explorers from the four corners of the United States. As part of our academic experience at Fullstack Academy, we have collaborated on providing NYC residents with an app to inspire civic and community engagement.
 
 - Alessandro De Mitri [GitHub](https://github.com/Alessandro-DM)
-- Walker Fisher
+- Walker Fisher [GitHub](https://github.com/walkerfisher)
 - Erion Xeneli
 - Tim Brandau [GitHub](https://github.com/tacticalbison)
 
